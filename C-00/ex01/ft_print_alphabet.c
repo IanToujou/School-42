@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <ianbour2016@gmail.com>              +#+  +:+       +#+        */
+/*   By: ibour <marvin@gmail.com>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 12:03:12 by ibour             #+#    #+#             */
 /*   Updated: 2024/07/10 12:22:30 by ibour            ###   ########.fr       */
