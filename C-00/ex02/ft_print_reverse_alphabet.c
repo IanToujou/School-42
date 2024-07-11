@@ -17,7 +17,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	print_reverse_alphabet(void)
+void	ft_print_reverse_alphabet(void)
 {
 	char	letter;
 
