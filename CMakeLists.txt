@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.13)  # CMake version check
+project(school_42)                    # Create project "simple_example"
+set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
+
+# Add executable target with source files listed in SOURCE_FILES variable
+add_executable(school_42
+        "C-01/ex06/ft_strlen.c"
+        C-01/ex07/ft_rev_int_tab.c
+)
