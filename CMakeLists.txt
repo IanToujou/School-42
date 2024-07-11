@@ -4,5 +4,5 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
-		C-00/ex07/ft_putnbr.c
+
 )
