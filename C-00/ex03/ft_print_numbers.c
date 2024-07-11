@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-
-void	ft_print_numbers(void);
-void	ft_putchar(char c);
 
 void	ft_putchar(char c)
 {

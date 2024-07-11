@@ -13,10 +13,6 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-void	ft_print_comb(void);
-void	ft_putchar(char c);
-void	ft_out(char c1, char c2, char c3);
-
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
