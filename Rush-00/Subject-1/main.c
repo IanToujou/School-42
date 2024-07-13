@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_rev_int_tab.c >                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: cool guys group <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 07:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/11 07:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/13 09:07:08 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/13 09:07:11 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int	index;
-	int	i;
+int	rush(int x, int y);
 
-	index = 0;
-	while (index < size / 2)
-	{
-		i = tab[index];
-		tab[index] = *(tab - index - 1);
-		tab[size - 1 - index] = i;
-		index++;
-	}
-	
+int	main(void)
+{
+	rush(1, 5);
 }

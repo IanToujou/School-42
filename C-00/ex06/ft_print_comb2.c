@@ -30,7 +30,7 @@ void	ft_print_comb2(void)
 		b = a +1;
 		while (b <= 99)
 		{
-			ft_putchar(48 + a / 10);
+			ft_putchar('0' + a / 10);
 			ft_putchar(48 + a % 10);
 			ft_putchar(' ');
 			ft_putchar(48 + b / 10);

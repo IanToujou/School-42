@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_rev_int_tab.c >                               :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: cool guys group <marvin@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 07:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/11 07:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/10 12:03:12 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/10 12:22:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_rev_int_tab(int *tab, int size)
-{
-	int	index;
-	int	i;
+#include <unistd.h>
 
-	index = 0;
-	while (index < size / 2)
-	{
-		i = tab[index];
-		tab[index] = *(tab - index - 1);
-		tab[size - 1 - index] = i;
-		index++;
-	}
-	
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
