@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush0X.c                                           :+:      :+:    :+:   */
+/*   rush03.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cool guys group <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-
 void	ft_putchar(char c);
-
-void	ft_edge(bool inverse, int x, int x_index)
-{
-	if(x_index == 0)
-	{
-		if (inverse) {
-			ft_putchar('\\');
-		}
-		else {
-			ft_putchar('/');
-		}
-	}
-	else if(x_index == x - 1)
-	{
-		if (inverse) {
-			ft_putchar('/');
-		}
-		else {
-			ft_putchar('\\');
-		}
-	}
-}
 
 void	ft_edgeline(int x, int y, int x_index, int y_index)
 {
@@ -42,15 +18,15 @@ void	ft_edgeline(int x, int y, int x_index, int y_index)
 	{
 		if (x_index == 0)
 		{
-			ft_edge(false, y, y_index);
+			ft_putchar('A');
 		}
 		else if (x_index == x - 1)
 		{
-			ft_edge(true, y, y_index);
+			ft_putchar('C');
 		}
 		else
 		{
-			ft_putchar('*');
+			ft_putchar('B');
 		}
 		x_index++;
 	}
@@ -58,7 +34,7 @@ void	ft_edgeline(int x, int y, int x_index, int y_index)
 
 void	ft_midline(int x, int x_index)
 {
-	ft_putchar('*');
+	ft_putchar('B');
 	while (x_index < x - 2)
 	{
 		ft_putchar(' ');
@@ -66,7 +42,7 @@ void	ft_midline(int x, int x_index)
 	}
 	if (x > 1)
 	{
-		ft_putchar('*');
+		ft_putchar('B');
 	}
 }
 

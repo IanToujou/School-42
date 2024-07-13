@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush0X.c                                           :+:      :+:    :+:   */
+/*   rush04.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cool guys group <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
+
 void	ft_putchar(char c);
 
-void	ft_edgeline(int x, int x_index, int y_index)
+void	ft_top_edgeline(bool invert)
+{
+	if (invert)
+	{
+		ft_putchar('C');
+	}
+	else
+	{
+		ft_putchar('A');
+	}
+}
+
+void	ft_bottom_edgeline(bool invert)
+{
+	if (invert)
+	{
+		ft_putchar('A');
+	}
+	else
+	{
+		ft_putchar('C');
+	}
+}
+
+void	ft_edgeline(int x, int x_index, bool invert)
 {
 	while (x_index < x)
 	{
-		if (x_index == 0 || x_index == x - 1)
+		if (x_index == 0)
 		{
-			if (y_index == 0)
-			{
-				ft_putchar('A');
-			}
-			else
-			{
-				ft_putchar('C');
-			}
+			ft_top_edgeline(invert);
+		}
+		else if (x_index == x - 1)
+		{
+			ft_bottom_edgeline(invert);
 		}
 		else
 		{
@@ -64,7 +87,7 @@ void	rush(int x, int y)
 		x_index = 0;
 		if (y_index == 0 || y_index == y - 1)
 		{
-			ft_edgeline(x, x_index, y_index);
+			ft_edgeline(x, x_index, y_index == y - 1);
 		}
 		else
 		{

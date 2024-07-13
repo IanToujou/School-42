@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush0X.c                                           :+:      :+:    :+:   */
+/*   rush02.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cool guys group <marvin@42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,20 @@
 
 void	ft_putchar(char c);
 
-void	ft_edgeline(int x, int y, int x_index, int y_index)
+void	ft_edgeline(int x, int x_index, int y_index)
 {
 	while (x_index < x)
 	{
-		if (x_index == 0)
+		if (x_index == 0 || x_index == x - 1)
 		{
-			ft_putchar('A');
-		}
-		else if (x_index == x - 1)
-		{
-			ft_putchar('C');
+			if (y_index == 0)
+			{
+				ft_putchar('A');
+			}
+			else
+			{
+				ft_putchar('C');
+			}
 		}
 		else
 		{
@@ -61,7 +64,7 @@ void	rush(int x, int y)
 		x_index = 0;
 		if (y_index == 0 || y_index == y - 1)
 		{
-			ft_edgeline(x, y, x_index, y_index);
+			ft_edgeline(x, x_index, y_index);
 		}
 		else
 		{
