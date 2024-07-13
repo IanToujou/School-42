@@ -23,5 +23,12 @@ int	ft_strlen(char *str)
 		size++;
 		str++;
 	}
-	return (size - 1);
+	if (size == 0)
+	{
+		return (0);
+	}
+	else
+	{
+		return (size - 1);
+	}
 }
