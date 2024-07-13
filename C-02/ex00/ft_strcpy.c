@@ -17,11 +17,6 @@ char	*ft_strcpy(char *dest, char *src)
 {
 	int	index;
 	
-	printf("Dest val is: %s \n", dest);
-	printf("Src val is: %s \n", src);
-	
-	printf("e");
-	
 	index = 0;
 	
 	while (src[index] != '\0')
@@ -34,8 +29,12 @@ char	*ft_strcpy(char *dest, char *src)
 }
 
 int main(void) {
-	char	*str = "Test";
-	char	*str2 = "a";
-	ft_strcpy(str2, str);
-	printf("%s", str);
+	char *src;
+	char dest[0]; // char[] is read-write and *char is read only.
+
+	src = "Hello World";
+	printf("base: %s\n", src);
+	printf("before copy: %s\n", dest);
+	ft_strcpy(dest, src);
+	printf("after copy: %s\n", dest);
 }
