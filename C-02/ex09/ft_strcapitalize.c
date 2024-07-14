@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 13:20:18 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/14 13:20:20 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/14 14:04:19 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/14 14:04:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdbool.h>
 
-int ft_str_is_alpha(char* str)
+char    *ft_strcapitalize(char* str)
 {
     char    c;
+    int     i;
 
-    c = *str;
-    while(c != '\0')
+    i = 0;
+    while(true)
     {
-        c = *str;
-        if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && c != 0)
+        c = str[i];
+        if(c == '\0')
         {
-            return (0);
+            break ;
         }
-        str++;
+        if((str[i-1] == '\0' || str[i-1] == ' ' || str[i-1] == '+' || str[i-1] == '-') && (c >= 'a' && c <= 'z'))
+        {
+            str[i] = c -= 32;
+        }
+        i++;
     }
-    return (1);
+    return (str);
 }
 
 int main(int argc, char** argv)
 {
-    printf("Testing string: %s\n", argv[1]);
-    printf("Result: %d\n", ft_str_is_alpha(argv[1]));
+    printf("Input string: %s\n", argv[1]);
+    printf("Result: %s\n", ft_strcapitalize(argv[1]));
 }

@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 13:20:18 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/14 13:20:20 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/14 14:03:35 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/14 14:03:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include <stdio.h>
 
-int ft_str_is_alpha(char* str)
+int		ft_str_is_printable(char *str)
 {
-    char    c;
+    int		index;
+    char	c;
 
-    c = *str;
-    while(c != '\0')
+    index = 0;
+    while (true)
     {
-        c = *str;
-        if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && c != 0)
+        c = str[index];
+        if (c == '\0')
+        {
+            break ;
+        }
+        if (c < 32 || c == 127)
         {
             return (0);
         }
-        str++;
+        index++;
     }
     return (1);
 }
@@ -32,5 +38,5 @@ int ft_str_is_alpha(char* str)
 int main(int argc, char** argv)
 {
     printf("Testing string: %s\n", argv[1]);
-    printf("Result: %d\n", ft_str_is_alpha(argv[1]));
+    printf("Result: %d\n", ft_str_is_printable(argv[1]));
 }

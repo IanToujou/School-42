@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	index;
@@ -27,7 +25,7 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-int main(void) {
+/*int main(void) {
 	char *src;
 	char dest[0]; // char[] is read-write and *char is read only.
 
@@ -36,4 +34,4 @@ int main(void) {
 	printf("before copy: %s\n", dest);
 	ft_strcpy(dest, src);
 	printf("after copy: %s\n", dest);
-}
+}*/

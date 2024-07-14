@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 13:20:18 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/14 13:20:20 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/14 14:03:00 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/14 14:03:01 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_str_is_alpha(char* str)
+int ft_str_is_lowercase(char* str)
 {
     char    c;
 
@@ -20,7 +18,7 @@ int ft_str_is_alpha(char* str)
     while(c != '\0')
     {
         c = *str;
-        if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z') && c != 0)
+        if (!(c >= 'a' && c <= 'z') && c != 0)
         {
             return (0);
         }
@@ -29,8 +27,8 @@ int ft_str_is_alpha(char* str)
     return (1);
 }
 
-int main(int argc, char** argv)
+/*int main(int argc, char** argv)
 {
     printf("Testing string: %s\n", argv[1]);
-    printf("Result: %d\n", ft_str_is_alpha(argv[1]));
-}
+    printf("Result: %d\n", ft_str_is_lowercase(argv[1]));
+}*/
