@@ -11,32 +11,31 @@
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stdio.h>
 
-int		ft_str_is_printable(char *str)
+int	ft_str_is_printable(char *str)
 {
-    int		index;
-    char	c;
+	int		index;
+	char	c;
 
-    index = 0;
-    while (true)
-    {
-        c = str[index];
-        if (c == '\0')
-        {
-            break ;
-        }
-        if (c < 32 || c == 127)
-        {
-            return (0);
-        }
-        index++;
-    }
-    return (1);
+	index = 0;
+	while (true)
+	{
+		c = str[index];
+		if (c == '\0')
+		{
+			break ;
+		}
+		if (c < 32 || c == 127)
+		{
+			return (0);
+		}
+		index++;
+	}
+	return (1);
 }
 
-int main(int argc, char** argv)
+/*int main(int argc, char** argv)
 {
     printf("Testing string: %s\n", argv[1]);
     printf("Result: %d\n", ft_str_is_printable(argv[1]));
-}
+}*/

@@ -10,34 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-    unsigned int count;
-    unsigned int index;
+	unsigned int	count;
+	unsigned int	index;
 
-    index = 0;
-    count = 0;
-
-    while (src[count] != '\0')
-    {
-        count++;
-    }
-    if (size != 0)
-    {
-        while (src[index] != '\0' && index < (size - 1))
-        {
-            dest[index] = src[index];
-            index++;
-        }
-        dest[index] = '\0';
-    }
-    return (count);
-
+	index = 0;
+	count = 0;
+	while (src[count] != '\0')
+	{
+		count++;
+	}
+	if (size != 0)
+	{
+		while (src[index] != '\0' && index < (size - 1))
+		{
+			dest[index] = src[index];
+			index++;
+		}
+		dest[index] = '\0';
+	}
+	return (count);
 }
 
-int main(void) {
+/*int main(void) {
     char *src;
     char dest[0]; // char[] is read-write and *char is read only.
 
@@ -46,4 +42,4 @@ int main(void) {
     printf("before copy: %s\n", dest);
     ft_strlcpy(dest, src, 12);
     printf("after copy: %s\n", dest);
-}
+}*/

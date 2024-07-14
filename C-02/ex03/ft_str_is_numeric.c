@@ -10,21 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_str_is_numeric(char* str)
+int	ft_str_is_numeric(char *str)
 {
-    char    c;
+	char	c;
 
-    c = *str;
-    while(c != '\0')
-    {
-        c = *str;
-        if (!(c >= '0' && c <= '9') && c != 0)
-        {
-            return (0);
-        }
-        str++;
-    }
-    return (1);
+	c = *str;
+	while (c != '\0')
+	{
+		c = *str;
+		if (!(c >= '0' && c <= '9') && c != 0)
+		{
+			return (0);
+		}
+	}
+	return (1);
 }
 
 /*int main(int argc, char** argv)

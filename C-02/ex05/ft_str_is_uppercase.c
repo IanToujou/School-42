@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_str_is_uppercase(char* str)
+int	ft_str_is_uppercase(char *str)
 {
-    char    c;
+	char	c;
 
-    c = *str;
-    while(c != '\0')
-    {
-        c = *str;
-        if (!(c >= 'A' && c <= 'Z') && c != 0)
-        {
-            return (0);
-        }
-        str++;
-    }
-    return (1);
+	c = *str;
+	while (c != '\0')
+	{
+		c = *str;
+		if (!(c >= 'A' && c <= 'Z') && c != 0)
+		{
+			return (0);
+		}
+		str++;
+	}
+	return (1);
 }
 
 /*int main(int argc, char** argv)
