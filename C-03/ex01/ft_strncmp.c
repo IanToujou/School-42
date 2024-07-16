@@ -12,30 +12,12 @@
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
-
+	unsigned int	i;
 	i = 0;
-	while (*s1 != '\0' && i < n)
-	{
-		if (*s1 != *s2)
-		{
-			return (*s1 - *s2);
-		}
-		s1++;
-		s2++;
+	if (n == 0)
+		return (0);
+	while (s1[i] == s2[i] && (i < n - 1) && s1[i])
 		i++;
-	}
-	return (0);
-}
+	return (s1[i] - s2[i]);
 
-/*int	main(int argc, char** argv)
-{
-    if (argv[1] == (void *)0 || argv[2] == (void *)0)
-    {
-        printf("You need to input at least two strings!\n");
-        return 0;
-    }
-    printf("Input 1: %s\n", argv[1]);
-    printf("Input 2: %s\n", argv[2]);
-    printf("Result: %d\n", ft_strncmp(argv[1], argv[2], 3));
-}*/
+}

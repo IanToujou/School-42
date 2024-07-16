@@ -12,34 +12,21 @@
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int		i;
-	char	*result;
+	unsigned int	i1;
+	unsigned int	i2;
 
-	result = dest;
-	i = 0;
-	while (*result != '\0')
+	i1 = 0;
+	i2 = 0;
+	while (dest[i1] != '\0')
 	{
-		result++;
+		i1++;
 	}
-	while (*src != '\0' && i < nb)
+	while (src[i2] != '\0' && i2 < nb)
 	{
-		*result = *(unsigned char *) src;
-		result++;
-		src++;
-		i++;
+		dest[i1] = src[i2];
+		i1++;
+		i2++;
 	}
-	*result = '\0';
+	dest[i1] = '\0';
 	return (dest);
 }
-
-/*int    main(int argc, char** argv)
-{
-    if (argv[1] == (void *)0 || argv[2] == (void *)0)
-    {
-        printf("You need to input at least two strings!\n");
-        return 0;
-    }
-    printf("Input 1: %s\n", argv[1]);
-    printf("Input 2: %s\n", argv[2]);
-    printf("Result: %s\n", ft_strncat(argv[1], argv[2], 5));
-}*/

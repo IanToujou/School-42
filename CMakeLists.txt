@@ -11,4 +11,5 @@ add_executable(school_42
 		C-03/ex03/ft_strncat.c
 		C-03/ex04/ft_strstr.c
 		C-03/ex05/ft_strlcat.c
+		C-02/ex09/ft_strcapitalize.c
 )
