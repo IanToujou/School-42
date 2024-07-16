@@ -12,9 +12,6 @@
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	char	c1;
-	char	c2;
-
 	while (*s1 != '\0')
 	{
 		if (*s1 != *s2)

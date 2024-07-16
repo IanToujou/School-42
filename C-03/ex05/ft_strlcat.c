@@ -12,7 +12,7 @@
 
 unsigned int	ft_str_length_fast(char *dest)
 {
-	unsigned int	count;
+	int	count;
 
 	count = 0;
 	while (dest[count] != '\0')
