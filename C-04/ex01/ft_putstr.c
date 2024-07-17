@@ -12,15 +12,19 @@
 
 #include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 void	ft_putstr(char *str)
 {
-	char	c;
+	int	i;
 
-	c = *str;
-	while (c != '\0')
+	i = 0;
+	while (*(str + i) != '\0')
 	{
-		c = *str;
-		write(1, &c, 1);
-		str++;
+		ft_putchar(*(str + i));
+		i++;
 	}
 }
