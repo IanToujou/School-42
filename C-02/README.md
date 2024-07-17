@@ -1,17 +1,17 @@
  ## ✅ C-02 Exercise Completion
 
-| Exercise  | Status | Note |
-| ----- | - | - |
-| EX-00 | ✅ | <img width="441" height="1"> |
-| EX-01 | ✅ | |
-| EX-02 | ✅ | |
-| EX-03 | ✅ | |
-| EX-04 | ✅ | |
-| EX-05 | ✅ | |
-| EX-06 | ✅ | |
-| EX-07 | ✅ | |
-| EX-08 | ✅ | |
-| EX-09 | ❌ | KO. |
-| EX-10 | ✅ | |
-| EX-11 | ❌ | KO. |
-| EX-12 | ❌ | Did not do the exercise. |
+| Exercise | Status | Points | Note                         |
+|----------|--------|--------|------------------------------|
+| EX-00    | ✅      | 5      | <img width="441" height="1"> |
+| EX-01    | ✅      | 5      |                              |
+| EX-02    | ✅      | 5      |                              |
+| EX-03    | ✅      | 5      |                              |
+| EX-04    | ✅      | 5      |                              |
+| EX-05    | ✅      | 5      |                              |
+| EX-06    | ✅      | 5      |                              |
+| EX-07    | ✅      | 10     |                              |
+| EX-08    | ✅      | 10     |                              |
+| EX-09    | ❌      | 10     | KO.                          |
+| EX-10    | ✅      | 10     |                              |
+| EX-11    | ❌      | 10     | KO.                          |
+| EX-12    | ❌      | 15     | Did not do.                  |
