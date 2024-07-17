@@ -12,6 +12,6 @@
 | EX-07 | ✅ | |
 | EX-08 | ✅ | |
 | EX-09 | ❌ | KO. |
-| EX-08 | ✅ | |
+| EX-10 | ✅ | |
 | EX-11 | ❌ | KO. |
 | EX-12 | ❌ | Did not do the exercise. |
