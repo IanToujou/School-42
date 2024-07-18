@@ -22,11 +22,11 @@ int	main(int argc, char **argv)
 {
 	int	i;
 
-	i = 1;
-	while (i < argc)
+	i = argc;
+	while (i > 1)
 	{
-		ft_putstr(argv[i]);
+		ft_putstr(argv[i - 1]);
 		write(1, "\n", 1);
-		i++;
+		i--;
 	}
 }
