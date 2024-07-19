@@ -4,7 +4,3 @@
 
 ## ✅ Exercise Completion
 Open the root folder of an exercise to see more information.
-
-Me when my C code compiles first try:
-
-![NINTCHDBPICT000592609288](https://github.com/user-attachments/assets/9cc77c9f-3412-48a0-9a1d-d339f0264aa9)
