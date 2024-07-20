@@ -64,7 +64,7 @@ void	ft_putchar(char c)
 ---
 ### ✨ What is #include?
 
-The `write()` function will not work like this. You still need to include it to your program. `write()` is a function from the library `unistd.h`. To include a library, simply add the following code to import it:
+The `write()` function will not work like this. You still need to include it in your program. `write()` is a function from the library `unistd.h`. To include a library, simply add the following code to import it:
 ```c
 #include <unistd.h> // Remember the name of the library!
 ```
