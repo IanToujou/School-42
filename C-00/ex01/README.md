@@ -42,7 +42,7 @@ Characters can always be represented by a number or by a character. For example:
 char a = 'a'; // This character is 'a', but it also has a number, which is 97.
 ```
 
-You can find these numbers in the ASCII table, either by using [this page](https://www.commfront.com/pages/ascii-chart), or with the command `man ascii`. Using number operations on characters will work because of this reason.
+You can find these numbers in the ASCII table, either by using [this page](https://www.commfront.com/pages/ascii-chart), or with the command `man ascii`. Using number operations on characters will work for this reason.
 
 In our function, we could write something like this:
 ```c
