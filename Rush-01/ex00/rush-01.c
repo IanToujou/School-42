@@ -48,7 +48,6 @@ void print_grid(int grid[4][4])
     print_grid_rec(grid, 0, 0);
 }
 
-// Función para verificar si el número se puede colocar en la posición
 int is_safe_rec(int grid[4][4], int row, int col, int num, int x)
 {
     if (x < 4)
@@ -67,7 +66,6 @@ int is_safe(int grid[4][4], int row, int col, int num)
     return is_safe_rec(grid, row, col, num, 0);
 }
 
-// Función para contar los edificios visibles desde una dirección
 int count_visible_rec(int *line, int size, int i, int max_height, int count)
 {
     if (i < size)
@@ -87,7 +85,6 @@ int count_visible(int *line, int size)
     return count_visible_rec(line, size, 0, 0, 0);
 }
 
-// Función para copiar una columna de la cuadrícula a un array
 void copy_col_rec(int grid[4][4], int col, int line[4], int i)
 {
     if (i < 4)
@@ -97,7 +94,6 @@ void copy_col_rec(int grid[4][4], int col, int line[4], int i)
     }
 }
 
-// Función para copiar una fila de la cuadrícula a un array
 void copy_row_rec(int grid[4][4], int row, int line[4], int i)
 {
     if (i < 4)
@@ -107,7 +103,6 @@ void copy_row_rec(int grid[4][4], int row, int line[4], int i)
     }
 }
 
-// Función para copiar una columna invertida de la cuadrícula a un array
 void copy_col_rev_rec(int grid[4][4], int col, int line[4], int i)
 {
     if (i < 4)
@@ -117,7 +112,6 @@ void copy_col_rev_rec(int grid[4][4], int col, int line[4], int i)
     }
 }
 
-// Función para copiar una fila invertida de la cuadrícula a un array
 void copy_row_rev_rec(int grid[4][4], int row, int line[4], int i)
 {
     if (i < 4)
@@ -127,7 +121,6 @@ void copy_row_rev_rec(int grid[4][4], int row, int line[4], int i)
     }
 }
 
-// Función para verificar las restricciones de visibilidad
 int check_visibility_rec(int grid[4][4], int clues[4][4], int i)
 {
     int line[4];
@@ -135,25 +128,21 @@ int check_visibility_rec(int grid[4][4], int clues[4][4], int i)
 
     if (i < 4)
     {
-        // Verificar pista superior
         copy_col_rec(grid, i, line, 0);
         visible_count = count_visible(line, 4);
         if (clues[0][i] != 0 && visible_count != clues[0][i])
             return 0;
 
-        // Verificar pista inferior
         copy_col_rev_rec(grid, i, line, 0);
         visible_count = count_visible(line, 4);
         if (clues[1][i] != 0 && visible_count != clues[1][i])
             return 0;
 
-        // Verificar pista izquierda
         copy_row_rec(grid, i, line, 0);
         visible_count = count_visible(line, 4);
         if (clues[2][i] != 0 && visible_count != clues[2][i])
             return 0;
 
-        // Verificar pista derecha
         copy_row_rev_rec(grid, i, line, 0);
         visible_count = count_visible(line, 4);
         if (clues[3][i] != 0 && visible_count != clues[3][i])
@@ -169,7 +158,6 @@ int check_visibility(int grid[4][4], int clues[4][4])
     return check_visibility_rec(grid, clues, 0);
 }
 
-// Función para resolver la cuadrícula usando backtracking
 int solve_grid_rec(int grid[4][4], int clues[4][4], int row, int col, int num)
 {
     if (row == 4)

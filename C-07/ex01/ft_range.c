@@ -14,10 +14,10 @@
 
 int	*ft_range(int min, int max)
 {
-	int	*array;
+	int *array = NULL;
 	
 	if(max >= min)
 		return NULL;
 	
-	array = (int *) malloc(min);
+	return array;
 }

@@ -6,4 +6,7 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 add_executable(school_42
 		Rush-01/ex00/rush-01.c
 		Rush-01/ex00/str_tools.c
+		C-07/ex00/ft_strdup.c
+		C-07/ex01/ft_range.c
+		C-00/ex07/ft_putnbr.c
 )
