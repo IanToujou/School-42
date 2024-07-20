@@ -2,7 +2,7 @@
 
 ### ✨ Introduction
 
-Welcome to your first C exercise! Maybe you have been coding before maybe not, but it doesn't really matter. C is very different from many programming languages. C is a low-level programming language, which means, it operates directly on the components of your PC, like the RAM. Unlike in other languages, you need to
+Welcome to your first C exercise! Maybe you have been coding before, maybe not, but it doesn't really matter. C is a bit different from other programming languages. C is a low-level programming language, which means, it operates directly on the components of your PC, like the RAM. Unlike in other languages, you need to
 do everything manually in C, like garbage collection (making sure unused variables don't take up space in the RAM), or many functions that exist by default, you need to create them yourself. In the Piscine, you are going to learn how to create simple (and some not so simple) functions. Of course, they exist in some
 libraries, but that's not the point.
 
