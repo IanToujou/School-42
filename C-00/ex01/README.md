@@ -20,6 +20,7 @@ void	ft_print_alphabet(void)
 }
 ```
 
+---
 ### ✨ Loops
 This will work without any problems, but let's not hard-code it. How can we make this work? The answer is, by using a loop.
 
@@ -33,6 +34,7 @@ while(x < 5) {
 
 This loop will go on and increase x by 1, until x is NOT smaller than 5 anymore. So, the alphabet has 26 characters, right? So we just need to loop from `a` to `z`.
 
+---
 ### ✨ Characters and the ASCII table
 
 Characters can always be represented by a number or by a character. For example:
