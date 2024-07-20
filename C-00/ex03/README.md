@@ -4,6 +4,7 @@
 
 This exercise is almost the same as the last one, again. This time, we need to print the numbers from 0 to 9.
 
+---
 ### ✨ Hard-Code
 
 ```c
@@ -15,6 +16,7 @@ void	ft_print_numbers(void)
 }
 ```
 
+---
 ### ✨ Soft-Code
 
 Like in the previous exercise, we are going to use a `while` loop.
@@ -37,6 +39,7 @@ void	ft_print_numbers(void)
 
 That's it. It's as easy as that.
 
+---
 ### ✨ Multiple Functions
 
 You can also add your `ft_putchar()` function to your code. It would look like this:
