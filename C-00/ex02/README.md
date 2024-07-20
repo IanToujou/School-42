@@ -1,4 +1,4 @@
-## 💡 EX-01 Explanation
+## 💡 EX-02 Explanation
 
 ### ✨ Introduction
 
