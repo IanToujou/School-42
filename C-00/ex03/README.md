@@ -29,7 +29,7 @@ void	ft_print_numbers(void)
 	num = '0'; // The ASCII code of '0' is 48.
 	while (num <= '9')
 	{
-		ft_putchar(num);
+		write(1, &num, 1);
 		num++;
 	}
 }
