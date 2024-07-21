@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int	*ft_range(int min, int max)
 {
 	int	range;
-	int	i;
+	int	index;
 	int	*buffer;
 
 	if (min >= max)
@@ -25,20 +24,41 @@ int	*ft_range(int min, int max)
 	buffer = malloc(range * sizeof(int));
 	if (buffer == NULL)
 		return (0);
-	i = 0;
-	while (i <= range)
+	index = 0;
+	while (index <= range)
 	{
-		buffer[i] = min + i;
-		i++;
+		buffer[index] = min + index;
+		index++;
 	}
 	return (buffer);
 }
 
-#include <stdio.h>
-int main(void)
+/*#include <stdio.h>
+void	debug_dump_array(int numbers[], int size)
 {
-	int	min = 2;
-	int max = 5;
-	ft_range(min, max);
-	printf("i is %d, setting buffer[%d] to %d\n", i, i, min+i);
+	int index;
+
+	printf("[ ");
+	index = 0;
+	while (index < size)
+	{
+		printf("%d", numbers[index]);
+		if (index != size - 1)
+		{
+			printf(", ");
+		}
+		index++;
+	}
+	printf(" ]");
 }
+
+int	main(void)
+{
+	int	min;
+	int	max;
+
+	min = -5;
+	max = -2;
+	printf("min = %d, max = %d -> ", min, max);
+	debug_dump_array(ft_range(min, max), max - min);
+}*/
