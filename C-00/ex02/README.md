@@ -1,10 +1,10 @@
-## 💡 EX-02 Explanation
+# 💡 EX-02 Explanation
 
-### ✨ Introduction
+## ✨ Introduction
 
 This exercise is almost the same as the last one, just this time you need to print the alphabet in reverse. You can hard-code it, or soft-code it.
 
-### ✨ Hard-Code
+## ✨ Hard-Code
 
 ```c
 #include <unistd.h>
@@ -15,7 +15,7 @@ void	ft_print_reverse_alphabet(void)
 }
 ```
 
-### ✨ Soft-Code
+## ✨ Soft-Code
 
 Like in the previous exercise, we are going to use a `while` loop.
 
@@ -35,7 +35,7 @@ void	ft_print_reverse_alphabet(void)
 }
 ```
 
-### ✨ Increasing and Decreasing
+## ✨ Increasing and Decreasing
 
 Increasing a number in C (and many other programming languages) is done by just adding something to it.
 ```c

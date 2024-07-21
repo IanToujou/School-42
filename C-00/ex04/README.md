@@ -1,18 +1,17 @@
-## 💡 EX-04 Explanation
+# 💡 EX-04 Explanation
 
-### ✨ Introduction
+## ✨ Introduction
 
 Here, we are going to create a function called `ft_is_negative()` that will, well, check if a number is negative.
 
-### ✨ Create the Function
+## ✨ Create the Function
 
 You still know how to create a function, right? So let's create it:
 ```c
 void	ft_is_negative(int n) {}
 ```
 
----
-### ✨ If & Else Statements
+## ✨ If & Else Statements
 
 According to the subject, we need to print 'P' if the number is positive, and 'N' if the number is negative. We could write it in one line using ternaries, but norminette doesn't allow us to do so. We need to write it using `if` and `else`.
 
@@ -37,7 +36,7 @@ if (number < 0) {
 So let's implement that in our function:
 
 ```c
-#include <unistd.h> // Don't forget to inlcude this if you use write!
+#include <unistd.h> // Don't forget to include this if you use write!
 
 void	ft_is_negative(int n)
 {
@@ -52,8 +51,7 @@ void	ft_is_negative(int n)
 }
 ```
 
----
-### ✨ Making the Code smaller
+## ✨ Making the Code smaller
 
 The code can also be made simpler. If there is only ONE line of code inside the `if` or `else` statement, you can drop the `{}`. Just remember to use the proper indentation (`TAB`)!
 

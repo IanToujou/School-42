@@ -1,6 +1,6 @@
-## 💡 EX-00 Explanation
+# 💡 EX-00 Explanation
 
-### ✨ Introduction
+## ✨ Introduction
 
 Welcome to your first C exercise! Maybe you have been coding before, maybe not, but it doesn't really matter. C is a bit different from other programming languages. C is a low-level programming language, which means, it operates directly on the components of your PC, like the RAM. Unlike in other languages, you need to
 do everything manually in C, like garbage collection (making sure unused variables don't take up space in the RAM), or many functions that exist by default, you need to create them yourself. In the Piscine, you are going to learn how to create simple (and some not so simple) functions. Of course, they exist in some
@@ -9,8 +9,7 @@ libraries, but that's not the point.
 Before you start, get some basic knowledge in Git, how to use `norminette` and how to create the 42 header!
 I would also recommend you watch some videos on basic C programming, variable types, functions, etc.
 
----
-### ✨ What is a function?
+## ✨ What is a function?
 
 In this exercise, you are supposed to create your first function, called `ft_putchar`. It should just print a character. You may have used `print` functions in other languages, but in the piscine, we will also create them ourselves. Every basic function in C is written as follows:
 ```c
@@ -33,8 +32,7 @@ void	ft_putchar(char c)
 ```
 It doesn't matter if you write the `{` on the same line as the function name or not, but in School 42, norminette wants us to make a new line for it.
 
----
-### ✨ The write() function
+## ✨ The write() function
 
 The line inside our function is this one;
 ```c
@@ -61,8 +59,7 @@ void	ft_putchar(char c)
 }
 ```
 
----
-### ✨ What is #include?
+## ✨ What is #include?
 
 The `write()` function will not work like this. You still need to include it in your program. `write()` is a function from the library `unistd.h`. To include a library, simply add the following code to import it:
 ```c
@@ -78,8 +75,7 @@ void	ft_putchar(char c)
 }
 ```
 
----
-### ✨ Testing with main()
+## ✨ Testing with main()
 
 Maybe you want to test it, right? That's a great idea! To test it, you need to create another function. This function is called `main()`. It is defined like this:
 ```c
@@ -90,7 +86,6 @@ int  main(void) {
 
 Don't worry too much about the function now, but this will get executed once you compile (build) your program.
 
----
-### 🚨 Important Information
+## 🚨 Important Information
 
 Please remember to REMOVE or comment out the main function when you submit your program, if they are asking for a function! A main function only needs to be included if they ask for a program!
