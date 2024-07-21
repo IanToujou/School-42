@@ -41,3 +41,11 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+
+/*#include <stdio.h>
+int	main(void) {
+	char* str = "Hello";
+	char* str2 = ft_strdup(str);
+	printf("First string: %s\n", str);
+	printf("Duplicated string: %s\n", str2);
+}*/
