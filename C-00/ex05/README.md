@@ -1,11 +1,10 @@
-## 💡 EX-05 Explanation
+# 💡 EX-05 Explanation
 
-### ✨ Introduction
+## ✨ Introduction
 
 This exercise is a bit more complex. We need to create a function that displays every number, starting from `012` until `789`, where every number is only shown once.
 
----
-### ✨ Create Helper Functions
+## ✨ Create Helper Functions
 
 First of all, we are going to create helper functions. We only need `ft_putchar()` to write.
 
@@ -18,8 +17,7 @@ void	ft_putchar(char c)
 }
 ```
 
----
-### ✨ Logic
+## ✨ Logic
 
 Let's think about this in a logical way. We start at `012`, every number can only be displayed once, and we end at `789`. So, we can try to increase every digit and loop through the three digits.
 ```
@@ -28,8 +26,7 @@ Let's think about this in a logical way. We start at `012`, every number can onl
 2 -> 9 // Same.
 ```
 
----
-### ✨ Write your Code
+## ✨ Write your Code
 
 We have 3 digits, so let's start by creating 3 character variables.
 ```c
@@ -147,3 +144,5 @@ void	ft_print_comb(void)
 	}
 }
 ```
+
+And that's it.
