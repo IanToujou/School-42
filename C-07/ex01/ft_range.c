@@ -14,49 +14,40 @@
 
 int	*ft_range(int min, int max)
 {
-	int	index;
-	int	*buffer;
+	int	i;
+	int	*result;
 
 	if (min >= max)
-		return (0);
-	buffer = (int *) malloc((max - min - 1) * sizeof(*buffer));
-	if (buffer == NULL)
-		return (0);
-	index = 0;
-	while (index <= (max - min - 1))
 	{
-		buffer[index] = min + index;
-		index++;
+		return (0);
 	}
-	return (buffer);
+	i = max - min;
+	result = (int *) malloc(sizeof(int) * (i));
+	if (result == NULL)
+		return (NULL);
+	i = 0;
+	while (min < max)
+	{
+		result[i] = min;
+		min++;
+		i++;
+	}
+	return (result);
 }
 
 /*#include <stdio.h>
-void	debug_dump_array(int numbers[], int size)
-{
-	int index;
-
-	printf("[ ");
-	index = 0;
-	while (index < size)
-	{
-		printf("%d", numbers[index]);
-		if (index != size - 1)
-		{
-			printf(", ");
-		}
-		index++;
-	}
-	printf(" ]");
-}
-
 int	main(void)
 {
-	int	min;
-	int	max;
+	int	*arr;
+	int	i;
 
-	min = -10;
-	max = -4;
-	printf("min = %d, max = %d -> ", min, max);
-	debug_dump_array(ft_range(min, max), max - min);
+	arr = ft_range(1, 10);
+	i = 0;
+	while (i < 9)
+	{
+		printf("%d\n", arr[i]);
+		i++;
+	}
+	free(arr);
+	return (0);
 }*/
