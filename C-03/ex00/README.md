@@ -1,4 +1,6 @@
-## 💡 EX-00 Explanation
+# 💡 EX-00 Explanation
+
+## ✨ Introduction
 
 In this exercise, you need to create a function `ft_strcmp` that takes two strings.
 The function will be defined like this:
@@ -26,6 +28,9 @@ o (111 in the ASCII table)
 a (97 in the ASCII table)
 The difference is o - a, so 111 - 97 = 14
 ```
+
+## ✨ Creating the Function
+
 To write the function, let's think how we can analyze a string. A string consists
 of different characters, so let's first create a loop to loop though all the
 characters.
