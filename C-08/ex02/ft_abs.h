@@ -10,4 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
+int	abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
+}
+
+# define ABS abs
+# define EVEN even
+
+#endif
