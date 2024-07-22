@@ -121,7 +121,7 @@ void	ft_putnbr(int nb)
 
 We are going to seperate the digits 1 by 1, always dropping the last digit, until there is only one single digit left. If we create a graph, it would look like this:
 
-<img width="1224" alt="Graph" src="https://github.com/user-attachments/assets/48ab9c17-3214-431e-a7d2-6c2885883479">
+![Graph](https://github.com/user-attachments/assets/033b29ee-94a1-4afe-9575-4df287eaf3a7)
 
 ## ✨ Minimum Integer
 
