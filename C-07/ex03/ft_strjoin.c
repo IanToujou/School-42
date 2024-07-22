@@ -55,51 +55,52 @@ int	ft_tl(char **strs, int size, int sep_length)
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	int		i;
-	char	*head;
-	char	*str;
+	int		index;
+	char	*read_head;
+	char	*string;
 
 	if (size == 0)
-		return (malloc(sizeof(char)));
-	str = (char *)malloc((ft_tl(strs, size, ft_sl(sep)) + 1) * sizeof(char));
-	if (!str)
+		return ((char *)malloc(sizeof(char)));
+	string = (char *)malloc((ft_tl(strs, size, ft_sl(sep)) + 1) * sizeof(char));
+	if (string == NULL)
 		return (0);
-	head = str;
-	i = 0;
-	while (i < size)
+	read_head = string;
+	index = 0;
+	while (index < size)
 	{
-		ft_strcpy(head, strs[i]);
-		head += ft_sl(strs[i]);
-		if (i < size - 1)
+		ft_strcpy(read_head, strs[index]);
+		read_head += ft_sl(strs[index]);
+		if (index < size - 1)
 		{
-			ft_strcpy(head, sep);
-			head += ft_sl(sep);
+			ft_strcpy(read_head, sep);
+			read_head += ft_sl(sep);
 		}
-		i++;
+		index++;
 	}
-	*head = '\0';
-	return (str);
+	*read_head = '\0';
+	return (string);
 }
 
 /*#include <stdio.h>
 int		main(void)
 {
-    int		index;
-    char	**strs;
-    char	*separator;
-    char	*result;
+	int		index;
+	char	**strs;
+	char	*separator;
+	char	*result;
 
-    strs = (char**) malloc(4 * sizeof(strs));
-    strs[0] = "lol";
-    strs[1] = "1234";
-    separator = "-";
-    index = 0;
-
-    while (index < 4)
-    {
-        result = ft_strjoin(index, strs, separator);
-        printf("Result (Size %d) = %s\n", index, result);
-        free(result);
-        index++;
-    }
+	strs = (char**) malloc(4 * sizeof(strs));
+	strs[0] = "lol";
+	strs[1] = "1234";
+	strs[2] = "poiuic";
+	strs[3] = "1234";
+	separator = "-";
+	index = 0;
+	while (index < 4)
+	{
+		result = ft_strjoin(index, strs, separator);
+		printf("result with size = %d : $%s$\n", index, result);
+		free(result);
+		index++;
+	}
 }*/

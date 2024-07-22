@@ -18,12 +18,12 @@ int	*ft_range(int min, int max)
 	int	*buffer;
 
 	if (min >= max)
-		return (NULL);
-	buffer = (int *) malloc((max - min) * sizeof(*buffer));
+		return (0);
+	buffer = (int *) malloc((max - min - 1) * sizeof(*buffer));
 	if (buffer == NULL)
-		return (NULL);
+		return (0);
 	index = 0;
-	while (index <= max - min)
+	while (index <= (max - min - 1))
 	{
 		buffer[index] = min + index;
 		index++;
