@@ -14,18 +14,16 @@
 
 int	*ft_range(int min, int max)
 {
-	int	range;
 	int	index;
 	int	*buffer;
 
 	if (min >= max)
-		return (0);
-	range = max - min - 1;
-	buffer = malloc(range * sizeof(int));
+		return (NULL);
+	buffer = (int *) malloc((max - min) * sizeof(*buffer));
 	if (buffer == NULL)
-		return (0);
+		return (NULL);
 	index = 0;
-	while (index <= range)
+	while (index <= max - min)
 	{
 		buffer[index] = min + index;
 		index++;
@@ -57,8 +55,8 @@ int	main(void)
 	int	min;
 	int	max;
 
-	min = -5;
-	max = -2;
+	min = -10;
+	max = -4;
 	printf("min = %d, max = %d -> ", min, max);
 	debug_dump_array(ft_range(min, max), max - min);
 }*/

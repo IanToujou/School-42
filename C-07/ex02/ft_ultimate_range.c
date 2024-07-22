@@ -50,4 +50,5 @@ int	ft_ultimate_range(int **range, int min, int max)
 	max = 10;
 	bound = ft_ultimate_range(&range, min, max);
 	printf("min = %d, max = %d -> (bound = %d) ", min, max, bound);
-}*/
+}
+*/
