@@ -10,5 +10,3 @@ int x = 5;
 ```
 
 In reality, your program will make space in the memory and assign the value.
-
-![ptr](https://github.com/user-attachments/assets/c34ba64f-8624-4826-a624-f7c7066f5b9a)
