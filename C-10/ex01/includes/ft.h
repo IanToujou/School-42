@@ -26,6 +26,8 @@
 
 void ft_putchar(char c, int out);
 void ft_putstr(char *str, int out);
-void without_args();
+void ft_putstr_buffer(char *str, int size);
+int ft_file_read(char *path);
+void without_args(char **argv);
 
 #endif

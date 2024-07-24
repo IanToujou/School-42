@@ -9,4 +9,5 @@ add_executable(school_42
 		C-10/ex01/srcs/without_args.c
 		C-10/ex01/includes/ft.h
 		C-10/ex01/srcs/ft_putchar.c
+		C-10/ex01/srcs/ft_file_read.c
 )

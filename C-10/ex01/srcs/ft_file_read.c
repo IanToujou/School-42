@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_file_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 19:53:39 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/24 19:53:39 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/24 18:39:17 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/24 18:39:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft.h"
 
-void	ft_putstr(char *str, int out)
+int ft_file_read(char *path)
 {
-    int i;
+	int file;
+	int size;
+	char	buffer[__BUFFER];
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        ft_putchar(str[i], out);
-        i++;
-    }
-}
-
-void	ft_putstr_buffer(char *str, int size)
-{
-	int i;
-
-	i = -1;
-	while (++i < size)
-		ft_putchar(str[i], 1);
+	file = open(path, O_RDWR);
+	if (file != -1)
+	{
+		while ((size = read(file, buffer, __BUFFER)) != 0)
+			ft_putstr_buffer(buffer, size);
+		return (1);
+	}
+	else
+		return (0);
 }
