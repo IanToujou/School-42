@@ -42,7 +42,7 @@ write(1, &c, 1);
 We are not allowed to use other functions than `write` in this and most exercises. `write` is a C function that prints something in the shell. It will NOT create new lines automatically, and you basically just add a character to the output.
 
 Of course, `write` is also a function, and it takes 3 parameters:
-- `1` - Just leave this at 1, you can search on the internet why it is always 1, but at this point just remember to put 1.
+- `1` - Just leave this at 1. This is the "location" where you want to write your character. 1 is the default output.
 - `&c` - This is the character to write. `c` is our character variable, but the `&` sign is not important yet. If you really want to know what it does, it means `get the memory address of` a variable. But that's more important later on.
 - `1` - The last parameter is also 1, but this number can change. It is the amount of characters that you want to print. See the following code:
 ```c
