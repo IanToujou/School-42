@@ -1,13 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/24 14:06:50 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/24 14:06:51 by ibour            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
+
+void    ft_write_io(const int n, const char *str)
+{
+    while (*str != '\0')
+    {
+        write(n, str, 1);
+        str++;
+    }
+    write(1, "\n", 1);
+}
+
+bool    read_file(char *path)
+{
+    int file;
+    unsigned int byte_read;
+    char buffer[4097];
+
+    file = open(path, O_RDONLY);
+    if (file < 0)
+        return (false);
+    byte_read = read(file, buffer, 4096);
+    while (byte_read != 0)
+    {
+        byte_read = read(file, buffer, 4096);
+        if(byte_read == (unsigned int) -1)
+            break;
+        ft_write_io(STDOUT_FILENO, buffer);
+    }
+    close(file);
+    return (true);
+}
 
 int main(int argc, char **argv) {
-    const int file = open(argv[1], O_RDONLY | O_CREAT);
-    char    *buffer = malloc(100 * sizeof(char));
-    read(file, buffer, 100);
-    printf("ID: %d\n", file);
-    printf("Content: %s\n", buffer);
-    close(file);
+    if (argc < 2)
+        ft_write_io(STDERR_FILENO, "Not enough arguments.");
+    else if (argc > 2)
+        ft_write_io(STDERR_FILENO, "Too many arguments.");
+    else {
+        if (!read_file(argv[1]))
+            ft_write_io(STDERR_FILENO, "File could not be read.");
+        else
+            return (0);
+    }
+    return (1);
 }
