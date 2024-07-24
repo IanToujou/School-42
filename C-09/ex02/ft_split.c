@@ -10,99 +10,92 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-bool    char_in_str(char c, char *str) {
-    while (true) {
-        if (*str == '\0')
-            return (c == '\0');
-        if (*str == c)
-            return true;
-        str++;
-    }
-    return (false);
-}
-
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	is_s(char c, char *charset)
 {
-    unsigned int	index;
+	int	i;
 
-    index = 0;
-    while (src[index] != '\0' && index < n)
-    {
-        dest[index] = src[index];
-        index++;
-    }
-    while (index < n)
-    {
-        dest[index] = '\0';
-        index++;
-    }
-    return (dest);
+	i = 0;
+	while (charset[i] != '\0')
+	{
+		if (c == charset[i])
+			return (1);
+		i++;
+	}
+	if (c == '\0')
+		return (1);
+	return (0);
 }
 
-int     add_str_part(char **entry, char *prev, int size, char *charset) {
-    if (char_in_str(prev[0], charset)) {
-        prev++;
-        size--;
-    }
-    *entry = (char*) malloc((size + 3) * sizeof(char));
-    ft_strncpy(*entry, prev, size);
-    (*entry)[size] = '\0';
-    (*entry)[size + 1] = '\0';
-    return (1);
-}
-
-int count_occ(char *str, char *charset) {
-    int     count;
-    char    *prev;
-    char    *next;
-
-    count = 0;
-    prev = str;
-    next = str;
-    while (true) {
-        if (char_in_str(*str, charset))
-            next = str;
-        if ((next - prev) > 1)
-            count++;
-        if (*str == '\0')
-            break;
-        prev = next;
-        str++;
-    }
-    return (count);
-}
-
-char    **ft_split(char *str, char *charset)
+int	count_words(char *str, char *charset)
 {
-    int     i;
-    int     size;
-    char    **array;
-    char    *next;
-    char    *prev;
+	int	i;
+	int	words;
 
-    i = 0;
-    next = str;
-    prev = str;
-    size = next - prev;
-    array = (char**) malloc((count_occ(str, charset) + 1) * sizeof(char*));
-    while (true) {
-        if (char_in_str(*str, charset))
-            next = str;
-        if (size > 1)
-            i += add_str_part(&array[i], prev, size, charset);
-        if (*str == '\0')
-            break;
-        prev = next;
-        str++;
-    }
-    array[i] = 0;
-    return (array);
+	words = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (is_s(str[i + 1], charset) == 1 && is_s(str[i], charset) == 0)
+			words++;
+		i++;
+	}
+	return (words);
 }
 
+void	write_word(char *dest, char *from, char *charset)
+{
+	int	i;
+
+	i = 0;
+	while (is_s(from[i], charset) == 0)
+	{
+		dest[i] = from[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+
+void	write_split(char **split, char *str, char *charset)
+{
+	int		i;
+	int		j;
+	int		word;
+
+	word = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (is_s(str[i], charset) == 1)
+			i++;
+		else
+		{
+			j = 0;
+			while (is_s(str[i + j], charset) == 0)
+				j++;
+			split[word] = (char *) malloc(sizeof(char) * (j + 1));
+			write_word(split[word], str + i, charset);
+			i += j;
+			word++;
+		}
+	}
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	char	**res;
+	int		words;
+
+	words = count_words(str, charset);
+	res = (char **) malloc(sizeof(char *) * (words + 1));
+	res[words] = 0;
+	write_split(res, str, charset);
+	return (res);
+}
+
+/*
+#include <stdio.h>
 int		main(int argc, char **argv)
 {
     int		index;
@@ -110,12 +103,10 @@ int		main(int argc, char **argv)
 
     split = ft_split(argv[1], argv[2]);
     index = 0;
-    printf("before loop");
     while (split[index])
     {
-        printf("loop");
         printf("array[%d] = %s\n", index, split[index]);
         index++;
     }
     free(split);
-}
+}*/
