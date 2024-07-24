@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 14:15:07 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/17 14:15:07 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/24 19:47:28 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/24 19:47:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_H
 
-int	ft_sqrt(int nb)
-{
-	int	result;
+# define FT_H
 
-	result = 1;
-	while (result * result < nb && result < nb / 2)
-		result++;
-	if (result * result == nb)
-		return (result);
-	return (0);
-}
+# define __BUFFER 30000
 
-int	main(void)
-{
-	printf("%d\n", ft_sqrt(1));
-}
+# include <fcntl.h>
+# include <unistd.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <errno.h>
+# include <string.h>
+# include <libgen.h>
+
+void ft_putchar(char c, int out);
+void ft_putstr(char *str, int out);
+void without_args();
+
+#endif

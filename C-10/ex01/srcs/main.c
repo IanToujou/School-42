@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 14:15:07 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/17 14:15:07 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/24 18:39:17 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/24 18:39:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../includes/ft.h"
 
-int	ft_sqrt(int nb)
+int	main(int argc, char **argv)
 {
-	int	result;
+    //int i;
 
-	result = 1;
-	while (result * result < nb && result < nb / 2)
-		result++;
-	if (result * result == nb)
-		return (result);
-	return (0);
-}
-
-int	main(void)
-{
-	printf("%d\n", ft_sqrt(1));
+    if (argc < 2)
+        without_args(argv);
 }
