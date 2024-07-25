@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 19:47:28 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/24 19:47:29 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/25 15:40:01 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/25 15:40:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
 
-# define FT_H
+#include "../includes/ft.h"
 
-# define __BUFFER 30000
+void	ft_swap(int *a, int *b)
+{
+    int c;
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <errno.h>
-# include <string.h>
-# include <libgen.h>
+    c = *a;
+    *a = *b;
+    *b = c;
+}
 
-int ft_file_read(char *path);
-void ft_putchar(char c, int out);
-void ft_putstr(char *str, int out);
-void ft_putstr_buffer(char *str, int size);
-void without_args(char **argv);
+void	ft_swap_tail(char *str, int size)
+{
+    int		i;
 
-#endif
+    i = 0;
+    while (++i < size)
+        str[i - 1] = str[i];
+}

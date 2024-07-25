@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_file_read.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 18:39:17 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/24 18:39:44 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/25 15:13:23 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/25 15:13:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft.h"
 
-int ft_file_read(char *path)
+char	*ft_strdup(char *src)
 {
-	int file;
-	int size;
-	char	buffer[__BUFFER];
+    char	*dest;
+    int		i;
 
-	file = open(path, O_RDWR);
-	if (file != -1) {
-		while ((size = read(file, buffer, __BUFFER)) > 0) {
-			ft_putstr_buffer(buffer, size);
-		}
-		return (1);
-	}
-	return (0);
+    i = 0;
+    while (src[i])
+        i++;
+    dest = malloc(sizeof(src) * (i + 1));
+    if (dest == NULL)
+        return (NULL);
+    i = 0;
+    if (dest == NULL)
+        return (0);
+    else
+    {
+        while (src[i])
+        {
+            dest[i] = src[i];
+            i++;
+        }
+        dest[i] = '\0';
+        return (dest);
+    }
 }

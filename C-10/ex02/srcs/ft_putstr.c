@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_file_read.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 18:39:17 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/24 18:39:44 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/25 15:13:00 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/25 15:13:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft.h"
 
-int ft_file_read(char *path)
+void	ft_putstr(char *str, int out)
 {
-	int file;
-	int size;
-	char	buffer[__BUFFER];
+    int i;
 
-	file = open(path, O_RDWR);
-	if (file != -1) {
-		while ((size = read(file, buffer, __BUFFER)) > 0) {
-			ft_putstr_buffer(buffer, size);
-		}
-		return (1);
-	}
-	return (0);
+    i = 0;
+    while (*(str + i) != '\0')
+    {
+        ft_putchar((unsigned char)*(str + i), out);
+        i++;
+    }
+}
+
+void	ft_putstr_buf(char *str, int size)
+{
+    int i;
+
+    i = -1;
+    while (++i < size)
+        ft_putchar((unsigned char)str[i], 1);
+}
+
+void	ft_putstr_headfile(char *filepath)
+{
+    ft_putstr("==> ", 1);
+    ft_putstr(filepath, 1);
+    ft_putstr(" <==\n", 1);
 }

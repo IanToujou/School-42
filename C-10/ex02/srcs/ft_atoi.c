@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 19:47:28 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/24 19:47:29 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/25 15:13:18 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/25 15:13:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
+#include "../includes/ft.h"
 
-# define FT_H
+int		ft_atoi(char *str)
+{
+    int		i;
+    int		nb;
 
-# define __BUFFER 30000
-
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <errno.h>
-# include <string.h>
-# include <libgen.h>
-
-int ft_file_read(char *path);
-void ft_putchar(char c, int out);
-void ft_putstr(char *str, int out);
-void ft_putstr_buffer(char *str, int size);
-void without_args(char **argv);
-
-#endif
+    nb = 0;
+    i = 0;
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        nb = (nb * 10) + (str[i] - '0');
+        i++;
+    }
+    if (i == 0)
+        return (-1);
+    else
+        return (nb);
+}

@@ -10,10 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/main.c srcs/ft_putchar.c srcs/ft_putstr.c srcs/without_args.c srcs/ft_file_read.c
+SRCS = srcs/ft_atoi.c srcs/ft_file_read.c srcs/ft_putchar.c srcs/ft_putnbr.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strdup.c srcs/ft_swap.c srcs/main.c srcs/no_args.c srcs/print.c
 INCS = includes/
 OBJS = ${SRCS:.c=.o}
-NAME = ft_cat
+NAME = ft_tail
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
