@@ -73,16 +73,20 @@ int	ft_sqrt(int nb)
 	int	min_segment;
 	int	max_segment;
 
-	if (nb == 0 || nb == 1)
+	if (nb <= 0)
 	{
-		return (nb);
+		return (0);
+	}
+	else if (nb == 1)
+	{
+		return (1);
 	}
 	sqrt_segmentation(nb, &min_segment, &max_segment);
 	max_segment = min(nb / 2, 46340);
 	return (binary_search(nb, min_segment, max_segment));
 }
 
-int sqrt2(int nb)
+int shitty_old_sqrt_for_comparison(int nb)
 {
 	int i;
 	int max_segment;
