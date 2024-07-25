@@ -24,18 +24,15 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb / 10);
 		ft_putchar('8');
 	}
-	if (nb < 0)
+	else if (nb < 0)
 	{
 		ft_putchar('-');
 		ft_putnbr(-nb);
 	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
 	else
 	{
-		ft_putchar(nb + '0');
+		if (nb > 9)
+			ft_putnbr(nb / 10);
+		ft_putchar(48 + nb % 10);
 	}
 }

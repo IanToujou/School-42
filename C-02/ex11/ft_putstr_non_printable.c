@@ -20,33 +20,29 @@ void	ft_putchar(char c)
 
 bool	is_char_printable(char c)
 {
-	return (c >= 32 && c != 127);
+	return (c >= ' ' && c != 127);
 }
 
 void	ft_putstr_non_printable(char *str)
 {
-	char	c;
-	int		i;
+	int				index;
+	unsigned char	current;
 
-	i = 0;
+	index = 0;
 	while (true)
 	{
-		c = str[i];
-		if (c == '\0')
-		{
+		current = str[index];
+		if (current == '\0')
 			break ;
-		}
-		if (is_char_printable(c))
-		{
-			ft_putchar(c);
-		}
+		if (is_char_printable(current))
+			ft_putchar(current);
 		else
 		{
 			ft_putchar('\\');
-			ft_putchar("0123456789abcdef"[i / 16]);
-			ft_putchar("0123456789abcdef"[i % 16]);
+			ft_putchar("0123456789abcdef"[current / 16]);
+			ft_putchar("0123456789abcdef"[current % 16]);
 		}
-		i++;
+		index++;
 	}
 }
 

@@ -12,64 +12,72 @@
 
 #include <stdbool.h>
 
-char	*ft_strlowcase(char *str)
+void	ft_transform_char(char *c, bool to_upper)
 {
-	int		i;
-	char	c;
-	char	d;
-
-	i = 0;
-	while (true)
+	if (!to_upper)
 	{
-		c = str[i];
-		if (c == '\0')
-		{
-			break ;
-		}
-		if (c >= 'A' && c <= 'Z')
-		{
-			d = c + 32;
-			str[i] = d;
-		}
-		i++;
+		if (*c >= 'A' && *c <= 'Z')
+			*c = *c + 32;
 	}
-	return (str);
+	else
+	{
+		if (*c >= 'a' && *c <= 'z')
+			*c = *c - 32;
+	}
 }
 
-bool	ft_check_capitalizable(char *str, char c, int i)
+bool	is_char_alpha(char c)
 {
-	if ((str[i -1] == '\0' || str[i -1] == ' ') && (c >= 'a' && c <= 'z'))
+	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+}
+
+bool	is_char_numeric(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+void	ft_strcapitalize_delegate(char *curr, bool *in_word, bool *skip_word)
+{
+	bool first_letter;
+
+	first_letter = false;
+	if (!*in_word)
 	{
-		return (true);
+		if (is_char_numeric(*curr))
+			*skip_word = true;
+		else if (is_char_alpha(*curr) && !*skip_word)
+		{
+			*in_word = true;
+			first_letter = true;
+		}
 	}
-	if ((str[i -1] == '+' || str[i -1] == '-') && (c >= 'a' && c <= 'z'))
-	{
-		return (true);
-	}
-	return (false);
+	ft_transform_char(curr, false);
+	if (*in_word)
+		ft_transform_char(curr, first_letter);
 }
 
 char	*ft_strcapitalize(char *str)
 {
-	int		i;
-	char	c;
-	char	d;
+	int		index;
+	char	*curr;
+	bool	in_word;
+	bool	skip_word;
 
-	str = ft_strlowcase(str);
-	i = 0;
+	index = 0;
+	in_word = false;
+	skip_word = false;
 	while (true)
 	{
-		c = str[i];
-		if (c == '\0')
-		{
+		curr = &str[index];
+		if (*curr == '\0')
 			break ;
-		}
-		if (ft_check_capitalizable(str, c, i))
+		ft_strcapitalize_delegate(curr, &in_word, &skip_word);
+		if (!(is_char_alpha(*curr) || is_char_numeric(*curr)))
 		{
-			d = c - 32;
-			str[i] = d;
+			in_word = false;
+			skip_word = false;
 		}
-		i++;
+		index++;
 	}
 	return (str);
 }

@@ -8,4 +8,6 @@ add_executable(school_42
 		C-10/ex02/includes/ft.h
 		C-10/ex02/srcs/no_args.c
 		C-10/ex02/srcs/print.c
+		C-00/ex08/ft_print_combn.c
+		C-01/ex08/ft_sort_int_tab.c
 )
