@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/ft_atoi.c srcs/ft_file_read.c srcs/ft_putchar.c srcs/ft_putnbr.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strdup.c srcs/ft_swap.c srcs/main.c srcs/no_args.c srcs/print.c
+SRCS = srcs/ft_atoi.c srcs/ft_file_read.c srcs/ft_strlen.c srcs/ft_putchar.c srcs/ft_putnbr.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strdup.c srcs/ft_swap.c srcs/main.c srcs/no_args.c srcs/print.c
 INCS = includes/
 OBJS = ${SRCS:.c=.o}
 NAME = ft_tail
@@ -18,15 +18,20 @@ CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+
 ${NAME}:	${OBJS}
 			gcc -o ${NAME} ${OBJS} ${CFLAGS}
 
-all:	${NAME}
+all: ${NAME}
 
-clean: ${RM} ${OBJS}
+clean:
+	${RM} ${OBJS}
 
-fclean: ${RM} ${NAME}
+fclean: clean
+	${RM} ${NAME}
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re .c.o

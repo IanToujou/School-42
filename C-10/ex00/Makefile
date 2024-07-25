@@ -17,15 +17,20 @@ CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+
 ${NAME}:	${OBJS}
 			gcc -o ${NAME} ${OBJS} ${CFLAGS}
 
-all:	${NAME}
+all: ${NAME}
 
-clean: ${RM} ${OBJS}
+clean:
+	${RM} ${OBJS}
 
-fclean: ${RM} ${NAME}
+fclean: clean
+	${RM} ${NAME}
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re .c.o
