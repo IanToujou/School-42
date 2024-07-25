@@ -126,12 +126,12 @@ We are going to seperate the digits 1 by 1, always dropping the last digit, unti
 ## ✨ Minimum Integer
 
 If we try to submit this, moulinette will say it's wrong, but why? Well, integers have a minimum and maximum value, and if we try to do these calculations with the minimum integer, we
-need to check it manually. I don't fully understand it myself yet, but just know that we need to include this additional check:
+need to check it manually. I don't know exactly why, but if you know, you can open an issue!
 ```c
 // -2147483648 is the minimum integer.
 if (nb == -2147483648) {
     ft_putnbr(nb / 10);
-    ft_putchar('8'); // Why exactly '8'? If you know why, you can open an issue and tell me!
+    ft_putchar('8');
 }
 ```
 
