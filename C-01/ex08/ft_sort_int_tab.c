@@ -10,41 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-
-void	ft_swap(int *a, int *b)
-{
-	int c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
-}
-
 void	ft_sort_int_tab(int *tab, int size)
 {
-	int		read_index;
-	int		index;
-	bool	swapped;
+	int	i;
+	int	swap;
+	int	j;
+	int	k;
 
-	read_index = 0;
-	while (true)
+	k = size - 1;
+	i = k;
+	j = k;
+	while (i >= 0)
 	{
-		swapped = false;
-		index = 0;
-		while (index < size)
+		while (j >= 0)
 		{
-			if (tab[index] > tab[index + 1])
+			if (tab[i] > tab[j])
 			{
-				ft_swap(&tab[index], &tab[index + 1]);
-				swapped = true;
+				swap = tab[j];
+				tab[j] = tab[i];
+				tab[i] = swap;
 			}
-			index++;
+			j--;
 		}
-		if (!swapped)
-		{
-			break ;
-		}
-		read_index++;
+		j = k;
+		i--;
 	}
 }
