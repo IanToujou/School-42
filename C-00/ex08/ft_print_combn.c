@@ -47,17 +47,17 @@ void	ft_write_combo(int n, int holders[])
 	}
 }
 
-void	ft_print_combn_recursive(int n, int curr, int holders[], int st_index)
+void	ft_print_combn_recursive(int n, int curr, int holders[], int s_index)
 {
-	int index;
-	int max;
+	int	index;
+	int	max;
 
 	if (curr == n)
 		ft_write_combo(n, holders);
 	else
 	{
 		max = 10 - (n - curr);
-		index = st_index + 1;
+		index = s_index + 1;
 		while (index <= max)
 		{
 			holders[curr] = index;
@@ -69,8 +69,8 @@ void	ft_print_combn_recursive(int n, int curr, int holders[], int st_index)
 
 void	ft_print_combn(int n)
 {
-	int holders[10];
-	int index;
+	int	holders[10];
+	int	index;
 
 	index = 0;
 	while (index < n)

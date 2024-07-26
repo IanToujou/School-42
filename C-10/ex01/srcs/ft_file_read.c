@@ -12,15 +12,18 @@
 
 #include "../includes/ft.h"
 
-int ft_file_read(char *path)
+int	ft_file_read(char *path)
 {
-	int file;
-	int size;
+	int		file;
+	int		size;
 	char	buffer[__BUFFER];
 
 	file = open(path, O_RDWR);
-	if (file != -1) {
-		while ((size = read(file, buffer, __BUFFER)) > 0) {
+	if (file != -1)
+	{
+		size = read(file, buffer, __BUFFER);
+		while (size > 0)
+		{
 			ft_putstr_buffer(buffer, size);
 		}
 		return (1);

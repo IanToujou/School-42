@@ -17,9 +17,6 @@ CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
 ${NAME}:	${OBJS}
 			gcc -o ${NAME} ${OBJS} ${CFLAGS}
 
@@ -33,4 +30,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:	all clean fclean re .c.o
+.PHONY:	all clean fclean re

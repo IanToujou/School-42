@@ -24,10 +24,10 @@
 # include <string.h>
 # include <libgen.h>
 
-int ft_file_read(char *path);
-void ft_putchar(char c, int out);
-void ft_putstr(char *str, int out);
-void ft_putstr_buffer(char *str, int size);
-void without_args(char **argv);
+int		ft_file_read(char *path);
+void	ft_putchar(char c, int out);
+void	ft_putstr(char *str, int out);
+void	ft_putstr_buffer(char *str, int size);
+void	without_args(char **argv);
 
 #endif

@@ -14,21 +14,23 @@
 
 void	ft_putstr(char *str, int out)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        ft_putchar(str[i], out);
-        i++;
-    }
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i], out);
+		i++;
+	}
 }
 
 void	ft_putstr_buffer(char *str, int size)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < size)
+	{
 		ft_putchar(str[i], 1);
+	}
 }
