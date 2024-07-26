@@ -28,7 +28,7 @@ void	ft_transform_char(char *c, bool to_upper)
 
 bool	is_char_alpha(char c)
 {
-	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
 bool	is_char_numeric(char c)
@@ -38,7 +38,7 @@ bool	is_char_numeric(char c)
 
 void	ft_strcapitalize_delegate(char *curr, bool *in_word, bool *skip_word)
 {
-	bool first_letter;
+	bool	first_letter;
 
 	first_letter = false;
 	if (!*in_word)
@@ -82,8 +82,10 @@ char	*ft_strcapitalize(char *str)
 	return (str);
 }
 
-/*int main(int argc, char** argv)
+/*#include <stdio.h>
+int main(int argc, char** argv)
 {
     printf("Input string: %s\n", argv[1]);
     printf("Result: %s\n", ft_strcapitalize(argv[1]));
-}*/
+}
+*/
