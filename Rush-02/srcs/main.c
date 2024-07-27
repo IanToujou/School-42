@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
     if (argc == 2) {
-        argv[0] = 0;
+        argv[0] = 0; // TODO remove
     } else if (argc == 3) {
 
     } else {

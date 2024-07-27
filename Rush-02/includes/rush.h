@@ -14,6 +14,7 @@
 # define RUSH_H
 
 # include <unistd.h>
+# include <stdlib.h>
 
 void ft_putchar(char c, int out);
 void ft_putstr(char *str, int out);

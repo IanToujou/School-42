@@ -17,7 +17,7 @@ void    ft_putstr(char *str, int out) {
 
     index = 0;
     while (str[index] != '\0') {
-        ft_putchar(out, str[index]);
+        ft_putchar(str[index], out);
         index++;
     }
 }
