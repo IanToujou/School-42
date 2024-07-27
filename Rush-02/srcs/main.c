@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 #include "../includes/ft_dictionary.h"
 #include "../includes/ft_io.h"
 #include "../includes/ft_convert.h"
@@ -59,20 +61,28 @@ t_error	process_args(int argc, char **argv, char **convert, t_dict *dict)
 
 int	main(int argc, char **argv)
 {
-	t_error			error;
-	t_dict			dictionary;
-	char			*to_convert;
+	t_error	error;
+	t_dict	dictionary;
+	char	*to_convert;
 
 	error = process_args(argc, argv, &to_convert, &dictionary);
-	if (error == none && !dictionary.valid)
+	if (error == none && !dictionary.valid) {
+		write(1, "\na\n", 3);
 		error = parse;
-	if (error == none)
+	}
+	if (error == none) {
+		write(1, "\nb\n", 3);
 		error = process_dictionary(to_convert, &dictionary);
+	}
 	handle_error(error);
-	if (error == none)
+	if (error == none) {
+		write(1, "\nc\n", 3);
 		ft_putstr(OUT, "\n");
-	if (dictionary.valid)
+	}
+	if (dictionary.valid && error == none) {
+		write(1, "\nd\n", 3);
 		ft_free(&dictionary);
+	}
 	if (error)
 		return (1);
 	return (0);

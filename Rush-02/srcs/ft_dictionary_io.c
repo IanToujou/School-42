@@ -16,6 +16,7 @@
 #include "../includes/ft_string_utils.h"
 #include "../includes/ft_convert.h"
 #include "../includes/ft_file.h"
+#include "../includes/ft_array.h"
 
 void	ft_read_line(t_dict_entry *entry, int fd, t_parse_error *error)
 {

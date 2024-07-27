@@ -26,4 +26,5 @@ add_executable(school_42
 		Rush-02/includes/ft_array.h
 		Rush-02/srcs/ft_array.c
 		Rush-02/srcs/ft_string_utils.c
+		Rush-02/srcs/ft_string_utils_extra.c
 )

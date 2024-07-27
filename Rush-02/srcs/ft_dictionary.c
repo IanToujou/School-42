@@ -28,7 +28,7 @@ t_dict	ft_load(char *path)
 	if (size == -1)
 		return (dictionary);
 	entries = malloc((size + 1) * sizeof(t_dict_entry));
-	if (!entries)
+	if (entries == NULL)
 		return (dictionary);
 	dictionary.size = size;
 	dictionary.entries = entries;
