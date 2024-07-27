@@ -10,4 +10,7 @@ add_executable(school_42
 		Rush-02/includes/ft_io.h
 		Rush-02/includes/ft_io.h
 		Rush-02/srcs/ft_io.c
+		Rush-02/srcs/ft_atoi.c
+		Rush-02/srcs/ft_string_utils.c
+		Rush-02/includes/ft_string_utils.h
 )

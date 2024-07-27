@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_io.h"
+#include "../includes/ft_string_utils.h"
+#include "../includes/ft_boolean.h"
 
-void	ft_putchar(int out, char c)
+t_bool	is_operator(char c)
 {
-	write(out, &c, 1);
+	return (c == '-' || c == '+');
 }
 
-void	ft_putstr(int out, char *str)
+int	ft_atoi(char *str)
 {
-	int	index;
+	int	result;
+	int	minus;
 
-	index = 0;
-	while (str[index] != '\0')
+	minus = 1;
+	while (ft_is_whitespace(*str))
+		str++;
+	if (is_operator(*str))
 	{
-		ft_putchar(out, str[index]);
-		index++;
+		if (*str == '-')
+			minus *= -1;
+		str++;
 	}
+	result = 0;
+	while (ft_is_number(*str))
+	{
+		result *= 10;
+		result += (*str) - '0';
+		str++;
+	}
+	return (result * minus);
 }

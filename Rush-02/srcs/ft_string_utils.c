@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   ft_string_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_io.h"
+#include "../includes/ft_boolean.h"
 
-void	ft_putchar(int out, char c)
+t_bool	ft_is_whitespace(char c)
 {
-	write(out, &c, 1);
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\v' || c == '\r' || c == '\f');
 }
 
-void	ft_putstr(int out, char *str)
+t_bool	ft_is_number(char c)
 {
-	int	index;
-
-	index = 0;
-	while (str[index] != '\0')
-	{
-		ft_putchar(out, str[index]);
-		index++;
-	}
+	return (c >= '0' && c <= '9');
 }

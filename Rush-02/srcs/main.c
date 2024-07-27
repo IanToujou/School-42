@@ -43,11 +43,13 @@ t_error	process_args(int argc, char **argv, char **convert, t_dictionary *dict)
 {
 	if (argc == 3)
 	{
-		// Load dictionary
+		*dict = load_dictionary(argv[1]);
+		*convert = argv[2];
 	}
 	else if (argc == 2)
 	{
-		// Load default dictionary
+		*dict = load_dictionary_default();
+		*convert = argv[1];
 	}
 	else
 		return (generic);
