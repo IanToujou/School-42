@@ -51,7 +51,7 @@ typedef enum t_parse_error
 
 t_dict			ft_load_default(void);
 t_dict			ft_load(char *path);
-void			ft_free(t_dict *dict);
+void			ft_free(const t_dict *dict);
 
 void			ft_read_line(t_dict_entry *entr, int fd, t_parse_error *err);
 char			*ft_clean_line(char *str);

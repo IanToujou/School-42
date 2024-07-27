@@ -66,23 +66,15 @@ int	main(int argc, char **argv)
 	char	*to_convert;
 
 	error = process_args(argc, argv, &to_convert, &dictionary);
-	if (error == none && !dictionary.valid) {
-		write(1, "\na\n", 3);
+	if (error == none && !dictionary.valid)
 		error = parse;
-	}
-	if (error == none) {
-		write(1, "\nb\n", 3);
+	if (error == none)
 		error = process_dictionary(to_convert, &dictionary);
-	}
 	handle_error(error);
-	if (error == none) {
-		write(1, "\nc\n", 3);
+	if (error == none)
 		ft_putstr(OUT, "\n");
-	}
-	if (dictionary.valid && error == none) {
-		write(1, "\nd\n", 3);
+	if (dictionary.valid && error == none)
 		ft_free(&dictionary);
-	}
 	if (error)
 		return (1);
 	return (0);

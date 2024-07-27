@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 #include "../includes/ft_dictionary.h"
 #include "../includes/ft_boolean.h"
 #include "../includes/ft_io.h"
@@ -26,9 +28,11 @@ void	ft_read_line(t_dict_entry *entry, int fd, t_parse_error *error)
 	unsigned int	total;
 
 	total = 0;
+	line = "";
 	byte_read = read(fd, buffer, SIZE_1BYTE);
 	while (byte_read > 0)
 	{
+		byte_read = read(fd, buffer, SIZE_1BYTE);
 		if (byte_read == (unsigned int) -1)
 		{
 			entry->str = 0;
@@ -103,13 +107,10 @@ int	ft_count_valid_line(char *path)
 	count = 0;
 	while (true)
 	{
-		error = parsing_ok;
 		entry = malloc(sizeof(t_dict_entry));
+		error = parsing_ok;
 		if (entry == NULL)
-		{
-			free(entry);
 			return (-1);
-		}
 		ft_read_line(entry, fd, &error);
 		if (error == failed)
 			return (-1);
