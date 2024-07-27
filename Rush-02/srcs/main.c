@@ -10,15 +10,67 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rush.h"
+#include "../includes/ft_num.h"
+#include "../includes/ft_io.h"
 
-int main(int argc, char **argv)
+t_error	process_dictionary(char *to_convert, t_dictionary *dict)
 {
-    if (argc == 2) {
-        argv[0] = 0; // TODO remove
-    } else if (argc == 3) {
+	unsigned long		number;
+	t_bool				put_space;
 
-    } else {
-        handle_error("Error\n");
-    }
+	number = ft_atoi_strict(to_convert);
+	if (number == (unsigned long) -1)
+		return (invalid_number);
+	if (!ft_itow(dict, number, 0, false))
+		return (fail_convert);
+	put_space = false;
+	ft_itow(dict, number, &put_space, true);
+	return (none);
+}
+
+void	handle_error(t_error error)
+{
+	if (error == none)
+		return ;
+	if (error == parse)
+		ft_putstr(ERROR, "Dict Error");
+	else
+		ft_putstr(ERROR, "Error");
+	ft_putstr(ERROR, "\n");
+}
+
+t_error	process_args(int argc, char **argv, char **convert, t_dictionary *dict)
+{
+	if (argc == 3)
+	{
+		// Load dictionary
+	}
+	else if (argc == 2)
+	{
+		// Load default dictionary
+	}
+	else
+		return (generic);
+	return (none);
+}
+
+int	main(int argc, char **argv)
+{
+	t_error			error;
+	t_dictionary	dictionary;
+	char			*to_convert;
+
+	error = process_args(argc, argv, &to_convert, &dictionary);
+	if (error == none && !dictionary.valid)
+		error = parse;
+	if (error == none)
+		error = process_dictionary(to_convert, &dictionary);
+	handle_error(error);
+	if (error == none)
+		ft_putstr(OUT, "\n");
+	if (dictionary.valid)
+		argv[0] = 0;
+	if (error)
+		return (1);
+	return (0);
 }

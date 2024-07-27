@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error.c                                     :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 14:15:24 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/27 14:15:25 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/24 19:47:28 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/24 19:47:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rush.h"
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-void    handle_error(char *msg) {
-    ft_putstr(msg, 2);
-}
+typedef enum {
+    false = 0,
+    true = 1
+}	t_bool;
+
+#endif

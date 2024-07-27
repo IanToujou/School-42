@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush.h                                             :+:      :+:    :+:   */
+/*   ft_string.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUSH_H
-# define RUSH_H
+#ifndef FT_STRING_H
+# define FT_STRING_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# define IN 0
+# define OUT 1
+# define ERROR 2
 
-void ft_putchar(char c, int out);
-void ft_putstr(char *str, int out);
-void handle_error(char *str);
+#include <unistd.h>
+
+void    ft_putstr(int out, char *str);
+void    ft_putchar(int out, char c);
 
 #endif
