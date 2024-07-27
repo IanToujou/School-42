@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= srcs/main.c
+SRCS	= srcs/main.c srcs/ft_putchar.c srcs/handle_error.c srcs/ft_putstr.c
 OBJS	= ${SRCS:.c=.o}
 INCS	= includes
 NAME	= rush-02

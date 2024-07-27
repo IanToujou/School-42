@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,12 @@
 
 #include "../includes/rush.h"
 
-int main(int argc, char **argv)
-{
-    if (argc == 2) {
-        argv[0] = 0;
-    } else if (argc == 3) {
+void    ft_putstr(char *str, int out) {
+    int index;
 
-    } else {
-        handle_error("Error\n");
+    index = 0;
+    while (str[index] != '\0') {
+        ft_putchar(out, str[index]);
+        index++;
     }
 }

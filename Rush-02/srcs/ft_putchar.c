@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,6 @@
 
 #include "../includes/rush.h"
 
-int main(int argc, char **argv)
-{
-    if (argc == 2) {
-        argv[0] = 0;
-    } else if (argc == 3) {
-
-    } else {
-        handle_error("Error\n");
-    }
+void    ft_putchar(char c, int out) {
+    write(out, &c, 1);
 }

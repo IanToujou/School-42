@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rush.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 14:15:24 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/27 14:15:25 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/24 19:47:28 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/24 19:47:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rush.h"
+#ifndef RUSH_H
+# define RUSH_H
 
-int main(int argc, char **argv)
-{
-    if (argc == 2) {
-        argv[0] = 0;
-    } else if (argc == 3) {
+# include <unistd.h>
 
-    } else {
-        handle_error("Error\n");
-    }
-}
+void ft_putchar(char c, int out);
+void ft_putstr(char *str, int out);
+void handle_error(char *str);
+
+#endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,6 @@
 
 #include "../includes/rush.h"
 
-int main(int argc, char **argv)
-{
-    if (argc == 2) {
-        argv[0] = 0;
-    } else if (argc == 3) {
-
-    } else {
-        handle_error("Error\n");
-    }
+void    handle_error(char *msg) {
+    ft_putstr(msg, 2);
 }
