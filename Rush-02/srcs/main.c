@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_num.h"
+#include "../includes/ft_dictionary.h"
 #include "../includes/ft_io.h"
 #include "../includes/ft_convert.h"
 
@@ -44,12 +44,12 @@ t_error	process_args(int argc, char **argv, char **convert, t_dict *dict)
 {
 	if (argc == 3)
 	{
-		*dict = load_dictionary(argv[1]);
+		*dict = ft_load(argv[1]);
 		*convert = argv[2];
 	}
 	else if (argc == 2)
 	{
-		*dict = load_dictionary_default();
+		*dict = ft_load_default();
 		*convert = argv[1];
 	}
 	else
@@ -72,7 +72,7 @@ int	main(int argc, char **argv)
 	if (error == none)
 		ft_putstr(OUT, "\n");
 	if (dictionary.valid)
-		argv[0] = 0;
+		ft_free(&dictionary);
 	if (error)
 		return (1);
 	return (0);

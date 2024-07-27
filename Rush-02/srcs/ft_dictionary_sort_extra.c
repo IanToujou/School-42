@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert.h                                       :+:      :+:    :+:   */
+/*   ft_dictionary_sort_extra.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CONVERT_H
-# define FT_CONVERT_H
+#include "../includes/ft_dictionary.h"
 
-# include "ft_dictionary.h"
+int	ft_sort_dict_f_normal(t_dict_entry *a, t_dict_entry *b)
+{
+	return (a->normal > b->normal);
+}
 
-unsigned long	ft_atoi_strict(char *str);
-int				ft_atoi(char *str);
-t_bool			ft_itow(t_dict *dict, unsigned long n,
-					t_bool *put_space, t_bool b);
-
-#endif
+int	ft_sort_dict_f_value(t_dict_entry *a, t_dict_entry *b)
+{
+	return (a->value > b->value);
+}

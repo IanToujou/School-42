@@ -12,7 +12,7 @@
 
 #include "../includes/ft_boolean.h"
 #include "../includes/ft_io.h"
-#include "../includes/ft_num.h"
+#include "../includes/ft_dictionary.h"
 #include "../includes/ft_convert.h"
 
 int	ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)

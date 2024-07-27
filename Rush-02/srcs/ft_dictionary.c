@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num.h                                           :+:      :+:    :+:   */
+/*   ft_dictionary.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_NUM_H
-# define FT_NUM_H
+#include "../includes/ft_dictionary.h"
 
-# include "ft_boolean.h"
-
-typedef struct t_dict_entry
+t_dict	ft_load_default(void)
 {
-	unsigned long	value;
-	char			*str;
-	t_bool			normal;
-}	t_dict_entry;
+	return (ft_load(ENGLISH_DICTIONARY));
+}
 
-typedef struct s_dict
+t_dict	ft_load(char *path)
 {
 	int					size;
-	char				*path;
-	t_bool				valid;
 	t_dict_entry		*entries;
-}	t_dict;
+	t_dict				dictionary;
 
-typedef enum t_error
+	dictionary = (t_dict){0, path, false, 0};
+	size = ft_count_valid_line(path);
+	if (size == -1)
+		return (dictionary);
+	entries = malloc((size + 1) * sizeof(t_dict_entry));
+	if (!entries)
+		return (dictionary);
+	dictionary.size = size;
+	dictionary.entries = entries;
+	dictionary.valid = ft_load_valid_line(path, size, &dictionary);
+	if (dictionary.valid)
+		ft_sort_dictionary(&dictionary);
+	return (dictionary);
+}
+
+void	ft_free(t_dict *dictionary)
 {
-	none,
-	generic,
-	parse,
-	invalid_number,
-	fail_convert
-}	t_error;
+	int		index;
 
-#endif
+	index = 0;
+	while (index < dictionary->size)
+	{
+		free(dictionary->entries[index].str);
+		index++;
+	}
+}
