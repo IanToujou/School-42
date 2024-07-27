@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_utils.h                                  :+:      :+:    :+:   */
+/*   ft_array.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING_UTILS_H
-# define FT_STRING_UTILS_H
+#ifndef FT_ARRAY_H
+# define FT_ARRAY_H
 
-# include "ft_boolean.h"
 # include <stdlib.h>
 
-t_bool	ft_is_whitespace(char c);
-t_bool	ft_is_number(char c);
-t_bool	ft_is_operator(char c);
-
-int		ft_str_length(char *str);
-char	*ft_str_duplicate(char *src);
-char	*ft_str_n_duplicate(char *str, int n);
-char	*ft_str_copy(char *dest, char *src);
-char	*ft_str_n_copy(char *dest, char *src, int n);
-
+char	*ft_extend_array(char *orig, char *n_cont, unsigned int old_len, unsigned int len);
 
 #endif

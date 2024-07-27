@@ -10,20 +10,88 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_boolean.h"
+#include "../includes/ft_string_utils.h"
 
-t_bool	ft_is_operator(char c)
+int		ft_str_length(char *str)
 {
-	return (c == '-' || c == '+');
+	int	index;
+
+	index = 0;
+	while (str[index])
+		index++;
+	return (index);
 }
 
-t_bool	ft_is_whitespace(char c)
+char	*ft_str_duplicate(char *src)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\r' || c == '\f');
+	int		length;
+	int		index;
+	char	*dest;
+
+	length = ft_str_length(src);
+	index = 0;
+	if ((dest = (char *)malloc((length + 1) * sizeof(char))) == NULL)
+		return (0);
+	while (src[index])
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	dest[index] = '\0';
+	return (dest);
 }
 
-t_bool	ft_is_number(char c)
+char	*ft_str_n_duplicate(char *str, int n)
 {
-	return (c >= '0' && c <= '9');
+	int		index;
+	int		length;
+	char	*dup;
+
+	length = 0;
+	while (str[length])
+		length++;
+	if (length > n)
+		length = n;
+	if (!(dup = malloc((length + 1) * sizeof(char))))
+		return (NULL);
+	index = 0;
+	while (index < length)
+	{
+		dup[index] = str[index];
+		index++;
+	}
+	dup[index] = '\0';
+	return (dup);
+}
+
+char	*ft_str_copy(char *dest, char *src)
+{
+	int index;
+
+	index = 0;
+	while (src[index] != '\0')
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	dest[index] = '\0';
+	return (dest);
+}
+
+char	*ft_str_n_copy(char *dest, char *src, int n)
+{
+	int		index;
+
+	index = 0;
+	while (index < n && src[index] != '\0')
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	while (index < n)
+	{
+		dest[index] = '\0';
+		index++;
+	}
+	return (dest);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_utils.h                                  :+:      :+:    :+:   */
+/*   ft_string_utils_check.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING_UTILS_H
-# define FT_STRING_UTILS_H
+#include "../includes/ft_boolean.h"
+#include "../includes/ft_string_utils.h"
 
-# include "ft_boolean.h"
-# include <stdlib.h>
+t_bool	ft_is_operator(char c)
+{
+	return (c == '-' || c == '+');
+}
 
-t_bool	ft_is_whitespace(char c);
-t_bool	ft_is_number(char c);
-t_bool	ft_is_operator(char c);
+t_bool	ft_is_whitespace(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\v' || c == '\r' || c == '\f');
+}
 
-int		ft_str_length(char *str);
-char	*ft_str_duplicate(char *src);
-char	*ft_str_n_duplicate(char *str, int n);
-char	*ft_str_copy(char *dest, char *src);
-char	*ft_str_n_copy(char *dest, char *src, int n);
-
-
-#endif
+t_bool	ft_is_number(char c)
+{
+	return (c >= '0' && c <= '9');
+}
