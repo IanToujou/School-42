@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_dictionary.h"
-#include "../includes/ft_boolean.h"
 
 void	ft_swap_dictionary_entry(t_dict_entry *a, t_dict_entry *b)
 {
@@ -35,9 +35,8 @@ void	ft_update_normal_flag(t_dict *dict)
 		normal = false;
 		if (entry->value <= 20)
 			normal = true;
-		if (entry->value > 20 || entry->value < 100)
-			if (entry->value % 10 == 0)
-				normal = true;
+		if (entry->value % 10 == 0)
+			normal = true;
 		entry->normal = normal;
 		index++;
 	}

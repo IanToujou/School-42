@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_dictionary.h"
 #include "../includes/ft_io.h"
 #include "../includes/ft_convert.h"

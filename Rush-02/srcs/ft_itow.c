@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/ft_boolean.h"
 #include "../includes/ft_io.h"
 #include "../includes/ft_dictionary.h"
@@ -74,9 +75,10 @@ t_bool	ft_itow(t_dict *dict, unsigned long n, t_bool *put_space, t_bool b)
 			&& !ft_itow_is_value_power_of_ten(n)))
 		return (ft_itow_short(dict, n, put_space, b));
 	index = dict->size - 1;
-	value = dict->entries[index].value;
+	value = n;
 	while (value != 0)
 	{
+		value = n;
 		if (n % value != n)
 		{
 			if (value > 99)

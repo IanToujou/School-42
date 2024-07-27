@@ -65,7 +65,6 @@ char	*ft_clean_line(char *str)
 	return (ft_str_join(size, split, " "));
 }
 
-// todo fix
 t_parse_error	ft_process_line(t_dict_entry *entry, char *line, unsigned int length)
 {
 	unsigned	index;
