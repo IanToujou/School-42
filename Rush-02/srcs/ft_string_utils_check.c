@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 #include "../includes/ft_boolean.h"
 #include "../includes/ft_string_utils.h"
 

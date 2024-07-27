@@ -28,11 +28,10 @@ void	ft_read_line(t_dict_entry *entry, int fd, t_parse_error *error)
 	unsigned int	total;
 
 	total = 0;
-	line = "";
+	line = NULL;
 	byte_read = read(fd, buffer, SIZE_1BYTE);
 	while (byte_read > 0)
 	{
-		byte_read = read(fd, buffer, SIZE_1BYTE);
 		if (byte_read == (unsigned int) -1)
 		{
 			entry->str = 0;
@@ -47,6 +46,7 @@ void	ft_read_line(t_dict_entry *entry, int fd, t_parse_error *error)
 			byte_read = (unsigned int) -2;
 			break ;
 		}
+		byte_read = read(fd, buffer, SIZE_1BYTE);
 	}
 	if (byte_read == 0)
 		*error = reached_eof;
@@ -65,18 +65,18 @@ char	*ft_clean_line(char *str)
 	return (ft_str_join(size, split, " "));
 }
 
-t_parse_error	ft_process_line(t_dict_entry *e, char *line, unsigned int l)
+// todo fix
+t_parse_error	ft_process_line(t_dict_entry *entry, char *line, unsigned int length)
 {
-	// TODO this mf is not working
-	unsigned int	index;
-	char			*number;
+	unsigned	index;
+	char	*number;
 
 	index = 0;
 	while (ft_is_number(line[index]))
 		index++;
 	if (line[index] == '\n')
 		return (empty_line);
-	if (index == 0 || index >= l)
+	if (index == 0 || index >= length)
 		return (failed);
 	number = ft_str_n_duplicate(line, index);
 	while (line[index] == ' ')
@@ -86,10 +86,10 @@ t_parse_error	ft_process_line(t_dict_entry *e, char *line, unsigned int l)
 	index++;
 	while (line[index] == ' ')
 		index++;
-	e->value = ft_atoi_strict(number);
-	e->str = ft_clean_line(
-			ft_str_n_duplicate(line + index, l - index - 1));
-	if (ft_str_length(e->str) == 0)
+	entry->value = ft_atoi_strict(number);
+	entry->str = ft_clean_line(
+			ft_str_n_duplicate(line + index, length - index - 1));
+	if (ft_str_length(entry->str) == 0)
 		return (failed);
 	free(number);
 	return (parsing_ok);
@@ -112,7 +112,7 @@ int	ft_count_valid_line(char *path)
 		error = parsing_ok;
 		if (entry == NULL)
 			return (-1);
-		ft_read_line(entry, fd, &error); //todo fix
+		ft_read_line(entry, fd, &error);
 		if (error == failed)
 			return (-1);
 		if (error == parsing_ok)
@@ -125,6 +125,7 @@ int	ft_count_valid_line(char *path)
 	return (count);
 }
 
+// todo fix
 t_bool	ft_load_valid_line(char *path, int size, t_dict *dict)
 {
 	int				fd;

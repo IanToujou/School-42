@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_dictionary.h"
+
+#include <stdio.h>
+
 #include "../includes/ft_io.h"
 
 t_dict	ft_load_default(void)
