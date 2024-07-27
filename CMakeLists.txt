@@ -20,4 +20,7 @@ add_executable(school_42
 		Rush-02/includes/ft_dictionary.h
 		Rush-02/srcs/ft_dictionary_sort.c
 		Rush-02/srcs/ft_dictionary_sort_extra.c
+		Rush-02/srcs/ft_file.c
+		Rush-02/includes/ft_file.h
+		Rush-02/srcs/ft_dictionary_io.c
 )

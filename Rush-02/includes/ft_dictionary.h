@@ -41,15 +41,31 @@ typedef enum t_error
 	fail_convert
 }	t_error;
 
-t_dict	ft_load_default(void);
-t_dict	ft_load(char *path);
-void	ft_free(t_dict *dictionary);
-void	ft_sort_dictionary(t_dict *dict);
-void	ft_do_sort_dict(t_dict *dict, int start, int end,
-			int (*func)(t_dict_entry*, t_dict_entry*));
-void	ft_update_normal_flag(t_dict *dict);
-void	ft_swap_dictionary_entry(t_dict_entry *a, t_dict_entry *b);
-int		ft_sort_dict_f_normal(t_dict_entry *a, t_dict_entry *b);
-int		ft_sort_dict_f_value(t_dict_entry *a, t_dict_entry *b);
+typedef enum t_parse_error
+{
+	parsing_ok,
+	empty_line,
+	failed,
+	reached_eof
+}	t_parse_error;
+
+t_dict			ft_load_default(void);
+t_dict			ft_load(char *path);
+void			ft_free(t_dict *dict);
+
+void			ft_read_line(t_dict_entry *entr, int fd, t_parse_error *err);
+char			*ft_clean_line(char *str);
+t_parse_error	ft_process_line(t_dict_entry *e, char *line, unsigned int l);
+int				ft_count_valid_line(char *path);
+t_bool			ft_load_valid_line(char *path, int size, t_dict *dict);
+
+void			ft_swap_dictionary_entry(t_dict_entry *a, t_dict_entry *b);
+void			ft_update_normal_flag(t_dict *dict);
+void			ft_do_sort_dict(t_dict *dict, int start, int end,
+					int (*func)(t_dict_entry*, t_dict_entry*));
+void			ft_sort_dictionary(t_dict *dict);
+
+int				ft_sort_dict_f_normal(t_dict_entry *a, t_dict_entry *b);
+int				ft_sort_dict_f_value(t_dict_entry *a, t_dict_entry *b);
 
 #endif
