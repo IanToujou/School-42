@@ -13,10 +13,10 @@
 #ifndef FT_STRING_UTILS_H
 # define FT_STRING_UTILS_H
 
-#include "ft_boolean.h"
+# include "ft_boolean.h"
 
-t_bool ft_is_whitespace(char c);
-t_bool ft_is_number(char c);
-t_bool ft_is_operator(char c);
+t_bool	ft_is_whitespace(char c);
+t_bool	ft_is_number(char c);
+t_bool	ft_is_operator(char c);
 
 #endif

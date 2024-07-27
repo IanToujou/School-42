@@ -12,6 +12,7 @@
 
 #include "../includes/ft_num.h"
 #include "../includes/ft_io.h"
+#include "../includes/ft_convert.h"
 
 t_error	process_dictionary(char *to_convert, t_dictionary *dict)
 {

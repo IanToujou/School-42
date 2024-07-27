@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRING_H
-# define FT_STRING_H
+#ifndef FT_IO_H
+# define FT_IO_H
 
 # define IN 0
 # define OUT 1
 # define ERROR 2
 
-#include <unistd.h>
+# include <unistd.h>
 
-void    ft_putstr(int out, char *str);
-void    ft_putchar(int out, char c);
+void	ft_putstr(int out, char *str);
+void	ft_putchar(int out, char c);
 
 #endif

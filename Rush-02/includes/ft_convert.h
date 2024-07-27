@@ -13,7 +13,7 @@
 #ifndef FT_CONVERT_H
 # define FT_CONVERT_H
 
-int	ft_atoi(char *str);
-unsigned long ft_atoi_strict(char *str);
+unsigned long	ft_atoi_strict(char *str);
+int				ft_atoi(char *str);
 
 #endif

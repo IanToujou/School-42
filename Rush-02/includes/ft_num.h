@@ -13,29 +13,30 @@
 #ifndef FT_NUM_H
 # define FT_NUM_H
 
-#include "ft_boolean.h"
+# include "ft_boolean.h"
 
-typedef struct	t_dictionary_entry
+typedef struct t_dict_entry
 {
-    unsigned long value;
-    char *str;
-    t_bool normal;
-}   t_dict_entry;
+	unsigned long	value;
+	char			*str;
+	t_bool			normal;
+}	t_dict_entry;
 
-typedef struct	s_dictionary
+typedef struct s_dictionary
 {
-    char *path;
-    t_bool valid;
-    int size;
-    struct t_dictionary_entry *entries;
-}   t_dictionary;
+	int					size;
+	char				*path;
+	t_bool				valid;
+	struct t_dict_entry	*entries;
+}	t_dictionary;
 
-typedef enum {
-    none,
-    generic,
-    parse,
-    invalid_number,
-    fail_convert
-}   t_error;
+typedef enum t_error
+{
+	none,
+	generic,
+	parse,
+	invalid_number,
+	fail_convert
+}	t_error;
 
 #endif
