@@ -12,7 +12,7 @@
 
 #include "../includes/ft_string_utils.h"
 
-int		ft_str_length(char *str)
+int	ft_str_length(char *str)
 {
 	int	index;
 
@@ -30,7 +30,8 @@ char	*ft_str_duplicate(char *src)
 
 	length = ft_str_length(src);
 	index = 0;
-	if ((dest = (char *)malloc((length + 1) * sizeof(char))) == NULL)
+	dest = (char *)malloc((length + 1) * sizeof(char));
+	if (dest == NULL)
 		return (0);
 	while (src[index])
 	{
@@ -52,7 +53,8 @@ char	*ft_str_n_duplicate(char *str, int n)
 		length++;
 	if (length > n)
 		length = n;
-	if (!(dup = malloc((length + 1) * sizeof(char))))
+	dup = malloc((length + 1) * sizeof(char));
+	if (dup == NULL)
 		return (NULL);
 	index = 0;
 	while (index < length)
@@ -66,7 +68,7 @@ char	*ft_str_n_duplicate(char *str, int n)
 
 char	*ft_str_copy(char *dest, char *src)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (src[index] != '\0')

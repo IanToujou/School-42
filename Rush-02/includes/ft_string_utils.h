@@ -26,5 +26,4 @@ char	*ft_str_n_duplicate(char *str, int n);
 char	*ft_str_copy(char *dest, char *src);
 char	*ft_str_n_copy(char *dest, char *src, int n);
 
-
 #endif

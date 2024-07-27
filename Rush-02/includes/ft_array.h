@@ -15,6 +15,6 @@
 
 # include <stdlib.h>
 
-char	*ft_extend_array(char *orig, char *n_cont, unsigned int old_len, unsigned int len);
+char	*ft_extend_array(char *o, char *str, unsigned int ol, unsigned int l);
 
 #endif

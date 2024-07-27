@@ -13,15 +13,15 @@
 #include "../includes/ft_array.h"
 #include "../includes/ft_string_utils.h"
 
-char	*ft_extend_array(char *orig, char *n_cont, unsigned int old_len, unsigned int len)
+char	*ft_extend_array(char *o, char *str, unsigned int ol, unsigned int l)
 {
-	char *dest;
+	char	*dest;
 
-	dest = malloc((len + 1) * sizeof(char));
+	dest = malloc((l + 1) * sizeof(char));
 	if (dest == NULL)
 		return (NULL);
-	if (orig != NULL)
-		ft_str_n_copy(dest, orig, old_len);
-	ft_str_n_copy(dest + old_len, n_cont, (unsigned int)(len - old_len));
+	if (o != NULL)
+		ft_str_n_copy(dest, o, ol);
+	ft_str_n_copy(dest + ol, str, (unsigned int)(l - ol));
 	return (dest);
 }
