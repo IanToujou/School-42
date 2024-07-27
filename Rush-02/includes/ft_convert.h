@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_utils.c                                  :+:      :+:    :+:   */
+/*   ft_convert.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_boolean.h"
+#ifndef FT_CONVERT_H
+# define FT_CONVERT_H
 
-t_bool	ft_is_operator(char c)
-{
-	return (c == '-' || c == '+');
-}
+int	ft_atoi(char *str);
+unsigned long ft_atoi_strict(char *str);
 
-t_bool	ft_is_whitespace(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\r' || c == '\f');
-}
-
-t_bool	ft_is_number(char c)
-{
-	return (c >= '0' && c <= '9');
-}
+#endif

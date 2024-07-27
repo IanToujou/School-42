@@ -11,12 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_string_utils.h"
-#include "../includes/ft_boolean.h"
-
-t_bool	is_operator(char c)
-{
-	return (c == '-' || c == '+');
-}
+#include "../includes/ft_convert.h"
 
 int	ft_atoi(char *str)
 {
@@ -26,7 +21,7 @@ int	ft_atoi(char *str)
 	minus = 1;
 	while (ft_is_whitespace(*str))
 		str++;
-	if (is_operator(*str))
+	if (ft_is_operator(*str))
 	{
 		if (*str == '-')
 			minus *= -1;
