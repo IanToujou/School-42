@@ -67,6 +67,7 @@ char	*ft_clean_line(char *str)
 
 t_parse_error	ft_process_line(t_dict_entry *e, char *line, unsigned int l)
 {
+	// TODO this mf is not working
 	unsigned int	index;
 	char			*number;
 
@@ -111,7 +112,7 @@ int	ft_count_valid_line(char *path)
 		error = parsing_ok;
 		if (entry == NULL)
 			return (-1);
-		ft_read_line(entry, fd, &error);
+		ft_read_line(entry, fd, &error); //todo fix
 		if (error == failed)
 			return (-1);
 		if (error == parsing_ok)
