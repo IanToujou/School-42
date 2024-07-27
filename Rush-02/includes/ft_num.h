@@ -22,13 +22,13 @@ typedef struct t_dict_entry
 	t_bool			normal;
 }	t_dict_entry;
 
-typedef struct s_dictionary
+typedef struct s_dict
 {
 	int					size;
 	char				*path;
 	t_bool				valid;
-	struct t_dict_entry	*entries;
-}	t_dictionary;
+	t_dict_entry		*entries;
+}	t_dict;
 
 typedef enum t_error
 {

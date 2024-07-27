@@ -14,7 +14,7 @@
 #include "../includes/ft_io.h"
 #include "../includes/ft_convert.h"
 
-t_error	process_dictionary(char *to_convert, t_dictionary *dict)
+t_error	process_dictionary(char *to_convert, t_dict *dict)
 {
 	unsigned long		number;
 	t_bool				put_space;
@@ -40,7 +40,7 @@ void	handle_error(t_error error)
 	ft_putstr(ERROR, "\n");
 }
 
-t_error	process_args(int argc, char **argv, char **convert, t_dictionary *dict)
+t_error	process_args(int argc, char **argv, char **convert, t_dict *dict)
 {
 	if (argc == 3)
 	{
@@ -60,7 +60,7 @@ t_error	process_args(int argc, char **argv, char **convert, t_dictionary *dict)
 int	main(int argc, char **argv)
 {
 	t_error			error;
-	t_dictionary	dictionary;
+	t_dict			dictionary;
 	char			*to_convert;
 
 	error = process_args(argc, argv, &to_convert, &dictionary);
