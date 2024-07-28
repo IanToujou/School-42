@@ -18,9 +18,7 @@ char	*ft_strstr(char *str, char *to_find)
 	char	*b;
 
 	if (*to_find == '\0')
-	{
 		return (str);
-	}
 	a = str;
 	b = to_find;
 	while (true)

@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include <stdio.h>
+
 #include "../includes/ft_boolean.h"
 #include "../includes/ft_io.h"
 #include "../includes/ft_dictionary.h"
@@ -65,31 +67,49 @@ t_bool	ft_itow_short(t_dict *dict, unsigned long n, t_bool *put_sp, t_bool b)
 	return (true);
 }
 
+int getFirstDigit(int number) {
+	// Ensure the number is positive
+	if (number < 0) {
+		number = -number;
+	}
+
+	// Keep dividing the number by 10 until it has only one digit
+	while (number >= 10) {
+		number /= 10;
+	}
+
+	// Return the first digit
+	return number;
+}
+
 t_bool	ft_itow(t_dict *dict, unsigned long n, t_bool *put_space, t_bool b)
 {
-	int				index;
-	unsigned long	value;
 
 	if ((n <= 20 && ft_itow_short(dict, n, 0, false))
 		|| (ft_resolve_dict_entry_index(dict, n) != -1
 			&& !ft_itow_is_value_power_of_ten(n)))
 		return (ft_itow_short(dict, n, put_space, b));
-	index = dict->size - 1;
-	value = n;
-	while (value != 0)
-	{
-		value = n;
-		if (n % value != n)
-		{
-			if (value > 99)
-				if (!ft_itow(dict, (n / value), put_space, b))
-					return (false);
-			ft_itow_print_if(b, put_space, dict->entries[index].str);
-			if (n - (n / value) * value == 0)
-				return (true);
-			return (ft_itow(dict, n - (n / value) * value, put_space, b));
-		}
-		index--;
+
+	int size = snprintf(NULL, 0, "%lu", n);
+	int *digits = malloc(size * sizeof(unsigned long));
+	int divisor = 1;
+
+	for (int i = 0; i < size; i++) {
+		digits[size - 1 - i] = (n / divisor) % 10 * divisor;
+		divisor *= 10;
 	}
+
+	for (int i = 0; i < size; i++) {
+		if (digits[i] != 0) {
+			if(ft_resolve_dict_entry_index(dict, digits[i]) != -1)
+				ft_itow_short(dict, digits[i], put_space, b);
+			else {
+				ft_itow_short(dict, getFirstDigit(digits[i]), put_space, b);
+				ft_itow_short(dict, digits[i] / getFirstDigit(digits[i]), put_space, b);
+			}
+		}
+	}
+
+	free(digits);
 	return (true);
 }
