@@ -67,54 +67,50 @@ t_bool	ft_itow_short(t_dict *dict, unsigned long n, t_bool *put_sp, t_bool b)
 	return (true);
 }
 
-int getFirstDigit(int number) {
-	// Ensure the number is positive
-	if (number < 0) {
-		number = -number;
-	}
-
-	// Keep dividing the number by 10 until it has only one digit
-	while (number >= 10) {
-		number /= 10;
-	}
-
-	// Return the first digit
-	return number;
-}
-
 t_bool	ft_itow(t_dict *dict, unsigned long n, t_bool *put_space, t_bool b)
 {
+	int				size;
+	int				divisor;
+	int				i;
+	unsigned long	*digits;
 
 	if ((n <= 20 && ft_itow_short(dict, n, 0, false))
 		|| (ft_resolve_dict_entry_index(dict, n) != -1
 			&& !ft_itow_is_value_power_of_ten(n)))
 		return (ft_itow_short(dict, n, put_space, b));
-
-	int size = snprintf(NULL, 0, "%lu", n);
-	int *digits = malloc(size * sizeof(unsigned long));
-	int divisor = 1;
-
-	for (int i = 0; i < size; i++) {
+	size = snprintf(NULL, 0, "%lu", n);
+	digits = malloc(size * sizeof(unsigned long));
+	divisor = 1;
+	i = 0;
+	while (i < size)
+	{
 		digits[size - 1 - i] = (n / divisor) % 10 * divisor;
 		divisor *= 10;
+		i++;
 	}
-
-	for (int i = 0; i < size; i++) {
-		if (digits[i] != 0) {
-			if(ft_resolve_dict_entry_index(dict, digits[i]) != -1)
+	i = 0;
+	while (i < size)
+	{
+		if (digits[i] != 0)
+		{
+			if (ft_resolve_dict_entry_index(dict, digits[i]) != -1)
 				ft_itow_short(dict, digits[i], put_space, b);
-			else {
-				if(digits[i] >= 10000 && ft_resolve_dict_entry_index(dict, digits[i]) == -1) {
+			else
+			{
+				if (digits[i] >= 10000 && ft_resolve_dict_entry_index(dict, digits[i]) == -1)
+				{
 					ft_itow(dict, digits[i] / 1000, put_space, b);
-					ft_itow(dict, digits[i] / 10, put_space, b);
-				} else {
-					ft_itow_short(dict, getFirstDigit(digits[i]), put_space, b);
-					ft_itow_short(dict, digits[i] / getFirstDigit(digits[i]), put_space, b);
+					ft_itow_short(dict, digits[i] / get_first_digit(digits[i]), put_space, b);
+				}
+				else
+				{
+					ft_itow_short(dict, get_first_digit(digits[i]), put_space, b);
+					ft_itow_short(dict, digits[i] / get_first_digit(digits[i]), put_space, b);
 				}
 			}
 		}
+		i++;
 	}
-
 	free(digits);
 	return (true);
 }

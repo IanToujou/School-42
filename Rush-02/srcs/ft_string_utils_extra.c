@@ -29,7 +29,7 @@ int	ft_total_length(char **strings, int size, int sep_length)
 	return (final_length);
 }
 
-char	*ft_str_join(int size, char** strs, char *sep)
+char	*ft_str_join(int size, char **strs, char *sep)
 {
 	int		full_length;
 	int		index;
@@ -37,9 +37,10 @@ char	*ft_str_join(int size, char** strs, char *sep)
 	char	*string;
 
 	if (size == 0)
-		return ((char *)malloc(sizeof(char)));
+		return (malloc(sizeof(char)));
 	full_length = ft_total_length(strs, size, ft_str_length(sep));
-	if (!(string = (char *)malloc((full_length + 1) * sizeof(char))))
+	string = (char *)malloc((full_length + 1) * sizeof(char));
+	if (string == NULL)
 		return (0);
 	read_head = string;
 	index = 0;
@@ -58,9 +59,9 @@ char	*ft_str_join(int size, char** strs, char *sep)
 	return (string);
 }
 
-int		ft_split_whitespace_count_word(char *str)
+int	ft_split_whitespace_count_word(char *str)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	while (*str)

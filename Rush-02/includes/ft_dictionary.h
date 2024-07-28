@@ -55,7 +55,7 @@ void			ft_free(const t_dict *dict);
 
 void			ft_read_line(t_dict_entry *entr, int fd, t_parse_error *err);
 char			*ft_clean_line(char *str);
-t_parse_error	ft_process_line(t_dict_entry *e, char *line, unsigned int l);
+t_parse_error	ft_p_l(t_dict_entry *e, char *line, unsigned int l);
 int				ft_count_valid_line(char *path);
 t_bool			ft_load_valid_line(char *path, int size, t_dict *dict);
 

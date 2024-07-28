@@ -36,3 +36,12 @@ int	ft_atoi(char *str)
 	}
 	return (result * minus);
 }
+
+int	get_first_digit(int number)
+{
+	if (number < 0)
+		number = -number;
+	while (number >= 10)
+		number /= 10;
+	return (number);
+}

@@ -42,7 +42,7 @@ void	ft_read_line(t_dict_entry *entry, int fd, t_parse_error *error)
 		total += byte_read;
 		if (buffer[0] == '\n')
 		{
-			*error = ft_process_line(entry, line, total);
+			*error = ft_p_l(entry, line, total);
 			byte_read = (unsigned int) -2;
 			break ;
 		}
@@ -65,17 +65,17 @@ char	*ft_clean_line(char *str)
 	return (ft_str_join(size, split, " "));
 }
 
-t_parse_error	ft_process_line(t_dict_entry *entry, char *line, unsigned int length)
+t_parse_error	ft_p_l(t_dict_entry *e, char *line, unsigned int l)
 {
-	unsigned	index;
-	char	*number;
+	unsigned int	index;
+	char			*number;
 
 	index = 0;
 	while (ft_is_number(line[index]))
 		index++;
 	if (line[index] == '\n')
 		return (empty_line);
-	if (index == 0 || index >= length)
+	if (index == 0 || index >= l)
 		return (failed);
 	number = ft_str_n_duplicate(line, index);
 	while (line[index] == ' ')
@@ -85,10 +85,10 @@ t_parse_error	ft_process_line(t_dict_entry *entry, char *line, unsigned int leng
 	index++;
 	while (line[index] == ' ')
 		index++;
-	entry->value = ft_atoi_strict(number);
-	entry->str = ft_clean_line(
-			ft_str_n_duplicate(line + index, length - index - 1));
-	if (ft_str_length(entry->str) == 0)
+	e->value = ft_atoi_strict(number);
+	e->str = ft_clean_line(
+			ft_str_n_duplicate(line + index, l - index - 1));
+	if (ft_str_length(e->str) == 0)
 		return (failed);
 	free(number);
 	return (parsing_ok);

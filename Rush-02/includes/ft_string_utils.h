@@ -26,8 +26,8 @@ char	*ft_str_n_duplicate(char *str, int n);
 char	*ft_str_copy(char *dest, char *src);
 char	*ft_str_n_copy(char *dest, char *src, int n);
 
-int	ft_total_length(char **strings, int size, int sep_length);
-char	*ft_str_join(int size, char** strs, char *sep);
+int		ft_total_length(char **strings, int size, int sep_length);
+char	*ft_str_join(int size, char **strs, char *sep);
 int		ft_split_whitespace_count_word(char *str);
 char	**ft_split_whitespace(char *str);
 

@@ -17,6 +17,7 @@
 
 unsigned long	ft_atoi_strict(char *str);
 int				ft_atoi(char *str);
+int				get_first_digit(int number);
 t_bool			ft_itow(t_dict *dict, unsigned long n,
 					t_bool *put_space, t_bool b);
 
