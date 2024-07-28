@@ -10,31 +10,56 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ./srcs/main.c ./srcs/ft_string_tools.c
+C_YELLOW_B=\033[1;33m
+C_LIGHT_RED_B=\033[0;91m
+C_WHITE=\033[0;97m
+C_RESET=\033[0;39m
+
+SRCS = srcs/main.c srcs/ft_string_tools.c
 OBJS = ${SRCS:.c=.o}
-INCS	= includes
+INCS = includes
 NAME = ft_display_file
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-.c.o:
+.c.o :
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
-${NAME}:	${OBJS}
-			${CC} ${OBJS} ${CFLAGS} -o ${NAME}
+${NAME} : ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
-all: ${NAME}
+all : ${NAME}
 
-clean:
+clean :
 	${RM} ${OBJS}
 
-fclean: clean
+fclean : clean
 	${RM} ${NAME}
 
 norm :
 	norminette -R CheckForbiddenSourceHeader */*.[ch]
 
-re: fclean all
+re : fclean all
 
-.PHONY: all clean fclean re .c.o norm
+
+test : re
+	@echo "I am a file content" > dummy_file.txt
+	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)No file$(C_RESET)" ;
+	@./ft_display_file || true;
+	@##
+	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)Single file: ./dummy_file.txt$(C_RESET)" ;
+	@./ft_display_file ./dummy_file.txt || true;
+	@##
+	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)Multiple file: ./dummy_file.txt ./dummy_file.txt$(C_RESET)" ;
+	@./ft_display_file ./dummy_file.txt ./dummy_file.txt || true;
+	@##
+	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)Invalid file: ./a$(C_RESET)" ;
+	@./ft_display_file ./a || true;
+	@##
+	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)On directory: ./srcs/$(C_RESET)" ;
+	@./ft_display_file ./srcs/ || true;
+	@##
+	@rm -f result-off.txt result-usr.txt dummy_file.txt ;
+
+.PHONY: all clean fclean re .c.o test
