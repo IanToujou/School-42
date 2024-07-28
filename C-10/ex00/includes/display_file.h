@@ -23,9 +23,9 @@
 # define OUT 1
 # define ERR 2
 
-#include <stdbool.h>
-#include <unistd.h>
-#include <fcntl.h>
+# include <stdbool.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 void	ft_putchar(int out, char c);
 void	ft_putstr(int out, const char *str);

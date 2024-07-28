@@ -22,10 +22,7 @@ int	ft_file_read(char *path)
 	if (file != -1)
 	{
 		size = read(file, buffer, __BUFFER);
-		while (size > 0)
-		{
-			ft_putstr_buffer(buffer, size);
-		}
+		ft_putstr_buffer(buffer, size);
 		return (1);
 	}
 	return (0);

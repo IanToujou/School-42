@@ -37,9 +37,6 @@ clean :
 fclean : clean
 	${RM} ${NAME}
 
-norm :
-	norminette -R CheckForbiddenSourceHeader */*.[ch]
-
 re : fclean all
 
 
