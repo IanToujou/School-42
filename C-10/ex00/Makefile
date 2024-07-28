@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ./srcs/main.c
+SRCS = ./srcs/main.c ./srcs/ft_string_tools.c
 OBJS = ${SRCS:.c=.o}
 INCS	= includes
 NAME = ft_display_file
