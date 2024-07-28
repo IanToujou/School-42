@@ -10,18 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/main.c
+SRCS = ./srcs/main.c
 OBJS = ${SRCS:.c=.o}
+INCS	= includes
 NAME = ft_display_file
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
 ${NAME}:	${OBJS}
-			gcc -o ${NAME} ${OBJS} ${CFLAGS}
+			${CC} ${OBJS} ${CFLAGS} -o ${NAME}
 
 all: ${NAME}
 
@@ -31,9 +32,9 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 
-re: fclean all
-
 norm :
 	norminette -R CheckForbiddenSourceHeader */*.[ch]
+
+re: fclean all
 
 .PHONY: all clean fclean re .c.o norm

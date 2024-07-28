@@ -4,27 +4,6 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
-		Rush-02/srcs/main.c
-		Rush-02/includes/ft_dictionary.h
-		Rush-02/includes/ft_boolean.h
-		Rush-02/includes/ft_io.h
-		Rush-02/includes/ft_io.h
-		Rush-02/srcs/ft_io.c
-		Rush-02/srcs/ft_atoi.c
-		Rush-02/srcs/ft_string_utils_check.c
-		Rush-02/includes/ft_string_utils.h
-		Rush-02/srcs/ft_atoi_strict.c
-		Rush-02/includes/ft_convert.h
-		Rush-02/srcs/ft_itow.c
-		Rush-02/srcs/ft_dictionary.c
-		Rush-02/includes/ft_dictionary.h
-		Rush-02/srcs/ft_dictionary_sort.c
-		Rush-02/srcs/ft_dictionary_sort_extra.c
-		Rush-02/srcs/ft_file.c
-		Rush-02/includes/ft_file.h
-		Rush-02/srcs/ft_dictionary_io.c
-		Rush-02/includes/ft_array.h
-		Rush-02/srcs/ft_array.c
-		Rush-02/srcs/ft_string_utils.c
-		Rush-02/srcs/ft_string_utils_extra.c
+		C-10/ex00/srcs/ft_string_tools.c
+		C-10/ex00/srcs/main.c
 )

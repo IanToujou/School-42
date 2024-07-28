@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display_file.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,41 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/display_file.h"
+#ifndef DISPLAY_FILE_H
+# define DISPLAY_FILE_H
 
-bool	read_file(const char *path)
-{
-	int				file;
-	unsigned int	byte_read;
-	char			buffer[4097];
+# define BUFFER_SIZE 1024
 
-	file = open(path, O_RDONLY);
-	if (file < 0)
-		return (false);
-	byte_read = read(file, buffer, 4096);
-	while (byte_read != 0)
-	{
-		byte_read = read(file, buffer, 4096);
-		if (byte_read == (unsigned int) -1)
-			break ;
-		ft_putstr(OUT, buffer);
-	}
-	close(file);
-	return (true);
-}
+# define MSG_ERR_NAME_MISSING "File name missing.\n"
+# define MSG_ERR_TOO_MANY_ARGS "Too many arguments.\n"
+# define MSG_ERR_CANNOT_READ "Cannot read file.\n"
 
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-		ft_putstr(ERR, MSG_ERR_NAME_MISSING);
-	else if (argc > 2)
-		ft_putstr(ERR, MSG_ERR_TOO_MANY_ARGS);
-	else
-	{
-		if (!read_file(argv[1]))
-			ft_putstr(ERR, MSG_ERR_CANNOT_READ);
-		else
-			return (0);
-	}
-	return (1);
-}
+# define IN 0
+# define OUT 1
+# define ERR 2
+
+#include <stdbool.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+void	ft_putchar(int out, char c);
+void	ft_putstr(int out, const char *str);
+
+#endif
