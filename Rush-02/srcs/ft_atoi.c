@@ -37,7 +37,7 @@ int	ft_atoi(char *str)
 	return (result * minus);
 }
 
-int	get_first_digit(int number)
+int	f_dig(int number)
 {
 	if (number < 0)
 		number = -number;

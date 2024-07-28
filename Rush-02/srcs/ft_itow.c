@@ -18,7 +18,7 @@
 #include "../includes/ft_dictionary.h"
 #include "../includes/ft_convert.h"
 
-int	ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)
+int	ft_res_dict_in(t_dict *dict, unsigned long number)
 {
 	int		index;
 
@@ -60,7 +60,7 @@ t_bool	ft_itow_short(t_dict *dict, unsigned long n, t_bool *put_sp, t_bool b)
 {
 	int		dict_index;
 
-	dict_index = ft_resolve_dict_entry_index(dict, n);
+	dict_index = ft_res_dict_in(dict, n);
 	if (dict_index == -1)
 		return (false);
 	ft_itow_print_if(b, put_sp, dict->entries[dict_index].str);
@@ -72,45 +72,45 @@ t_bool	ft_itow(t_dict *dict, unsigned long n, t_bool *put_space, t_bool b)
 	int				size;
 	int				divisor;
 	int				i;
-	unsigned long	*digits;
+	unsigned long	*d;
 
 	if ((n <= 20 && ft_itow_short(dict, n, 0, false))
-		|| (ft_resolve_dict_entry_index(dict, n) != -1
+		|| (ft_res_dict_in(dict, n) != -1
 			&& !ft_itow_is_value_power_of_ten(n)))
 		return (ft_itow_short(dict, n, put_space, b));
 	size = snprintf(NULL, 0, "%lu", n);
-	digits = malloc(size * sizeof(unsigned long));
+	d = malloc(size * sizeof(unsigned long));
 	divisor = 1;
 	i = 0;
 	while (i < size)
 	{
-		digits[size - 1 - i] = (n / divisor) % 10 * divisor;
+		d[size - 1 - i] = (n / divisor) % 10 * divisor;
 		divisor *= 10;
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
-		if (digits[i] != 0)
+		if (d[i] != 0)
 		{
-			if (ft_resolve_dict_entry_index(dict, digits[i]) != -1)
-				ft_itow_short(dict, digits[i], put_space, b);
+			if (ft_res_dict_in(dict, d[i]) != -1)
+				ft_itow_short(dict, d[i], put_space, b);
 			else
 			{
-				if (digits[i] >= 10000 && ft_resolve_dict_entry_index(dict, digits[i]) == -1)
+				if (d[i] >= 10000 && ft_res_dict_in(dict, d[i]) == -1)
 				{
-					ft_itow(dict, digits[i] / 1000, put_space, b);
-					ft_itow_short(dict, digits[i] / get_first_digit(digits[i]), put_space, b);
+					ft_itow(dict, d[i] / 1000, put_space, b);
+					ft_itow_short(dict, d[i] / f_dig(d[i]), put_space, b);
 				}
 				else
 				{
-					ft_itow_short(dict, get_first_digit(digits[i]), put_space, b);
-					ft_itow_short(dict, digits[i] / get_first_digit(digits[i]), put_space, b);
+					ft_itow_short(dict, f_dig(d[i]), put_space, b);
+					ft_itow_short(dict, d[i] / f_dig(d[i]), put_space, b);
 				}
 			}
 		}
 		i++;
 	}
-	free(digits);
+	free(d);
 	return (true);
 }
