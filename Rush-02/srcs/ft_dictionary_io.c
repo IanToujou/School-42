@@ -124,7 +124,6 @@ int	ft_count_valid_line(char *path)
 	return (count);
 }
 
-// todo fix
 t_bool	ft_load_valid_line(char *path, int size, t_dict *dict)
 {
 	int				fd;

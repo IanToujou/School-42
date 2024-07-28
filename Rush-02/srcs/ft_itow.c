@@ -104,8 +104,13 @@ t_bool	ft_itow(t_dict *dict, unsigned long n, t_bool *put_space, t_bool b)
 			if(ft_resolve_dict_entry_index(dict, digits[i]) != -1)
 				ft_itow_short(dict, digits[i], put_space, b);
 			else {
-				ft_itow_short(dict, getFirstDigit(digits[i]), put_space, b);
-				ft_itow_short(dict, digits[i] / getFirstDigit(digits[i]), put_space, b);
+				if(digits[i] >= 10000 && ft_resolve_dict_entry_index(dict, digits[i]) == -1) {
+					ft_itow(dict, digits[i] / 1000, put_space, b);
+					ft_itow(dict, digits[i] / 10, put_space, b);
+				} else {
+					ft_itow_short(dict, getFirstDigit(digits[i]), put_space, b);
+					ft_itow_short(dict, digits[i] / getFirstDigit(digits[i]), put_space, b);
+				}
 			}
 		}
 	}
