@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_if.c                                      :+:      :+:    :+:   */
+/*   ft_is_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 19:00:51 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/29 19:00:51 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/29 19:12:02 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/29 19:12:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_if(char **tab, int length, int (*f)(char*))
+/**
+ *
+ *
+ * @param tab AN array of integers that will be checked if it is sorted.
+ * @param length The length of the provided array.
+ * @param f A function to sort the array.
+ * @return
+ */
+int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int	index;
-	int	count;
+
+	if(length <= 1)
+		return (0);
 
 	index = 0;
-	count = 0;
-	while (index < length)
-	{
-		if (f(tab[index]) != 0)
-			count++;
+	while (index < length - 1) {
+		if (f(tab[index], tab[index + 1]) > 0)
+			return (0);
 		index++;
 	}
-	return (count);
+	return (1);
 }

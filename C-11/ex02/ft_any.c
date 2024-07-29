@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 int	ft_any(char **tab, int (*f)(char*))
 {
 	int	index;
@@ -17,7 +19,8 @@ int	ft_any(char **tab, int (*f)(char*))
 
 	index = 0;
 	result = 0;
-	while(tab[index] != '\0') {
+	while (tab[index] != NULL && tab[index] != '\0')
+	{
 		if (f(tab[index]) != 0)
 			result = 1;
 		index++;

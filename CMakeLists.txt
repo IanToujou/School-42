@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 add_executable(school_42
 		C-11/ex02/ft_any.c
 		C-11/ex03/ft_count_if.c
+		C-11/ex04/ft_is_sort.c
 )
