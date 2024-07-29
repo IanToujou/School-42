@@ -24,7 +24,7 @@ RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o :
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
 
 ${NAME} : ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
