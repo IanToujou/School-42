@@ -34,7 +34,7 @@ void	ft_putstr(const int fd, const char *str)
 	}
 }
 
-void	ft_putnbr(const int fd, const int nb)
+int	ft_putnbr(const int fd, const int nb)
 {
 	if (nb == -2147483648)
 	{
@@ -52,4 +52,5 @@ void	ft_putnbr(const int fd, const int nb)
 			ft_putnbr(fd, nb / 10);
 		ft_putchar(fd, 48 + nb % 10);
 	}
+	return (0);
 }

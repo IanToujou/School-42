@@ -28,6 +28,6 @@
 int		ft_atoi(char *str);
 void	ft_putchar(const int fd, const char c);
 void	ft_putstr(const int fd, const char *str);
-void	ft_putnbr(const int fd, const int nb);
+int		ft_putnbr(const int fd, const int nb);
 
 #endif
