@@ -1,16 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ibour <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/24 14:07:11 by ibour             #+#    #+#              #
-#    Updated: 2024/07/24 14:07:12 by ibour            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-SRCS = srcs/main.c srcs/string_utils.c srcs/ft_file_read.c
+SRCS = ./srcs/main.c ./srcs/string_utils.c ./srcs/ft_file_read.c
 INCS = includes/
 OBJS = ${SRCS:.c=.o}
 NAME = ft_tail

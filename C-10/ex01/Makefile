@@ -1,4 +1,4 @@
-SRCS = srcs/main.c srcs/ft_putstr.c srcs/without_args.c srcs/ft_putchar.c srcs/ft_file_read.c
+SRCS = ./srcs/main.c ./srcs/ft_putstr.c ./srcs/without_args.c ./srcs/ft_putchar.c ./srcs/ft_file_read.c
 OBJS = ${SRCS:.c=.o}
 INCS = includes
 NAME = ft_cat
