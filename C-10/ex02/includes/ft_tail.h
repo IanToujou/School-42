@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_tail.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 15:13:18 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/25 15:13:18 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/25 13:46:34 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/25 13:46:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft.h"
+#ifndef FT_TAIL_H
+# define FT_TAIL_H
 
-int		ft_atoi(char *str)
-{
-    int		i;
-    int		nb;
+# include <errno.h>
+# include <unistd.h>
+# include <libgen.h>
+# include <fcntl.h>
 
-    nb = 0;
-    i = 0;
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        nb = (nb * 10) + (str[i] - '0');
-        i++;
-    }
-    if (i == 0)
-        return (-1);
-    else
-        return (nb);
-}
+# define BUFFER_SIZE 4096
+
+# define IN 0
+# define OUT 1
+# define ERR 2
+
+void	ft_putchar(int fd, char c);
+void	ft_putstr(int fd, char *str);
+void	handle_error(char **argv);
+
+#endif

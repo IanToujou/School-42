@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/ft_atoi.c srcs/ft_file_read.c srcs/ft_strlen.c srcs/ft_putchar.c srcs/ft_putnbr.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strdup.c srcs/ft_swap.c srcs/main.c srcs/no_args.c srcs/print.c
+SRCS = srcs/main.c srcs/string_utils.c srcs/ft_file_read.c
 INCS = includes/
 OBJS = ${SRCS:.c=.o}
 NAME = ft_tail

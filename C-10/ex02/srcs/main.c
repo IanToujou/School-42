@@ -10,83 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft.h"
+#include "../includes/ft_tail.h"
 
-char	**two_args(int *argc, char **argv, int *octet)
+/**
+ * Processes the arguments when there are no additional arguments.
+ * For instance: ft_tail
+ *
+ * @param argv argv from the main function.
+ */
+void process_arg_none(char **argv)
 {
-	int		i;
-	char	**args;
-
-	*octet = 0;
-	i = 1;
-	while (argv[1][++i] && argv[1][i] >= '0' && argv[1][i] <= '9')
-		*octet = *octet * 10 + (argv[1][i] - '0');
-	if (*argc > 2)
-	{
-		args = malloc(sizeof(char*) * *argc);
-		args[0] = argv[0];
-		i = 1;
-		while (++i < *argc)
-			args[i - 1] = ft_strdup(argv[i]);
-		args[i - 1] = 0;
-		*argc += 1;
-		return (args);
-	}
-	args = malloc(sizeof(char*) * 2);
-	args[0] = argv[0];
-	args[1] = "stdin";
-	no_args_stdin(*octet, args);
-	return (0);
+ char buffer;
+ while(read(0, &buffer, 1) != 0) {
+  if(errno != 0)
+   handle_error(argv);
+ }
 }
 
-char	**three_args(int argc, char **argv, int octet)
+/**
+ * Processes the arguments when there is no -c flag.
+ * For instance: ft_tail main.c
+ *
+ * @param argc argc from the main function.
+ * @param argv argv from the main function.
+ */
+void process_arg_normal(int argc, char **argv)
 {
-	int		i;
-	char	**args;
-
-	if (argc > 3)
-	{
-		args = malloc(sizeof(char*) * (argc - 1));
-		args[0] = argv[0];
-		i = 2;
-		while (++i < argc)
-			args[i - 2] = ft_strdup(argv[i]);
-		args[i - 2] = 0;
-	}
-	else
-	{
-		args = malloc(sizeof(char*) * 2);
-		args[0] = argv[0];
-		args[1] = "stdin";
-		no_args_stdin(octet, args);
-		return (0);
-	}
-	return (args);
+ if(argc > 0) return;
+ if(argv == NULL) return;
 }
 
-int	main(int argc, char** argv)
+/**
+ * Processes the arguments when the -c flag is being used.
+ * For instance: ft_tail -c 5 main.c
+ *
+ * @param argc argc from the main function.
+ * @param argv argv from the main function.
+ */
+void process_arg_c_opt(int argc, char **argv)
 {
-	int		yo_mama;
-	char	**args;
+ if(argc > 0) return;
+ if(argv == NULL) return;
+}
 
-	if (argc == 1 || argv[1][0] != '-' || argv[1][0] != 'c')
-		no_args(argv);
-	else if(argv[1][0] == '-' && argv[1][1] == 'c')
-	{
-		if (argc == 2) {
-			print_help(argv[0]);
-			return (0);
-		}
-		if (argv[1][2] != '\0')
-			args = two_args(&argc, argv, &yo_mama);
-		else if ((yo_mama = ft_atoi(argv[2])) != -1)
-			args = three_args(argc, argv, yo_mama);
-		else
-		{
-			print_illegal(argv[0], argv[2]);
-			return (1);
-		}
-		if (args != 0)
-			print_file(argc, args, yo_mama);
-	}
+/**
+ * The default main function.
+ *
+ * @param argc The number of arguments.
+ * @param argv The vector of the arguments.
+ * @return Status code.
+ */
+int main(int argc, char **argv)
+{
+ if(argc < 2)
+  process_arg_none(argv);
+ else if(argv[1][0] == '-' && argv[1][0] == 'c')
+  process_arg_c_opt(argc, argv);
+ else
+  process_arg_normal(argc, argv);
 }
