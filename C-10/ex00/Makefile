@@ -1,30 +1,13 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ibour <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/24 14:07:11 by ibour             #+#    #+#              #
-#    Updated: 2024/07/24 14:07:12 by ibour            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-C_YELLOW_B=\033[1;33m
-C_LIGHT_RED_B=\033[0;91m
-C_WHITE=\033[0;97m
-C_RESET=\033[0;39m
-
 SRCS = srcs/main.c srcs/ft_string_tools.c
 OBJS = ${SRCS:.c=.o}
 INCS = includes
 NAME = ft_display_file
-CC = gcc
+CC = clang
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-.c.o :
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
+%.o : %.c
+	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME} : ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
@@ -39,24 +22,4 @@ fclean : clean
 
 re : fclean all
 
-
-test : re
-	@echo "I am a file content" > dummy_file.txt
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)No file$(C_RESET)" ;
-	@./ft_display_file || true;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)Single file: ./dummy_file.txt$(C_RESET)" ;
-	@./ft_display_file ./dummy_file.txt || true;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)Multiple file: ./dummy_file.txt ./dummy_file.txt$(C_RESET)" ;
-	@./ft_display_file ./dummy_file.txt ./dummy_file.txt || true;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)Invalid file: ./a$(C_RESET)" ;
-	@./ft_display_file ./a || true;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_WHITE)On directory: ./srcs/$(C_RESET)" ;
-	@./ft_display_file ./srcs/ || true;
-	@##
-	@rm -f result-off.txt result-usr.txt dummy_file.txt ;
-
-.PHONY: all clean fclean re .c.o test
+.PHONY: all clean fclean re
