@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * Applies a given function on every single element of a given array.
- *
- * @param tab The integer array.
- * @param length The length of the array.
- * @param f The function that will be called for every element on the array.
- */
-void	ft_foreach(int *tab, int length, void (*f)(int))
+#include <stdlib.h>
+
+int	*ft_map(int *tab, int length, int (*f)(int))
 {
 	int	index;
+	int	*array;
 
 	index = 0;
+	array = malloc(sizeof(tab));
+	if (array == NULL)
+		return (0);
 	while (index < length)
 	{
-		f(tab[index]);
+		array[index] = f(tab[index]);
 		index++;
 	}
+	return (array);
 }
-
-/*#include <stdio.h>
-void prnt(int i)
-{
-	printf("%d", i);
-}
-
-int	main(void)
-{
-	int tab[] = {1,2,3,4,5};
-	ft_foreach(tab, 5, &prnt);
-}*/

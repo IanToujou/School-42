@@ -4,8 +4,6 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
-		C-10/ex02/srcs/main.c
-		C-10/ex02/includes/ft_tail.h
-		C-10/ex02/srcs/string_utils.c
-		C-10/ex02/srcs/ft_file_read.c
+		C-11/ex02/ft_any.c
+		C-11/ex03/ft_count_if.c
 )
