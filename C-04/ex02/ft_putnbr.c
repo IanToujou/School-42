@@ -29,10 +29,11 @@ void	ft_putnbr(int nb)
 		ft_putchar('-');
 		ft_putnbr(-nb);
 	}
-	else
+	else if (nb > 9)
 	{
-		if (nb > 9)
-			ft_putnbr(nb / 10);
-		ft_putchar(48 + nb % 10);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
+	else
+		ft_putchar(nb + '0');
 }

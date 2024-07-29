@@ -11,7 +11,7 @@ There is `printf()` of course from the `<stdio.h>` library, but we are not allow
 ## ✨ Helper Function
 
 Let's start by creating our helper function. We are allowed to use `write()`, and of course our own
-functions. In EX-00 we created the following function:
+functions. In C-01, EX-00 we created the following function:
 ```c
 void ft_putchar(char c) {
     write(1, &c, 1);
@@ -126,14 +126,15 @@ We are going to seperate the digits 1 by 1, always dropping the last digit, unti
 ## ✨ Minimum Integer
 
 If we try to submit this, moulinette will say it's wrong, but why? Well, integers have a minimum and maximum value, and if we try to do these calculations with the minimum integer, we
-need to check it manually. I don't know exactly why, but if you know, you can open an issue!
+need to check it manually. I don't fully understand why only on the negative bound, but you can open an issue and tell me if you know!
 ```c
 // -2147483648 is the minimum integer.
 if (nb == -2147483648) {
     ft_putnbr(nb / 10);
-    ft_putchar('8');
+    ft_putchar('8'); // Print '8' because it is the last character.
 }
 ```
+> You can find this number by calculating 2 ^ 31 (2 to the power of 31). Or just by brute-forcing it.
 
 So our code is finished, and it will look like this:
 ```c
@@ -151,7 +152,7 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb / 10);
 		ft_putchar('8');
 	}
-	if (nb < 0)
+	else if (nb < 0)
 	{
 		ft_putchar('-');
 		ft_putnbr(-nb);
@@ -162,8 +163,6 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb % 10);
 	}
 	else
-	{
 		ft_putchar(nb + '0');
-	}
 }
 ```
