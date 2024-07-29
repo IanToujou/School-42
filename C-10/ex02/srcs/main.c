@@ -36,8 +36,9 @@ void process_arg_none(char **argv)
  */
 void process_arg_normal(int argc, char **argv)
 {
- if(argc > 0) return;
- if(argv == NULL) return;
+ if(argc > 0)
+ if(ft_read(argv[1]) == 0)
+  handle_error(argv);
 }
 
 /**

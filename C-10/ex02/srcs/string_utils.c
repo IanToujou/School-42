@@ -36,10 +36,21 @@ void	ft_putstr(int fd, char *str)
 	}
 }
 
+void	ft_putstr_buffer(int fd, char *str, int size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < size)
+		ft_putchar(fd, str[i]);
+}
+
 void	handle_error(char **argv)
 {
 	ft_putstr(ERR, basename(argv[0]));
-	ft_putstr(ERR, ": stdin: ");
+	ft_putstr(ERR, ": cannot open '");
+	ft_putstr(ERR, basename(argv[1]));
+	ft_putstr(ERR, "' for reading: ");
 	ft_putstr(ERR, strerror(errno));
 	ft_putchar(ERR, '\n');
 }
