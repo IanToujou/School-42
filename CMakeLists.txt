@@ -9,4 +9,6 @@ add_executable(school_42
 		C-11/ex05/includes/do_op.h
 		C-11/ex05/srcs/string_utils.c
 		C-11/ex05/srcs/string_utils.c
+		C-11/ex06/ft_sort_string_tab.c
+		C-11/ex07/ft_advanced_sort_string_tab.c
 )
