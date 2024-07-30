@@ -12,6 +12,12 @@
 
 #include "../includes/bsq.h"
 
+void    free_grid(t_grid *grid)
+{
+    free(grid->map);
+    free(grid->src);
+}
+
 void    process_grid(t_grid *grid, t_solution *solution)
 {
     UINT    x;
@@ -19,7 +25,24 @@ void    process_grid(t_grid *grid, t_solution *solution)
 
     if (find_solution(grid, solution))
     {
-
+        x = solution->x;
+        while (x < solution->x + solution->size)
+        {
+            y = solution->y;
+            while (y < solution->y + solution->size)
+            {
+                grid->map[y][x] = grid->translate[fill];
+                y++;
+            }
+            x++;
+        }
+        y = 0;
+        while (y < grid->height)
+        {
+            write(OUT, grid->map[y], grid->width);
+            write(OUT, "\n", 1);
+            y++;
+        }
     }
 
 }
