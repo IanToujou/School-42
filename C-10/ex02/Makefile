@@ -1,25 +1,31 @@
-SRCS = ./srcs/main.c ./srcs/string_utils.c ./srcs/ft_file_read.c
-INCS = includes/
-OBJS = ${SRCS:.c=.o}
-NAME = ft_tail
-CC = gcc
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+SRCS 	= ./srcs/main.c ./srcs/string_utils.c ./srcs/ft_file_read.c
+OBJS	= ${SRCS:.c=.o}
+INCS	= includes
+NAME	= ft_tail
+CC		= gcc
+RM		= rm -f
+CFLAGS	= -Wall -Wextra -Werror
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCS}
+.c.o :
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
-${NAME}:	${OBJS}
-			gcc -o ${NAME} ${OBJS} ${CFLAGS}
+${NAME} : ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
-all: ${NAME}
+all : ${NAME}
 
-clean:
+clean :
 	${RM} ${OBJS}
 
-fclean: clean
+fclean : clean
 	${RM} ${NAME}
 
-re: fclean all
+norm :
+	norminette */*.[ch]
 
-.PHONY:	all clean fclean re .c.o
+find_sources :
+	@find srcs -type f -name "*.c" | xargs -I{} echo ./{} | tr '\n' ' '
+
+re : fclean all
+
+.PHONY: all clean fclean re .c.o
