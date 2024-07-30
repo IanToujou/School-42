@@ -35,11 +35,10 @@ t_bool  find_solution(t_grid *grid, t_solution *solution)
     }
     if(solution->size)
         return (true);
-    else
-        return (false);
+    return (false);
 }
 
-static  void    actualize_solution(t_solution *solution, t_solution *intent, t_grid *grid)
+void    actualize_solution(t_solution *solution, t_solution *intent, t_grid *grid)
 {
     if (!fits(intent, grid))
         return ;
@@ -54,7 +53,7 @@ static  void    actualize_solution(t_solution *solution, t_solution *intent, t_g
     }
 }
 
-static t_bool	fits(const t_solution *intent, const t_grid *grid)
+t_bool	fits(const t_solution *intent, const t_grid *grid)
 {
     UINT i;
     UINT i_max;
@@ -80,7 +79,7 @@ static t_bool	fits(const t_solution *intent, const t_grid *grid)
     return (true);
 }
 
-static t_bool   fits_success(t_solution *intent, t_grid *grid)
+t_bool   fits_success(t_solution *intent, t_grid *grid)
 {
     UINT i;
     UINT j;
@@ -109,7 +108,7 @@ static t_bool   fits_success(t_solution *intent, t_grid *grid)
     return (true);
 }
 
-static t_bool	dont_fit_basic(const t_solution *intent, const t_grid *grid)
+t_bool	dont_fit_basic(const t_solution *intent, const t_grid *grid)
 {
     return (intent->x + intent->size > grid->width
             || intent->y + intent->size > grid->height);

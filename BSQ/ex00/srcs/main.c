@@ -18,9 +18,21 @@
  * @param argc The argument count.
  * @param argv The argument vector.
  */
-void    mult_arguments(int argc, char **argv)
+void    mult_arguments(t_grid *grid, t_solution *sol, int argc, char **argv)
 {
-    if(argc == 0 && argv[0][1] == 'x') return;
+    int index;
+
+    index = 0;
+    while (index < argc) {
+        if (load_grid(argv[index], grid))
+            process_grid(grid, sol);
+        else
+            write(ERR, "map error\n", 10);
+        index++;
+        if (index != argc)
+            write(OUT, "\n", 1);
+        free_grid(grid);
+    }
 }
 
 /**

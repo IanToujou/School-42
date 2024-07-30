@@ -12,6 +12,19 @@
 
 #include "../includes/bsq.h"
 
+t_bool  load_grid(char *path, t_grid *grid)
+{
+    int		fd;
+    t_bool	result;
+
+    fd = open(path, O_RDONLY);
+    if (fd < 0)
+        return (false);
+    result = parse_grid(fd, grid);
+    close(fd);
+    return (result);
+}
+
 void    free_grid(t_grid *grid)
 {
     free(grid->map);
