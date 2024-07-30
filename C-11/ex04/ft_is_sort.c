@@ -10,26 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- *
- *
- * @param tab AN array of integers that will be checked if it is sorted.
- * @param length The length of the provided array.
- * @param f A function to sort the array.
- * @return
- */
 int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
-	int	index;
+	int		index;
+	int		sorted;
 
-	if (length <= 1)
-		return (0);
+	sorted = 1;
 	index = 0;
-	while (index < length - 1)
+	while (index < length - 1 && sorted)
 	{
-		if (f(tab[index], tab[index + 1]) > 0)
-			return (0);
+		if ((*f)(tab[index], tab[index + 1]) < 0)
+			sorted = 0;
 		index++;
+	}
+	if (sorted != 1)
+	{
+		index = 0;
+		while (index < length - 1)
+		{
+			if ((*f)(tab[index], tab[index + 1]) > 0)
+				return (0);
+			index++;
+		}
 	}
 	return (1);
 }
