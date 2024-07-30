@@ -10,30 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/bsq.h"
+#include "../includes/bsq.h""
 
-t_bool parse_grid(int fd, t_grid *grid)
+t_bool	read_full(const int fd, char **content, UINT *total)
 {
-    char    *content;
-    UINT    total;
-    UINT    index;
+	char	buffer[BUFFER_3M]; // todo add fixed size of 3Mbyte
+	UINT	byte_read;
 
-    grid->map = 0;
-    if (!read_full(fd, &content, &total))
-        return (false);
-	grid->src = content;
-	index = 0;
-	while (index < total) {
-		if (content[index] == '\n') {
-			// todo fix
-			if (!ft_parse_header_line(grid, file_content, index))
-				return (false);
-			if (!(grid->map = malloc(sizeof(char *) * grid->h)))
-				return (false);
-			return (ft_process_lines(grid, index + 1, file_content, total));
-		}
-		index++;
+	if (read(fd, 0, 0) == -1)
+		return (false);
+	*total = 0;
+	*content = NULL;
+	byte_read = read(fd, buffer, BUFFER_3M);
+	while (byte_read > 0)
+	{
+		*content = extend_array(*content, buffer, *total, *total + byte_read);
+		if (*content == NULL)
+			return (false);
+		*total += byte_read;
+		byte_read = read(fd, buffer, BUFFER_3M);
 	}
+	if (byte_read == 0)
+		return (true);
 	return (false);
-
 }

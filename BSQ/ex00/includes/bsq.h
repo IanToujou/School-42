@@ -24,6 +24,9 @@
 # define UINT unsigned int
 # define ULNG unsigned long
 # define UCHR unsigned char
+# define BUFFER_1 1
+# define BUFFER_3M 3000000
+# define MAP_SIZE 100
 
 typedef enum t_bool
 {
@@ -52,7 +55,7 @@ typedef	enum {
     fill,
 }	t_block;
 
-int             parse_grid(int fd, t_grid *grid);
+t_bool          parse_grid(int fd, t_grid *grid);
 void            process_grid(t_grid *grid, t_solution *solution);
 void            free_grid(t_grid *grid);
 static t_bool   fits(const t_solution *intent, const t_grid *grid);
@@ -60,5 +63,9 @@ static t_bool   fits_success(t_solution *intent, t_grid *grid);
 static void     actualize_solution(t_solution *solution, t_solution *intent, t_grid *grid);
 t_bool          find_solution(t_grid *grid, t_solution *solution);
 static t_bool	dont_fit_basic(const t_solution *intent, const t_grid *grid);
+t_bool	        read_full(int fd, char **content, UINT *total);
+char	        *str_n_copy(char *dest, char *src, int n);
+char	        *extend_array(char *orig, char *n_cont, UINT old_len, UINT len);
+t_bool          atoi_n_strict(char *str, UINT n, UINT *result);
 
 #endif

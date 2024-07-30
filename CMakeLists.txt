@@ -7,7 +7,8 @@ add_executable(school_42
 		BSQ/ex00/srcs/main.c
 		BSQ/ex00/includes/bsq.h
 		BSQ/ex00/srcs/parse.c
-		BSQ/ex00/srcs/free_grid.c
 		BSQ/ex00/srcs/grid.c
 		BSQ/ex00/srcs/solution.c
+		BSQ/ex00/srcs/parse_extra.c
+		BSQ/ex00/srcs/util.c
 )
