@@ -1,4 +1,4 @@
-SRCS	= ./srcs/main.c
+SRCS	= ./srcs/main.c ./srcs/grid.c ./srcs/parse.c ./srcs/solution.c
 OBJS	= ${SRCS:.c=.o}
 INCS	= includes
 NAME	= do-op
