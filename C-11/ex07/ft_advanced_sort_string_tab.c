@@ -14,7 +14,7 @@
 
 void	ft_swap(char **a, char **b)
 {
-	char *c;
+	char	*c;
 
 	c = *a;
 	*a = *b;

@@ -13,7 +13,7 @@
 #ifndef DO_OP_H
 # define DO_OP_H
 
-#include <unistd.h>
+# include <unistd.h>
 
 # define OP_ADD '+'
 # define OP_SUB '-'

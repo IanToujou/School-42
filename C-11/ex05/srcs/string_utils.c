@@ -13,9 +13,11 @@
 #include "../includes/do_op.h"
 
 /**
- * Writes a character into an output stream. It will NOT add new lines automatically.
+ * Writes a character into an output stream. It will NOT add
+ * new lines automatically.
  *
- * @param fd The destination to write to. 0 is the input, 1 the default out, and 2 the error output.
+ * @param fd The destination to write to. 0 is the input,
+ * 1 the default out, and 2 the error output.
  * @param c The character that you want to write.
  */
 void	ft_putchar(const int fd, const char c)
@@ -28,7 +30,8 @@ void	ft_putstr(const int fd, const char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0') {
+	while (str[i] != '\0')
+	{
 		ft_putchar(fd, str[i]);
 		i++;
 	}
