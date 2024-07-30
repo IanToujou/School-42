@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/bsq.h""
+#include "../includes/bsq.h"
 
 t_bool	read_full(const int fd, char **content, UINT *total)
 {

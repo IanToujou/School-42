@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/bsq.h";
+#include "../includes/bsq.h"
 
 char	*str_n_copy(char *dest, char *src, int n)
 {

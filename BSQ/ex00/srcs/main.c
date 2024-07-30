@@ -66,6 +66,6 @@ int	main(int argc, char **argv)
     if (argc < 2)
         no_arguments(&grid, &solution);
     else
-        mult_arguments(argc, argv);
+        mult_arguments(&grid, &solution, argc, argv);
     return (0);
 }

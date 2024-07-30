@@ -88,8 +88,9 @@ t_bool parse_grid(int fd, t_grid *grid)
     UINT    index;
 
     grid->map = 0;
-    if (!read_full(fd, &content, &total))
-        return (false);
+    if (!read_full(fd, &content, &total)) {
+    	return (false);
+    }
 	grid->src = content;
 	index = 0;
 	while (index < total) {
