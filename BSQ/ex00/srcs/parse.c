@@ -94,8 +94,8 @@ t_bool parse_grid(int fd, t_grid *grid)
 	grid->src = content;
 	index = 0;
 	while (index < total) {
-		if (content[index] == '\n') {
-			// todo fix
+		if (content[index] == '\n')
+		{
 			if (!ft_parse_header_line(grid, content, index))
 				return (false);
 			if (!(grid->map = malloc(sizeof(char *) * grid->height)))

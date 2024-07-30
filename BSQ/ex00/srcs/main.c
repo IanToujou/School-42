@@ -56,12 +56,12 @@ void    no_arguments(t_grid *grid, t_solution *solution)
  *
  * @param argc The argument count.
  * @param argv The argument vector.
- * @return The status code in case this program fucks up.
+ * @return The status code in case this program f*cks up.
  */
 int	main(int argc, char **argv)
 {
     t_grid		grid;
-    t_solution  solution; // Can also be alcohol. Alcohol is always the solution.
+    t_solution  solution;
 
     if (argc < 2)
         no_arguments(&grid, &solution);

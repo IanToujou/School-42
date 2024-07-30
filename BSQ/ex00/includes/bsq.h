@@ -66,7 +66,7 @@ t_bool	dont_fit_basic(const t_solution *intent, const t_grid *grid);
 t_bool	        read_full(int fd, char **content, UINT *total);
 char	        *str_n_copy(char *dest, char *src, int n);
 char	        *extend_array(char *orig, char *n_cont, UINT old_len, UINT len);
-t_bool          atoi_n_strict(char *str, UINT n, UINT *result);
+t_bool          atoi_n_strict(const char *str, UINT n, UINT *result);
 t_bool          load_grid(char *path, t_grid *grid);
 
 #endif
