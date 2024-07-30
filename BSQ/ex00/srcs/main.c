@@ -20,7 +20,7 @@
  */
 void    mult_arguments(int argc, char **argv)
 {
-
+    if(argc == 0 && argv[0][1] == 'x') return;
 }
 
 /**
