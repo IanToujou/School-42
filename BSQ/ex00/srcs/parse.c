@@ -38,8 +38,8 @@ t_bool	ft_parse_normal_line(t_grid *grid, char *line, UINT length)
 	{
 		current = line[index];
 		if (current != grid->translate[empty]
-				&& current != grid->translate[obstacle]
-				&& current != grid->translate[fill])
+			&& current != grid->translate[obstacle]
+			&& current != grid->translate[fill])
 			return (false);
 		index++;
 	}
@@ -81,29 +81,31 @@ t_bool	ft_process_lines(t_grid *grid, UINT index,
 	return (y == grid->height);
 }
 
-t_bool parse_grid(int fd, t_grid *grid)
+t_bool	parse_grid(int fd, t_grid *grid)
 {
-    char    *content;
-    UINT    total;
-    UINT    index;
+	char	*content;
+	UINT	total;
+	UINT	index;
 
-    grid->map = 0;
-    if (!read_full(fd, &content, &total)) {
-    	return (false);
-    }
+	grid->map = 0;
+	if (!read_full(fd, &content, &total))
+	{
+		return (false);
+	}
 	grid->src = content;
 	index = 0;
-	while (index < total) {
-		if (content[index] == '\n') {
-			// todo fix
+	while (index < total)
+	{
+		if (content[index] == '\n')
+		{
+			grid->map = malloc(sizeof(char *) * grid->height);
 			if (!ft_parse_header_line(grid, content, index))
 				return (false);
-			if (!(grid->map = malloc(sizeof(char *) * grid->height)))
+			if (grid->map == NULL)
 				return (false);
 			return (ft_process_lines(grid, index + 1, content, total));
 		}
 		index++;
 	}
 	return (false);
-
 }

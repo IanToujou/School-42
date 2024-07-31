@@ -14,7 +14,7 @@
 
 t_bool	read_full(const int fd, char **content, UINT *total)
 {
-	char	buffer[BUFFER_3M]; // todo add fixed size of 3Mbyte
+	char	buffer[BUFFER_3M];
 	UINT	byte_read;
 
 	if (read(fd, 0, 0) == -1)

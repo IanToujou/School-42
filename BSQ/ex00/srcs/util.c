@@ -32,7 +32,7 @@ char	*str_n_copy(char *dest, char *src, int n)
 
 char	*extend_array(char *orig, char *n_cont, UINT old_len, UINT len)
 {
-	char *dest;
+	char	*dest;
 
 	dest = malloc((len + 1) * sizeof(char));
 	if (dest == NULL)

@@ -1,7 +1,7 @@
 SRCS	= ./srcs/main.c ./srcs/grid.c ./srcs/parse.c ./srcs/solution.c ./srcs/util.c ./srcs/parse_extra.c
 OBJS	= ${SRCS:.c=.o}
 INCS	= includes
-NAME	= do-op
+NAME	= bsq
 CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror

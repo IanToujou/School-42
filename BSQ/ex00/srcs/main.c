@@ -18,21 +18,22 @@
  * @param argc The argument count.
  * @param argv The argument vector.
  */
-void    mult_arguments(t_grid *grid, t_solution *sol, int argc, char **argv)
+void	mult_arguments(t_grid *grid, t_solution *sol, int argc, char **argv)
 {
-    int index;
+	int	index;
 
-    index = 0;
-    while (index < argc) {
-        if (load_grid(argv[index], grid))
-            process_grid(grid, sol);
-        else
-            write(ERR, "map error\n", 10);
-        index++;
-        if (index != argc)
-            write(OUT, "\n", 1);
-        free_grid(grid);
-    }
+	index = 0;
+	while (index < argc)
+	{
+		if (load_grid(argv[index], grid))
+			process_grid(grid, sol);
+		else
+			write(ERR, "map error\n", 10);
+		index++;
+		if (index != argc)
+			write(OUT, "\n", 1);
+		free_grid(grid);
+	}
 }
 
 /**
@@ -42,13 +43,13 @@ void    mult_arguments(t_grid *grid, t_solution *sol, int argc, char **argv)
  * @param grid The grid that will be processed.
  * @param solution Alcohol. Alcohol is always a solution.
  */
-void    no_arguments(t_grid *grid, t_solution *solution)
+void	no_arguments(t_grid *grid, t_solution *solution)
 {
-    if (parse_grid(IN, grid))
-        process_grid(grid, solution);
-    else
-        write(ERR, "map error\n", 10);
-    free_grid(grid);
+	if (parse_grid(IN, grid))
+		process_grid(grid, solution);
+	else
+		write(ERR, "map error\n", 10);
+	free_grid(grid);
 }
 
 /**
@@ -60,12 +61,12 @@ void    no_arguments(t_grid *grid, t_solution *solution)
  */
 int	main(int argc, char **argv)
 {
-    t_grid		grid;
-    t_solution  solution; // Can also be alcohol. Alcohol is always the solution.
+	t_grid		grid;
+	t_solution	solution;
 
-    if (argc < 2)
-        no_arguments(&grid, &solution);
-    else
-        mult_arguments(&grid, &solution, argc, argv);
-    return (0);
+	if (argc < 2)
+		no_arguments(&grid, &solution);
+	else
+		mult_arguments(&grid, &solution, argc, argv);
+	return (0);
 }
