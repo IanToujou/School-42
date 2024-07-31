@@ -58,7 +58,7 @@ char	*extend_array(char *orig, char *n_cont, UINT old_len, UINT len)
  * @return A boolean depending on the result. False if the input is not a number,
  * and true if it was processed correctly.
  */
-t_bool	atoi_n_strict(const char *str, UINT n, UINT *result)
+t_bool	atoi_n_strict(char *str, UINT n, UINT *result)
 {
 	UINT	index;
 
