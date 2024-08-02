@@ -17,12 +17,16 @@ void	ft_transform_char(char *c, bool to_upper)
 	if (!to_upper)
 	{
 		if (*c >= 'A' && *c <= 'Z')
+		{
 			*c = *c + 32;
+		}
 	}
 	else
 	{
 		if (*c >= 'a' && *c <= 'z')
+		{
 			*c = *c - 32;
+		}
 	}
 }
 

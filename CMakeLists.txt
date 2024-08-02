@@ -4,11 +4,5 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
-		BSQ/ex00/srcs/main.c
-		BSQ/ex00/includes/bsq.h
-		BSQ/ex00/srcs/parse.c
-		BSQ/ex00/srcs/grid.c
-		BSQ/ex00/srcs/solution.c
-		BSQ/ex00/srcs/parse_extra.c
-		BSQ/ex00/srcs/util.c
+		C-02/ex09/ft_strcapitalize.c
 )
