@@ -7,4 +7,5 @@ add_executable(school_42
 		Piscine/C-02/ex09/ft_strcapitalize.c
 		Core/LibFT/ft_memset.c
 		Core/LibFT/libft.h
+		Core/LibFT/ft_bzero.c
 )
