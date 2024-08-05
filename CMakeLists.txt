@@ -4,5 +4,7 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
-		Piscine/C-02/ex09/Piscine/ft_strcapitalize.c
+		Piscine/C-02/ex09/ft_strcapitalize.c
+		Core/LibFT/ft_memset.c
+		Core/LibFT/libft.h
 )
