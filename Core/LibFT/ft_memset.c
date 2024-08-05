@@ -15,6 +15,6 @@
 void	*ft_memset(void *str, int c, size_t n)
 {
 	while (n--)
-		((t_byte*)str)[n] = (t_byte) c;
+		((t_byte *)str)[n] = (t_byte) c;
 	return (str);
 }

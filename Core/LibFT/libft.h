@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCHOOL_42_LIBFT_H
-# define SCHOOL_42_LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <string.h>
 
