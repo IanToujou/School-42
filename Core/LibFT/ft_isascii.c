@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_bzero.c >                                     :+:      :+:    :+:   */
+/*   < ft_isascii.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 /**
- * Does the same as memset, but fills every byte with 0.
+ * Checks whether a character is in the default ASCII table.
+ * It does this by comparing the ASCII values.
  *
- * @param s The starting destination in the memory.
- * @param n How many bytes should be filled.
+ * @param c The character to check.
+ * @return 0 if the condition is false, and 1 on true.
  */
-void	ft_bzero(void *s, size_t n)
+int	ft_isascii(int c)
 {
-	ft_memset(s, 0, n);
+	return (c >= 0 && c <= 127);
 }

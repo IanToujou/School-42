@@ -8,4 +8,7 @@ add_executable(school_42
 		Core/LibFT/ft_memset.c
 		Core/LibFT/libft.h
 		Core/LibFT/ft_bzero.c
+		Core/LibFT/ft_memcpy.c
+		Core/LibFT/ft_isascii.c
+		Core/LibFT/ft_isdigit.c
 )

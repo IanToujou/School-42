@@ -12,6 +12,15 @@
 
 #include "libft.h"
 
+/**
+ * Fills a certain space in memory up with the value c, starting
+ * from s, and up to n characters.
+ *
+ * @param s The starting destination in the memory.
+ * @param c The character, or number, that will fill.
+ * @param n How many bytes should be filled.
+ * @return
+ */
 void	*ft_memset(void *s, int c, size_t n)
 {
 	while (n--)

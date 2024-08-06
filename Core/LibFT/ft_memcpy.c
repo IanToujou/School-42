@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_bzero.c >                                     :+:      :+:    :+:   */
+/*   < ft_memcpy.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,12 +13,23 @@
 #include "libft.h"
 
 /**
- * Does the same as memset, but fills every byte with 0.
+ * Copies n bytes of memory into a destination block.
  *
- * @param s The starting destination in the memory.
- * @param n How many bytes should be filled.
+ * @param dst The destination of the copy.
+ * @param src The source to copy.
+ * @param n The amount of bytes to copy.
+ * @return A pointer to the destination of the copy, if successful.
  */
-void	ft_bzero(void *s, size_t n)
+void	*ft_memcpy(void *dst, void *src, size_t n)
 {
-	ft_memset(s, 0, n);
+	size_t i;
+
+	i = 0;
+	if(!dst || !src)
+		return (NULL);
+	while(i < n)
+	{
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
 }
