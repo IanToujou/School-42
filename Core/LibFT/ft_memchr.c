@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_isdigit.c >                                   :+:      :+:    :+:   */
+/*   < ft_memchr.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
- * Checks whether a character is a digit, from 0 to 9.
- * It does this by comparing the ASCII values.
+ * Find the first occurrence of the character c in the
+ * initial n bytes pointed by s.
  *
- * @param c The character to check.
- * @return 0 if the condition is false, and 1 on true.
+ * @param s A pointer to the source that should be scanned.
+ * @param c The character to check for.
+ * @param n The amount of bytes to check for the character.
+ * @return A pointer to the first occurence of the character.
+ * NULL if there was no occurence.
  */
-int	ft_isdigit(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	return (c >= 48 && c <= 57);
+	const char	*sc;
+	size_t		i;
+
+	sc = (const char *)s;
+	i = -1;
+	while (i++ < n)
+	{
+		if (*(sc + i) == (char)c)
+			return ((void *)sc + 1);
+	}
+	return (NULL);
 }

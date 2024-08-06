@@ -29,10 +29,10 @@
  */
 void	*ft_memccpy(void *dst, void *src, int c, size_t n)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		if (((unsigned char *)src)[i] == c)

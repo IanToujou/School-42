@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_isdigit.c >                                   :+:      :+:    :+:   */
+/*   < ft_memcmp.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
- * Checks whether a character is a digit, from 0 to 9.
- * It does this by comparing the ASCII values.
+ * Compares two blocks of memory, pointed to by s1 and s2.
  *
- * @param c The character to check.
- * @return 0 if the condition is false, and 1 on true.
+ * @param s1 The first block.
+ * @param s2 The second block.
+ * @return The difference between the first occurence that
+ * is different.
  */
-int	ft_isdigit(int c)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	return (c >= 48 && c <= 57);
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i]);
+		i++;
+	}
+	return (0);
 }
