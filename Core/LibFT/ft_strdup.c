@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < libft.h >                                        :+:      :+:    :+:   */
+/*   < ft_strdup.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <string.h>
-# include <malloc.h>
-
-typedef unsigned char	t_byte;
-
-int		ft_isascii(int c);
-int		ft_isdigit(int c);
-
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(char *src);
-
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_memcpy(void *dst, void *src, size_t n);
-void	*ft_memccpy(void *dest, void *src, int c, size_t n);
-void	*ft_memmove(void *dst, void *src, size_t s);
-void	*ft_memchr(const void *s, int c, size_t n);
-void	ft_bzero(void *s, size_t n);
-
-typedef struct s_list
+/**
+ * Duplicates a string by allocating new memory for it.
+ *
+ * @param src The string to duplicate.
+ * @return A pointer to the destination.
+ */
+char	*ft_strdup(char *src)
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}	t_list;
+	char	*dst;
+	size_t	size;
 
-#endif
+	size = ft_strlen(src) + 1;
+	dst = (char *) malloc(size);
+	if (!dst)
+		return (NULL);
+	ft_memcpy(dst, src, size);
+	return (dst);
+}

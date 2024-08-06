@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < libft.h >                                        :+:      :+:    :+:   */
+/*   < ft_strlen.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <string.h>
-# include <malloc.h>
-
-typedef unsigned char	t_byte;
-
-int		ft_isascii(int c);
-int		ft_isdigit(int c);
-
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(char *src);
-
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_memcpy(void *dst, void *src, size_t n);
-void	*ft_memccpy(void *dest, void *src, int c, size_t n);
-void	*ft_memmove(void *dst, void *src, size_t s);
-void	*ft_memchr(const void *s, int c, size_t n);
-void	ft_bzero(void *s, size_t n);
-
-typedef struct s_list
+/**
+ * Calculates the length of a given string.
+ *
+ * @param s The string to calculate the length of.
+ * @return The length of the string.
+ */
+size_t	ft_strlen(const char *s)
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}	t_list;
+	size_t	i;
 
-#endif
+	i = 0;
+	while(s[i])
+		i++;
+	return (i);
+}

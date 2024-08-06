@@ -19,7 +19,6 @@
  * If c is encountered, it will copy it too and return a pointer
  * to the next byte after the character c.
  *
- *
  * @param dst The destination of the copy.
  * @param src The source to copy.
  * @param c The character to encounter.
