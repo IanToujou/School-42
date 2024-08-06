@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < libft.h >                                        :+:      :+:    :+:   */
+/*   < ft_memmove.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <string.h>
-
-typedef unsigned char	t_byte;
-
-int		ft_isascii(int c);
-int		ft_isdigit(int c);
-
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_memcpy(void *dst, void *src, size_t n);
-void	*ft_memccpy(void *dest, void *src, int c, size_t n);
-void	*ft_memmove(void *dst, void *src, size_t s);
-void	ft_bzero(void *s, size_t n);
-
-typedef struct s_list
+/**
+ * Copies n bytes from a source to a destination. It is
+ * similar to memcpy, but it uses an intermediate buffer.
+ *
+ * @param dst The destination to copy to.
+ * @param src The source to copy from.
+ * @param s The amount of bytes to copy.
+ * @return
+ */
+void	*ft_memmove(void *dst, void *src, size_t s)
 {
-	void *content;
-	size_t content_size;
-	struct s_list *next;
-}	t_list;
+	size_t	i;
 
-#endif
+	if (src < dst)
+		ft_memcpy(dst, src, s);
+	else
+	{
+		i = 0;
+		while (i < s)
+		{
+			((char *)dst)[i] = ((char *)src)[i];
+			i++;
+		}
+	}
+	return (dst);
+}

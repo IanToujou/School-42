@@ -12,4 +12,5 @@ add_executable(school_42
 		Core/LibFT/ft_isascii.c
 		Core/LibFT/ft_isdigit.c
 		Core/LibFT/ft_memccpy.c
+		Core/LibFT/ft_memmove.c
 )
