@@ -18,10 +18,12 @@
 typedef unsigned char	t_byte;
 
 int		ft_isascii(int c);
+int		ft_isdigit(int c);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, void *src, size_t n);
+void	*ft_memccpy(void *dest, void *src, int c, size_t n)
 
 typedef struct s_list
 {
