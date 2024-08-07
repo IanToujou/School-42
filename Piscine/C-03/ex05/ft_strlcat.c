@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	strlen_f(char *dest)
+unsigned int	ft_str_length_fast(char *dest)
 {
 	int	count;
 
 	count = 0;
-	while (dst[count] != '\0')
+	while (dest[count] != '\0')
 		count++;
 	return (count);
 }
