@@ -17,4 +17,7 @@ add_executable(school_42
 		Core/LibFT/ft_memcmp.c
 		Core/LibFT/ft_strlen.c
 		Core/LibFT/ft_strdup.c
+		Core/LibFT/ft_strcpy.c
+		Core/LibFT/ft_strncpy.c
+		Core/LibFT/ft_strcat.c
 )
