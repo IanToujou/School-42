@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
  * Copies a string form a source to a destination string,
  * up to n bytes. If n is larger than the string to copy,

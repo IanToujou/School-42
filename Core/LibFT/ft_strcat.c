@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
  * Concatenates two string together, by adding the
  * src string to the destination.

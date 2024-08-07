@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_isascii.c >                                   :+:      :+:    :+:   */
+/*   < ft_strncat.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,13 +13,33 @@
 #include "libft.h"
 
 /**
- * Checks whether a character is in the default ASCII table.
- * It does this by comparing the ASCII values.
+ * Concatenates two string together, by adding the
+ * src string to the destination. It is similar to
+ * ft_strcat, but only concatenates up to a certain
+ * amount of characters, defined by n.
  *
- * @param c The character to check.
- * @return 0 if the condition is false, and 1 on true.
+ * @param dst The destination to copy to.
+ * @param src The source to copy from.
+ * @param n The maximum amount of characters to copy.
+ * @return A pointer to the destination string.
  */
-int	ft_isascii(int c)
+char	*ft_strncat(char *dst, const char *src, unsigned int n)
 {
-	return (c >= 0 && c <= 127);
+	unsigned int	i1;
+	unsigned int	i2;
+
+	i1 = 0;
+	i2 = 0;
+	while (dst[i1] != '\0')
+	{
+		i1++;
+	}
+	while (src[i2] != '\0' && i2 < n)
+	{
+		dst[i1] = src[i2];
+		i1++;
+		i2++;
+	}
+	dst[i1] = '\0';
+	return (dst);
 }

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
  * Checks whether a character is a digit, from 0 to 9.
  * It does this by comparing the ASCII values.

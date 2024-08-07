@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_isascii.c >                                   :+:      :+:    :+:   */
+/*   < ft_strlcat.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,13 +13,37 @@
 #include "libft.h"
 
 /**
- * Checks whether a character is in the default ASCII table.
- * It does this by comparing the ASCII values.
  *
- * @param c The character to check.
- * @return 0 if the condition is false, and 1 on true.
+ * @param dst
+ * @param src
+ * @param n
+ * @return
  */
-int	ft_isascii(int c)
+unsigned int	ft_strlcat(char *dst, char *src, unsigned int n)
 {
-	return (c >= 0 && c <= 127);
+	char			*s;
+	char			*src_start;
+	unsigned int	dst_length;
+	unsigned int	remaining;
+
+	s = dst;
+	src_start = src;
+	remaining = n;
+	while (remaining-- != 0 && *s != '\0')
+		s++;
+	dst_length = s - dst;
+	remaining = n - dst_length;
+	if (remaining == 0)
+		return (dst_length + ft_strlen(src));
+	while (*src != '\0')
+	{
+		if (remaining > 1)
+		{
+			*s++ = *src;
+			remaining--;
+		}
+		src++;
+	}
+	*s = '\0';
+	return (dst_length + (src - src_start));
 }

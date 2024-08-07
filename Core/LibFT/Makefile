@@ -12,8 +12,20 @@
 
 NAME = libft.a
 
-SRC =	ft_memset.c \
-		ft_bzero.c
+SRC =	ft_bzero.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_memccpy.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_strcat.c \
+		ft_strcpy.c \
+		ft_strdup.c \
+		ft_strlen.c \
+		ft_strncpy.c
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra

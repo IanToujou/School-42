@@ -20,4 +20,6 @@ add_executable(school_42
 		Core/LibFT/ft_strcpy.c
 		Core/LibFT/ft_strncpy.c
 		Core/LibFT/ft_strcat.c
+		Core/LibFT/ft_strncat.c
+		Core/LibFT/ft_strlcat.c
 )

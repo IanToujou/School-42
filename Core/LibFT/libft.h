@@ -21,11 +21,13 @@ typedef unsigned char	t_byte;
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(char *src);
-char	*ft_strcpy(char *dst, const char *src);
-char	*ft_strncpy(char *dst, const char *src, unsigned int n);
-char	*ft_strcat(char *dst, char *src);
+char			*ft_strdup(char *src);
+char			*ft_strcpy(char *dst, const char *src);
+char			*ft_strncpy(char *dst, const char *src, unsigned int n);
+char			*ft_strcat(char *dst, char *src);
+char			*ft_strncat(char *dst, const char *src, unsigned int n);
+size_t			ft_strlen(const char *s);
+unsigned int	ft_strlcat(char *dst, char *src, unsigned int n);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dst, void *src, size_t n);

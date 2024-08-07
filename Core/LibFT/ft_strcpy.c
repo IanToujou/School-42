@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /**
  * Copies a string form a source to a destination string.
  * It will NOT allocate new memory.
