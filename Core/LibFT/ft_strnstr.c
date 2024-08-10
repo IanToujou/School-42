@@ -36,7 +36,7 @@ char	*ft_strnstr(const char *s, const char *to_find, size_t n)
 		{
 			i = 1;
 			while (to_find[i] && s[pos + i] == to_find[i]
-				   && (size_t)(pos + i) < n)
+				&& (size_t)(pos + i) < n)
 				i++;
 			if (to_find[i] == '\0')
 				return ((char *)&s[pos]);

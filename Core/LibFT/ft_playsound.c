@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strrchr.c >                                   :+:      :+:    :+:   */
+/*   < ft_playsound.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,32 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <windows.h>
 
-/**
- * Does the same as ft_strchr, and looks for a character
- * in a specified string. However, this function will not
- * look for the first occurence, but for the last.
- *
- * @param s The string to perform the search operation on.
- * @param c The character that should be searched for.
- * @return A pointer to the character that should be found.
- */
-char	*ft_strrchr(const char *s, int c)
+void	ft_playsound(int f, int t)
 {
-	char		*last;
-	char		find;
-	size_t		i;
-
-	last = (char *)s;
-	find = (char)c;
-	i = ft_strlen(s);
-	while (i > 0)
-	{
-		if (last[i] == find)
-			return (last + i);
-		i--;
-	}
-	if (last[i] == find)
-		return (last);
-	return (NULL);
+	if (f < 37 || f > 32767 || t <= 0)
+		return ;
+	Beep(f, t);
 }

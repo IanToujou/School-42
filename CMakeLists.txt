@@ -28,4 +28,5 @@ add_executable(school_42
 		Core/LibFT/ft_strnstr.c
 		Core/LibFT/ft_strcmp.c
 		Core/LibFT/ft_strncmp.c
+		Core/LibFT/ft_playsound.c
 )
