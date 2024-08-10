@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strchr.c >                                    :+:      :+:    :+:   */
+/*   < ft_strrchr.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,24 +13,30 @@
 #include "libft.h"
 
 /**
- * Searches for a specified character c in a given string s.
+ * Does the same as ft_strchr, and looks for a character
+ * in a specified string. However, this function will not
+ * look for the first occurence, but for the last.
  *
  * @param s The string to perform the search operation on.
  * @param c The character that should be searched for.
  * @return A pointer to the character that should be found.
  */
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	int 	i;
+	char		*last;
+	char		find;
+	size_t		i;
 
-	i = 0;
-	while (s[i])
+	last = (char *)s;
+	find = (char)c;
+	i = ft_strlen(s);
+	while (i > 0)
 	{
-		if(s[i] == (unsigned char) c)
-			return ((char *)s + i);
-		i++;
+		if (last[i] == find)
+			return (last + i);
+		i--;
 	}
-	if (s[i] == (unsigned char) c)
-		return ((char *)s + i);
+	if (last[i] == find)
+		return (last);
 	return (NULL);
 }

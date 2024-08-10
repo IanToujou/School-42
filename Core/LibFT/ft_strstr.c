@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strchr.c >                                    :+:      :+:    :+:   */
+/*   < ft_strstr.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,24 +13,33 @@
 #include "libft.h"
 
 /**
- * Searches for a specified character c in a given string s.
+ * Searches for a string inside another string.
  *
- * @param s The string to perform the search operation on.
- * @param c The character that should be searched for.
- * @return A pointer to the character that should be found.
+ * @param s The string to scan.
+ * @param to_find The string to search for.
+ * @return A pointer to the found string, or NULL if
+ * not found.
  */
-char	*ft_strchr(const char *s, int c)
+char	*ft_strstr(char *s, char *to_find)
 {
-	int 	i;
+	char	*haystack;
+	char	*needle;
 
-	i = 0;
-	while (s[i])
+	if (*to_find == '\0')
+		return (s);
+	haystack = s;
+	needle = to_find;
+	while (true)
 	{
-		if(s[i] == (unsigned char) c)
-			return ((char *)s + i);
-		i++;
+		if (*needle == '\0')
+			return (haystack - (needle - to_find));
+		if (*haystack == *needle)
+			needle++;
+		else
+			needle = to_find;
+		if (*haystack == '\0')
+			break ;
+		haystack++;
 	}
-	if (s[i] == (unsigned char) c)
-		return ((char *)s + i);
 	return (NULL);
 }

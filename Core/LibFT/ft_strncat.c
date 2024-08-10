@@ -31,9 +31,7 @@ char	*ft_strncat(char *dst, const char *src, unsigned int n)
 	i1 = 0;
 	i2 = 0;
 	while (dst[i1] != '\0')
-	{
 		i1++;
-	}
 	while (src[i2] != '\0' && i2 < n)
 	{
 		dst[i1] = src[i2];

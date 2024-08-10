@@ -22,10 +22,14 @@ SRC =	ft_bzero.c \
 		ft_memmove.c \
 		ft_memset.c \
 		ft_strcat.c \
+		ft_strchr.c \
 		ft_strcpy.c \
 		ft_strdup.c \
+		ft_strlcat.c \
 		ft_strlen.c \
-		ft_strncpy.c
+		ft_strncat.c \
+		ft_strncpy.c \
+		ft_strrchr.c
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra

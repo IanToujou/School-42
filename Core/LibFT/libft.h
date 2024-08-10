@@ -15,6 +15,7 @@
 
 # include <string.h>
 # include <malloc.h>
+# include <stdbool.h>
 
 typedef unsigned char	t_byte;
 
@@ -29,6 +30,8 @@ char			*ft_strncat(char *dst, const char *src, unsigned int n);
 size_t			ft_strlen(const char *s);
 unsigned int	ft_strlcat(char *dst, char *src, unsigned int n);
 char			*ft_strchr(const char *s, int c);
+char			*ft_strrchr(const char *s, int c);
+char			*ft_strstr(char *s, char *to_find);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dst, void *src, size_t n);
