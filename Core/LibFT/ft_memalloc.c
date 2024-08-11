@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_memset.c >                                    :+:      :+:    :+:   */
+/*   < ft_memalloc.c >                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,17 +13,20 @@
 #include "libft.h"
 
 /**
- * Fills a certain space in memory up with the value c, starting
- * from s, and up to n characters.
  *
- * @param s The starting destination in the memory.
- * @param c The character, or number, that will fill.
- * @param n How many bytes should be filled.
- * @return A pointer to the starting destination.
+ * Allocates a specific amount of memory and
+ * initializes it to zero.
+ *
+ * @param size The amount of memory to allocate.
+ * @return A pointer to the newly allocated block.
  */
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memalloc(size_t size)
 {
-	while (n--)
-		((t_byte *)s)[n] = (t_byte) c;
-	return (s);
+	void*	result;
+
+	result = malloc(sizeof(size_t) * size);
+	if (result == NULL)
+		return (NULL);
+	ft_bzero(result, size);
+	return (result);
 }
