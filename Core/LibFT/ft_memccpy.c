@@ -28,7 +28,7 @@
  */
 void	*ft_memccpy(void *dst, void *src, int c, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)
