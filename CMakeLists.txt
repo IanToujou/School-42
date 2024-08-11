@@ -31,4 +31,6 @@ add_executable(school_42
 		Core/LibFT/ft_bzero.c
 		Core/LibFT/ft_atoi.c
 		Core/LibFT/ft_isalpha.c
+		Core/LibFT/ft_isalnum.c
+		Core/LibFT/ft_isprint.c
 )
