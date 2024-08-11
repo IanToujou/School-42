@@ -29,4 +29,6 @@ add_executable(school_42
 		Core/LibFT/ft_strcmp.c
 		Core/LibFT/ft_strncmp.c
 		Core/LibFT/ft_bzero.c
+		Core/LibFT/ft_atoi.c
+		Core/LibFT/ft_isalpha.c
 )

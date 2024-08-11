@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_bzero.c >                                     :+:      :+:    :+:   */
+/*   < ft_atoi.c >                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,12 +13,34 @@
 #include "libft.h"
 
 /**
- * Does the same as memset, but fills every byte with 0.
+ * Converts a string into an integer number. This
+ * function will skip any whitespace characters, then
+ * process any + or - signs and convert the remaining
+ * number until the string ends or at the first occurrence
+ * of a non-numeric character.
  *
- * @param s The starting destination in the memory.
- * @param n How many bytes should be filled.
+ * @param str The string to convert.
+ * @return The number extracted from the string.
  */
-void	ft_bzero(void *s, size_t n)
+int	ft_atoi(const char *str)
 {
-	ft_memset(s, 0, n);
+	int	n;
+	int	s;
+
+	n = 0;
+	s = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == 43 || *str == 45)
+	{
+		if (*str == 45)
+			s *= -1;
+		str++;
+	}
+	while (*str >= 48 && *str <= 57)
+	{
+		n = n * 10 + (*str - '0');
+		str++;
+	}
+	return (n * s);
 }

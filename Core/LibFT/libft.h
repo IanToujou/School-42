@@ -21,6 +21,8 @@ typedef unsigned char	t_byte;
 
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
+int					ft_isalpha(int c);
+int					ft_atoi(const char *str);
 
 unsigned int		ft_strlcat(char *dst, char *src, unsigned int n);
 char				*ft_strdup(char *src);
