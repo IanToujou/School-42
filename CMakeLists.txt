@@ -37,4 +37,6 @@ add_executable(school_42
 		Core/LibFT/ft_tolower.c
 		Core/LibFT/ft_memalloc.c
 		Core/LibFT/ft_memalloc.c
+		Core/LibFT/ft_memdel.c
+		Core/LibFT/ft_strnew.c
 )
