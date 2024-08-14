@@ -53,6 +53,7 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
+void				ft_strdel(char **as);
 
 typedef struct s_list
 {
