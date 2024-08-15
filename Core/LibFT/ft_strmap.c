@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_striteri.c >                                  :+:      :+:    :+:   */
+/*   < ft_strmap.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,7 @@
 
 #include "libft.h"
 
-/**
- * Applies the function f to each character in a
- * given string s.
- *
- * @param s
- * @param f
- */
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+char * ft_strmap(char const *s, char (*f)(char))
 {
-	unsigned int	i;
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
 }
-
