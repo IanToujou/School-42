@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_striter.c >                                   :+:      :+:    :+:   */
+/*   < ft_striteri.c >                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,7 @@
 
 #include "libft.h"
 
-/**
- * Applies a given function f to every character
- * in a specified string, s.
- *
- * @param s The string to apply the function to.
- * @param f The function that should be applied to
- * every character in the string.
- */
-void	ft_striter(char *s, void (*f)(char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (s && f)
-		while (s)
-			f(s++);
+
 }

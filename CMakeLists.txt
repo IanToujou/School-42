@@ -42,4 +42,5 @@ add_executable(school_42
 		Core/LibFT/ft_strdel.c
 		Core/LibFT/ft_strclr.c
 		Core/LibFT/ft_striter.c
+		Core/LibFT/ft_striteri.c
 )
