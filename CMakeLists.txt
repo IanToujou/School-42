@@ -4,44 +4,5 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
-		Piscine/C-02/ex09/ft_strcapitalize.c
-		Core/LibFT/ft_memset.c
-		Core/LibFT/libft.h
-		Core/LibFT/ft_bzero.c
-		Core/LibFT/ft_memcpy.c
-		Core/LibFT/ft_isascii.c
-		Core/LibFT/ft_isdigit.c
-		Core/LibFT/ft_memccpy.c
-		Core/LibFT/ft_memmove.c
-		Core/LibFT/ft_memchr.c
-		Core/LibFT/ft_memcmp.c
-		Core/LibFT/ft_strlen.c
-		Core/LibFT/ft_strdup.c
-		Core/LibFT/ft_strcpy.c
-		Core/LibFT/ft_strncpy.c
-		Core/LibFT/ft_strcat.c
-		Core/LibFT/ft_strncat.c
-		Core/LibFT/ft_strlcat.c
-		Core/LibFT/ft_strchr.c
-		Core/LibFT/ft_strrchr.c
-		Core/LibFT/ft_strstr.c
-		Core/LibFT/ft_strnstr.c
-		Core/LibFT/ft_strcmp.c
-		Core/LibFT/ft_strncmp.c
-		Core/LibFT/ft_bzero.c
-		Core/LibFT/ft_atoi.c
-		Core/LibFT/ft_isalpha.c
-		Core/LibFT/ft_isalnum.c
-		Core/LibFT/ft_isprint.c
-		Core/LibFT/ft_toupper.c
-		Core/LibFT/ft_tolower.c
-		Core/LibFT/ft_memalloc.c
-		Core/LibFT/ft_memalloc.c
-		Core/LibFT/ft_memdel.c
-		Core/LibFT/ft_strnew.c
-		Core/LibFT/ft_strdel.c
-		Core/LibFT/ft_strclr.c
-		Core/LibFT/ft_striter.c
-		Core/LibFT/ft_striteri.c
-		Core/LibFT/ft_strmap.c
+		Core/LibFT/main.c
 )
