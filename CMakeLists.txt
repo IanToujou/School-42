@@ -7,4 +7,5 @@ add_executable(school_42
 		Core/LibFT/ft_strcat.c
 		Core/LibFT/ft_strmap.c
 		Core/LibFT/ft_strmapi.c
+		Core/LibFT/ft_strequ.c
 )
