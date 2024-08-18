@@ -9,4 +9,5 @@ add_executable(school_42
 		Core/LibFT/ft_strmapi.c
 		Core/LibFT/ft_strequ.c
 		Core/LibFT/ft_strnequ.c
+		Core/LibFT/ft_str.c
 )
