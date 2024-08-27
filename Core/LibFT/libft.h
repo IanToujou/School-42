@@ -27,6 +27,7 @@ int					ft_isprint(int c);
 int					ft_isalnum(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+char				*ft_itoa(int n);
 
 unsigned int		ft_strlcat(char *dst, char *src, unsigned int n);
 char				*ft_strdup(char *src);
