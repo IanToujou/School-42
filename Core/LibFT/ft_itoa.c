@@ -28,13 +28,20 @@ static size_t	get_size(int n)
 	return (size);
 }
 
+/**
+ * Converts an integer number into a string.
+ * Supports all negative and positive integers.
+ *
+ * @param n The integer to convert.
+ * @return A new string containing the number.
+ */
 char	*ft_itoa(int n)
 {
 	char	*result;
 	long	num;
 	size_t	size;
 
-	num = n;
+	num = (long) n;
 	size = get_size(n);
 	if (n < 0)
 		num *= -1;
