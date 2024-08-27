@@ -14,5 +14,9 @@ add_executable(school_42
 		Core/LibFT/ft_strtrim.c
 		Core/LibFT/ft_strsplit.c
 		Core/LibFT/ft_itoa.c
+		Core/LibFT/ft_putchar.c
+		Core/LibFT/ft_putstr.c
+		Core/LibFT/ft_putendl.c
+		Core/LibFT/ft_putnbr.c
 
 )
