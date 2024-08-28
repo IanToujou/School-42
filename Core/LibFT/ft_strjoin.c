@@ -23,8 +23,8 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
-	size_t 	l1;
-	size_t 	l2;
+	size_t	l1;
+	size_t	l2;
 	size_t	i;
 
 	if (s1 && s2)

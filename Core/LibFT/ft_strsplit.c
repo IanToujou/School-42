@@ -52,7 +52,7 @@ static int	new_str(char const *str, char c)
 
 static char	**split(char **array, char const *s, char c, int count)
 {
-	char	*new_str;
+	char	*str;
 	int		key;
 	int		i;
 
@@ -60,15 +60,15 @@ static char	**split(char **array, char const *s, char c, int count)
 	key = 0;
 	while (key < count)
 	{
-		new_str = (char*)malloc(sizeof(char) * (new_str(s, c) + 1));
-		if (new_str == NULL)
+		str = (char *)malloc(sizeof(char) * (new_str(s, c) + 1));
+		if (str == NULL)
 			return (NULL);
 		while (s[0] == c && s[0] != '\0')
 			s++;
 		while (s[0] != c && s[0] != '\0')
-			new_str[i++] = *s++;
-		new_str[i] = '\0';
-		array[key++] = new_str;
+			str[i++] = *s++;
+		str[i] = '\0';
+		array[key++] = str;
 		i = 0;
 	}
 	array[count] = 0;
@@ -93,7 +93,7 @@ char	**ft_strsplit(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	count = word_count(s, c);
-	array = (char**)malloc(sizeof(char*) * (count + 1));
+	array = (char **)malloc(sizeof(char *) * (count + 1));
 	if (array == NULL)
 		return (NULL);
 	array = split(array, s, c, count);
