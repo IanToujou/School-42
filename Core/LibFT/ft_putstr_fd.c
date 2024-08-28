@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_putstr.c >                                    :+:      :+:    :+:   */
+/*   < ft_putstr_fd.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,11 +13,18 @@
 #include "libft.h"
 
 /**
- * Writes a string to the standard output.
+ * Writes a string to a given file descriptor.
  *
  * @param s The string to write.
  */
-void	ft_putstr(char const *s)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	ft_putstr_fd(s, 1);
+	int i;
+
+	i = 0;
+	while(s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }

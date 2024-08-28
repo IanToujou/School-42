@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_putstr.c >                                    :+:      :+:    :+:   */
+/*   < ft_putnbr.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,11 +13,22 @@
 #include "libft.h"
 
 /**
- * Writes a string to the standard output.
+ * Writes an integer to a given file descriptor.
  *
- * @param s The string to write.
+ * @param n The integer to write.
  */
-void	ft_putstr(char const *s)
+void	ft_putnbr_fd(int n, int fd)
 {
-	ft_putstr_fd(s, 1);
+	unsigned int	num;
+
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		num = (unsigned int)(n * -1);
+	}
+	else
+		num = (unsigned int)n;
+	if (num >= 10)
+		ft_putnbr_fd(num / 10, fd);
+	ft_putchar_fd(num % 10 + 48, fd);
 }

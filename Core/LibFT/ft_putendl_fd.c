@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_putstr.c >                                    :+:      :+:    :+:   */
+/*   < ft_putendl_fd.c >                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,11 +13,13 @@
 #include "libft.h"
 
 /**
- * Writes a string to the standard output.
+ * Writes a string to a given file descriptor,
+ * followed by a newline.
  *
  * @param s The string to write.
  */
-void	ft_putstr(char const *s)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	ft_putstr_fd(s, 1);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
