@@ -17,13 +17,15 @@
  * In other words, fills up your memory until the
  * machine crashes.
  */
-void	ft_overflow()
+void	ft_overflow(void)
 {
-	int *ptr;
+	int	*ptr;
+
 	while (1)
 	{
 		ptr = malloc(128);
-		if (!ptr) break;
+		if (!ptr)
+			break ;
 	}
 	free(ptr);
 }

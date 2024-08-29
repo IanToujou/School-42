@@ -77,7 +77,7 @@ void				ft_putendl(char const *s);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putnbr(int n);
 
-void				ft_overflow();
+void				ft_overflow(void);
 
 typedef struct s_list
 {
@@ -85,7 +85,5 @@ typedef struct s_list
 	size_t			content_size;
 	struct s_list	*next;
 }	t_list;
-
-t_list				*ft_lstnew(void const *content, size_t content_size);
 
 #endif
