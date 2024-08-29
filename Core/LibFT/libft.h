@@ -83,7 +83,6 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 typedef struct s_list
 {
 	void			*content;
-	size_t			content_size;
 	struct s_list	*next;
 }	t_list;
 
