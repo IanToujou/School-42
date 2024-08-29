@@ -5,24 +5,6 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(school_42
 		Core/LibFT/ft_bzero.c
-		Core/LibFT/ft_atoi.c
-		Core/LibFT/ft_isalnum.c
-		Core/LibFT/ft_isalpha.c
-		Core/LibFT/ft_isdigit.c
-		Core/LibFT/ft_strjoin.c
 		Core/LibFT/ft_strtrim.c
-		Core/LibFT/ft_strtrim.c
-		Core/LibFT/ft_strsplit.c
-		Core/LibFT/ft_itoa.c
-		Core/LibFT/ft_putchar.c
-		Core/LibFT/ft_putstr.c
-		Core/LibFT/ft_putendl.c
-		Core/LibFT/ft_putnbr.c
-		Core/LibFT/ft_putchar_fd.c
-		Core/LibFT/ft_putstr_fd.c
-		Core/LibFT/ft_putendl_fd.c
-		Core/LibFT/ft_putnbr_fd.c
-		Core/LibFT/ft_overflow.c
-		Core/LibFT/ft_lstnew.c
-
+		Core/LibFT/ft_memcmp.c
 )

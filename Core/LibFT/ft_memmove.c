@@ -23,16 +23,25 @@
  */
 void	*ft_memmove(void *dst, void *src, size_t s)
 {
-	size_t	i;
+	int	i;
 
-	if (src < dst)
-		ft_memcpy(dst, src, s);
+	if (!dst || !src)
+		return (NULL);
+	if (dst > src)
+	{
+		i = (int)s - 1;
+		while (i >= 0)
+		{
+			*(char *)(dst + i) = *(char *)(src + i);
+			i--;
+		}
+	}
 	else
 	{
 		i = 0;
-		while (i < s)
+		while (i < (int)s)
 		{
-			((char *)dst)[i] = ((char *)src)[i];
+			*(char *)(dst + i) = *(char *)(src + i);
 			i++;
 		}
 	}

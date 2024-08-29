@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strsub.c >                                    :+:      :+:    :+:   */
+/*   < ft_calloc.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,29 +13,20 @@
 #include "libft.h"
 
 /**
- * Copies from a certain index, up to a maximum
- * length and creates a new sub-string.
+ * Allocates a certain amount of memory and
+ * initializes all the allocated bytes to zero.
  *
- * @param s The string to copy from.
- * @param start The index to start.
- * @param len The maximum length to copy.
- * @return A new string found in the provided string.
+ * @param count The amount of blocks to allocate.
+ * @param size The size to allocate.
+ * @return A pointer to the whole allocated block.
  */
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char			*result;
-	unsigned int	i;
+	void	*ptr;
 
-	i = 0;
-	result = (char *) malloc(sizeof(char) * (len + 1));
-	if (result == NULL || s == NULL)
+	ptr = malloc(count * size);
+	if (!ptr)
 		return (NULL);
-	while (i < (unsigned int) len)
-	{
-		result[i] = s[start];
-		start++;
-		i++;
-	}
-	result[i] = '\0';
-	return (result);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

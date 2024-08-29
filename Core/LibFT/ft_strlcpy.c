@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strnew.c >                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/07/14 14:04:38 by ibour             #+#    #+#             */
+/*   Updated: 2024/07/14 14:04:39 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * Allocates space for a new string at a given size
- * and initializes every character to '\0'.
- *
- * @param size The size of the string.
- * @return A pointer to the newly created string.
- */
-char	*ft_strnew(size_t size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	char	*s;
+	unsigned int	count;
+	unsigned int	index;
 
-	s = (char *) ft_calloc(size + 1, 1);
-	if (s == NULL)
-		return (NULL);
-	ft_bzero(s, size + 1);
-	return (s);
+	index = 0;
+	count = 0;
+	while (src[count] != '\0')
+	{
+		count++;
+	}
+	if (size != 0)
+	{
+		while (src[index] != '\0' && index < (size - 1))
+		{
+			dest[index] = src[index];
+			index++;
+		}
+		dest[index] = '\0';
+	}
+	return (count);
 }

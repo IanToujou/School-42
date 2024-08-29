@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_memalloc.c >                                  :+:      :+:    :+:   */
+/*   < ft_strsub.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,29 @@
 #include "libft.h"
 
 /**
+ * Copies from a certain index, up to a maximum
+ * length and creates a new sub-string.
  *
- * Allocates a specific amount of memory and
- * initializes it to zero.
- *
- * @param size The amount of memory to allocate.
- * @return A pointer to the newly allocated block.
+ * @param s The string to copy from.
+ * @param start The index to start.
+ * @param len The maximum length to copy.
+ * @return A new string found in the provided string.
  */
-void	*ft_memalloc(size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*result;
+	char			*result;
+	unsigned int	i;
 
-	result = malloc(sizeof(size_t) * size);
-	if (result == NULL)
+	i = 0;
+	result = (char *) malloc(sizeof(char) * (len + 1));
+	if (result == NULL || s == NULL)
 		return (NULL);
-	ft_bzero(result, size);
+	while (i < (unsigned int) len)
+	{
+		result[i] = s[start];
+		start++;
+		i++;
+	}
+	result[i] = '\0';
 	return (result);
 }
