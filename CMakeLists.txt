@@ -23,5 +23,6 @@ add_executable(school_42
 		Core/LibFT/ft_putendl_fd.c
 		Core/LibFT/ft_putnbr_fd.c
 		Core/LibFT/ft_overflow.c
+		Core/LibFT/ft_lstnew.c
 
 )
