@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+/**
+ * Creates a new linked list and sets the content
+ * of the first node to a given value.
+ *
+ * @param content The content to save.
+ * @return The node of the newly created list.
+ */
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*result;
