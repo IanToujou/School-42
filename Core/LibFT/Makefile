@@ -22,6 +22,7 @@ SRC =	ft_atoi.c \
 		ft_isprint.c \
 		ft_itoa.c \
 		ft_lstnew.c \
+		ft_max.c \
 		ft_memccpy.c \
 		ft_memchr.c \
 		ft_memcmp.c \
@@ -29,6 +30,7 @@ SRC =	ft_atoi.c \
 		ft_memdel.c \
 		ft_memmove.c \
 		ft_memset.c \
+		ft_min.c \
 		ft_overflow.c \
 		ft_pow.c \
 		ft_putchar.c \

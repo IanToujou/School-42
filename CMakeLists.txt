@@ -12,4 +12,6 @@ add_executable(school_42
 		Core/LibFT/ft_isalnum.c
 		Core/LibFT/ft_lstnew.c
 		Core/LibFT/ft_pow.c
+		Core/LibFT/ft_min.c
+		Core/LibFT/ft_max.c
 )
