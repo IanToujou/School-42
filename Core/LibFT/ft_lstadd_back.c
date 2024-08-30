@@ -15,15 +15,19 @@
 /**
  * Adds a new node at the end of a list.
  *
- * @param list The list to modify.
+ * @param lst The list to modify.
  * @param new The new node to add.
  */
-void	ft_lstadd_back(t_list **list, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	last = ft_lstlast(*list);
-	if (last)
-		last->next = new;
-	*list = new;
+	if (!new)
+		return ;
+	if (!*lst) {
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
 }
