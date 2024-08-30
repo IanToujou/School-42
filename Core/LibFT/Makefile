@@ -25,6 +25,7 @@ SRC =	ft_atoi.c \
 		ft_itoa.c \
 		ft_lstadd_front.c \
 		ft_lstnew.c \
+		ft_lstsize.c \
 		ft_max.c \
 		ft_memccpy.c \
 		ft_memchr.c \
