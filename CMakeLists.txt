@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 add_executable(school_42
 		Core/LibFT/ft_floor.c
 		Core/LibFT/ft_ceil.c
+		Core/LibFT/ft_lstadd_front.c
 )
