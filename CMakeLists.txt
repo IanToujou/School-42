@@ -7,4 +7,8 @@ add_executable(school_42
 		Core/LibFT/ft_bzero.c
 		Core/LibFT/ft_strtrim.c
 		Core/LibFT/ft_memcmp.c
+		Core/LibFT/ft_atoi.c
+		Core/LibFT/ft_calloc.c
+		Core/LibFT/ft_isalnum.c
+		Core/LibFT/ft_lstnew.c
 )
