@@ -84,6 +84,8 @@ void				ft_putnbr(int n);
 double				ft_pow(double x, int y);
 double				ft_min(double x, double y);
 double				ft_max(double x, double y);
+double				ft_floor(double x);
+double				ft_ceil(double x);
 
 void				ft_overflow(void);
 
