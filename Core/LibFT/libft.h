@@ -59,7 +59,9 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-void				ft_overflow(void);
+void				*ft_memccpy(void *dest, void *src, int c, size_t n);
+void				ft_memdel(void **ap);
+
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, unsigned int n);
 char				*ft_strcat(char *dst, char *src);
@@ -67,18 +69,21 @@ char				*ft_strncat(char *dst, const char *src, unsigned int n);
 char				*ft_strstr(char *s, char *to_find);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strnew(size_t size);
-void				*ft_memccpy(void *dest, void *src, int c, size_t n);
-void				ft_memdel(void **ap);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
 char				*ft_strmap(char const *s, char (*f)(char));
+int					ft_strequ(char const *s1, char const *s2);
+int					ft_strnequ(char const *s1, char const *s2, size_t n);
+
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
-int					ft_strequ(char const *s1, char const *s2);
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
+
+double				ft_pow(double x, int y);
+
+void				ft_overflow(void);
 
 typedef struct s_list
 {
