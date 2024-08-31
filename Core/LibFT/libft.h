@@ -89,6 +89,9 @@ double				ft_ceil(double x);
 
 void				ft_overflow(void);
 
+int					ft_isblank(int c);
+int					ft_isspace(int c);
+
 typedef struct s_list
 {
 	void			*content;

@@ -14,4 +14,6 @@ add_executable(school_42
 		Core/LibFT/ft_lstnew_bonus.c
 		Core/LibFT/ft_lstmap_bonus.c
 		Core/LibFT/ft_memccpy.c
+		Core/LibFT/ft_isblank.c
+		Core/LibFT/ft_isspace.c
 )
