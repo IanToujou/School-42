@@ -13,4 +13,5 @@ add_executable(school_42
 		Core/LibFT/ft_lstiter_bonus.c
 		Core/LibFT/ft_lstnew_bonus.c
 		Core/LibFT/ft_lstmap_bonus.c
+		Core/LibFT/ft_memccpy.c
 )
