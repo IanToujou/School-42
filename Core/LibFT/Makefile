@@ -71,12 +71,12 @@ SRC =	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c
 
-BONUS =	ft_lstadd_back.c \
-		ft_lstadd_front.c \
-		ft_lstdelone.c \
-		ft_lstlast.c \
-		ft_lstnew.c \
-		ft_lstsize.c \
+BONUS =	ft_lstadd_back_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstnew_bonus.c \
+		ft_lstsize_bonus.c \
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -103,6 +103,6 @@ fclean:	clean
 re:	fclean all
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	$(AR) $(NAME) $(OBJS)  $(BONUS_OBJS)
+	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 .PHONY:	all clean fclean re bonus
