@@ -16,4 +16,5 @@ add_executable(school_42
 		Core/LibFT/ft_memccpy.c
 		Core/LibFT/ft_isblank.c
 		Core/LibFT/ft_isspace.c
+		Core/PrintF/ft_printf.c
 )
