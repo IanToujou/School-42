@@ -1,22 +1,23 @@
 #include "libft.h"
 
 /**
- * Clears
+ * Clears a list by removing the content,
+ * setting it to NULL and freeing the memory.
  *
- * @param lst
- * @param del
+ * @param lst The list to clear.
+ * @param del A function to delete the content.
  */
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	i;
+	t_list	*new;
 
-	i = 0;
-	while (lst[i])
+	if (!lst)
+		return ;
+	while (*lst)
 	{
-		lst[i]->content = NULL;
-		lst[i]->next = NULL;
-		free(*lst);
-		i++;
+		new = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = new;
 	}
-	lst = NULL;
+	*lst = 0;
 }
