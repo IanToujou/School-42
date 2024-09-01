@@ -1,4 +1,11 @@
-## ✅ C-07 Exercise Completion
+# ✨ C-07 Module
+
+## 💡 Introduction
+
+In this module, you are going to learn about `malloc()`, a new function to
+allocate memory.
+
+## ✅ Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|

@@ -1,4 +1,11 @@
-## ✅ C-05 Exercise Completion
+# ✨ C-05 Module
+
+## 💡 Introduction
+
+This module is one of the harder ones, because it contains a new concept:
+recursive functions! And some math too.
+
+## ✅ Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|

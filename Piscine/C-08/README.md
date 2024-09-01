@@ -1,4 +1,11 @@
-## ✅ C-08 Exercise Completion
+# ✨ C-08 Module
+
+## 💡 Introduction
+
+Header files are an important part of the C programming language. This
+module will teach you how to create and manipulate your own header files.
+
+## ✅ Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|

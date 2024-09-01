@@ -1,4 +1,12 @@
- ## ✅ C-02 Exercise Completion
+# ✨ C-02 Module
+
+## 💡 Introduction
+
+In this module, you will learn a lot about string manipulation and operations.
+You're going to implement some basic functions, like copying strings, checking
+their case (upper & lower) and looking for specific characters.
+
+## ✅ Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|
@@ -11,7 +19,7 @@
 | EX-06    | ✅      | 5      |                              |
 | EX-07    | ✅      | 10     |                              |
 | EX-08    | ✅      | 10     |                              |
-| EX-09    | ❌      | 10     | KO.                          |
+| EX-09    | ✅      | 10     |                              |
 | EX-10    | ✅      | 10     |                              |
-| EX-11    | ❌      | 10     | KO.                          |
+| EX-11    | ✅      | 10     |                              |
 | EX-12    | ❌      | 15     | Did not do.                  |

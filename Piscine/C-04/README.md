@@ -1,4 +1,12 @@
-## ✅ C-04 Exercise Completion
+# ✨ C-04 Module
+
+## 💡 Introduction
+
+This module is one of the most important modules, as you will create
+a few very useful and important functions, to print strings, or convert
+a string into a number.
+
+## ✅ Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|

@@ -1,4 +1,11 @@
-## ✅ C-11 Exercise Completion
+# ✨ C-10 Module
+
+## 💡 Introduction
+
+In C, you can pass functions as parameters inside other functions!
+Yeah, that's right, you are going to learn it in this module.
+
+## ✅ Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|

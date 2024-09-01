@@ -1,4 +1,12 @@
-## ✅ C-06 Exercise Completion
+# ✨ C-06 Module
+
+## 💡 Introduction
+
+In this module, you'll learn how to pass arguments from the shell
+into your program. Even though this module is a smaller one, it
+is very important for the exams.
+
+## Exercise Completion
 
 | Exercise | Status | Points | Note                         |
 |----------|--------|--------|------------------------------|
