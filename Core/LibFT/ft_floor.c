@@ -28,6 +28,6 @@ double	ft_floor(double x)
 	n = (long long) x;
 	d = (double) n;
 	if (d == x || x >= 0)
-		return d;
-	return d - 1;
+		return (d);
+	return (d - 1);
 }

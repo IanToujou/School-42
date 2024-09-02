@@ -29,20 +29,20 @@
 void	*ft_memccpy(void *dst, void *src, int c, size_t n)
 {
 	size_t				i;
-	unsigned char 		*d;
+	unsigned char		*d;
 	unsigned char		*s;
-	unsigned char 		ch;
+	unsigned char		ch;
 
 	i = 0;
 	d = (unsigned char *) dst;
 	s = (unsigned char *) src;
 	ch = (unsigned char) c;
-	while (i < n) {
+	while (i < n)
+	{
 		d[i] = s[i];
 		if (s[i] == ch)
-			return (void *)(d + i + 1);
+			return (d + i + 1);
 		i++;
 	}
-
-	return NULL;
+	return (NULL);
 }

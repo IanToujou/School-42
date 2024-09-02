@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_lstlast.c >                                   :+:      :+:    :+:   */
+/*   < ft_lstmap_bonus.c >                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,19 +13,35 @@
 #include "libft.h"
 
 /**
- * Looks for the last element in a linked list.
+ * Iterates over a list and applies a given function
+ * on the content of each node. Creates a new list
+ * resulting of the successive applications of
+ * the function.
  *
- * @param lst The list to look for the last element.
- * @return The last element of the list.
+ * @param lst The list to iterate over.
+ * @param f A function to apply.
+ * @param del A function to delete the content of a
+ * node, if needed.
+ * @return
  */
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*tmp;
+	t_list	*new;
+	t_list	*element;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
-	tmp = lst;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp);
+	new = 0;
+	while (lst)
+	{
+		element = ft_lstnew(f(lst->content));
+		if (!element)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, element);
+		lst = lst->next;
+	}
+	return (new);
 }

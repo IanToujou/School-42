@@ -19,7 +19,7 @@
  * @param c The character to check.
  * @return 0 if the condition is false, and 1 on true.
  */
-int ft_isblank(int c)
+int	ft_isblank(int c)
 {
 	return (c == ' ' || c == '\t');
 }

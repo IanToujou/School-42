@@ -28,11 +28,11 @@
 double	ft_pow(double x, int y)
 {
 	if (y < 0)
-		return ft_pow(1/x, -y);
+		return (ft_pow(1 / x, -y));
 	else if (y == 0)
 		return (1);
 	else if (y % 2 == 0)
-		return ft_pow(x * x, y / 2);
+		return (ft_pow(x * x, y / 2));
 	else
-		return x * ft_pow(x * x, (y - 1) / 2);
+		return (x * ft_pow(x * x, (y - 1) / 2));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_ceil.c >                                      :+:      :+:    :+:   */
+/*   < ft_lstnew.c >                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,18 +13,18 @@
 #include "libft.h"
 
 /**
- * Takes in a double and rounds it up to the
- * nearest full integer. Supports both positive
- * and negative numbers.
+ * Creates a new linked list and sets the content
+ * of the first node to a given value.
  *
- * @param x The double to process.
- * @return The up-rounded number.
+ * @param content The content to save.
+ * @return The node of the newly created list.
  */
-double	ft_ceil(double x)
+t_list	*ft_lstnew(void *content)
 {
-	if ((int) x == x)
-		return (x);
-	if (x > 0)
-		return ((int) x + 1);
-	return ((int) x);
+	t_list	*result;
+
+	result = (t_list *) malloc(sizeof(t_list));
+	result->content = content;
+	result->next = NULL;
+	return (result);
 }

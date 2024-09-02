@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_lstnew.c >                                    :+:      :+:    :+:   */
+/*   < ft_lstclear.c >                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,18 +13,23 @@
 #include "libft.h"
 
 /**
- * Creates a new linked list and sets the content
- * of the first node to a given value.
+ * Clears a list by removing the content,
+ * setting it to NULL and freeing the memory.
  *
- * @param content The content to save.
- * @return The node of the newly created list.
+ * @param lst The list to clear.
+ * @param del A function to delete the content.
  */
-t_list	*ft_lstnew(void *content)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*result;
+	t_list	*new;
 
-	result = (t_list *) malloc(sizeof(t_list));
-	result->content = content;
-	result->next = NULL;
-	return (result);
+	if (!lst)
+		return ;
+	while (*lst)
+	{
+		new = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = new;
+	}
+	*lst = 0;
 }

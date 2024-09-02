@@ -20,8 +20,8 @@
  * @param c The character to check.
  * @return 0 if the condition is false, and 1 on true.
  */
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
 	return (c == ' ' || c == '\t' || c == '\n'
-			|| c == '\v' || c == '\f' || c == '\r');
+		|| c == '\v' || c == '\f' || c == '\r');
 }

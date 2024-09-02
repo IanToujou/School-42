@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_lstdelone.c >                                 :+:      :+:    :+:   */
+/*   < ft_lstsize.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,16 +13,20 @@
 #include "libft.h"
 
 /**
- * Deletes a given node of a linked list with
- * a specified function.
+ * Gets the size of a linked list.
  *
- * @param lst The list do delete.
- * @param del A function to delete the content.
+ * @param lst The list to check the size of.
+ * @return The size of the list.
  */
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+int	ft_lstsize(t_list *lst)
 {
-	if (!lst)
-		return ;
-	del(lst->content);
-	free(lst);
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

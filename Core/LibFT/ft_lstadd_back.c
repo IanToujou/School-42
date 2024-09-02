@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_lstsize.c >                                   :+:      :+:    :+:   */
+/*   < ft_lstadd_back.c >                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,19 +13,22 @@
 #include "libft.h"
 
 /**
- * Gets the size of a linked list.
+ * Adds a new node at the end of a list.
  *
- * @param lst The list to check the size of.
- * @return The size of the list.
+ * @param lst The list to modify.
+ * @param new The new node to add.
  */
-int ft_lstsize(t_list *lst)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int i;
+	t_list	*last;
 
-	i = 0;
-	while (lst) {
-		lst = lst->next;
-		i++;
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
 	}
-	return (i);
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

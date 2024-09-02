@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_lstadd_back.c >                               :+:      :+:    :+:   */
+/*   < ft_lstadd_front.c >                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,11 @@
 
 #include "libft.h"
 
-/**
- * Adds a new node at the end of a list.
- *
- * @param lst The list to modify.
- * @param new The new node to add.
- */
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*last;
+	t_list	*tmp;
 
-	if (!new)
-		return ;
-	if (!*lst) {
-		*lst = new;
-		return ;
-	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	tmp = *lst;
+	*lst = new;
+	new->next = tmp;
 }
