@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strdup.c >                                    :+:      :+:    :+:   */
+/*   < ft_hashnew.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,27 @@
 #include "libft.h"
 
 /**
- * Duplicates a string by allocating new memory for it.
+ * Creates a new hash table of a given size.
  *
- * @param src The string to duplicate.
- * @return A pointer to the destination.
+ * @param size The total size of the table.
+ * @return The newly created hash table.
  */
-char	*ft_strdup(const char *src)
+t_hashtable	*ft_hashnew(int size)
 {
-	char	*dst;
-	size_t	size;
+	int 		i;
 
-	size = ft_strlen(src) + 1;
-	dst = (char *) malloc(size);
-	if (!dst)
+	i = 0;
+	t_hashtable	*table = (t_hashtable *) malloc(sizeof(t_hashtable));
+	if (!table)
 		return (NULL);
-	ft_memcpy(dst, src, size);
-	return (dst);
+	table->size = size;
+	table->table = (t_hashnode **) malloc(sizeof(t_hashnode) * size);
+	if (!table->table)
+		return (NULL);
+	while (i < size)
+	{
+		table->table[i] = NULL;
+		i++;
+	}
+	return (table);
 }

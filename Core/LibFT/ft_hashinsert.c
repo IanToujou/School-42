@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strdup.c >                                    :+:      :+:    :+:   */
+/*   < ft_hashinsert.c >                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,23 @@
 #include "libft.h"
 
 /**
- * Duplicates a string by allocating new memory for it.
+ * Inserts a key-value pair to the hash table.
  *
- * @param src The string to duplicate.
- * @return A pointer to the destination.
+ * @param table The table to add the pair to.
+ * @param key The key to add.
+ * @param value The value assigned to the key.
  */
-char	*ft_strdup(const char *src)
+void	ft_hashinsert(t_hashtable *table, const char *key, int value)
 {
-	char	*dst;
-	size_t	size;
+	unsigned int	index;
+	t_hashnode		*node;
 
-	size = ft_strlen(src) + 1;
-	dst = (char *) malloc(size);
-	if (!dst)
-		return (NULL);
-	ft_memcpy(dst, src, size);
-	return (dst);
+	index = ft_hashcode(key, table->size);
+	node = (t_hashnode *) malloc(sizeof(t_hashnode));
+	if (!node)
+		return ;
+	node->key = ft_strdup(key);
+	node->value = value;
+	node->next = table->table[index];
+	table->table[index] = node;
 }

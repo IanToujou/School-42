@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strdup.c >                                    :+:      :+:    :+:   */
+/*   < ft_hashsearch.c >                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,25 @@
 #include "libft.h"
 
 /**
- * Duplicates a string by allocating new memory for it.
+ * Searches for a value in a hash table by using a
+ * given key.
  *
- * @param src The string to duplicate.
- * @return A pointer to the destination.
+ * @param table The table to search in.
+ * @param key The key to look for.
+ * @return The value associated with the key.
  */
-char	*ft_strdup(const char *src)
+int	ft_hashsearch(t_hashtable *table, const char *key)
 {
-	char	*dst;
-	size_t	size;
+	unsigned int	index;
+	t_hashnode		*node;
 
-	size = ft_strlen(src) + 1;
-	dst = (char *) malloc(size);
-	if (!dst)
-		return (NULL);
-	ft_memcpy(dst, src, size);
-	return (dst);
+	index = ft_hashcode(key, table->size);
+	node = table->table[index];
+	while (node != NULL && strcmp(node->key, key) != 0)
+		node = node->next;
+
+	if (node == NULL)
+		return (-1);
+	else
+		return (node->value);
 }

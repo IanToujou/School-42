@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strdup.c >                                    :+:      :+:    :+:   */
+/*   < ft_hashclear.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,29 @@
 #include "libft.h"
 
 /**
- * Duplicates a string by allocating new memory for it.
+ * Clears a hash table completely.
  *
- * @param src The string to duplicate.
- * @return A pointer to the destination.
+ * @param table The table to clear.
  */
-char	*ft_strdup(const char *src)
+void	ft_hashclear(t_hashtable *table)
 {
-	char	*dst;
-	size_t	size;
+	int 				i;
+	struct s_hashnode	*node;
+	struct s_hashnode	*temp;
 
-	size = ft_strlen(src) + 1;
-	dst = (char *) malloc(size);
-	if (!dst)
-		return (NULL);
-	ft_memcpy(dst, src, size);
-	return (dst);
+	i = 0;
+	while (i < table->size)
+	{
+		node = table->table[i];
+		while (node != NULL)
+		{
+			temp = node;
+			node = node->next;
+			free(temp->key);
+			free(temp);
+		}
+		i++;
+	}
+	free(table->table);
+	free(table);
 }

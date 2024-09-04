@@ -71,7 +71,13 @@ SRC =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c
+		ft_toupper.c \
+		ft_hashcode.c \
+		ft_hashnew.c \
+		ft_hashinsert.c \
+		ft_hashsearch.c \
+		ft_hashdel.c \
+		ft_hashclear.c
 
 BONUS =	ft_lstadd_back.c \
 		ft_lstadd_front.c \

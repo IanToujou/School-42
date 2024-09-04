@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strdup.c >                                    :+:      :+:    :+:   */
+/*   < ft_hashdel.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,20 +13,31 @@
 #include "libft.h"
 
 /**
- * Duplicates a string by allocating new memory for it.
+ * Deletes a key-value pair from a hash table.
  *
- * @param src The string to duplicate.
- * @return A pointer to the destination.
+ * @param table The table to delete the pair from.
+ * @param key The key assigned to the value to delete.
  */
-char	*ft_strdup(const char *src)
+void	ft_hashdel(t_hashtable *table, const char *key)
 {
-	char	*dst;
-	size_t	size;
+	unsigned int	index;
+	t_hashnode		*node;
+	t_hashnode		*prev;
 
-	size = ft_strlen(src) + 1;
-	dst = (char *) malloc(size);
-	if (!dst)
-		return (NULL);
-	ft_memcpy(dst, src, size);
-	return (dst);
+	index = ft_hashcode(key, table->size);
+	node = table->table[index];
+	prev = NULL;
+	while (node != NULL && ft_strcmp(node->key, key) != 0) {
+		prev = node;
+		node = node->next;
+	}
+	if (node == NULL)
+		return ;
+
+	if (prev == NULL)
+		table->table[index] = node->next;
+	else
+		prev->next = node->next;
+	free(node->key);
+	free(node);
 }

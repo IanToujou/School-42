@@ -30,7 +30,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_itoa(int n);
 
-char				*ft_strdup(char *src);
+char				*ft_strdup(const char *src);
 unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int		ft_strlcat(char *dst, char *src, unsigned int n);
 size_t				ft_strlen(const char *s);
@@ -108,5 +108,26 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+typedef struct s_hashnode
+{
+	char				*key;
+	int 				value;
+	struct s_hashnode	*next;
+}	t_hashnode;
+
+typedef struct s_hashtable
+{
+	int			size;
+	t_hashnode	**table;
+}	t_hashtable;
+
+unsigned int		ft_hashcode(const char *key, int size);
+t_hashtable			*ft_hashnew(int size);
+void				ft_hashinsert(t_hashtable *table,
+						const char *key, int value);
+int					ft_hashsearch(t_hashtable *table, const char *key);
+void				ft_hashdel(t_hashtable *table, const char *key);
+void				ft_hashclear(t_hashtable *table);
 
 #endif
