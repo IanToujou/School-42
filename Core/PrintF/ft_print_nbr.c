@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_printf.c >                                    :+:      :+:    :+:   */
+/*   < ft_print_nbr.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,33 +12,22 @@
 
 #include "ft_printf.h"
 
-void	ft_process(va_list args, char *str, int *i)
+void	ft_print_nbr(int num, int *i)
 {
-	if (*str == 'c')
-		ft_print_char(va_arg(args, int), i);
-	else if (*str == 'i' || *str == 'd')
-		ft_print_nbr(va_arg(args, int), i);
-}
-
-int	ft_printf(char const *str, ...)
-{
-	va_list	args;
-	int		i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	va_start(args, str);
-	while (*str) {
-		if (*str == '%')
-		{
-			str++;
-			ft_process(args, (char *) str, &i);
-		}
-		else
-			ft_print_char(*str, &i);
-		str++;
+	if (num == -2147483648)
+	{
+		ft_print_nbr((num / 10), i);
+		ft_print_char('8', i);
 	}
-	va_end(args);
-	return (i);
+	else if (num < 0)
+	{
+		ft_print_char('-', i);
+		ft_print_nbr(-num, i);
+	}
+	else
+	{
+		if (num > 9)
+			ft_print_nbr((num / 10), i);
+		ft_print_char(('0' + num % 10), i);
+	}
 }
