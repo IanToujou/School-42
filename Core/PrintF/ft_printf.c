@@ -15,7 +15,7 @@
 int	ft_printf(char const *str, ...)
 {
 	va_list	args;
-	size_t	i;
+	int		i;
 
 	i = 0;
 	if (!str)
