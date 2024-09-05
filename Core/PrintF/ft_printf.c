@@ -10,7 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 int	ft_printf(char const *str, ...)
 {
+	va_list	args;
+	size_t	i;
 
+	i = 0;
+	if (!str)
+		return (0);
+	va_start(args, str);
+	while (*str) {
+		str++;
+		i++;
+	}
+	va_end(args);
+	return (i);
 }
