@@ -9,4 +9,9 @@ add_executable(school_42
 		Core/PrintF/ft_print_char.c
 		Core/PrintF/main.c
 		Core/PrintF/ft_print_nbr.c
+		Core/PrintF/ft_print_ptr.c
+		Core/PrintF/ft_print_str.c
+		Core/PrintF/ft_print_hex.c
+		Core/PrintF/ft_num_base.c
+		Core/PrintF/ft_print_unbr.c
 )

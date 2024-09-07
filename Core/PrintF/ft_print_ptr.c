@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_char.c >                                :+:      :+:    :+:   */
+/*   < ft_print_ptr.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,8 +12,14 @@
 
 #include "ft_printf.h"
 
-void	ft_print_char(char c, int *i)
+void	ft_print_ptr(void *ptr, int *i)
 {
-	write(1, &c, 1);
-	(*i)++;
+	char 			*str;
+	unsigned long	addr;
+
+	addr = (long long) ptr;
+	ft_print_str("0x", i);
+	str = ft_num_base(addr, HEX_LOW_BASE);
+	ft_print_str(str, i);
+	free(str);
 }

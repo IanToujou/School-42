@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_char.c >                                :+:      :+:    :+:   */
+/*   < ft_print_unbr.c >                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,8 +12,11 @@
 
 #include "ft_printf.h"
 
-void	ft_print_char(char c, int *i)
+void	ft_print_unbr(unsigned int num, int *i)
 {
-	write(1, &c, 1);
-	(*i)++;
+	char	*str;
+
+	str = ft_num_base(num, "0123456789");
+	ft_print_str(str, i);
+	free(str);
 }

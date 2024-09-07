@@ -28,6 +28,6 @@ void	ft_print_nbr(int num, int *i)
 	{
 		if (num > 9)
 			ft_print_nbr((num / 10), i);
-		ft_print_char(('0' + num % 10), i);
+		ft_print_char((char)('0' + num % 10), i);
 	}
 }

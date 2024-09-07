@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_char.c >                                :+:      :+:    :+:   */
+/*   < ft_print_str.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,8 +12,13 @@
 
 #include "ft_printf.h"
 
-void	ft_print_char(char c, int *i)
+void	ft_print_str(char *str, int *i)
 {
-	write(1, &c, 1);
-	(*i)++;
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		ft_print_char(*str, i);
+		str++;
+	}
 }
