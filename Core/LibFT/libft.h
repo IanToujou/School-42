@@ -18,6 +18,8 @@
 # include <stdbool.h>
 # include <unistd.h>
 
+# define ULONG_MAX 0xFFFFFFFFUL
+
 typedef unsigned char	t_byte;
 
 int					ft_atoi(const char *str);
