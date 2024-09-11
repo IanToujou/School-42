@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 #include "ft_printf.h"
 
 static void	ft_bzero(void *s, size_t n)
@@ -74,9 +76,9 @@ char	*ft_num_base(unsigned long long num, char *base)
 	str = ft_calloc((length + 1), sizeof(char));
 	if (!str)
 		return (NULL);
-	while (length)
-	{
+	while (length != 0) {
 		length = length - 1;
+		if (length == 0) break;
 		str[length] = base[num % length];
 		num /= base_length;
 	}

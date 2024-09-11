@@ -14,5 +14,4 @@ add_executable(school_42
 		Core/PrintF/ft_print_hex.c
 		Core/PrintF/ft_num_base.c
 		Core/PrintF/ft_print_unbr.c
-		Core/LibFT/ft_hashcode.c
 )

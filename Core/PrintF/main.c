@@ -6,11 +6,9 @@
 
 int	main()
 {
-	int i = 5;
-	int *ptr = &i;
+	int x = 1;
+	int	*i = &x;
 
-	printf("addr: %p\n", ptr);
-	ft_printf("Hello %c\n", 'a');
-	ft_printf("Pointer addr is: %p\n", ptr);
+	ft_printf("%p and %s\n", i, "simon is gay");
 
 }
