@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_hex.c >                                 :+:      :+:    :+:   */
+/*   < ft_print_num_unsigned.c >                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_print_hex(unsigned int num, int *i, char *base)
+void	ft_print_num_unsigned(unsigned int num, int *i)
 {
-	ft_print_num_base(num, base, i);
+	ft_print_num_base(num, "0123456789", i);
 }

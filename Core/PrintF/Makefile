@@ -15,11 +15,11 @@ NAME = libftprintf.a
 SRC =	ft_printf.c \
 		ft_print_char.c \
 		ft_print_str.c \
-		ft_print_nbr.c \
-		ft_print_unbr.c \
+		ft_print_num.c \
+		ft_print_num_base.c \
+		ft_print_num_unsigned.c \
 		ft_print_ptr.c \
-		ft_print_hex.c \
-		ft_num_base.c
+		ft_print_hex.c
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra

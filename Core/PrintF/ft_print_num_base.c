@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_unbr.c >                                :+:      :+:    :+:   */
+/*   < ft_print_num_base.c >                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,24 @@
 
 #include "ft_printf.h"
 
-void	ft_print_unbr(unsigned int num, int *i)
+static int	ft_strlen(const char *str)
 {
-	char	*str;
+	int	length;
 
-	str = ft_num_base(num, "0123456789");
-	ft_print_str(str, i);
-	free(str);
+	if (!str)
+		return (0);
+	length = 0;
+	while (str[length])
+		length++;
+	return (length);
+}
+
+void	ft_print_num_base(unsigned long int p, char *base, int *i)
+{
+	int	length;
+
+	length = ft_strlen(base);
+	if (p / length)
+		ft_print_num_base(p / length, base, i);
+	ft_print_char(base[p % length], i);
 }
