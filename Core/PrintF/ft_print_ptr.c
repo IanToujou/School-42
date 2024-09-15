@@ -12,46 +12,36 @@
 
 #include "ft_printf.h"
 
-static char	hex_digit(const int v) {
-	if (v >= 0 && v < 10)
-		return ('0' + v);
-	return ('a' + v - 10);
+static size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-static void	address_hex(void *ptr, char **addr)
+static void	ft_putnum_base(unsigned long int p, char *base, int *i)
 {
-	int			index;
-	int			jndex;
-	long long	p;
+	int	base_len;
 
-	p = (long long) ptr;
-	if (!ptr)
-	{
-		*addr = (char *) malloc(sizeof(char) * 3);
-		(*addr)[0] = '0';
-		(*addr)[1] = 'x';
-		(*addr)[2] = '0';
-		return ;
-	}
-	*addr = (char *) malloc(sizeof(char) * 15);
-	(*addr)[14] = '\0';
-	(*addr)[0] = '0';
-	(*addr)[1] = 'x';
-	index = ((sizeof(p) << 3) - 4 * 5);
-	jndex = 2;
-	while (jndex < 14)
-	{
-		(*addr)[jndex] = hex_digit((p >> index) & 0xf);
-		index -= 4;
-		jndex++;
-	}
+	base_len = ft_strlen(base);
+	if (p / base_len)
+		ft_putnum_base(p / base_len, base, i);
+	ft_print_char(base[p % base_len], i);
 }
 
 void	ft_print_ptr(void *ptr, int *i)
 {
-	char	*addr;
+	unsigned long	p;
 
-	address_hex(ptr, &addr);
-	ft_print_str(addr, i);
-	free(addr);
+	p = (unsigned long) ptr;
+	if (p)
+	{
+		ft_print_str("0x", i);
+		ft_putnum_base(p, "0123456789abcdef", i);
+	}
+	else
+		ft_print_str("(nil)", i);
 }
