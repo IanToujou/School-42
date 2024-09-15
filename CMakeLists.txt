@@ -15,4 +15,6 @@ add_executable(school_42
 		Core/PrintF/ft_num_base.c
 		Core/PrintF/ft_print_num_unsigned.c
 		Core/PrintF/ft_print_num_base.c
+		Core/GetNextLine/get_next_line.c
+		Core/GetNextLine/get_next_line.h
 )
