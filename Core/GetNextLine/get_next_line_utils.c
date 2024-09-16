@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < get_next_line.h >                                :+:      :+:    :+:   */
+/*   < get_next_line_utils.c >                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,16 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-# define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1024
+void	*ft_memset(void *s, int c, size_t n)
+{
+    while (n--)
+        ((unsigned char *)s)[n] = (unsigned char) c;
+    return (s);
+}
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
+void	ft_bzero(void *s, size_t n)
+{
+    ft_memset(s, 0, n);
+}
 
-char	*get_next_line(int fd);
-void	*ft_calloc(size_t count, size_t size);
+void	*ft_calloc(size_t count, size_t size)
+{
+    void	*ptr;
 
-#endif
+    ptr = malloc(count * size);
+    if (!ptr)
+        return (NULL);
+    ft_bzero(ptr, count * size);
+    return (ptr);
+}

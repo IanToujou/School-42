@@ -15,9 +15,13 @@
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char		*line;
+	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
+	buffer = ft_calloc(3 + 1, sizeof(char));
+	if (!buffer)
 		return (NULL);
-	return (line);
+	bytes_read = read(fd, buffer, 3);
+	if (fd < 0 || BUFFER_SIZE < 1 || bytes_read <= 0)
+		return (NULL);
+	return (buffer);
 }
