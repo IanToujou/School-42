@@ -12,16 +12,6 @@
 
 #include "ft_printf.h"
 
-static int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
 void	ft_print_ptr(void *ptr, int *i)
 {
 	unsigned long	p;
