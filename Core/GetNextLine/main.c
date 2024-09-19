@@ -9,6 +9,7 @@ int main(void)
 
     count = 0;
     fd = open("example.txt", O_RDONLY);
+    printf("fd = %d\n", fd);
     next_line = get_next_line(fd);
     count++;
     printf("[%d]:%s\n", count, next_line);

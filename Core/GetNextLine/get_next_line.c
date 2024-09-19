@@ -12,12 +12,15 @@
 
 #include "get_next_line.h"
 
+#include <stdio.h>
+
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	int			bytes_read;
 
 	buffer = ft_calloc(3 + 1, sizeof(char));
+	buffer = malloc(4 * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	bytes_read = read(fd, buffer, 3);
