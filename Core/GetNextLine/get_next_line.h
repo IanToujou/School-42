@@ -23,6 +23,7 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-void	*ft_calloc(size_t count, size_t size);
+
+__attribute__((unused)) void	*ft_calloc(size_t count, size_t size);
 
 #endif

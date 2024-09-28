@@ -1,44 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < get_next_line.c >                                :+:      :+:    :+:   */
+/*   < ft_tan.c >                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/09/28 23:59:32 by ibour             #+#    #+#             */
+/*   Updated: 2024/09/28 23:59:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*update_buffer()
+/**
+ * Calculates the tangent value of a given angle.
+ * The input angle needs to be in radians.
+ *
+ * @param x The angle to perform the calculation on.
+ * @return The result of the calculation.
+ */
+double	ft_tan(int x)
 {
-
-}
-
-char	*read_line()
-{
-
-}
-
-char	*read_file(int fd, char *result)
-{
-	
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*buffer;
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (NULL);
-	// read file
-	buffer = read_file(fd, buffer);
-	if (!buffer)
-		return (NULL);
-	// read line & update buffer
-	line = "";
-	return (line);
+	return (ft_sin(x) / ft_cos(x));
 }

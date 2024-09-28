@@ -18,7 +18,13 @@
 # include <stdbool.h>
 # include <unistd.h>
 
+#ifndef ULONG_MAX
 # define ULONG_MAX 0xFFFFFFFFUL
+#endif
+
+#ifndef M_PI
+# define M_PI 3.14159265358979323846
+#endif
 
 typedef unsigned char	t_byte;
 
@@ -41,7 +47,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strnstr(const char *s, const char *to_find, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
-void				*ft_calloc(size_t count, size_t size);
+__attribute__((unused)) void				*ft_calloc(size_t count, size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memmove(void *dst, void *src, size_t s);
@@ -88,6 +94,12 @@ double				ft_min(double x, double y);
 double				ft_max(double x, double y);
 double				ft_floor(double x);
 double				ft_ceil(double x);
+int					ft_factorial(int x);
+double				ft_cos(double x);
+double				ft_sin(double x);
+double				ft_tan(int x);
+double				ft_round(int x);
+double				ft_reduce_angle(double x);
 
 void				ft_overflow(void);
 

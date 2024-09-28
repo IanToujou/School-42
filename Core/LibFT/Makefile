@@ -16,6 +16,8 @@ SRC =	ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_ceil.c \
+		ft_cos.c \
+		ft_factorial.c \
 		ft_floor.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
@@ -44,6 +46,9 @@ SRC =	ft_atoi.c \
 		ft_putnbr_fd.c \
 		ft_putstr.c \
 		ft_putstr_fd.c \
+		ft_reduce_angle.c \
+		ft_round.c \
+		ft_sin.c \
 		ft_split.c \
 		ft_strcat.c \
 		ft_strchr.c \
@@ -70,6 +75,7 @@ SRC =	ft_atoi.c \
 		ft_strstr.c \
 		ft_strtrim.c \
 		ft_substr.c \
+		ft_tan.c \
 		ft_tolower.c \
 		ft_toupper.c
 
