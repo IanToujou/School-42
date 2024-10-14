@@ -68,9 +68,7 @@ int	main(int argc, char **argv)
 	int	i;
 
 	if (argc > 2)
-	{
 		ft_sort(argv, argc - 1, 1);
-	}
 	i = 1;
 	while (i < argc)
 	{

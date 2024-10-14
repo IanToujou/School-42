@@ -13,4 +13,5 @@ add_executable(school_42
 		Piscine-Reloaded/ex17/ft_strcmp.c
 		Piscine-Reloaded/ex18/ft_print_params.c
 		Piscine-Reloaded/ex19/ft_sort_params.c
+		Piscine/C-06/ex03/ft_sort_params.c
 )
