@@ -16,4 +16,9 @@ add_executable(school_42
 		Piscine/C-06/ex03/ft_sort_params.c
 		Piscine-Reloaded/ex20/ft_strdup.c
 		Piscine-Reloaded/ex21/ft_range.c
+		Piscine-Reloaded/ex22/ft_abs.h
+		Piscine-Reloaded/ex23/ft_point.h
+		Piscine-Reloaded/ex25/ft_foreach.c
+		Piscine-Reloaded/ex26/ft_count_if.c
+		Piscine-Reloaded/ex27/includes/display_file.h
 )
