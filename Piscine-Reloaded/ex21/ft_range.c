@@ -23,8 +23,9 @@ int	*ft_range(int min, int max)
 	if (!result)
 		return (NULL);
 	i = 0;
-	while (min+i < max) {
-		result[i] = min+i;
+	while (min + i < max)
+	{
+		result[i] = min + i;
 		i++;
 	}
 	return (result);

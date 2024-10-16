@@ -13,15 +13,11 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void	ft_putstr(char *str)
 {
-	while (*str) {
-		ft_putchar(*str);
+	while (*str)
+	{
+		write(1, str, 1);
 		str++;
 	}
 }
@@ -50,18 +46,21 @@ void	ft_sort(char **array, int size, int offset)
 	int		i;
 	bool	swapped;
 
-	while(true) {
+	while (true)
+	{
 		i = offset;
 		swapped = false;
-		while (i < size) {
-			if(ft_strcmp(array[i], array[i+1]) > 0) {
-				ft_swap(&array[i], &array[i+1]);
+		while (i < size)
+		{
+			if (ft_strcmp(array[i], array[i + 1]) > 0)
+			{
+				ft_swap(&array[i], &array[i + 1]);
 				swapped = true;
 			}
 			i++;
 		}
 		if (!swapped)
-			break;
+			break ;
 	}
 }
 
@@ -70,12 +69,12 @@ int	main(int argc, char **argv)
 	int	i;
 
 	if (argc > 2)
-		ft_sort(argv, argc-1, 1);
+		ft_sort(argv, argc - 1, 1);
 	i = 1;
 	while (i < argc)
 	{
 		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		ft_putstr("\n");
 		i++;
 	}
 }
