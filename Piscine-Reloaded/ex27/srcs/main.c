@@ -16,7 +16,7 @@ bool	read_file(const char *path)
 {
 	int				file;
 	unsigned int	byte_read;
-	char			buffer[4097];
+	char			buffer[4096];
 
 	file = open(path, O_RDONLY);
 	if (file < 0)
@@ -25,9 +25,9 @@ bool	read_file(const char *path)
 	while (byte_read != 0)
 	{
 		byte_read = read(file, buffer, 4096);
-		if (byte_read == (unsigned int) -1)
+		if (byte_read == -1)
 			break ;
-		ft_putstr(OUT, buffer);
+		write(1, buffer, byte_read);
 	}
 	close(file);
 	return (true);
