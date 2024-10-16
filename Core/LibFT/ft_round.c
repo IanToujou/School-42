@@ -21,13 +21,21 @@
 double	ft_round(int x)
 {
 	if (x >= 0)
+	{
 		if (x - ((int) x) >= 0.5)
-			return ((int) x) + 1;
+		{
+			return (((int) x) + 1);
+		}
 		else
+		{
 			return ((int) x);
+		}
+	}
 	else
+	{
 		if (x - ((int) x) <= -0.5)
 			return (((int) x) - 1);
 		else
 			return ((int) x);
+	}
 }

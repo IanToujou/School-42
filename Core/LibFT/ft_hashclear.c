@@ -19,7 +19,7 @@
  */
 void	ft_hashclear(t_hashtable *table)
 {
-	int 				i;
+	int					i;
 	struct s_hashnode	*node;
 	struct s_hashnode	*temp;
 

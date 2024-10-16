@@ -18,13 +18,13 @@
 # include <stdbool.h>
 # include <unistd.h>
 
-#ifndef ULONG_MAX
-# define ULONG_MAX 0xFFFFFFFFUL
-#endif
+# ifndef ULONG_MAX
+#  define ULONG_MAX 0xFFFFFFFFUL
+# endif
 
-#ifndef M_PI
-# define M_PI 3.14159265358979323846
-#endif
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 typedef unsigned char	t_byte;
 
@@ -126,7 +126,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 typedef struct s_hashnode
 {
 	char				*key;
-	int 				value;
+	int					value;
 	struct s_hashnode	*next;
 }	t_hashnode;
 

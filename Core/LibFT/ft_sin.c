@@ -23,8 +23,8 @@ double	ft_sin(double x)
 {
 	double	result;
 	int		sign;
-	int 	i;
-	int 	exponent;
+	int		i;
+	int		exponent;
 
 	result = 0;
 	sign = 1;
