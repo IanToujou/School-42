@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 add_executable(school_42
 		Piscine-Reloaded/ex27/includes/display_file.h
 		Piscine-Reloaded/ex27/srcs/ft_string_tools.c
-		Piscine-Reloaded/ex27/srcs/main.c
+        Piscine-Reloaded/ex27/main.c
 )

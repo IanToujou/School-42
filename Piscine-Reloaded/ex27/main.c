@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_file.h                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,24 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISPLAY_FILE_H
-# define DISPLAY_FILE_H
+#include <unistd.h>
+#include <fcntl.h>
+#define BUFFER_SIZE 4096
 
-# define BUFFER_SIZE 1024
+int	main(int argc, char **argv)
+{
+	char	buffer[BUFFER_SIZE];
+	int		fd;
+	int		ret;
 
-# define MSG_ERR_NAME_MISSING "File name missing.\n"
-# define MSG_ERR_TOO_MANY_ARGS "Too many arguments.\n"
-# define MSG_ERR_CANNOT_READ "Cannot read file.\n"
-
-# define IN 0
-# define OUT 1
-# define ERR 2
-
-# include <stdbool.h>
-# include <unistd.h>
-# include <fcntl.h>
-
-void	ft_putchar(int out, char c);
-void	ft_putstr(int out, const char *str);
-
-#endif
+	if (argc < 2)
+	{
+		write(1, "File name missing.\n", 19);
+		return (1);
+	}
+	if (argc > 2)
+	{
+		write(1, "Too many arguments.\n", 20);
+		return (1);
+	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		write(1, "Cannot read file.\n", 18);
+		return (1);
+	}
+	ret = read(fd, buffer, BUFFER_SIZE);
+	write(1, buffer, ret);
+	close(fd);
+	return (0);
+}

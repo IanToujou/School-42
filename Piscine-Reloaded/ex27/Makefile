@@ -10,11 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	srcs/main.c \
-		srcs/ft_string_tools.c
+SRCS =	main.c
 
 OBJS = ${SRCS:.c=.o}
-INCLUDES = includes
 NAME = ft_display_file
 CC = gcc
 RM = rm -rf
