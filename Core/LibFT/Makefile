@@ -21,7 +21,7 @@ CUSTOM =	$(wildcard src/custom/*.c)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
-RM_WIN = rd /s /q
+RM_WIN = del /S /Q
 AR = ar crs
 
 OBJS = $(SRC:.c=.o)
@@ -40,13 +40,13 @@ clean:
 	$(RM) $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
 
 clean-win:
-	$(RM_WIN) $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
+	$(RM_WIN) "*.o"
 
 fclean:	clean
 	$(RM) $(NAME)
 
 fclean-win:	clean-win
-	$(RM_WIN) $(NAME)
+	$(RM_WIN) "$(NAME)"
 
 re:	fclean all
 
@@ -56,4 +56,4 @@ bonus: $(OBJS) $(BONUS_OBJS)
 custom: $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
 	$(AR) $(NAME) $(BONUS_OBJS) $(CUSTOM_OBJS)
 
-.PHONY:	all clean fclean re bonus custom
+.PHONY:	all clean clean-win fclean fclean-win re bonus custom

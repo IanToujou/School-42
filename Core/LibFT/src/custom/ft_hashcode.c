@@ -22,7 +22,7 @@
 unsigned int	ft_hashcode(const char *key, int size)
 {
 	unsigned long int	hash;
-	int 				i;
+	size_t 				i;
 
 	hash = 0;
 	i = 0;
