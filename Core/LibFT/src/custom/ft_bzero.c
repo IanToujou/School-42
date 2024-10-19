@@ -12,6 +12,9 @@
 
 #include "../../libft.h"
 
+//THIS IS A MANDATORY FUNCTION LEL, IT'S IN THE CUSTOM FOLDER
+//GO DRINK YOUR LECHE
+
 /**
  * Does the same as memset, but fills every byte with 0.
  *
