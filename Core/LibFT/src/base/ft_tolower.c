@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../libft.h"
+
 /**
  * Converts a character to its uppercase version,
  * if possible.
