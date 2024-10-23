@@ -39,8 +39,8 @@ int					ft_tolower(int c);
 char				*ft_itoa(int n);
 
 char				*ft_strdup(const char *src);
-unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
-unsigned int		ft_strlcat(char *dst, char *src, unsigned int n);
+unsigned int		ft_strlcpy(char *dest, const char *src, unsigned int size);
+unsigned int		ft_strlcat(char *dst, const char *src, unsigned int n);
 size_t				ft_strlen(const char *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);

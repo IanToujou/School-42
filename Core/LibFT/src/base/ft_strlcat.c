@@ -21,7 +21,7 @@
  * @param n The length of the string to append.
  * @return The total length of the string.
  */
-unsigned int	ft_strlcat(char *dst, char *src, unsigned int n)
+unsigned int	ft_strlcat(char *dst, const char *src, unsigned int n)
 {
 	char			*s;
 	char			*src_start;
