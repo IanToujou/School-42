@@ -87,4 +87,5 @@ add_library(libft
 		"Core/LibFT/src/custom/ft_strnew.c"
 		"Core/LibFT/src/custom/ft_strstr.c"
 		"Core/LibFT/src/custom/ft_tan.c"
+		Core/PrintF/ft_printf.c
 )
