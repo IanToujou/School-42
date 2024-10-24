@@ -24,7 +24,7 @@
 unsigned int	ft_strlcat(char *dst, const char *src, unsigned int n)
 {
 	char			*s;
-	char			*src_start;
+	const char		*src_start;
 	unsigned int	dst_length;
 	unsigned int	remaining;
 
