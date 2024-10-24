@@ -91,4 +91,17 @@ add_library(LibFT
 
 add_library(PrintF
 		"Core/PrintF/ft_printf.c"
+		"Core/PrintF/ft_print_char.c"
+		"Core/PrintF/ft_print_hex.c"
+		"Core/PrintF/ft_print_num.c"
+		"Core/PrintF/ft_print_num_base.c"
+		"Core/PrintF/ft_print_num_unsigned.c"
+		"Core/PrintF/ft_print_ptr.c"
+		"Core/PrintF/ft_print_str.c"
+)
+
+add_executable(GetNextLine
+		"Core/GetNextLine/get_next_line.c"
+		Core/GetNextLine/get_next_line.c
+		Core/GetNextLine/get_next_line.h
 )
