@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 
-add_library(libft
+add_library(LibFT
 		"Core/LibFT/src/base/ft_atoi.c"
 		"Core/LibFT/src/base/ft_bzero.c"
 		"Core/LibFT/src/base/ft_calloc.c"
@@ -87,4 +87,8 @@ add_library(libft
 		"Core/LibFT/src/custom/ft_strnew.c"
 		"Core/LibFT/src/custom/ft_strstr.c"
 		"Core/LibFT/src/custom/ft_tan.c"
+)
+
+add_library(PrintF
+		"Core/PrintF/ft_printf.c"
 )

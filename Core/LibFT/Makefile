@@ -97,4 +97,8 @@ bonus: $(OBJS) $(BONUS_OBJS)
 custom: $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
 	$(AR) $(NAME) $(BONUS_OBJS) $(CUSTOM_OBJS)
 
-.PHONY:	all clean clean-win fclean fclean-win re bonus custom
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
+
+.PHONY:	all clean clean-win fclean fclean-win re bonus custom so

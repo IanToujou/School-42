@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_strmapi.c >                                   :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/10/18 14:42:26 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/24 14:21:39 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*result;
 	size_t	i;
 
-	result = ft_strnew(ft_strlen(s));
-	if (s && f && result)
+	if (!s || !f)
+		return (NULL);
+	result = (char *) ft_calloc(ft_strlen(s) + 1, 1);
+	if (result)
 	{
 		i = 0;
 		while (s[i])

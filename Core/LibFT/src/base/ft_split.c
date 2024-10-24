@@ -6,7 +6,7 @@
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 07:03:28 by ibour             #+#    #+#             */
-/*   Updated: 2024/07/24 07:03:29 by ibour            ###   ########.fr       */
+/*   Updated: 2024/10/24 14:01:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ char	**ft_split(char const *s, char c)
 	int		index;
 	char	**split;
 
+	if (!s)
+		return (NULL);
 	split = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !split)
+	if (!split)
 		return (NULL);
 	i = 0;
 	j = 0;
