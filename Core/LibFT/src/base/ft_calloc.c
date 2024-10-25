@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_calloc.c >                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/10/18 14:42:26 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/25 15:14:40 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
+	if (count != 0 && size > SIZE_MAX / count)
+		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);

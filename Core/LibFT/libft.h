@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < libft.h >                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/25 15:23:31 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <malloc.h>
 # include <stdbool.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # ifndef ULONG_MAX
 #  define ULONG_MAX 0xFFFFFFFFUL
