@@ -1,6 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/18 14:42:26 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/25 14:12:00 by ibour            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   < ft_strnstr.c >                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
@@ -24,24 +36,23 @@
  */
 char	*ft_strnstr(const char *s, const char *to_find, size_t n)
 {
-	unsigned int	pos;
-	unsigned int	i;
+	size_t	s_len;
+	size_t	t_len;
 
 	if (!*to_find)
 		return ((char *)s);
-	pos = 0;
-	while (s[pos] && (size_t)pos < n)
+	if (n == 0)
+		return (NULL);
+	s_len = ft_strlen(s);
+	t_len = ft_strlen(to_find);
+	if (t_len > s_len)
+		n = s_len;
+	while (*s && n >= t_len)
 	{
-		if (s[pos] == to_find[0])
-		{
-			i = 1;
-			while (to_find[i] && s[pos + i] == to_find[i]
-				&& (size_t)(pos + i) < n)
-				i++;
-			if (to_find[i] == '\0')
-				return ((char *)&s[pos]);
-		}
-		pos++;
+		if (ft_strncmp(s, to_find, t_len) == 0)
+			return ((char *)s);
+		s++;
+		n--;
 	}
 	return (NULL);
 }
