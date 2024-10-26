@@ -24,6 +24,7 @@ SRC =	ft_printf.c \
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
+RM_WIN = del /S /Q
 AR = ar crs
 
 OBJS = $(SRC:.c=.o)
@@ -39,9 +40,15 @@ all: $(NAME)
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
+clean-win:
+	$(RM_WIN) "*.o"
+
 fclean:	clean
 	$(RM) $(NAME)
 
+fclean-win:	clean-win
+	$(RM_WIN) "$(NAME)"
+
 re:	fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean clean-win fclean fclean-win re
