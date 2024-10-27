@@ -103,6 +103,5 @@ add_library(PrintF
 add_executable(GetNextLine
 		"Core/GetNextLine/get_next_line.c"
 		"Core/GetNextLine/get_next_line.h"
-		Core/GetNextLine/get_next_line_utils.c
-		Core/GetNextLine/main.c
+		"Core/GetNextLine/get_next_line_utils.c"
 )

@@ -111,7 +111,7 @@ void	*ft_calloc(size_t count, size_t size)
  */
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
