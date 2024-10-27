@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:42:16 by ibour             #+#    #+#             */
-/*   Updated: 2024/10/27 19:20:12 by ibour            ###   ########.fr       */
+/*   Updated: 2024/10/27 19:49:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_free(char *buffer, char *buf)
 	return (temp);
 }
 
-char	*ft_line(char *buffer)
+char	*ft_line(const char *buffer)
 {
 	char	*line;
 	int		i;
@@ -50,7 +50,6 @@ char	*ft_next(char *buffer)
 	char	*line;
 
 	i = 0;
-	j = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
@@ -60,13 +59,14 @@ char	*ft_next(char *buffer)
 	}
 	line = ft_calloc(ft_strlen(buffer) - i + 1, sizeof(char));
 	i++;
+	j = 0;
 	while (buffer[i])
 		line[j++] = buffer[i++];
 	free(buffer);
 	return (line);
 }
 
-char	*read_file(int fd, char *res)
+char	*read_file(const int fd, char *res)
 {
 	char	*buffer;
 	int		byte_read;
@@ -77,7 +77,7 @@ char	*read_file(int fd, char *res)
 	byte_read = 1;
 	while (byte_read > 0)
 	{
-		byte_read = read(fd, res, BUFFER_SIZE);
+		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
 		{
 			free(buffer);
@@ -97,7 +97,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || fd >= BUFFER_SIZE || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_file(fd, buffer);
 	if (!buffer)
