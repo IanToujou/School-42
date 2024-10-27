@@ -12,7 +12,7 @@ rm -rf "$HOME/goinfre/RUN_TEST"
 mkdir -p "$HOME/goinfre/RUN_TEST"
 mkdir -p "$HOME/goinfre/RUN_TEST/PROJECT"
 mkdir -p "$HOME/goinfre/RUN_TEST/RESULTS"
-mv "$1" "$HOME/goinfre/RUN_TEST/PROJECT"
+cp -r "$1" "$HOME/goinfre/RUN_TEST/PROJECT"
 cd "$HOME/goinfre/RUN_TEST/PROJECT/$1" || exit
 git clone --quiet https://github.com/Tripouille/libftTester
 cd ..
