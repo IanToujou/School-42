@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 13:42:16 by ibour             #+#    #+#             */
-/*   Updated: 2024/10/27 19:49:35 by ibour            ###   ########.fr       */
+/*   Updated: 2024/10/27 19:59:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_free(char *buffer, char *buf)
+char	*ft_free(char *buffer, const char *buf)
 {
 	char	*temp;
 
