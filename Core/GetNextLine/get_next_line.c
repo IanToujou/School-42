@@ -24,7 +24,7 @@ char	*ft_free(char *buffer, const char *buf)
 char	*ft_line(const char *buffer)
 {
 	char	*line;
-	size_t		i;
+	size_t	i;
 
 	i = 0;
 	if (!buffer[i])
@@ -47,8 +47,8 @@ char	*ft_line(const char *buffer)
 
 char	*ft_next(char *buffer)
 {
-	size_t		i;
-	size_t		j;
+	size_t	i;
+	size_t	j;
 	char	*line;
 
 	i = 0;
