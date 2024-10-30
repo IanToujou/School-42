@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_hashnew.c >                                   :+:      :+:    :+:   */
+/*   ft_hashnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/09/04 19:25:17 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/30 20:12:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "../../include/libft.h"
 
 /**
  * Creates a new hash table of a given size.
@@ -20,10 +20,11 @@
  */
 t_hashtable	*ft_hashnew(int size)
 {
-	int 		i;
+	t_hashtable	*table;
+	int			i;
 
 	i = 0;
-	t_hashtable	*table = (t_hashtable *) malloc(sizeof(t_hashtable));
+	table = (t_hashtable *) malloc(sizeof(t_hashtable));
 	if (!table)
 		return (NULL);
 	table->size = size;

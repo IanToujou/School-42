@@ -57,10 +57,45 @@ BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstnew_bonus.c \
 			src/bonus/ft_lstsize_bonus.c
 
-CUSTOM =	$(wildcard src/custom/*.c)
+CUSTOM =	src/custom/ft_ceil.c \
+			src/custom/ft_factorial.c \
+			src/custom/ft_floor.c \
+			src/custom/ft_hashclear.c \
+			src/custom/ft_hashcode.c \
+			src/custom/ft_hashdel.c \
+			src/custom/ft_hashinsert.c \
+			src/custom/ft_hashnew.c \
+			src/custom/ft_hashsearch.c \
+			src/custom/ft_isblank.c \
+			src/custom/ft_isspace.c \
+			src/custom/ft_max.c \
+			src/custom/ft_memccpy.c \
+			src/custom/ft_memdel.c \
+			src/custom/ft_min.c \
+			src/custom/ft_overflow.c \
+			src/custom/ft_pow.c \
+			src/custom/ft_putchar.c \
+			src/custom/ft_endl.c \
+			src/custom/ft_putnbr.c \
+			src/custom/ft_putstr.c \
+			src/custom/ft_round.c \
+			src/custom/ft_strcat.c \
+			src/custom/ft_strclr.c \
+			src/custom/ft_strcmp.c \
+			src/custom/ft_strcpy.c \
+			src/custom/ft_strdel.c \
+			src/custom/ft_strequ.c \
+			src/custom/ft_striter.c \
+			src/custom/ft_strmap.c \
+			src/custom/ft_strncat.c \
+			src/custom/ft_strncpy.c \
+			src/custom/ft_strnequ.c \
+			src/custom/ft_strnew.c \
+			src/custom/ft_strstr.c \
+			src/other/getnextline/ft_getnextline.c
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I .
 RM = rm -rf
 RM_WIN = del /S /Q
 AR = ar crs

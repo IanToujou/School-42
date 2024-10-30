@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_num_unsigned.c >                        :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 23:31:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/31 23:31:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/10/30 18:55:09 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/30 18:56:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void	ft_print_num_unsigned(unsigned int num, int *i)
+int main()
 {
-	ft_print_num_base(num, "0123456789", i);
+	
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_char.c >                                :+:      :+:    :+:   */
+/*   < ft_print_num_base.c >                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,10 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-void	ft_print_char(char c, int *i)
+static int	ft_strlen(const char *str)
 {
-	write(1, &c, 1);
-	(*i)++;
+	int	length;
+
+	if (!str)
+		return (0);
+	length = 0;
+	while (str[length])
+		length++;
+	return (length);
+}
+
+void	ft_print_num_base(unsigned long int p, char *base, int *i)
+{
+	int	length;
+
+	length = ft_strlen(base);
+	if (p / length)
+		ft_print_num_base(p / length, base, i);
+	ft_print_char(base[p % length], i);
 }

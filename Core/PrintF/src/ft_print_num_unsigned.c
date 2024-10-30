@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_tan.c >                                       :+:      :+:    :+:   */
+/*   < ft_print_num_unsigned.c >                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 23:59:32 by ibour             #+#    #+#             */
-/*   Updated: 2024/09/28 23:59:32 by ibour            ###   ########.fr       */
+/*   Created: 2024/08/31 23:31:41 by ibour             #+#    #+#             */
+/*   Updated: 2024/08/31 23:31:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "../include/ft_printf.h"
 
-/**
- * Calculates the tangent value of a given angle.
- * The input angle needs to be in radians.
- *
- * @param x The angle to perform the calculation on.
- * @return The result of the calculation.
- */
-double	ft_tan(int x)
+void	ft_print_num_unsigned(unsigned int num, int *i)
 {
-	return (ft_sin(x) / ft_cos(x));
+	ft_print_num_base(num, "0123456789", i);
 }

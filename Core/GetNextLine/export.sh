@@ -1,8 +1,0 @@
-rm -rf "$HOME/Downloads/get_next_line/"
-mkdir "$HOME/Downloads/get_next_line/"
-cp -a "get_next_line.c" "$HOME/Downloads/get_next_line/"
-cp -a "get_next_line.h" "$HOME/Downloads/get_next_line/"
-cp -a "get_next_line_utils.c" "$HOME/Downloads/get_next_line/"
-cp -a "get_next_line_bonus.c" "$HOME/Downloads/get_next_line/"
-cp -a "get_next_line_bonus.h" "$HOME/Downloads/get_next_line/"
-cp -a "get_next_line_utils_bonus.c" "$HOME/Downloads/get_next_line/"

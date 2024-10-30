@@ -49,7 +49,6 @@ add_library(LibFT
 		"Core/LibFT/src/bonus/ft_lstnew_bonus.c"
 		"Core/LibFT/src/bonus/ft_lstsize_bonus.c"
 		"Core/LibFT/src/custom/ft_ceil.c"
-		"Core/LibFT/src/custom/ft_cos.c"
 		"Core/LibFT/src/custom/ft_factorial.c"
 		"Core/LibFT/src/custom/ft_floor.c"
 		"Core/LibFT/src/custom/ft_hashclear.c"
@@ -70,9 +69,7 @@ add_library(LibFT
 		"Core/LibFT/src/custom/ft_putendl.c"
 		"Core/LibFT/src/custom/ft_putnbr.c"
 		"Core/LibFT/src/custom/ft_putstr.c"
-		"Core/LibFT/src/custom/ft_reduce_angle.c"
 		"Core/LibFT/src/custom/ft_round.c"
-		"Core/LibFT/src/custom/ft_sin.c"
 		"Core/LibFT/src/custom/ft_strcat.c"
 		"Core/LibFT/src/custom/ft_strclr.c"
 		"Core/LibFT/src/custom/ft_strcmp.c"
@@ -86,25 +83,35 @@ add_library(LibFT
 		"Core/LibFT/src/custom/ft_strnequ.c"
 		"Core/LibFT/src/custom/ft_strnew.c"
 		"Core/LibFT/src/custom/ft_strstr.c"
-		"Core/LibFT/src/custom/ft_tan.c"
+		"Core/LibFT/src/other/getnextline/get_next_line.c"
 )
 
 add_library(PrintF
-		"Core/PrintF/ft_printf.c"
-		"Core/PrintF/ft_print_char.c"
-		"Core/PrintF/ft_print_hex.c"
-		"Core/PrintF/ft_print_num.c"
-		"Core/PrintF/ft_print_num_base.c"
-		"Core/PrintF/ft_print_num_unsigned.c"
-		"Core/PrintF/ft_print_ptr.c"
-		"Core/PrintF/ft_print_str.c"
+		"Core/PrintF/src/ft_printf.c"
+		"Core/PrintF/src/ft_print_char.c"
+		"Core/PrintF/src/ft_print_hex.c"
+		"Core/PrintF/src/ft_print_num.c"
+		"Core/PrintF/src/ft_print_num_base.c"
+		"Core/PrintF/src/ft_print_num_unsigned.c"
+		"Core/PrintF/src/ft_print_ptr.c"
+		"Core/PrintF/src/ft_print_str.c"
 )
 
-add_executable(GetNextLine
+add_library(GetNextLine
 		"Core/GetNextLine/get_next_line.c"
 		"Core/GetNextLine/get_next_line.h"
 		"Core/GetNextLine/get_next_line_utils.c"
-		Core/GetNextLine/get_next_line_bonus.c
-		Core/GetNextLine/get_next_line_bonus.h
-		Core/GetNextLine/get_next_line_utils_bonus.c
+		"Core/GetNextLine/get_next_line_bonus.c"
+		"Core/GetNextLine/get_next_line_bonus.h"
+		"Core/GetNextLine/get_next_line_utils_bonus.c"
+)
+
+add_executable(MiniTalk-Server
+		"Core/MiniTalk/src/server.c"
+		"Core/MiniTalk/include/minitalk.h"
+)
+
+add_executable(MiniTalk-Client
+		"Core/MiniTalk/src/client.c"
+		"Core/MiniTalk/include/minitalk.h"
 )

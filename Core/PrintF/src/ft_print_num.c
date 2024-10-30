@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_lstclear.c >                                  :+:      :+:    :+:   */
+/*   < ft_print_num.c >                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/08/31 23:31:41 by ibour             #+#    #+#             */
+/*   Updated: 2024/08/31 23:31:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "../include/ft_printf.h"
 
-/**
- * Clears a list by removing the content,
- * setting it to NULL and freeing the memory.
- *
- * @param lst The list to clear.
- * @param del A function to delete the content.
- */
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_print_num(int num, int *i)
 {
-	t_list	*new;
-
-	if (!lst)
-		return ;
-	while (*lst)
+	if (num == -2147483648)
 	{
-		new = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = new;
+		ft_print_num((num / 10), i);
+		ft_print_char('8', i);
 	}
-	*lst = 0;
+	else if (num < 0)
+	{
+		ft_print_char('-', i);
+		ft_print_num(-num, i);
+	}
+	else
+	{
+		if (num > 9)
+			ft_print_num((num / 10), i);
+		ft_print_char((char)('0' + num % 10), i);
+	}
 }

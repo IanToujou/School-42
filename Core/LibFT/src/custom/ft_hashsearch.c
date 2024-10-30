@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_hashsearch.c >                                :+:      :+:    :+:   */
+/*   ft_hashsearch.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/09/04 19:34:30 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/30 20:13:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "../../include/libft.h"
 
 /**
  * Searches for a value in a hash table by using a
@@ -29,7 +29,6 @@ int	ft_hashsearch(t_hashtable *table, const char *key)
 	node = table->table[index];
 	while (node != NULL && strcmp(node->key, key) != 0)
 		node = node->next;
-
 	if (node == NULL)
 		return (-1);
 	else

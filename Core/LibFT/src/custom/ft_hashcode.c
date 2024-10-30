@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_hash.c >                                      :+:      :+:    :+:   */
+/*   ft_hashcode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 16:28:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/05 16:28:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/09/04 19:17:40 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/30 20:11:20 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "../../include/libft.h"
 
 /**
  * Creates a hash value for a given key.
@@ -22,7 +22,7 @@
 unsigned int	ft_hashcode(const char *key, int size)
 {
 	unsigned long int	hash;
-	size_t 				i;
+	size_t				i;
 
 	hash = 0;
 	i = 0;

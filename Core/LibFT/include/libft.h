@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/10/25 15:23:31 by ibour            ###   ########.fr       */
+/*   Updated: 2024/10/30 20:20:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef FD_MAX
+#  define FD_MAX 1024
 # endif
 
 typedef unsigned char	t_byte;
@@ -144,5 +152,7 @@ void				ft_hashinsert(t_hashtable *table,
 int					ft_hashsearch(t_hashtable *table, const char *key);
 void				ft_hashdel(t_hashtable *table, const char *key);
 void				ft_hashclear(t_hashtable *table);
+
+char				*get_next_line(int fd);
 
 #endif

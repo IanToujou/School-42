@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   < ft_print_str.c >                                 :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 23:31:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/08/31 23:31:41 by ibour            ###   ########.fr       */
+/*   Created: 2024/10/30 18:55:00 by ibour             #+#    #+#             */
+/*   Updated: 2024/10/30 20:07:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/minitalk.h"
 
-void	ft_print_str(char *str, int *i)
+int main()
 {
-	if (!str)
-		str = "(null)";
-	while (*str)
-	{
-		ft_print_char(*str, i);
-		str++;
-	}
+	ft_printf("Server PID: %d\n", getpid());
 }
