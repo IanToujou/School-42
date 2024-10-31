@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   < ft_print_num_unsigned.c >                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: ibour <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:55:00 by ibour             #+#    #+#             */
-/*   Updated: 2024/10/31 09:54:09 by ibour            ###   ########.fr       */
+/*   Created: 2024/08/31 23:31:41 by ibour             #+#    #+#             */
+/*   Updated: 2024/08/31 23:31:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/ft_printf/include/ft_printf.h"
+#include "../include/ft_printf.h"
 
-int main()
+void	ft_print_num_unsigned(unsigned int num, int *i)
 {
-	ft_printf("Server PID: %d\n", getpid());
+	ft_print_num_base(num, "0123456789", i);
 }

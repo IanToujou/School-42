@@ -10,41 +10,55 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = minitalk
 
-SRC =		src/server.c
+SERVER_SRC =	src/server.c
+CLIENT_SRC =	src/client.c
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I .
+HEADERS = include/minitalk.h
+
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -I.
+LDFLAGS = -Lft_printf -lft_printf
 RM = rm -rf
 RM_WIN = del /S /Q
-AR = ar crs
 
-OBJS = $(SRC:.c=.o)
-BONUS_OBJS = $(BONUS:.c=.o)
-CUSTOM_OBJS = $(CUSTOM:.c=.o)
+FTPRINTF = lib/ft_printf/libftprintf.a
+FTPRINTF_PATH = lib/ft_printf/
 
-$(NAME): $(OBJS)
-	$(AR) $@ $^
-	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
+SERVER_OBJS = $(SERVER_SRC:src/%.c=%.o)
+CLIENT_OBJS = $(CLIENT_SRC:src/%.c=%.o)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+%.o: src/%.c $(HEADERS)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
+all: ft_printf server client
+
+ft_printf:
+	$(MAKE) -C $(FTPRINTF_PATH)
+
+server: $(SERVER_OBJS)
+	$(CC) $(SERVER_OBJS) $(LDFLAGS) -o server
+
+client: $(CLIENT_OBJS)
+	$(CC) $(CLIENT_OBJS) $(LDFLAGS) -o client
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
+	$(MAKE) clean -C $(FTPRINTF_PATH)
 
 clean-win:
 	$(RM_WIN) "*.o"
+	$(MAKE) clean-win -C $(FTPRINTF_PATH)
 
 fclean:	clean
-	$(RM) $(NAME)
+	$(RM) client server
+	$(MAKE) fclean -C $(FTPRINTF_PATH)
 
 fclean-win:	clean-win
-	$(RM_WIN) "$(NAME)"
+	$(RM_WIN) client server
+	$(MAKE) fclean-win -C $(FTPRINTF_PATH)
 
 re:	fclean all
 
-.PHONY:	all printf server client clean clean-win fclean fclean-win re
+.PHONY:	all printf server client bonus clean clean-win fclean fclean-win re
