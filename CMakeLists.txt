@@ -106,12 +106,16 @@ add_library(GetNextLine
 		"Core/GetNextLine/get_next_line_utils_bonus.c"
 )
 
-add_executable(MiniTalk-Server
+add_executable(MiniTalk
+		"Core/MiniTalk/src/client.c"
 		"Core/MiniTalk/src/server.c"
 		"Core/MiniTalk/include/minitalk.h"
-)
-
-add_executable(MiniTalk-Client
-		"Core/MiniTalk/src/client.c"
-		"Core/MiniTalk/include/minitalk.h"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_char.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_hex.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_num.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_num_base.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_num_unsigned.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_ptr.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_str.c"
+		"Core/MiniTalk/lib/libft/src/other/printf/ft_printf.c"
 )

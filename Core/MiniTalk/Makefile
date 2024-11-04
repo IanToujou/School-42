@@ -18,8 +18,8 @@ CFLAGS = -Wall -Wextra -Werror
 NAME_SERVER = server
 NAME_CLIENT = client
 
-SRCS_SERVER = server.c
-SRCS_CLIENT = client.c
+SRCS_SERVER = src/server.c
+SRCS_CLIENT = src/client.c
 
 SERVER_OBJS = $(SRCS_SERVER:.c=.o)
 CLIENT_OBJS = $(SRCS_CLIENT:.c=.o)
