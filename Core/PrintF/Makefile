@@ -38,7 +38,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 
 clean-win:
 	$(RM_WIN) "*.o"
