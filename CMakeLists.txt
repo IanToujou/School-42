@@ -129,4 +129,6 @@ add_executable(MiniTalk
 
 add_executable(PushSwap
 		"Core/PushSwap/include/push_swap.h"
+		Core/PushSwap/src/main.c
+		Core/PushSwap/src/ft_free.c
 )

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 18:07:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 21:52:52 by ibour            ###   ########.fr       */
+/*   Created: 2024/11/04 21:51:16 by ibour             #+#    #+#             */
+/*   Updated: 2024/11/04 21:52:43 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include "../lib/libft/include/libft.h"
-# include <stdlib.h>
-
-typedef struct s_stack
+void	ft_free(t_stack **stack)
 {
-	long			num;
-	long			index;
-	struct s_stack	*prev;
-	struct s_stack	*next;
-}	t_stack;
+	t_stack	*temp;
 
-void	ft_free(t_stack **stack);
-
-#endif
+	if (!stack)
+		return ;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		(*temp).num = 0;
+		free(*stack);
+		*stack = temp;
+	}
+}

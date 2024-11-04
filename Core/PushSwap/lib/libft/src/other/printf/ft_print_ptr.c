@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 18:07:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 21:52:52 by ibour            ###   ########.fr       */
+/*   Created: 2024/11/04 10:38:56 by ibour             #+#    #+#             */
+/*   Updated: 2024/11/04 13:09:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../../include/libft.h"
 
-# include "../lib/libft/include/libft.h"
-# include <stdlib.h>
-
-typedef struct s_stack
+void	ft_print_ptr(void *ptr, int *i)
 {
-	long			num;
-	long			index;
-	struct s_stack	*prev;
-	struct s_stack	*next;
-}	t_stack;
+	unsigned long	p;
 
-void	ft_free(t_stack **stack);
-
-#endif
+	p = (unsigned long) ptr;
+	if (p)
+	{
+		ft_print_str("0x", i);
+		ft_print_num_base(p, "0123456789abcdef", i);
+	}
+	else
+		ft_print_str("(nil)", i);
+}

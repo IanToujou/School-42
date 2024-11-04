@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_print_num_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 18:07:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 21:52:52 by ibour            ###   ########.fr       */
+/*   Created: 2024/11/04 10:38:56 by ibour             #+#    #+#             */
+/*   Updated: 2024/11/04 13:13:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../../include/libft.h"
 
-# include "../lib/libft/include/libft.h"
-# include <stdlib.h>
-
-typedef struct s_stack
+void	ft_print_num_base(unsigned long int p, char *base, int *i)
 {
-	long			num;
-	long			index;
-	struct s_stack	*prev;
-	struct s_stack	*next;
-}	t_stack;
+	int	length;
 
-void	ft_free(t_stack **stack);
-
-#endif
+	length = ft_strlen(base);
+	if (p / length)
+		ft_print_num_base(p / length, base, i);
+	ft_print_char(base[p % length], i);
+}
