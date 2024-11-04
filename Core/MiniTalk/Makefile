@@ -12,53 +12,45 @@
 
 NAME = minitalk
 
-SERVER_SRC =	src/server.c
-CLIENT_SRC =	src/client.c
-
-HEADERS = include/minitalk.h
-
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I.
-LDFLAGS = -Lft_printf -lft_printf
-RM = rm -rf
-RM_WIN = del /S /Q
+CFLAGS = -Wall -Wextra -Werror
 
-FTPRINTF = lib/ft_printf/libftprintf.a
-FTPRINTF_PATH = lib/ft_printf/
+NAME_SERVER = server
+NAME_CLIENT = client
+BONUS_SERVER = server_bonus
+BONUS_CLIENT = client_bonus
 
-SERVER_OBJS = $(SERVER_SRC:src/%.c=%.o)
-CLIENT_OBJS = $(CLIENT_SRC:src/%.c=%.o)
+SRCS_SERVER = server.c
+SRCS_CLIENT = client.c
 
-%.o: src/%.c $(HEADERS)
-	@$(CC) $(CFLAGS) -c $< -o $@
+SERVER_OBJS = $(SRCS_SERVER:.c=.o)
+CLIENT_OBJS = $(SRCS_CLIENT:.c=.o)
 
-all: ft_printf server client
+LIBFT_DIR = ./lib/libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-ft_printf:
-	$(MAKE) -C $(FTPRINTF_PATH)
+all: $(LIBFT) $(NAME_SERVER) $(NAME_CLIENT)
 
-server: $(SERVER_OBJS)
-	$(CC) $(SERVER_OBJS) $(LDFLAGS) -o server
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR) custom
 
-client: $(CLIENT_OBJS)
-	$(CC) $(CLIENT_OBJS) $(LDFLAGS) -o client
+$(NAME_SERVER): $(SERVER_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(SERVER_OBJS) -L$(LIBFT_DIR) -lft -o $(NAME_SERVER)
+
+$(NAME_CLIENT): $(CLIENT_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(CLIENT_OBJS) -L$(LIBFT_DIR) -lft -o $(NAME_CLIENT)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
-	$(MAKE) clean -C $(FTPRINTF_PATH)
+	rm -f $(SERVER_OBJS) $(CLIENT_OBJS) $(SERVER_OBJSBONUS) $(CLIENT_OBJSBONUS)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
-clean-win:
-	$(RM_WIN) "*.o"
-	$(MAKE) clean-win -C $(FTPRINTF_PATH)
+fclean: clean
+	rm -f $(NAME_SERVER) $(NAME_CLIENT) $(BONUS_SERVER) $(BONUS_CLIENT)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
-fclean:	clean
-	$(RM) client server
-	$(MAKE) fclean -C $(FTPRINTF_PATH)
+re: fclean all
 
-fclean-win:	clean-win
-	$(RM_WIN) client server
-	$(MAKE) fclean-win -C $(FTPRINTF_PATH)
-
-re:	fclean all
-
-.PHONY:	all printf server client bonus clean clean-win fclean fclean-win re
+.PHONY: all clean fclean re
