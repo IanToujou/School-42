@@ -6,55 +6,74 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:55:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 11:05:25 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/04 14:40:01 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
-int	send_character(const pid_t pid, char c)
+int	g_response = 0;
+
+void	ft_response(int signum)
+{
+	g_response = 1;
+	(void)signum;
+}
+
+void	ft_send_bit(int pid, int bit)
+{
+	int	signal;
+
+	if (bit == 1)
+		signal = SIGUSR1;
+	else
+		signal = SIGUSR2;
+	if (kill(pid, signal) == -1)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	ft_send_char(int pid, char c)
 {
 	int	i;
 
-	i = 0;
-	while (i < 8)
+	i = 7;
+	while (i >= 0)
 	{
-		if ((c >> i) & 1)
-		{
-			if (kill(pid, SIGNAL_ONE) == -1)
-				return (-1);
-		}
-		if (kill(pid, SIGNAL_ZERO) == -1)
-			return (-1);
+		ft_send_bit(pid, (c >> i) & 1);
 		usleep(400);
-		i++;
+		i--;
 	}
-	return (0);
+	while (!g_response)
+		;
+	g_response = 0;
 }
 
-int main(const int argc, char **argv)
+void	ft_send_str(int pid, char *str)
+{
+	while (*str)
+		ft_send_char(pid, *str++);
+	ft_send_char(pid, '\0');
+}
+
+int	main(const int argc, char **argv)
 {
 	pid_t	pid;
-	char	*msg;
-	int		i;
 
-	if(argc != 3) {
-		ft_printf("Usage: %s <server_pid> <message>\n", argv[0]);
-		return (1);
+	if (argc != 3)
+	{
+		ft_putstr_fd("Usage: ./client <pid> <string>\n", 2);
+		exit(EXIT_FAILURE);
 	}
 	pid = ft_atoi(argv[1]);
-	msg = argv[2];
-	i = 0;
-	while (msg[i]) {
-		if (send_character(pid, msg[i]) == -1) {
-			printf("Error sending signal\n");
-			return (1);
-		}
-		i++;
+	if (pid <= 0)
+	{
+		ft_putstr_fd("Invalid PID\n", 2);
+		exit(EXIT_FAILURE);
 	}
-	if (send_character(pid, '\0') == -1) {
-		printf("Error sending signal\n");
-		return (1);
-	}
+	signal(SIGUSR2, ft_response);
+	ft_send_str(pid, argv[2]);
 	return (0);
 }

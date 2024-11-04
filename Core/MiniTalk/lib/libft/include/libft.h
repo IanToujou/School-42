@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 10:42:31 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/04 13:24:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,6 @@ void				ft_hashinsert(t_hashtable *table,
 int					ft_hashsearch(t_hashtable *table, const char *key);
 void				ft_hashdel(t_hashtable *table, const char *key);
 void				ft_hashclear(t_hashtable *table);
-
-char				*get_next_line(int fd);
 
 int					ft_printf(char const *str, ...);
 void				ft_print_char(char c, int *i);

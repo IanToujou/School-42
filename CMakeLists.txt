@@ -83,7 +83,14 @@ add_library(LibFT
 		"Core/LibFT/src/custom/ft_strnequ.c"
 		"Core/LibFT/src/custom/ft_strnew.c"
 		"Core/LibFT/src/custom/ft_strstr.c"
-		"Core/LibFT/src/other/getnextline/get_next_line.c"
+		"Core/LibFT/src/other/printf/ft_printf.c"
+		"Core/LibFT/src/other/printf/ft_print_char.c"
+		"Core/LibFT/src/other/printf/ft_print_hex.c"
+		"Core/LibFT/src/other/printf/ft_print_num.c"
+		"Core/LibFT/src/other/printf/ft_print_num_base.c"
+		"Core/LibFT/src/other/printf/ft_print_num_unsigned.c"
+		"Core/LibFT/src/other/printf/ft_print_ptr.c"
+		"Core/LibFT/src/other/printf/ft_print_str.c"
 )
 
 add_library(PrintF

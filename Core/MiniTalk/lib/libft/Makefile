@@ -91,7 +91,6 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/custom/ft_strnequ.c \
 			src/custom/ft_strnew.c \
 			src/custom/ft_strstr.c \
-			src/other/getnextline/get_next_line.c \
 			src/other/printf/ft_print_char.c \
 			src/other/printf/ft_print_hex.c \
 			src/other/printf/ft_print_num.c \
@@ -102,7 +101,7 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/other/printf/ft_printf.c
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I .
+CFLAGS = -Wall -Werror -Wextra -I.
 RM = rm -rf
 RM_WIN = del /S /Q
 AR = ar crs
@@ -113,7 +112,6 @@ CUSTOM_OBJS = $(CUSTOM:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
-	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -138,10 +136,6 @@ bonus: $(OBJS) $(BONUS_OBJS)
 	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 custom: $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
-	$(AR) $(NAME) $(BONUS_OBJS) $(CUSTOM_OBJS)
+	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONUS_OBJS)
-
-.PHONY:	all clean clean-win fclean fclean-win re bonus custom so
+.PHONY:	all clean clean-win fclean fclean-win re bonus custom
