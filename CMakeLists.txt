@@ -126,3 +126,7 @@ add_executable(MiniTalk
 		"Core/MiniTalk/lib/libft/src/other/printf/ft_print_str.c"
 		"Core/MiniTalk/lib/libft/src/other/printf/ft_printf.c"
 )
+
+add_executable(PushSwap
+		"Core/PushSwap/include/push_swap.h"
+)
