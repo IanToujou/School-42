@@ -75,7 +75,6 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/custom/ft_overflow.c \
 			src/custom/ft_pow.c \
 			src/custom/ft_putchar.c \
-			src/custom/ft_endl.c \
 			src/custom/ft_putnbr.c \
 			src/custom/ft_putstr.c \
 			src/custom/ft_round.c \
@@ -92,7 +91,15 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/custom/ft_strnequ.c \
 			src/custom/ft_strnew.c \
 			src/custom/ft_strstr.c \
-			src/other/getnextline/ft_getnextline.c
+			src/other/getnextline/get_next_line.c \
+			src/other/printf/ft_print_char.c \
+			src/other/printf/ft_print_hex.c \
+			src/other/printf/ft_print_num.c \
+			src/other/printf/ft_print_num_base.c \
+			src/other/printf/ft_print_num_unsigned.c \
+			src/other/printf/ft_print_ptr.c \
+			src/other/printf/ft_print_str.c \
+			src/other/printf/ft_printf.c
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I .

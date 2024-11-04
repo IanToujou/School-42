@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/10/30 20:20:41 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/04 10:42:31 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
 # ifndef ULONG_MAX
 #  define ULONG_MAX 0xFFFFFFFFUL
@@ -33,6 +35,14 @@
 
 # ifndef FD_MAX
 #  define FD_MAX 1024
+# endif
+
+# ifndef HEX_UPP_BASE
+#  define HEX_UPP_BASE "0123456789ABCDEF"
+# endif
+
+# ifndef HEX_LOW_BASE
+#  define HEX_LOW_BASE "0123456789abcdef"
 # endif
 
 typedef unsigned char	t_byte;
@@ -154,5 +164,14 @@ void				ft_hashdel(t_hashtable *table, const char *key);
 void				ft_hashclear(t_hashtable *table);
 
 char				*get_next_line(int fd);
+
+int					ft_printf(char const *str, ...);
+void				ft_print_char(char c, int *i);
+void				ft_print_num(int num, int *i);
+void				ft_print_ptr(void *ptr, int *i);
+void				ft_print_str(char *str, int *i);
+void				ft_print_num_unsigned(unsigned int num, int *i);
+void				ft_print_hex(unsigned int num, int *i, char *base);
+void				ft_print_num_base(unsigned long int p, char *base, int *i);
 
 #endif
