@@ -17,8 +17,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME_SERVER = server
 NAME_CLIENT = client
-BONUS_SERVER = server_bonus
-BONUS_CLIENT = client_bonus
 
 SRCS_SERVER = server.c
 SRCS_CLIENT = client.c
@@ -28,8 +26,6 @@ CLIENT_OBJS = $(SRCS_CLIENT:.c=.o)
 
 LIBFT_DIR = ./lib/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-
-all: $(LIBFT) $(NAME_SERVER) $(NAME_CLIENT)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) custom
@@ -41,14 +37,16 @@ $(NAME_CLIENT): $(CLIENT_OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(CLIENT_OBJS) -L$(LIBFT_DIR) -lft -o $(NAME_CLIENT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
+
+all: $(LIBFT) $(NAME_SERVER) $(NAME_CLIENT)
 
 clean:
-	rm -f $(SERVER_OBJS) $(CLIENT_OBJS) $(SERVER_OBJSBONUS) $(CLIENT_OBJSBONUS)
+	rm -f $(SERVER_OBJS) $(CLIENT_OBJS)
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME_SERVER) $(NAME_CLIENT) $(BONUS_SERVER) $(BONUS_CLIENT)
+	rm -f $(NAME_SERVER) $(NAME_CLIENT)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
