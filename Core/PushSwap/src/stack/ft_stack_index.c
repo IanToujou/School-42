@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:20:28 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 11:21:40 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 17:16:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_stack_index(t_stack *stack, const int num)
+int	ft_stack_index(t_stack *stack, int num)
 {
 	int	i;
 

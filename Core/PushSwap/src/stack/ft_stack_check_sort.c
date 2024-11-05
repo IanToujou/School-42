@@ -6,22 +6,23 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:10:28 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 10:41:17 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 16:34:43 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_stack_check_sort(const t_stack *stack)
+int	ft_stack_check_sort(t_stack *stack_a)
 {
 	int	i;
 
-	i = stack->num;
-	while (stack) {
-		if (i > stack->num)
+	i = stack_a->num;
+	while (stack_a)
+	{
+		if (i > stack_a->num)
 			return (0);
-		i = stack->num;
-		stack = stack->next;
+		i = stack_a->num;
+		stack_a = stack_a->next;
 	}
 	return (1);
 }

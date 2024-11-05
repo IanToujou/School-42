@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:06:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 10:41:49 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 15:50:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 void	ft_handle_error(char* error, const int exitProgram)
 {
-	ft_printf("Error: %d\n", error);
+	ft_printf("Error: %s\n", error);
 	if(exitProgram)
 		exit(EXIT_FAILURE);
 }

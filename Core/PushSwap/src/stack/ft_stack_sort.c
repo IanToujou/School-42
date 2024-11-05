@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:41:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 14:00:06 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 17:27:39 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	ft_stack_sort_until_three(t_stack **stack_a, t_stack **stack_b)
 	{
 		temp = *stack_a;
 		i = ft_algo_rotate_ab(*stack_a, *stack_b);
-		while (i >= 0) {
+		while (i >= 0)
+		{
 			if (i == ft_util_check_rarb(*stack_a, *stack_b, temp->num))
 				i = ft_algo_push_rarb(stack_a, stack_b, temp->num, 'a');
 			else if (i == ft_util_check_rrarrb(*stack_a, *stack_b, temp->num))
@@ -36,7 +37,7 @@ static void	ft_stack_sort_until_three(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-static t_stack	*ft_stack_sort_b(t_stack **stack_a)
+t_stack	*ft_stack_sort_b(t_stack **stack_a)
 {
 	t_stack	*stack_b;
 
@@ -52,7 +53,7 @@ static t_stack	*ft_stack_sort_b(t_stack **stack_a)
 	return (stack_b);
 }
 
-static t_stack	**ft_stack_sort_a(t_stack **stack_a, t_stack **stack_b)
+t_stack	**ft_stack_sort_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int		i;
 	t_stack	*temp;

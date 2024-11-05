@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:07:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 14:06:45 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 16:34:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_stack	*ft_stack_last(t_stack *stack);
 void	ft_stack_add_back(t_stack **stack, t_stack *new);
 void	ft_stack_free(t_stack **stack);
 int		ft_stack_check_duplicate(const t_stack *stack);
-int		ft_stack_check_sort(const t_stack *stack);
+int		ft_stack_check_sort(t_stack *stack_a);
 void	ft_stack_sort(t_stack **stack_a);
 void	ft_stack_sort_mini(t_stack **stack_a);
 int		ft_stack_size(const t_stack *stack);

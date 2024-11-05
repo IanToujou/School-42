@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:01:22 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 14:06:40 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 16:15:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	ft_stack_max(const t_stack *stack)
 {
-	int	i;
+	int		i;
 
 	i = stack->num;
-	while (stack) {
+	while (stack)
+	{
 		if (stack->num > i)
 			i = stack->num;
 		stack = stack->next;

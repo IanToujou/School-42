@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:47:28 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 13:04:46 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 17:11:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_util_check_rarb(t_stack *stack_a, t_stack *stack_b, const int c)
+int	ft_util_check_rarb(t_stack *stack_a, t_stack *stack_b, int c)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	ft_util_check_rarb(t_stack *stack_a, t_stack *stack_b, const int c)
 	return (i);
 }
 
-int	ft_util_check_rrarrb(t_stack *stack_a, t_stack *stack_b, const int c)
+int	ft_util_check_rrarrb(t_stack *stack_a, t_stack *stack_b, int c)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ int	ft_util_check_rrarrb(t_stack *stack_a, t_stack *stack_b, const int c)
 	return (i);
 }
 
-int	ft_util_check_rrarb(t_stack *stack_a, t_stack *stack_b, const int c)
+int	ft_util_check_rrarb(t_stack *stack_a, t_stack *stack_b, int c)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ int	ft_util_check_rrarb(t_stack *stack_a, t_stack *stack_b, const int c)
 	return (i);
 }
 
-int	ft_util_check_rarrb(t_stack *stack_a, t_stack *stack_b, const int c)
+int	ft_util_check_rarrb(t_stack *stack_a, t_stack *stack_b, int c)
 {
 	int	i;
 
