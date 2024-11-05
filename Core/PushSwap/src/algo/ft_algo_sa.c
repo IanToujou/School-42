@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:57:49 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 17:23:04 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 19:24:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	ft_algo_sa(t_stack **stack_a, int i)
+void	ft_algo_sa(t_stack **stack_a, int j)
 {
 	t_stack	*temp;
 
@@ -22,6 +22,6 @@ void	ft_algo_sa(t_stack **stack_a, int i)
 	*stack_a = (*stack_a)->next;
 	temp->next = (*stack_a)->next;
 	(*stack_a)->next = temp;
-	if (i == 0)
+	if (j == 0)
 		write(1, "sa\n", 3);
 }

@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:41:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 17:27:39 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 19:43:20 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-static void	ft_stack_sort_until_three(t_stack **stack_a, t_stack **stack_b)
+void	ft_stack_sort_until_three(t_stack **stack_a, t_stack **stack_b)
 {
 	int		i;
 	t_stack	*temp;
@@ -58,7 +58,7 @@ t_stack	**ft_stack_sort_a(t_stack **stack_a, t_stack **stack_b)
 	int		i;
 	t_stack	*temp;
 
-	while(*stack_b)
+	while (*stack_b)
 	{
 		temp = *stack_b;
 		i = ft_algo_rotate_ba(*stack_a, *stack_b);
@@ -87,15 +87,18 @@ void	ft_stack_sort(t_stack **stack_a)
 	stack_b = NULL;
 	if (ft_stack_size(*stack_a) == 2)
 		ft_algo_sa(stack_a, 0);
-	else {
+	else
+	{
 		stack_b = ft_stack_sort_b(stack_a);
 		stack_a = ft_stack_sort_a(stack_a, &stack_b);
 		i = ft_stack_index(*stack_a, ft_stack_min(*stack_a));
-		if (i < ft_stack_size(*stack_a) - i) {
+		if (i < ft_stack_size(*stack_a) - i)
+		{
 			while ((*stack_a)->num != ft_stack_min(*stack_a))
 				ft_algo_ra(stack_a, 0);
 		}
-		else {
+		else
+		{
 			while ((*stack_a)->num != ft_stack_min(*stack_a))
 				ft_algo_rra(stack_a, 0);
 		}

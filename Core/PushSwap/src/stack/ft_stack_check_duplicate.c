@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:06:23 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 10:41:22 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 19:27:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_stack_check_duplicate(const t_stack *stack)
+int	ft_stack_check_duplicate(t_stack *stack)
 {
 	t_stack *temp;
 

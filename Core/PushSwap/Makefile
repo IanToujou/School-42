@@ -15,7 +15,6 @@ NAME = push_swap
 SRC =	src/main/main.c \
 		src/main/push_swap.c \
 		src/handler/ft_handle_error.c \
-		src/handler/ft_handle_operation.c \
 		src/util/ft_util_check_ab.c \
 		src/util/ft_util_check_ba.c \
 		src/stack/ft_stack_add_back.c \
@@ -41,13 +40,15 @@ SRC =	src/main/main.c \
         src/algo/ft_algo_rra.c \
         src/algo/ft_algo_rrb.c \
         src/algo/ft_algo_rrr.c \
-        src/algo/ft_algo_sa.c
+        src/algo/ft_algo_sa.c \
+        src/algo/ft_algo_sb.c
 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I.
 RM = rm -rf
+RM_WIN = del /S /Q
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -62,10 +63,18 @@ clean:
 	$(RM) $(OBJ)
 	make -C lib/libft clean
 
+clean-win:
+	$(RM_WIN) "*.o"
+	make -C lib/libft clean-win
+
 fclean: clean
 	$(RM) $(NAME)
 	make -C lib/libft fclean
 
+fclean-win:	clean-win
+	$(RM_WIN) "$(NAME).exe"
+	make -C lib/libft fclean-win
+
 re: fclean all
 
-.PHONY: all libft clean fclean re
+.PHONY: all libft clean clean-win fclean fclean-win re

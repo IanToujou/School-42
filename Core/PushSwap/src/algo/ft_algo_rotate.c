@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:30:59 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 17:27:18 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 19:46:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ int	ft_algo_rotate_ba(t_stack *stack_a, t_stack *stack_b)
 
 int	ft_algo_rotate_ab(t_stack *stack_a, t_stack *stack_b)
 {
-	int	i;
+	int		i;
 	t_stack	*temp;
 
 	temp = stack_a;
 	i = ft_util_check_rrarrb(stack_a, stack_b, stack_a->num);
-	while(temp) {
-		if (i == ft_util_check_rarb(stack_a, stack_b, temp->num))
+	while (temp)
+	{
+		if (i > ft_util_check_rarb(stack_a, stack_b, temp->num))
 			i = ft_util_check_rarb(stack_a, stack_b, temp->num);
-		if (i == ft_util_check_rrarrb(stack_a, stack_b, temp->num))
+		if (i > ft_util_check_rrarrb(stack_a, stack_b, temp->num))
 			i = ft_util_check_rrarrb(stack_a, stack_b, temp->num);
-		if (i == ft_util_check_rarrb(stack_a, stack_b, temp->num))
+		if (i > ft_util_check_rarrb(stack_a, stack_b, temp->num))
 			i = ft_util_check_rarrb(stack_a, stack_b, temp->num);
-		if (i == ft_util_check_rrarb(stack_a, stack_b, temp->num))
+		if (i > ft_util_check_rrarb(stack_a, stack_b, temp->num))
 			i = ft_util_check_rrarb(stack_a, stack_b, temp->num);
-		else
-			temp = temp->next;
+		temp = temp->next;
 	}
 	return (i);
 }

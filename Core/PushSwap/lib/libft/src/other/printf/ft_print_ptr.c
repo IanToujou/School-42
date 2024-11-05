@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:38:56 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 13:09:21 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 19:06:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_ptr(void *ptr, int *i)
 {
 	unsigned long	p;
 
-	p = (unsigned long) ptr;
+	p = *(unsigned long*) ptr;
 	if (p)
 	{
 		ft_print_str("0x", i);

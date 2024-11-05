@@ -140,7 +140,6 @@ add_executable(PushSwap
 		"Core/PushSwap/src/stack/ft_stack_check_sort.c"
 		"Core/PushSwap/src/algo/ft_algo_ra.c"
 		"Core/PushSwap/src/stack/ft_stack_sort.c"
-		"Core/PushSwap/src/handler/ft_handle_operation.c"
 		"Core/PushSwap/src/algo/ft_algo_sa.c"
 		"Core/PushSwap/src/stack/ft_stack_size.c"
 		"Core/PushSwap/src/stack/ft_stack_min.c"
@@ -152,11 +151,13 @@ add_executable(PushSwap
 		"Core/PushSwap/src/util/ft_util_check_ab.c"
 		"Core/PushSwap/src/util/ft_util_check_ba.c"
 		"Core/PushSwap/src/stack/ft_stack_place.c"
-		Core/PushSwap/src/algo/ft_algo_rotate_push.c
-		Core/PushSwap/src/algo/ft_algo_rr.c
-		Core/PushSwap/src/algo/ft_algo_rb.c
-		Core/PushSwap/src/algo/ft_algo_pa.c
-		Core/PushSwap/src/algo/ft_algo_rrr.c
-		Core/PushSwap/src/algo/ft_algo_rrb.c
-		Core/PushSwap/src/stack/ft_stack_sort_mini.c
+		"Core/PushSwap/src/algo/ft_algo_rotate_push.c"
+		"Core/PushSwap/src/algo/ft_algo_rr.c"
+		"Core/PushSwap/src/algo/ft_algo_rb.c"
+		"Core/PushSwap/src/algo/ft_algo_pa.c"
+		"Core/PushSwap/src/algo/ft_algo_rrr.c"
+		"Core/PushSwap/src/algo/ft_algo_rrb.c"
+		"Core/PushSwap/src/algo/ft_algo_sb.c"
+		"Core/PushSwap/src/stack/ft_stack_sort_mini.c"
+		Core/PushSwap/src/algo/ft_algo_ss.c
 )
