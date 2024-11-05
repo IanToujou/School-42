@@ -129,6 +129,34 @@ add_executable(MiniTalk
 
 add_executable(PushSwap
 		"Core/PushSwap/include/push_swap.h"
-		Core/PushSwap/src/main.c
-		Core/PushSwap/src/ft_free.c
+		"Core/PushSwap/src/main/main.c"
+		"Core/PushSwap/src/stack/ft_stack_free.c"
+		"Core/PushSwap/src/main/push_swap.c"
+		"Core/PushSwap/src/handler/ft_handle_error.c"
+		"Core/PushSwap/src/stack/ft_stack_new.c"
+		"Core/PushSwap/src/stack/ft_stack_add_back.c"
+		"Core/PushSwap/src/stack/ft_stack_last.c"
+		"Core/PushSwap/src/stack/ft_stack_check_duplicate.c"
+		"Core/PushSwap/src/stack/ft_stack_check_sort.c"
+		"Core/PushSwap/src/algo/ft_algo_ra.c"
+		"Core/PushSwap/src/stack/ft_stack_sort.c"
+		"Core/PushSwap/src/handler/ft_handle_operation.c"
+		"Core/PushSwap/src/algo/ft_algo_sa.c"
+		"Core/PushSwap/src/stack/ft_stack_size.c"
+		"Core/PushSwap/src/stack/ft_stack_min.c"
+		"Core/PushSwap/src/stack/ft_stack_max.c"
+		"Core/PushSwap/src/algo/ft_algo_pb.c"
+		"Core/PushSwap/src/stack/ft_stack_index.c"
+		"Core/PushSwap/src/algo/ft_algo_rra.c"
+		"Core/PushSwap/src/algo/ft_algo_rotate.c"
+		"Core/PushSwap/src/util/ft_util_check_ab.c"
+		"Core/PushSwap/src/util/ft_util_check_ba.c"
+		"Core/PushSwap/src/stack/ft_stack_place.c"
+		Core/PushSwap/src/algo/ft_algo_rotate_push.c
+		Core/PushSwap/src/algo/ft_algo_rr.c
+		Core/PushSwap/src/algo/ft_algo_rb.c
+		Core/PushSwap/src/algo/ft_algo_pa.c
+		Core/PushSwap/src/algo/ft_algo_rrr.c
+		Core/PushSwap/src/algo/ft_algo_rrb.c
+		Core/PushSwap/src/stack/ft_stack_sort_mini.c
 )

@@ -6,24 +6,24 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:46:53 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 21:55:13 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/05 10:41:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 
-	// process stack
-	if (!a) // check for duplicate numbers
+	a = ft_stack_from_args(argc, argv);
+	if (!a || ft_stack_check_duplicate(a))
 	{
-		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
+		ft_stack_free(&a);
+		ft_handle_error("Stack is invalid or contains duplicates.", 1);
 	}
-	// check if sorted
-	// sort the stack
-	ft_free(&a);
+	if (!ft_stack_check_sort(a))
+		ft_stack_sort(&a);
+	ft_stack_free(&a);
 	return (0);
 }
