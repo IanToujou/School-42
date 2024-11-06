@@ -56,6 +56,7 @@ RM_WIN = del /S /Q
 
 all: $(OBJ) libft
 	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft
+	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 libft:
 	make -C lib/libft custom

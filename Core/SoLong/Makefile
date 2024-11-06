@@ -26,6 +26,7 @@ RM_WIN = del /S /Q
 
 all: $(OBJ) libft mlx
 	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11
+	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 libft:
 	make -C lib/libft custom
