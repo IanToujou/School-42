@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:55:04 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 19:28:28 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/06 09:40:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_stack_place_b(t_stack *stack_b, int num_push)
 	i = 1;
 	if (num_push > stack_b->num && num_push < ft_stack_last(stack_b)->num)
 		i = 0;
-	else if (num_push > ft_stack_max(stack_b) || num_push < ft_stack_min(stack_b))
+	else if (num_push > ft_stack_max(stack_b)
+		|| num_push < ft_stack_min(stack_b))
 		i = ft_stack_index(stack_b, ft_stack_max(stack_b));
 	else
 	{
@@ -43,7 +44,8 @@ int	ft_stack_place_a(t_stack *stack_a, int num_push)
 	i = 1;
 	if (num_push < stack_a->num && num_push > ft_stack_last(stack_a)->num)
 		i = 0;
-	else if (num_push > ft_stack_max(stack_a) || num_push < ft_stack_min(stack_a))
+	else if (num_push > ft_stack_max(stack_a)
+		|| num_push < ft_stack_min(stack_a))
 		i = ft_stack_index(stack_a, ft_stack_min(stack_a));
 	else
 	{

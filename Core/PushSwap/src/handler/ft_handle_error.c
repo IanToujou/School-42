@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 09:06:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 19:59:11 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/06 09:38:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Throws a given error and exits the program if
  * specified.
  */
-void	ft_handle_error()
+void	ft_handle_error(void)
 {
 	write (2, "Error\n", 6);
 	exit(1);

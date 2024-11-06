@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:07:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 19:53:31 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/06 09:43:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	ft_handle_error();
+void	ft_handle_error(void);
+void	ft_atoi_check_valid(char c);
 
 t_stack	*ft_stack_from_args(int argc, char **argv);
 
@@ -63,7 +64,8 @@ void	ft_algo_rrr_sub(t_stack **stack_b, int j);
 int		ft_algo_rotate_ab(t_stack *stack_a, t_stack *stack_b);
 int		ft_algo_rotate_ba(t_stack *stack_a, t_stack *stack_b);
 int		ft_algo_push_rarb(t_stack **stack_a, t_stack **stack_b, int c, char s);
-int		ft_algo_push_rrarrb(t_stack **stack_a, t_stack **stack_b, int c, char s);
+int		ft_algo_push_rrarrb(t_stack **stack_a,
+			t_stack **stack_b, int c, char s);
 int		ft_algo_push_rrarb(t_stack **stack_a, t_stack **stack_b, int c, char s);
 int		ft_algo_push_rarrb(t_stack **stack_a, t_stack **stack_b, int c, char s);
 

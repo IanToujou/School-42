@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:06:23 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 19:27:19 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/06 09:40:03 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int	ft_stack_check_duplicate(t_stack *stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
-	while (stack) {
+	while (stack)
+	{
 		temp = stack->next;
-		while (temp) {
+		while (temp)
+		{
 			if (stack->num == temp->num)
 				return (1);
 			temp = temp->next;

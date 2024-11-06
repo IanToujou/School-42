@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_atoi_check_valid.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 10:38:56 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/05 19:06:44 by ibour            ###   ########.fr       */
+/*   Created: 2024/11/06 09:43:21 by ibour             #+#    #+#             */
+/*   Updated: 2024/11/06 09:44:33 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
+#include "../../include/push_swap.h"
 
-void	ft_print_ptr(void *ptr, int *i)
+void	ft_atoi_check_valid(const char c)
 {
-	unsigned long	p;
-
-	p = *(unsigned long *) ptr;
-	if (p)
-	{
-		ft_print_str("0x", i);
-		ft_print_num_base(p, "0123456789abcdef", i);
-	}
-	else
-		ft_print_str("(nil)", i);
+	if (!c)
+		ft_handle_error();
 }

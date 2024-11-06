@@ -29,7 +29,8 @@ int	ft_util_check_rrarrb_a(t_stack *stack_a, t_stack *stack_b, int c)
 	i = 0;
 	if (ft_stack_place_a(stack_a, c))
 		i = ft_stack_size(stack_a) - ft_stack_place_a(stack_a, c);
-	if ((i < (ft_stack_size(stack_b) - ft_stack_index(stack_b, c))) && ft_stack_index(stack_b, c))
+	if ((i < (ft_stack_size(stack_b) - ft_stack_index(stack_b, c)))
+		&& ft_stack_index(stack_b, c))
 		i = ft_stack_size(stack_b) - ft_stack_index(stack_b, c);
 	return (i);
 }

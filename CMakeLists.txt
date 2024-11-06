@@ -160,4 +160,6 @@ add_executable(PushSwap
 		"Core/PushSwap/src/algo/ft_algo_sb.c"
 		"Core/PushSwap/src/stack/ft_stack_sort_mini.c"
 		Core/PushSwap/src/algo/ft_algo_ss.c
+		Core/PushSwap/src/main/ft_atoi_check_valid.c
+		Core/PushSwap/src/main/ft_atoi_check_valid.c
 )
