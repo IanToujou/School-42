@@ -166,4 +166,6 @@ add_executable(PushSwap
 add_executable(SoLong
 		"Core/SoLong/src/main/main.c"
 		Core/SoLong/include/so_long.h
+		Core/SoLong/src/hooks/ft_hook_destroy.c
+		Core/SoLong/src/hooks/ft_hook_keypress.c
 )
