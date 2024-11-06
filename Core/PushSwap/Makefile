@@ -14,6 +14,7 @@ NAME = push_swap
 
 SRC =	src/main/main.c \
 		src/main/push_swap.c \
+		src/main/ft_atoi_check_valid.c \
 		src/handler/ft_handle_error.c \
 		src/util/ft_util_check_ab.c \
 		src/util/ft_util_check_ba.c \
