@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 10:42:31 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/07 13:02:51 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@
 
 # ifndef HEX_LOW_BASE
 #  define HEX_LOW_BASE "0123456789abcdef"
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef FD_MAX
+#  define FD_MAX 1024
 # endif
 
 typedef unsigned char	t_byte;
@@ -164,6 +172,11 @@ void				ft_hashdel(t_hashtable *table, const char *key);
 void				ft_hashclear(t_hashtable *table);
 
 char				*get_next_line(int fd);
+
+size_t				ft_strlen(const char *s);
+char				*ft_strjoin(char const *s1, char const *s2);
+void				*ft_calloc(size_t count, size_t size);
+char				*ft_strchr(const char *s, int c);
 
 int					ft_printf(char const *str, ...);
 void				ft_print_char(char c, int *i);

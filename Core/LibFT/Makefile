@@ -98,7 +98,8 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/other/printf/ft_print_num_unsigned.c \
 			src/other/printf/ft_print_ptr.c \
 			src/other/printf/ft_print_str.c \
-			src/other/printf/ft_printf.c
+			src/other/printf/ft_printf.c \
+			src/other/getnextline/get_next_line.c
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I.

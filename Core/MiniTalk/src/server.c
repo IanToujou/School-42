@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:55:00 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/04 14:21:58 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:11:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ void	ft_handle_signal(int signum, siginfo_t *info, void *context)
 int	main(void)
 {
 	struct sigaction	action;
+	sigset_t			set;
 
+	sigemptyset(&set);
 	ft_printf("Server PID: %d\n", getpid());
 	action.sa_sigaction = &ft_handle_signal;
 	action.sa_flags = SA_SIGINFO;
+	action.sa_mask = set;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	while (1)
