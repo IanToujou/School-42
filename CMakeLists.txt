@@ -167,11 +167,10 @@ add_executable(SoLong
 		"Core/SoLong/src/main/main.c"
 		"Core/SoLong/include/so_long.h"
 		"Core/SoLong/src/handler/ft_handle_error.c"
-		Core/SoLong/src/main/ft_render.c
-		Core/SoLong/src/hooks/ft_key_hook.c
-		Core/SoLong/src/controller/ft_controller.c
-		Core/SoLong/src/main/ft_parse.c
-		Core/LibFT/src/other/getnextline/get_next_line.c
-		Core/LibFT/src/other/getnextline/get_next_line_utils.c
-		Core/SoLong/src/main/ft_init.c
+		"Core/SoLong/src/main/ft_render.c"
+		"Core/SoLong/src/hooks/ft_key_hook.c"
+		"Core/SoLong/src/controller/ft_controller.c"
+		"Core/SoLong/src/main/ft_parse.c"
+		"Core/LibFT/src/other/getnextline/get_next_line.c"
+		"Core/SoLong/src/main/ft_init.c"
 )

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 19:34:30 by ibour             #+#    #+#             */
-/*   Updated: 2024/10/30 20:13:08 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/06 17:40:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_hashsearch(t_hashtable *table, const char *key)
 
 	index = ft_hashcode(key, table->size);
 	node = table->table[index];
-	while (node != NULL && strcmp(node->key, key) != 0)
+	while (node != NULL && ft_strcmp(node->key, key) != 0)
 		node = node->next;
 	if (node == NULL)
 		return (-1);
