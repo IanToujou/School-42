@@ -12,8 +12,11 @@
 
 NAME = pipex
 
-SRC =	src/main/main.c \
-		src/error/ft_throw_error.c
+SRC =	src/error/ft_throw_error.c \
+		src/main/main.c \
+		src/process/ft_process_child.c \
+		src/process/ft_process_execute.c \
+		src/process/ft_process_parent.c
 
 OBJ = $(SRC:.c=.o)
 

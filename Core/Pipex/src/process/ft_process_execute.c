@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:45:15 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/09 23:01:28 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/11 08:29:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static char	*ft_find_path(char *cmd, char **envp)
 {
 	char	**paths;
-	char 	*path;
-	int 	i;
-	char 	*part_path;
+	char	*path;
+	int		i;
+	char	*part_path;
 
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
@@ -45,7 +45,7 @@ void	ft_process_execute(char *argv, char **envp)
 {
 	char	**command;
 	int		i;
-	char 	*path;
+	char	*path;
 
 	i = -1;
 	command = ft_split(argv, ' ');
