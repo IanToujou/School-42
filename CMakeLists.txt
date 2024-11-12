@@ -165,13 +165,16 @@ add_executable(PushSwap
 
 add_executable(SoLong
 		"Core/SoLong/src/main/main.c"
-		Core/SoLong/include/so_long.h
-		Core/SoLong/src/error/ft_throw_error.c
-		Core/SoLong/include/errortype.h
-		Core/SoLong/src/init/ft_init_mlx.c
-		Core/SoLong/src/init/ft_init_hooks.c
-		Core/SoLong/src/event/ft_event_keypress.c
-		Core/SoLong/src/event/ft_event_close.c
+		"Core/SoLong/include/so_long.h"
+		"Core/SoLong/src/error/ft_throw_error.c"
+		"Core/SoLong/include/errortype.h"
+		"Core/SoLong/src/init/ft_init_mlx.c"
+		"Core/SoLong/src/init/ft_init_hooks.c"
+		"Core/SoLong/src/event/ft_event_keypress.c"
+		"Core/SoLong/src/event/ft_event_close.c"
+		"Core/SoLong/src/init/ft_init_map.c"
+		Core/SoLong/src/init/ft_init_map.c
+		Core/SoLong/src/init/ft_init_data.c
 )
 
 add_executable(Pipex

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:26:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 09:39:50 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/12 11:53:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ int	main(const int argc, char **argv)
 
 	if (argc != 2)
 		ft_throw_error(ERROR_SYNTAX);
-	if (ft_init_mlx(&gamedata) < 0)
+	if (ft_init_data(&gamedata))
+		ft_throw_error(ERROR_INIT_DATA);
+	if (ft_init_map(gamedata, argv) < 0)
+		ft_throw_error(ERROR_INIT_MAP);
+	if (ft_init_mlx(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_MLX);
 	if (ft_init_hooks(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_HOOKS);
-	mlx_loop(gamedata->mlx);
 	free(gamedata->mlx);
 }

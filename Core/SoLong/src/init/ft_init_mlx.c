@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:54:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 09:04:01 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/12 11:54:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
  * @param gamedata
  * @return 0 if the process was successful. -1 if an error occurred.
  */
-int	ft_init_mlx(t_gamedata **gamedata)
+int	ft_init_mlx(t_gamedata *gamedata)
 {
-	*gamedata = (t_gamedata *) malloc(sizeof(t_gamedata));
-	if (!(*gamedata))
+	gamedata->mlx = mlx_init();
+	gamedata->window = mlx_new_window(gamedata->mlx, 800, 600, WINDOW_NAME);
+	if (!gamedata->window)
 		return (-1);
-	(*gamedata)->mlx = mlx_init();
-	(*gamedata)->window = mlx_new_window((*gamedata)->mlx, 800, 600, WINDOW_NAME);
 	return (0);
 }
