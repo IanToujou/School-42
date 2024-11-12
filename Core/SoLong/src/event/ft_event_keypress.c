@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:27:11 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 10:53:19 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/12 14:16:31 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	ft_event_keypress(const int keycode, t_gamedata *gamedata)
 {
 	if (keycode == XK_Escape)
 		ft_event_close(gamedata);
+	else if (keycode == KEY_W && gamedata->window_page == WINDOW_SPLASH) {
+		gamedata->window_page = WINDOW_GAME; // change to event
+		mlx_clear_window(gamedata->mlx, gamedata->window);
+		mlx_destroy_image(gamedata->mlx, gamedata->image_splash);
+	}
 	else if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D)
 		ft_printf("hi");
 	return (0);

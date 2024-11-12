@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_hooks.c                                    :+:      :+:    :+:   */
+/*   ft_init_graphics.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 09:12:14 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 14:15:20 by ibour            ###   ########.fr       */
+/*   Created: 2024/11/12 13:14:41 by ibour             #+#    #+#             */
+/*   Updated: 2024/11/12 13:59:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	ft_init_hooks(t_gamedata *gamedata)
+int	ft_init_graphics(t_gamedata *gamedata)
 {
-	mlx_loop_hook(gamedata->mlx, ft_gfx_render, gamedata);
-	mlx_hook(gamedata->window, ClientMessage, LeaveWindowMask, ft_event_close, gamedata);
-	mlx_hook(gamedata->window, KeyPress, KeyPressMask, ft_event_keypress, gamedata);
+	gamedata->image_splash = mlx_xpm_file_to_image(gamedata->mlx, XPM_SPLASH, &gamedata->window_width, &gamedata->window_height);
+	gamedata->image_player = mlx_xpm_file_to_image(gamedata->mlx, XPM_PLAYER, &gamedata->image_size, &gamedata->image_size);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 11:50:28 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/12 13:26:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ERROR_INIT_MLX 3
 # define ERROR_INIT_HOOKS 4
 # define ERROR_INIT_MAP 5
-# define ERROR_MAP_FILE_FORMAT 6
+# define ERROR_INIT_GRAPHICS 6
+# define ERROR_MAP_FILE_FORMAT 7
 
 #endif

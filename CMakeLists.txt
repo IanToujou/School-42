@@ -175,6 +175,8 @@ add_executable(SoLong
 		"Core/SoLong/src/init/ft_init_map.c"
 		Core/SoLong/src/init/ft_init_map.c
 		Core/SoLong/src/init/ft_init_data.c
+		Core/SoLong/src/graphics/ft_gfx_render.c
+		Core/SoLong/src/init/ft_init_graphics.c
 )
 
 add_executable(Pipex

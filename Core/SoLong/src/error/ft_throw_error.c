@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 11:50:41 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/12 13:26:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_throw_error(const int error)
 		ft_printf("Initialization process failed: MLX hooks.");
 	else if (error == ERROR_INIT_MAP)
 		ft_printf("Initialization process failed: Map initialization.");
+	else if (error == ERROR_INIT_GRAPHICS)
+		ft_printf("Initialization process failed: Loading images.");
 	ft_throw_error_sub(error);
 	ft_printf("\033[0m\n");
 	exit(EXIT_FAILURE);
