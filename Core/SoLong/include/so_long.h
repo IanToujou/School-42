@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 14:10:33 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/12 22:04:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		ft_init_map(t_gamedata *gamedata, char **argv);
 
 int		ft_event_keypress(int keycode, t_gamedata *gamedata);
 int		ft_event_close(t_gamedata *gamedata);
+int		ft_event_window(int window, t_gamedata *gamedata);
 
 int		ft_gfx_render(t_gamedata *gamedata);
 

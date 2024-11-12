@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_event_keypress.c                                :+:      :+:    :+:   */
+/*   ft_event_window.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 09:27:11 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 22:04:22 by ibour            ###   ########.fr       */
+/*   Created: 2024/11/12 22:02:20 by ibour             #+#    #+#             */
+/*   Updated: 2024/11/12 22:04:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	ft_event_keypress(const int keycode, t_gamedata *gamedata)
+int	ft_event_window(int window, t_gamedata *gamedata)
 {
-	if (keycode == XK_Escape)
-		ft_event_close(gamedata);
-	else if (keycode == KEY_W && gamedata->window_page == WINDOW_SPLASH)
-		ft_event_window(WINDOW_GAME, gamedata);
-	else if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D)
-		ft_printf("hi");
+	if(window == WINDOW_GAME)
+	{
+		gamedata->window_page = WINDOW_GAME;
+		mlx_clear_window(gamedata->mlx, gamedata->window);
+		mlx_destroy_image(gamedata->mlx, gamedata->image_splash);
+		gamedata->image_splash = NULL;
+	}
 	return (0);
 }

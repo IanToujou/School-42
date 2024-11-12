@@ -177,6 +177,7 @@ add_executable(SoLong
 		Core/SoLong/src/init/ft_init_data.c
 		Core/SoLong/src/graphics/ft_gfx_render.c
 		Core/SoLong/src/init/ft_init_graphics.c
+		Core/SoLong/src/event/ft_event_window.c
 )
 
 add_executable(Pipex
