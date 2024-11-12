@@ -165,13 +165,13 @@ add_executable(PushSwap
 
 add_executable(SoLong
 		"Core/SoLong/src/main/main.c"
-		"Core/SoLong/include/so_long.h"
-		"Core/SoLong/src/handler/ft_handle_error.c"
-		"Core/SoLong/src/main/ft_render.c"
-		"Core/SoLong/src/hooks/ft_key_hook.c"
-		"Core/SoLong/src/controller/ft_controller.c"
-		"Core/SoLong/src/main/ft_parse.c"
-		"Core/SoLong/src/main/ft_init.c"
+		Core/SoLong/include/so_long.h
+		Core/SoLong/src/error/ft_throw_error.c
+		Core/SoLong/include/errortype.h
+		Core/SoLong/src/init/ft_init_mlx.c
+		Core/SoLong/src/init/ft_init_hooks.c
+		Core/SoLong/src/event/ft_event_keypress.c
+		Core/SoLong/src/event/ft_event_close.c
 )
 
 add_executable(Pipex
@@ -179,7 +179,7 @@ add_executable(Pipex
 		"Core/Pipex/src/error/ft_throw_error.c"
 		"Core/Pipex/include/errortype.h"
 		"Core/Pipex/include/pipex.h"
-		Core/Pipex/src/process/ft_process_child.c
-		Core/Pipex/src/process/ft_process_parent.c
-		Core/Pipex/src/process/ft_process_execute.c
+		"Core/Pipex/src/process/ft_process_child.c"
+		"Core/Pipex/src/process/ft_process_parent.c"
+		"Core/Pipex/src/process/ft_process_execute.c"
 )
