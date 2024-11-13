@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:26:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 10:04:32 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 13:01:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(const int argc, char **argv)
 	if (ft_init_map(gamedata, argv) < 0)
 		ft_throw_error(ERROR_INIT_MAP);
 	ft_check_map(gamedata);
+	ft_init_player(gamedata);
 	if (ft_init_mlx(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_MLX);
 	if (ft_init_graphics(gamedata) < 0)

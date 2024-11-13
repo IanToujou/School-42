@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:54:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 09:46:30 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 14:54:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	ft_init_data(t_gamedata **gamedata)
 	(*gamedata)->player->position_x = 0;
 	(*gamedata)->player->position_y = 0;
 	(*gamedata)->player->collected = 0;
+	(*gamedata)->player->steps = 0;
 	return (0);
 }

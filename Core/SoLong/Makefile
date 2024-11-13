@@ -15,6 +15,7 @@ NAME = so_long
 SRC =	src/error/ft_throw_error.c \
 		src/event/ft_event_close.c \
 		src/event/ft_event_keypress.c \
+		src/event/ft_event_move.c \
 		src/event/ft_event_window.c \
 		src/graphics/ft_gfx_render.c \
 		src/init/ft_init_data.c \
@@ -22,6 +23,7 @@ SRC =	src/error/ft_throw_error.c \
 		src/init/ft_init_hooks.c \
 		src/init/ft_init_map.c \
 		src/init/ft_init_mlx.c \
+		src/init/ft_init_player.c \
 		src/main/main.c
 
 OBJ = $(SRC:.c=.o)

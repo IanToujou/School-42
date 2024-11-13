@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:22:29 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 10:59:34 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 13:31:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 static int ft_check_characters(t_gamedata *gamedata)
 {
-	ft_printf("Dweudewudw\n");
-	ft_printf("DU FETTEN NEEEEE-: %d\n", gamedata->y);
 	while (gamedata->map->map[gamedata->y])
 	{
-		ft_printf("loopidoopi\n");
 		while (gamedata->map->map[gamedata->y][gamedata->x])
 		{
-			ft_printf("%c", gamedata->map->map[gamedata->y][gamedata->x]);
 			if (gamedata->map->map[gamedata->y][gamedata->x] == 'P')
 				gamedata->map->amount_players++;
 			else if (gamedata->map->map[gamedata->y][gamedata->x] == 'E')
@@ -32,12 +28,9 @@ static int ft_check_characters(t_gamedata *gamedata)
 		}
 		gamedata->x = 0;
 		gamedata->y++;
-		ft_printf("\n");
 	}
-	ft_printf("kek");
 	if (!gamedata->map->amount_collectibles || !gamedata->map->amount_exits || !gamedata->map->amount_players)
 		return (-1);
-	ft_printf("kek2");
 	return (0);
 }
 
@@ -74,20 +67,20 @@ int	check_edges(int line_count, char **map)
 
 int	ft_check_rectangle(t_gamedata *gamedata)
 {
-	int		i;
-	size_t	j;
+	int		y;
+	size_t	x;
 
-	i = 0;
-	j = 0;
-	gamedata->map->size_x = ft_strlen(gamedata->map->map[i]);
-	while (gamedata->map->map[i])
+	y = 0;
+	x = 0;
+	gamedata->map->size_x = ft_strlen(gamedata->map->map[y]);
+	while (gamedata->map->map[y])
 	{
-		while (gamedata->map->map[i][j] && gamedata->map->map[i][j] != '\n')
-			j++;
-		if (j != gamedata->map->size_x)
+		while (gamedata->map->map[y][x] && gamedata->map->map[y][x] != '\n')
+			x++;
+		if (x != gamedata->map->size_x)
 			return (-1);
-		j = 0;
-		i++;
+		x = 0;
+		y++;
 	}
 	return (0);
 }
@@ -114,21 +107,21 @@ static int ft_check_file_format(const char *file)
 
 int	ft_check_map(t_gamedata *gamedata)
 {
-	int		i;
-	size_t	j;
+	int		y;
+	size_t	x;
 
-	i = 0;
-	j = 0;
-	while (gamedata->map->map[i])
+	y = 0;
+	x = 0;
+	while (gamedata->map->map[y])
 	{
-		while (j < ft_strlen(gamedata->map->map[i]) - 1)
+		while (x < ft_strlen(gamedata->map->map[y]) - 1)
 		{
-			if (ft_strchr("01CEP", gamedata->map->map[i][j]) == NULL)
+			if (ft_strchr("01CEP", gamedata->map->map[y][x]) == NULL)
 				ft_throw_error(ERROR_MAP_OTHER);
-			j++;
+			x++;
 		}
-		j = 0;
-		i++;
+		x = 0;
+		y++;
 	}
 	if (ft_check_characters(gamedata) == -1)
 		ft_throw_error(ERROR_MAP_CHARACTERS);
@@ -150,6 +143,8 @@ int	ft_init_map(t_gamedata *gamedata, char **argv)
 	gamedata->map->amount_players = 0;
 	gamedata->y = 0;
 	gamedata->x = 0;
+	gamedata->window_height = gamedata->map->size_y * IMG_WIDTH;
+	gamedata->window_width = (ft_strlen(gamedata->map->map[0])) * IMG_WIDTH;
 	return (0);
 }
 

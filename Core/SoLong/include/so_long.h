@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 09:51:38 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 14:54:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 
 # define XPM_SPLASH "./assets/splash.xpm"
 # define XPM_PLAYER "./assets/waltuh.xpm"
+# define XPM_WALL "./assets/deepslate.xpm"
+# define XPM_EMPTY "./assets/stone.xpm"
+# define XPM_COLLECTIBLE "./assets/meth.xpm"
 
 # define WINDOW_SPLASH 0
 # define WINDOW_GAME 1
@@ -44,6 +47,7 @@ typedef struct s_player {
 	int	position_x;
 	int	position_y;
 	int	collected;
+	int	steps;
 }	t_player;
 
 typedef struct s_map {
@@ -69,6 +73,9 @@ typedef struct s_gamedata {
 	int			image_size;
 	void		*image_splash;
 	void		*image_player;
+	void		*image_empty;
+	void		*image_wall;
+	void		*image_collectible;
 	int			x;
 	int			y;
 }	t_gamedata;
@@ -81,6 +88,7 @@ int		ft_exit_graphics(t_gamedata *gamedata);
 int		ft_init_mlx(t_gamedata *gamedata);
 int		ft_init_hooks(t_gamedata *gamedata);
 int		ft_init_map(t_gamedata *gamedata, char **argv);
+int		ft_init_player(t_gamedata *gamedata);
 
 int		ft_check_map(t_gamedata *gamedata);
 int		ft_create_map(t_gamedata *gamedata, char *path);
@@ -88,6 +96,7 @@ int		ft_create_map(t_gamedata *gamedata, char *path);
 int		ft_event_keypress(int keycode, t_gamedata *gamedata);
 int		ft_event_close(t_gamedata *gamedata);
 int		ft_event_window(int window, t_gamedata *gamedata);
+void	ft_event_move(t_gamedata *gamedata, int keycode);
 
 int		ft_gfx_render(t_gamedata *gamedata);
 
