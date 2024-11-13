@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:26:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 13:33:14 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 10:04:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ int	main(const int argc, char **argv)
 		ft_throw_error(ERROR_SYNTAX);
 	if (ft_init_data(&gamedata))
 		ft_throw_error(ERROR_INIT_DATA);
+	ft_create_map(gamedata, argv[1]);
 	if (ft_init_map(gamedata, argv) < 0)
 		ft_throw_error(ERROR_INIT_MAP);
+	ft_check_map(gamedata);
 	if (ft_init_mlx(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_MLX);
 	if (ft_init_graphics(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_GRAPHICS);
 	if (ft_init_hooks(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_HOOKS);
-	ft_gfx_render(gamedata);
-	mlx_loop(gamedata->mlx);
+	ft_exit_graphics(gamedata);
 	free(gamedata->mlx);
+	free(gamedata->player);
+	free(gamedata->map);
+	free(gamedata);
 }

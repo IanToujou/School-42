@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 13:26:27 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 10:01:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,20 @@
  */
 static void	ft_throw_error_sub(const int error)
 {
-	if (error == ERROR_MAP_FILE_FORMAT)
+	if (error == ERROR_MAP_OTHER)
+		ft_printf("Invalid map format.");
+	else if (error == ERROR_MAP_FILE_FORMAT)
 		ft_printf("Invalid map format. Required type is .ber");
+	else if (error == ERROR_MAP_PLAYER)
+		ft_printf("There has to be one player present on the map.");
+	else if (error == ERROR_MAP_EDGES)
+		ft_printf("The map edges are not aligned correctly.");
+	else if (error == ERROR_MAP_RECTANGLE)
+		ft_printf("The map is not a rectangle.");
+	else if (error == ERROR_MAP_CHARACTERS)
+		ft_printf("Invalid characters in the map.");
+	else
+		ft_printf("Error not registered yet.");
 }
 
 /**

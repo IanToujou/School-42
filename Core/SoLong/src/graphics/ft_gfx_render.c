@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:13:30 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 14:11:09 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 08:21:11 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_gfx_render(t_gamedata *gamedata)
 {
+	if (gamedata->window == NULL || gamedata->mlx == NULL)
+		return (-1);
 	if (gamedata->window_page == WINDOW_SPLASH)
 		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_splash, 0, 0);
 	else {

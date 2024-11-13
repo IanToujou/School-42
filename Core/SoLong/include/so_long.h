@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/12 22:04:54 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/13 09:51:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,19 @@
 typedef struct s_player {
 	int	position_x;
 	int	position_y;
+	int	collected;
 }	t_player;
 
 typedef struct s_map {
-	int	size_x;
-	int	size_y;
-	int	amount_collectibles;
-	int	amount_enemies;
-	int	amount_players;
+	int		amount_collectibles;
+	int		amount_exits;
+	int		amount_players;
+	char	**map;
+	int		can_exit;
+	size_t	size_x;
+	int		size_y;
+	int		fd;
+	char	*path;
 }	t_map;
 
 typedef struct s_gamedata {
@@ -64,15 +69,21 @@ typedef struct s_gamedata {
 	int			image_size;
 	void		*image_splash;
 	void		*image_player;
+	int			x;
+	int			y;
 }	t_gamedata;
 
 void	ft_throw_error(int error);
 
 int		ft_init_data(t_gamedata **gamedata);
 int		ft_init_graphics(t_gamedata *gamedata);
+int		ft_exit_graphics(t_gamedata *gamedata);
 int		ft_init_mlx(t_gamedata *gamedata);
 int		ft_init_hooks(t_gamedata *gamedata);
 int		ft_init_map(t_gamedata *gamedata, char **argv);
+
+int		ft_check_map(t_gamedata *gamedata);
+int		ft_create_map(t_gamedata *gamedata, char *path);
 
 int		ft_event_keypress(int keycode, t_gamedata *gamedata);
 int		ft_event_close(t_gamedata *gamedata);
