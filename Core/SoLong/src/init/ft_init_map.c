@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:22:29 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 13:31:30 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/15 13:59:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_check_edge_rows(int row, char **map)
 	return (0);
 }
 
-int	check_edges(int line_count, char **map)
+static int	check_edges(int line_count, char **map)
 {
 	int	i;
 
@@ -65,7 +65,7 @@ int	check_edges(int line_count, char **map)
 	return (0);
 }
 
-int	ft_check_rectangle(t_gamedata *gamedata)
+static int	ft_check_rectangle(t_gamedata *gamedata)
 {
 	int		y;
 	size_t	x;
@@ -116,7 +116,7 @@ int	ft_check_map(t_gamedata *gamedata)
 	{
 		while (x < ft_strlen(gamedata->map->map[y]) - 1)
 		{
-			if (ft_strchr("01CEP", gamedata->map->map[y][x]) == NULL)
+			if (ft_strchr("0123CEP", gamedata->map->map[y][x]) == NULL)
 				ft_throw_error(ERROR_MAP_OTHER);
 			x++;
 		}
@@ -141,6 +141,7 @@ int	ft_init_map(t_gamedata *gamedata, char **argv)
 	gamedata->map->amount_collectibles = 0;
 	gamedata->map->amount_exits = 0;
 	gamedata->map->amount_players = 0;
+	gamedata->map->can_exit = 0;
 	gamedata->y = 0;
 	gamedata->x = 0;
 	gamedata->window_height = gamedata->map->size_y * IMG_WIDTH;

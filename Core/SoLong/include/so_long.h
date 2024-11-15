@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 14:54:19 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/15 14:10:10 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@
 # define XPM_SPLASH "./assets/splash.xpm"
 # define XPM_PLAYER "./assets/waltuh.xpm"
 # define XPM_WALL "./assets/deepslate.xpm"
+# define XPM_EXIT_CLOSED "./assets/gus_angry.xpm"
+# define XPM_EXIT_OPEN "./assets/gus_happy.xpm"
+# define XPM_ENEMY_1 "./assets/hank.xpm"
+# define XPM_ENEMY_2 "./assets/skyler.xpm"
 # define XPM_EMPTY "./assets/stone.xpm"
 # define XPM_COLLECTIBLE "./assets/meth.xpm"
+# define XPM_DRUG "./assets/fentanyl.xpm"
 
 # define WINDOW_SPLASH 0
 # define WINDOW_GAME 1
@@ -75,9 +80,15 @@ typedef struct s_gamedata {
 	void		*image_player;
 	void		*image_empty;
 	void		*image_wall;
+	void		*image_exit_open;
+	void		*image_exit_closed;
 	void		*image_collectible;
+	void		*image_drug;
+	void		*image_enemy_1;
+	void		*image_enemy_2;
 	int			x;
 	int			y;
+	char		*quest;
 }	t_gamedata;
 
 void	ft_throw_error(int error);
@@ -86,8 +97,10 @@ int		ft_init_data(t_gamedata **gamedata);
 int		ft_init_graphics(t_gamedata *gamedata);
 int		ft_exit_graphics(t_gamedata *gamedata);
 int		ft_init_mlx(t_gamedata *gamedata);
+void	ft_exit_mlx(t_gamedata *gamedata);
 int		ft_init_hooks(t_gamedata *gamedata);
 int		ft_init_map(t_gamedata *gamedata, char **argv);
+int		ft_exit_map(char **array);
 int		ft_init_player(t_gamedata *gamedata);
 
 int		ft_check_map(t_gamedata *gamedata);

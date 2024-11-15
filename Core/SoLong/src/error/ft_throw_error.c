@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 10:01:27 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/15 13:04:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	ft_throw_error_sub(const int error)
  */
 void	ft_throw_error(const int error)
 {
-	ft_printf("\033[31mError: ");
+	ft_printf("Error\n\033[31m");
 	if (error == ERROR_UNKNOWN)
 		ft_printf("An unknown error occured.");
 	else if (error == ERROR_SYNTAX)

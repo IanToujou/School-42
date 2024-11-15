@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:54:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 14:54:35 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/15 14:14:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	ft_init_data(t_gamedata **gamedata)
 	(*gamedata)->window_width = 900;
 	(*gamedata)->window_height = 600;
 	(*gamedata)->window_page = WINDOW_SPLASH;
+	(*gamedata)->quest = ft_strjoin("", "USE WASD TO MOVE");
 	(*gamedata)->player->position_x = 0;
 	(*gamedata)->player->position_y = 0;
 	(*gamedata)->player->collected = 0;

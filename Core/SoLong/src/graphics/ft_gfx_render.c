@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:13:30 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/13 13:36:51 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/15 13:20:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,35 @@
 
 static void	ft_characters_to_image(t_gamedata *gamedata, int width, int x, int y)
 {
+	if (gamedata->map->map[y][x] == '3')
+		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_drug,
+			width, y * IMG_WIDTH);
+	if (gamedata->map->map[y][x] == '2')
+		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_enemy_1,
+			width, y * IMG_WIDTH);
 	if (gamedata->map->map[y][x] == '1')
 		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_wall,
 			width, y * IMG_WIDTH);
 	if (gamedata->map->map[y][x] == '0')
 		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_empty,
 			width, y * IMG_WIDTH);
+	if (gamedata->map->map[y][x] == 'E') {
+		if(gamedata->player->collected >= gamedata->map->amount_collectibles)
+			mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_exit_open,
+			width, y * IMG_WIDTH);
+		else
+			mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_exit_closed,
+			width, y * IMG_WIDTH);
+	}
 	if (gamedata->map->map[y][x] == 'P')
 		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_player,
 			width, y * IMG_WIDTH);
 	if (gamedata->map->map[y][x] == 'C')
 		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_collectible,
 			width, y * IMG_WIDTH);
+	mlx_string_put(gamedata->mlx, gamedata->window, 16, 20, 0xffffff, ft_strjoin("METH: ", ft_itoa(gamedata->player->collected)));
+	mlx_string_put(gamedata->mlx, gamedata->window, 16, 34, 0xffffff, ft_strjoin("MOVES: ", ft_itoa(gamedata->player->steps)));
+	mlx_string_put(gamedata->mlx, gamedata->window, 16, 48, 0xffff00, gamedata->quest);
 }
 
 static void	ft_gfx_render_splash(t_gamedata *gamedata)
