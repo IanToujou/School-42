@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:31:35 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/15 14:15:23 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 07:58:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_event_close(t_gamedata *gamedata)
 {
-	mlx_destroy_window(gamedata->mlx, gamedata->window);
-	gamedata->window = NULL;
+	ft_exit_mlx(gamedata);
 	return (0);
 }

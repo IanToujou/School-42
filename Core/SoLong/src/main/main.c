@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:26:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/15 14:15:08 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 08:28:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,5 @@ int	main(const int argc, char **argv)
 		ft_throw_error(ERROR_INIT_GRAPHICS);
 	if (ft_init_hooks(gamedata) < 0)
 		ft_throw_error(ERROR_INIT_HOOKS);
-	ft_exit_graphics(gamedata);
-	free(gamedata->mlx);
-	free(gamedata->player);
-	free(gamedata->map);
-	free(gamedata);
+	ft_free_data(gamedata);
 }

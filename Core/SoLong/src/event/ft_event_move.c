@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:02:43 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/15 14:15:29 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 10:00:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,21 @@ void	ft_collect(t_gamedata *gamedata, char direction)
 
 static void	ft_handle_quest(t_gamedata *gamedata)
 {
-	free(gamedata->quest);
+	free(gamedata->str_quest);
 	if (gamedata->player->collected >= gamedata->map->amount_collectibles)
-		gamedata->quest = ft_strjoin("", "DELIVER THE METH TO GUSTAVO FRING");
+		gamedata->str_quest = ft_strjoin("", "DELIVER THE METH TO GUSTAVO FRING");
 	else
-		gamedata->quest = ft_strjoin("", "COLLECT THE METH STOLEN BY THE MEXICAN CARTEL");
+		gamedata->str_quest = ft_strjoin("", "COLLECT THE METH STOLEN BY THE MEXICAN CARTEL");
 }
 
 static int	ft_handle_win(t_gamedata *gamedata)
 {
 	if (gamedata->map->can_exit == 1)
 	{
-		mlx_destroy_window(gamedata->mlx, gamedata->window);
-		gamedata->window = NULL;
+		// todo just testing
+		/*mlx_destroy_window(gamedata->mlx, gamedata->window);
+		gamedata->window = NULL;*/
+		gamedata->window_page = WINDOW_DEATH;
 		return (0);
 	}
 	return (-1);

@@ -6,11 +6,40 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:54:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/15 14:14:12 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 09:53:42 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+
+static void ft_init_values(t_gamedata **gamedata)
+{
+	(*gamedata)->image_size = 64;
+	(*gamedata)->window_width = 900;
+	(*gamedata)->window_height = 600;
+	(*gamedata)->window_page = WINDOW_SPLASH;
+	(*gamedata)->str_quest = ft_strjoin("", "USE WASD TO MOVE");
+	(*gamedata)->str_moves = ft_strjoin("", "");
+	(*gamedata)->str_collected = ft_strjoin("", "");
+	(*gamedata)->str_moves_part = ft_strjoin("", "");
+	(*gamedata)->str_collected_part = ft_strjoin("", "");
+	(*gamedata)->player->position_x = 0;
+	(*gamedata)->player->position_y = 0;
+	(*gamedata)->player->collected = 0;
+	(*gamedata)->player->steps = 0;
+}
+
+static int	ft_init_animations(t_gamedata **gamedata)
+{
+	t_image_death	*image_death;
+
+	image_death = (t_image_death *) malloc(sizeof(t_image_death));
+	if (!image_death)
+		return (-1);
+	(*gamedata)->image_death = image_death;
+	(*gamedata)->image_death->current = 0;
+	return (0);
+}
 
 int	ft_init_data(t_gamedata **gamedata)
 {
@@ -28,14 +57,23 @@ int	ft_init_data(t_gamedata **gamedata)
 		return (-1);
 	(*gamedata)->map = map;
 	(*gamedata)->player = player;
-	(*gamedata)->image_size = 64;
-	(*gamedata)->window_width = 900;
-	(*gamedata)->window_height = 600;
-	(*gamedata)->window_page = WINDOW_SPLASH;
-	(*gamedata)->quest = ft_strjoin("", "USE WASD TO MOVE");
-	(*gamedata)->player->position_x = 0;
-	(*gamedata)->player->position_y = 0;
-	(*gamedata)->player->collected = 0;
-	(*gamedata)->player->steps = 0;
+	ft_init_values(gamedata);
+	ft_init_animations(gamedata);
 	return (0);
+}
+
+void	ft_free_data(t_gamedata *gamedata)
+{
+	ft_exit_graphics(gamedata);
+	ft_exit_map(gamedata->map->map);
+	free(gamedata->str_quest);
+	free(gamedata->str_collected);
+	free(gamedata->str_moves);
+	free(gamedata->str_collected_part);
+	free(gamedata->str_moves_part);
+	free(gamedata->mlx);
+	free(gamedata->player);
+	free(gamedata->map);
+	free(gamedata->image_death);
+	free(gamedata);
 }
