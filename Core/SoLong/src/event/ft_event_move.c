@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:02:43 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/18 10:00:15 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 10:17:24 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ static int	ft_handle_win(t_gamedata *gamedata)
 {
 	if (gamedata->map->can_exit == 1)
 	{
-		// todo just testing
-		/*mlx_destroy_window(gamedata->mlx, gamedata->window);
-		gamedata->window = NULL;*/
-		gamedata->window_page = WINDOW_DEATH;
+		mlx_destroy_window(gamedata->mlx, gamedata->window);
+		gamedata->window = NULL;
 		return (0);
 	}
 	return (-1);

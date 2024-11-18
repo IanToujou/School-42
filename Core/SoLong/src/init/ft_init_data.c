@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:54:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/18 09:53:42 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 10:12:20 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,6 @@ static void ft_init_values(t_gamedata **gamedata)
 	(*gamedata)->player->steps = 0;
 }
 
-static int	ft_init_animations(t_gamedata **gamedata)
-{
-	t_image_death	*image_death;
-
-	image_death = (t_image_death *) malloc(sizeof(t_image_death));
-	if (!image_death)
-		return (-1);
-	(*gamedata)->image_death = image_death;
-	(*gamedata)->image_death->current = 0;
-	return (0);
-}
-
 int	ft_init_data(t_gamedata **gamedata)
 {
 	t_map		*map;
@@ -58,7 +46,6 @@ int	ft_init_data(t_gamedata **gamedata)
 	(*gamedata)->map = map;
 	(*gamedata)->player = player;
 	ft_init_values(gamedata);
-	ft_init_animations(gamedata);
 	return (0);
 }
 
@@ -74,6 +61,5 @@ void	ft_free_data(t_gamedata *gamedata)
 	free(gamedata->mlx);
 	free(gamedata->player);
 	free(gamedata->map);
-	free(gamedata->image_death);
 	free(gamedata);
 }

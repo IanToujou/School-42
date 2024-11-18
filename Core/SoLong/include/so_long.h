@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/18 09:50:21 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/18 10:15:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,8 @@
 # define XPM_COLLECTIBLE "./assets/meth.xpm"
 # define XPM_DRUG "./assets/fentanyl.xpm"
 
-# define XPM_DEATH_F0 "./assets/waltuh_death/waltuh_death_0.xpm"
-# define XPM_DEATH_F1 "./assets/waltuh_death/waltuh_death_1.xpm"
-# define XPM_DEATH_F2 "./assets/waltuh_death/waltuh_death_2.xpm"
-# define XPM_DEATH_F3 "./assets/waltuh_death/waltuh_death_3.xpm"
-# define XPM_DEATH_F4 "./assets/waltuh_death/waltuh_death_4.xpm"
-# define XPM_DEATH_F5 "./assets/waltuh_death/waltuh_death_5.xpm"
-# define XPM_DEATH_F6 "./assets/waltuh_death/waltuh_death_6.xpm"
-# define XPM_DEATH_F7 "./assets/waltuh_death/waltuh_death_7.xpm"
-# define XPM_DEATH_F8 "./assets/waltuh_death/waltuh_death_8.xpm"
-# define XPM_DEATH_F9 "./assets/waltuh_death/waltuh_death_9.xpm"
-# define XPM_DEATH_F10 "./assets/waltuh_death/waltuh_death_10.xpm"
-# define XPM_DEATH_F11 "./assets/waltuh_death/waltuh_death_11.xpm"
-# define XPM_DEATH_F12 "./assets/waltuh_death/waltuh_death_12.xpm"
-# define XPM_DEATH_F13 "./assets/waltuh_death/waltuh_death_13.xpm"
-# define XPM_DEATH_F14 "./assets/waltuh_death/waltuh_death_14.xpm"
-# define XPM_DEATH_F15 "./assets/waltuh_death/waltuh_death_15.xpm"
-# define XPM_DEATH_F16 "./assets/waltuh_death/waltuh_death_16.xpm"
-# define XPM_DEATH_F17 "./assets/waltuh_death/waltuh_death_17.xpm"
-# define XPM_DEATH_F18 "./assets/waltuh_death/waltuh_death_18.xpm"
-# define XPM_DEATH_F19 "./assets/waltuh_death/waltuh_death_19.xpm"
-# define XPM_DEATH_F20 "./assets/waltuh_death/waltuh_death_20.xpm"
-
 # define WINDOW_SPLASH 0
 # define WINDOW_GAME 1
-# define WINDOW_DEATH 2
 
 typedef struct s_player {
 	int	position_x;
@@ -77,31 +54,6 @@ typedef struct s_player {
 	int	collected;
 	int	steps;
 }	t_player;
-
-typedef struct s_image_death {
-	int			current;
-	void		*frame_0;
-	void		*frame_1;
-	void		*frame_2;
-	void		*frame_3;
-	void		*frame_4;
-	void		*frame_5;
-	void		*frame_6;
-	void		*frame_7;
-	void		*frame_8;
-	void		*frame_9;
-	void		*frame_10;
-	void		*frame_11;
-	void		*frame_12;
-	void		*frame_13;
-	void		*frame_14;
-	void		*frame_15;
-	void		*frame_16;
-	void		*frame_17;
-	void		*frame_18;
-	void		*frame_19;
-	void		*frame_20;
-} t_image_death;
 
 typedef struct s_map {
 	int		amount_collectibles;
@@ -141,7 +93,6 @@ typedef struct s_gamedata {
 	char			*str_collected_part;
 	char			*str_moves;
 	char			*str_moves_part;
-	t_image_death	*image_death;
 }	t_gamedata;
 
 void	ft_throw_error(int error);
