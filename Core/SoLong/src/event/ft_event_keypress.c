@@ -18,7 +18,8 @@ int	ft_event_keypress(const int keycode, t_gamedata *gamedata)
 		ft_event_close(gamedata);
 	else if (keycode == KEY_W && gamedata->window_page == WINDOW_SPLASH)
 		ft_event_window(WINDOW_GAME, gamedata);
-	else if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D)
+	else if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S
+		|| keycode == KEY_D)
 		ft_event_move(gamedata, keycode);
 	return (0);
 }

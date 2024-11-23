@@ -99,8 +99,8 @@ void	ft_throw_error(int error);
 
 int		ft_init_data(t_gamedata **gamedata);
 void	ft_free_data(t_gamedata *gamedata);
-int		ft_init_graphics(t_gamedata *gamedata);
-int		ft_exit_graphics(t_gamedata *gamedata);
+void	ft_init_graphics(t_gamedata *gamedata);
+void	ft_exit_graphics(t_gamedata *gamedata);
 int		ft_init_mlx(t_gamedata *gamedata);
 void	ft_exit_mlx(t_gamedata *gamedata);
 int		ft_init_hooks(t_gamedata *gamedata);

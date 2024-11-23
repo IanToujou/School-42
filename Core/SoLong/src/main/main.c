@@ -23,8 +23,6 @@ int	main(const int argc, char **argv)
 {
 	t_gamedata	*gamedata;
 
-	(void)argv;
-
 	if (argc != 2)
 		ft_throw_error(ERROR_SYNTAX);
 	if (ft_init_data(&gamedata))

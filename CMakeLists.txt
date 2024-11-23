@@ -191,3 +191,9 @@ add_executable(Pipex
 		"Core/Pipex/src/process/ft_process_parent.c"
 		"Core/Pipex/src/process/ft_process_execute.c"
 )
+
+add_library(Exams
+		"Exams/Exam-02/Rank-0/first_word.c"
+		Exams/Exam-02/Rank-0/first_word.c
+		Exams/Exam-02/Rank-0/fizzbuzz.c
+)

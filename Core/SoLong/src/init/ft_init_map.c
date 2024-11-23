@@ -12,7 +12,7 @@
 
 #include "../../include/so_long.h"
 
-static int ft_check_characters(t_gamedata *gamedata)
+static int	ft_check_characters(t_gamedata *gamedata)
 {
 	while (gamedata->map->map[gamedata->y])
 	{
@@ -29,7 +29,8 @@ static int ft_check_characters(t_gamedata *gamedata)
 		gamedata->x = 0;
 		gamedata->y++;
 	}
-	if (!gamedata->map->amount_collectibles || !gamedata->map->amount_exits || !gamedata->map->amount_players)
+	if (!gamedata->map->amount_collectibles || !gamedata->map->amount_exits
+		|| !gamedata->map->amount_players)
 		return (-1);
 	return (0);
 }
@@ -145,7 +146,7 @@ int	ft_init_map(t_gamedata *gamedata, char **argv)
 	gamedata->y = 0;
 	gamedata->x = 0;
 	gamedata->window_height = gamedata->map->size_y * IMG_WIDTH;
-	gamedata->window_width = (ft_strlen(gamedata->map->map[0])) * IMG_WIDTH;
+	gamedata->window_width = ((int)ft_strlen(gamedata->map->map[0])) * IMG_WIDTH;
 	return (0);
 }
 

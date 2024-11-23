@@ -22,14 +22,15 @@
 int	ft_init_mlx(t_gamedata *gamedata)
 {
 	gamedata->mlx = mlx_init();
-	gamedata->window = mlx_new_window(gamedata->mlx, gamedata->window_width, gamedata->window_height, WINDOW_NAME);
+	gamedata->window = mlx_new_window(gamedata->mlx, gamedata->window_width,
+			gamedata->window_height, WINDOW_NAME);
 	if (!gamedata->window)
 		return (-1);
 	return (0);
 }
 
 /**
- *
+ * Exits the MLX library and closes any existing windows.
  *
  * @param gamedata The data of the game.
  */

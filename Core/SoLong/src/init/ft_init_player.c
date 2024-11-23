@@ -12,16 +12,19 @@
 
 #include "../../include/so_long.h"
 
-int		ft_init_player(t_gamedata *gamedata)
+int	ft_init_player(t_gamedata *gamedata)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (gamedata->map->map[y]) {
-		while (gamedata->map->map[y][x]) {
-			if (gamedata->map->map[y][x] == 'P') {
+	while (gamedata->map->map[y])
+	{
+		while (gamedata->map->map[y][x])
+		{
+			if (gamedata->map->map[y][x] == 'P')
+			{
 				gamedata->player->position_y = y;
 				gamedata->player->position_x = x;
 			}

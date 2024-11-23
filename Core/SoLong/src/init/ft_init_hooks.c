@@ -15,8 +15,10 @@
 int	ft_init_hooks(t_gamedata *gamedata)
 {
 	mlx_loop_hook(gamedata->mlx, ft_gfx_render, gamedata);
-	mlx_hook(gamedata->window, ClientMessage, LeaveWindowMask, ft_event_close, gamedata);
-	mlx_hook(gamedata->window, KeyPress, KeyPressMask, ft_event_keypress, gamedata);
+	mlx_hook(gamedata->window, ClientMessage, LeaveWindowMask,
+		ft_event_close, gamedata);
+	mlx_hook(gamedata->window, KeyPress, KeyPressMask,
+		ft_event_keypress, gamedata);
 	mlx_loop(gamedata->mlx);
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "../../include/so_long.h"
 
-static void ft_init_values(t_gamedata **gamedata)
+static void	ft_init_values(t_gamedata **gamedata)
 {
 	(*gamedata)->image_size = 64;
 	(*gamedata)->window_width = 900;
