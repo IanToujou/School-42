@@ -6,12 +6,12 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/18 10:15:32 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/25 20:07:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
 # include "errortype.h"
 
@@ -19,7 +19,7 @@
 # include "../lib/mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-#include <fcntl.h>
+# include <fcntl.h>
 
 # define WINDOW_NAME "BLUE METH DRUG CARTEL SIMULATOR"
 # define WINDOW_WIDTH 800
@@ -48,14 +48,16 @@
 # define WINDOW_SPLASH 0
 # define WINDOW_GAME 1
 
-typedef struct s_player {
+typedef struct s_player
+{
 	int	position_x;
 	int	position_y;
 	int	collected;
 	int	steps;
 }	t_player;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	int		amount_collectibles;
 	int		amount_exits;
 	int		amount_players;
@@ -67,7 +69,8 @@ typedef struct s_map {
 	char	*path;
 }	t_map;
 
-typedef struct s_gamedata {
+typedef struct s_gamedata
+{
 	void			*mlx;
 	void			*window;
 	int				window_width;
@@ -114,8 +117,13 @@ int		ft_create_map(t_gamedata *gamedata, char *path);
 int		ft_event_keypress(int keycode, t_gamedata *gamedata);
 int		ft_event_close(t_gamedata *gamedata);
 int		ft_event_window(int window, t_gamedata *gamedata);
-void	ft_event_move(t_gamedata *gamedata, int keycode);
+void	ft_event_move(t_gamedata *gd, int k);
 
 int		ft_gfx_render(t_gamedata *gamedata);
+
+int		ft_check_file_format(const char *file);
+int		ft_check_characters(t_gamedata *gamedata);
+int		ft_check_rectangle(t_gamedata *gamedata);
+int		check_edges(int line_count, char **map);
 
 #endif

@@ -22,9 +22,11 @@ SRC =	src/error/ft_throw_error.c \
 		src/init/ft_init_graphics.c \
 		src/init/ft_init_hooks.c \
 		src/init/ft_init_map.c \
+		src/init/ft_init_map_check.c \
 		src/init/ft_init_mlx.c \
 		src/init/ft_init_player.c \
-		src/main/main.c
+		src/main/main.c \
+		src/util/ft_util_map.c
 
 OBJ = $(SRC:.c=.o)
 

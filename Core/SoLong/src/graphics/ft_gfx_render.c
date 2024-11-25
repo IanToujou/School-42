@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:13:30 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/18 10:16:49 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/25 20:07:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,62 @@
 
 static void	ft_str_to_image(t_gamedata *gamedata)
 {
-	mlx_string_put(gamedata->mlx, gamedata->window, 16, 20, 0xffffff, gamedata->str_collected);
-	mlx_string_put(gamedata->mlx, gamedata->window, 16, 34, 0xffffff, gamedata->str_moves);
-	mlx_string_put(gamedata->mlx, gamedata->window, 16, 48, 0xffff00, gamedata->str_quest);
+	mlx_string_put(gamedata->mlx, gamedata->window, 16, 20,
+		0xffffff, gamedata->str_collected);
+	mlx_string_put(gamedata->mlx, gamedata->window, 16, 34,
+		0xffffff, gamedata->str_moves);
+	mlx_string_put(gamedata->mlx, gamedata->window, 16, 48,
+		0xffff00, gamedata->str_quest);
 }
 
-static void	ft_characters_to_image(t_gamedata *gamedata, int width, int x, int y)
+static void	ft_characters_to_image_sub(t_gamedata *gd, int w, int x, int y)
 {
-	if (gamedata->map->map[y][x] == '3')
-		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_drug,
-			width, y * IMG_WIDTH);
-	if (gamedata->map->map[y][x] == '2')
-		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_enemy_1,
-			width, y * IMG_WIDTH);
-	if (gamedata->map->map[y][x] == '1')
-		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_wall,
-			width, y * IMG_WIDTH);
-	if (gamedata->map->map[y][x] == '0')
-		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_empty,
-			width, y * IMG_WIDTH);
-	if (gamedata->map->map[y][x] == 'E') {
-		if(gamedata->player->collected >= gamedata->map->amount_collectibles)
-			mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_exit_open,
-			width, y * IMG_WIDTH);
+	if (gd->map->map[y][x] == 'P')
+		mlx_put_image_to_window(gd->mlx, gd->window,
+			gd->image_player, w, y * IMG_WIDTH);
+	if (gd->map->map[y][x] == 'C')
+		mlx_put_image_to_window(gd->mlx, gd->window,
+			gd->image_collectible, w, y * IMG_WIDTH);
+	if (gd->str_collected_part)
+		free(gd->str_collected_part);
+	if (gd->str_collected)
+		free(gd->str_collected);
+	gd->str_collected_part = ft_itoa(gd->player->collected);
+	gd->str_collected = ft_strjoin("METH: ",
+			gd->str_collected_part);
+	if (gd->str_moves)
+		free(gd->str_moves);
+	if (gd->str_moves_part)
+		free(gd->str_moves_part);
+	gd->str_moves_part = ft_itoa(gd->player->steps);
+	gd->str_moves = ft_strjoin("MOVES: ", gd->str_moves_part);
+}
+
+static void	ft_characters_to_image(t_gamedata *gd, int w, int x, int y)
+{
+	if (gd->map->map[y][x] == '3')
+		mlx_put_image_to_window(gd->mlx, gd->window,
+			gd->image_drug, w, y * IMG_WIDTH);
+	if (gd->map->map[y][x] == '2')
+		mlx_put_image_to_window(gd->mlx, gd->window,
+			gd->image_enemy_1, w, y * IMG_WIDTH);
+	if (gd->map->map[y][x] == '1')
+		mlx_put_image_to_window(gd->mlx, gd->window,
+			gd->image_wall,
+			w, y * IMG_WIDTH);
+	if (gd->map->map[y][x] == '0')
+		mlx_put_image_to_window(gd->mlx, gd->window,
+			gd->image_empty, w, y * IMG_WIDTH);
+	if (gd->map->map[y][x] == 'E')
+	{
+		if (gd->player->collected >= gd->map->amount_collectibles)
+			mlx_put_image_to_window(gd->mlx, gd->window,
+				gd->image_exit_open, w, y * IMG_WIDTH);
 		else
-			mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_exit_closed,
-			width, y * IMG_WIDTH);
+			mlx_put_image_to_window(gd->mlx, gd->window,
+				gd->image_exit_closed, w, y * IMG_WIDTH);
 	}
-	if (gamedata->map->map[y][x] == 'P')
-		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_player,
-			width, y * IMG_WIDTH);
-	if (gamedata->map->map[y][x] == 'C')
-		mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_collectible,
-			width, y * IMG_WIDTH);
-	if(gamedata->str_collected_part)
-		free(gamedata->str_collected_part);
-	if(gamedata->str_collected)
-		free(gamedata->str_collected);
-	gamedata->str_collected_part = ft_itoa(gamedata->player->collected);
-	gamedata->str_collected = ft_strjoin("METH: ", gamedata->str_collected_part);
-	if(gamedata->str_moves)
-		free(gamedata->str_moves);
-	if(gamedata->str_moves_part)
-		free(gamedata->str_moves_part);
-	gamedata->str_moves_part = ft_itoa(gamedata->player->steps);
-	gamedata->str_moves = ft_strjoin("MOVES: ", gamedata->str_moves_part);
-}
-
-static void	ft_gfx_render_splash(t_gamedata *gamedata)
-{
-	mlx_put_image_to_window(gamedata->mlx, gamedata->window, gamedata->image_splash, 0, 0);
+	ft_characters_to_image_sub(gd, w, x, y);
 }
 
 static void	ft_gfx_render_game(t_gamedata *gamedata)
@@ -95,7 +101,10 @@ int	ft_gfx_render(t_gamedata *gamedata)
 	if (gamedata->window == NULL || gamedata->mlx == NULL)
 		return (-1);
 	if (gamedata->window_page == WINDOW_SPLASH)
-		ft_gfx_render_splash(gamedata);
+	{
+		mlx_put_image_to_window(gamedata->mlx, gamedata->window,
+			gamedata->image_splash, 0, 0);
+	}
 	else
 		ft_gfx_render_game(gamedata);
 	return (0);

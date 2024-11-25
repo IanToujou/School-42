@@ -178,8 +178,10 @@ add_executable(SoLong
 		"Core/SoLong/src/graphics/ft_gfx_render.c"
 		"Core/SoLong/src/init/ft_init_graphics.c"
 		"Core/SoLong/src/event/ft_event_window.c"
-		Core/SoLong/src/init/ft_init_player.c
-		Core/SoLong/src/event/ft_event_move.c
+		"Core/SoLong/src/init/ft_init_player.c"
+		"Core/SoLong/src/event/ft_event_move.c"
+		"Core/SoLong/src/util/ft_util_map.c"
+		Core/SoLong/src/init/ft_init_map_check.c
 )
 
 add_executable(Pipex
