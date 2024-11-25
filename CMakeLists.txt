@@ -181,7 +181,7 @@ add_executable(SoLong
 		"Core/SoLong/src/init/ft_init_player.c"
 		"Core/SoLong/src/event/ft_event_move.c"
 		"Core/SoLong/src/util/ft_util_map.c"
-		Core/SoLong/src/init/ft_init_map_check.c
+		"Core/SoLong/src/init/ft_init_map_check.c"
 )
 
 add_executable(Pipex
@@ -192,10 +192,4 @@ add_executable(Pipex
 		"Core/Pipex/src/process/ft_process_child.c"
 		"Core/Pipex/src/process/ft_process_parent.c"
 		"Core/Pipex/src/process/ft_process_execute.c"
-)
-
-add_library(Exams
-		"Exams/Exam-02/Rank-0/first_word.c"
-		Exams/Exam-02/Rank-0/first_word.c
-		Exams/Exam-02/Rank-0/fizzbuzz.c
 )

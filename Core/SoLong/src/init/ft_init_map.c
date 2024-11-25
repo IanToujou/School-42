@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:22:29 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 23:14:53 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 00:37:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_init_map(t_gamedata *gamedata, char **argv)
 	return (0);
 }
 
-static int	ft_line_count(char *path, t_gamedata *gamedata)
+static int	ft_line_count(const char *path, t_gamedata *gamedata)
 {
 	int		fd;
 	char	*line;
@@ -37,17 +37,7 @@ static int	ft_line_count(char *path, t_gamedata *gamedata)
 	line_count = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-	{
-		free(gamedata->str_quest);
-		free(gamedata->str_collected);
-		free(gamedata->str_moves);
-		free(gamedata->str_collected_part);
-		free(gamedata->str_moves_part);
-		free(gamedata->player);
-		free(gamedata->map);
-		free(gamedata);
-		ft_throw_error(ERROR_FILE);
-	}
+		ft_throw_and_free(gamedata, ERROR_FILE);
 	else
 	{
 		line = get_next_line(fd);

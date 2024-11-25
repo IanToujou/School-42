@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 23:06:41 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 00:38:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,19 @@ void	ft_throw_error(const int error)
 	ft_throw_error_sub(error);
 	ft_printf("\033[0m\n");
 	exit(EXIT_FAILURE);
+}
+
+void	ft_throw_and_free(t_gamedata *gamedata, const int error)
+{
+	if (gamedata->map->map)
+		ft_exit_map(gamedata->map->map);
+	free(gamedata->str_quest);
+	free(gamedata->str_collected);
+	free(gamedata->str_moves);
+	free(gamedata->str_collected_part);
+	free(gamedata->str_moves_part);
+	free(gamedata->player);
+	free(gamedata->map);
+	free(gamedata);
+	ft_throw_error(error);
 }

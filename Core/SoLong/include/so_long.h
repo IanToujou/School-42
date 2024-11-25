@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 20:07:58 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 00:37:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_gamedata
 }	t_gamedata;
 
 void	ft_throw_error(int error);
+void	ft_throw_and_free(t_gamedata *gamedata, int error);
 
 int		ft_init_data(t_gamedata **gamedata);
 void	ft_free_data(t_gamedata *gamedata);
