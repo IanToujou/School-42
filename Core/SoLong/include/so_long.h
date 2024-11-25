@@ -103,7 +103,7 @@ void	ft_throw_error(int error);
 int		ft_init_data(t_gamedata **gamedata);
 void	ft_free_data(t_gamedata *gamedata);
 void	ft_init_graphics(t_gamedata *gamedata);
-void	ft_exit_graphics(t_gamedata *gamedata);
+void	ft_exit_graphics(const t_gamedata *gamedata);
 int		ft_init_mlx(t_gamedata *gamedata);
 void	ft_exit_mlx(t_gamedata *gamedata);
 int		ft_init_hooks(t_gamedata *gamedata);
@@ -123,7 +123,7 @@ int		ft_gfx_render(t_gamedata *gamedata);
 
 int		ft_check_file_format(const char *file);
 int		ft_check_characters(t_gamedata *gamedata);
-int		ft_check_rectangle(t_gamedata *gamedata);
-int		check_edges(int line_count, char **map);
+int		ft_check_rectangle(const t_gamedata *gamedata);
+int		check_edges(int lines, char **map);
 
 #endif

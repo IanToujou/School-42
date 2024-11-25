@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:14:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 19:01:09 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/25 23:02:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_init_graphics(t_gamedata *gamedata)
 	gamedata->image_drug = ft_load_xpm(gamedata, XPM_DRUG);
 }
 
-void	ft_exit_graphics(t_gamedata *gamedata)
+void	ft_exit_graphics(const t_gamedata *gamedata)
 {
 	mlx_destroy_image(gamedata->mlx, gamedata->image_splash);
 	mlx_destroy_image(gamedata->mlx, gamedata->image_player);
@@ -42,4 +42,5 @@ void	ft_exit_graphics(t_gamedata *gamedata)
 	mlx_destroy_image(gamedata->mlx, gamedata->image_enemy_1);
 	mlx_destroy_image(gamedata->mlx, gamedata->image_collectible);
 	mlx_destroy_image(gamedata->mlx, gamedata->image_drug);
+	mlx_destroy_display(gamedata->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/15 13:04:02 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/25 23:06:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	ft_throw_error_sub(const int error)
 		ft_printf("The map is not a rectangle.");
 	else if (error == ERROR_MAP_CHARACTERS)
 		ft_printf("Invalid characters in the map.");
+	else if (error == ERROR_FILE)
+		ft_printf("Map file not found.");
 	else
 		ft_printf("Error not registered yet.");
 }

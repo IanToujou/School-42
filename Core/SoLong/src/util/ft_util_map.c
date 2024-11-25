@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 19:19:43 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 19:37:09 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/25 23:03:25 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ static int	ft_check_edge_rows(int row, char **map)
 	return (0);
 }
 
-int	check_edges(int line_count, char **map)
+int	check_edges(const int lines, char **map)
 {
 	int	i;
 
 	i = 1;
 	if (ft_check_edge_rows(0, map) == -1
-		|| ft_check_edge_rows(line_count - 1, map) == -1)
+		|| ft_check_edge_rows(lines - 1, map) == -1)
 		return (-1);
-	while (i < line_count)
+	while (i < lines)
 	{
 		if (map[i][0] != '1' || map[i][ft_strlen(map[0]) - 1] != '1')
 			return (-1);
@@ -66,7 +66,7 @@ int	check_edges(int line_count, char **map)
 	return (0);
 }
 
-int	ft_check_rectangle(t_gamedata *gamedata)
+int	ft_check_rectangle(const t_gamedata *gamedata)
 {
 	int		y;
 	size_t	x;

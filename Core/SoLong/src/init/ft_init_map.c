@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:22:29 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 19:32:55 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/25 23:14:53 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_init_map(t_gamedata *gamedata, char **argv)
 	return (0);
 }
 
-static int	ft_line_count(char *path)
+static int	ft_line_count(char *path, t_gamedata *gamedata)
 {
 	int		fd;
 	char	*line;
@@ -37,7 +37,17 @@ static int	ft_line_count(char *path)
 	line_count = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
+	{
+		free(gamedata->str_quest);
+		free(gamedata->str_collected);
+		free(gamedata->str_moves);
+		free(gamedata->str_collected_part);
+		free(gamedata->str_moves_part);
+		free(gamedata->player);
+		free(gamedata->map);
+		free(gamedata);
 		ft_throw_error(ERROR_FILE);
+	}
 	else
 	{
 		line = get_next_line(fd);
@@ -98,7 +108,7 @@ int	ft_create_map(t_gamedata *data, char *path)
 	i = 0;
 	row = 0;
 	column = 0;
-	data->map->size_y = ft_line_count(path);
+	data->map->size_y = ft_line_count(path, data);
 	data->map->path = path;
 	data->map->map = ft_calloc(data->map->size_y + 1, sizeof(char *));
 	if (!(data->map->map))
