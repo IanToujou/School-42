@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:22:29 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/26 00:37:50 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 09:38:07 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_init_map(t_gamedata *gamedata, char **argv)
 {
 	if (ft_check_file_format(argv[1]) < 0)
-		ft_throw_error(ERROR_MAP_FILE_FORMAT);
+		ft_throw_and_free(gamedata, ERROR_MAP_FILE_FORMAT, 1);
 	gamedata->map->amount_collectibles = 0;
 	gamedata->map->amount_exits = 0;
 	gamedata->map->amount_players = 0;
@@ -37,7 +37,7 @@ static int	ft_line_count(const char *path, t_gamedata *gamedata)
 	line_count = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		ft_throw_and_free(gamedata, ERROR_FILE);
+		ft_throw_and_free(gamedata, ERROR_FILE, 0);
 	else
 	{
 		line = get_next_line(fd);

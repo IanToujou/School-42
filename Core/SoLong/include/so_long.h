@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:56:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/26 00:37:17 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 09:07:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@
 # define XPM_WALL "./assets/deepslate.xpm"
 # define XPM_EXIT_CLOSED "./assets/gus_angry.xpm"
 # define XPM_EXIT_OPEN "./assets/gus_happy.xpm"
-# define XPM_ENEMY_1 "./assets/hank.xpm"
-# define XPM_ENEMY_2 "./assets/skyler.xpm"
+# define XPM_ENEMY "./assets/hank.xpm"
 # define XPM_EMPTY "./assets/stone.xpm"
 # define XPM_COLLECTIBLE "./assets/meth.xpm"
-# define XPM_DRUG "./assets/fentanyl.xpm"
 
 # define WINDOW_SPLASH 0
 # define WINDOW_GAME 1
@@ -86,9 +84,7 @@ typedef struct s_gamedata
 	void			*image_exit_open;
 	void			*image_exit_closed;
 	void			*image_collectible;
-	void			*image_drug;
-	void			*image_enemy_1;
-	void			*image_enemy_2;
+	void			*image_enemy;
 	int				x;
 	int				y;
 	char			*str_quest;
@@ -99,7 +95,7 @@ typedef struct s_gamedata
 }	t_gamedata;
 
 void	ft_throw_error(int error);
-void	ft_throw_and_free(t_gamedata *gamedata, int error);
+void	ft_throw_and_free(t_gamedata *gamedata, int error, int map);
 
 int		ft_init_data(t_gamedata **gamedata);
 void	ft_free_data(t_gamedata *gamedata);

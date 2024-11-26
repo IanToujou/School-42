@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:14:41 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 23:02:28 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 09:03:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void	ft_init_graphics(t_gamedata *gamedata)
 	gamedata->image_wall = ft_load_xpm(gamedata, XPM_WALL);
 	gamedata->image_exit_closed = ft_load_xpm(gamedata, XPM_EXIT_CLOSED);
 	gamedata->image_exit_open = ft_load_xpm(gamedata, XPM_EXIT_OPEN);
-	gamedata->image_enemy_1 = ft_load_xpm(gamedata, XPM_ENEMY_1);
+	gamedata->image_enemy = ft_load_xpm(gamedata, XPM_ENEMY);
 	gamedata->image_collectible = ft_load_xpm(gamedata, XPM_COLLECTIBLE);
-	gamedata->image_drug = ft_load_xpm(gamedata, XPM_DRUG);
 }
 
 void	ft_exit_graphics(const t_gamedata *gamedata)
@@ -39,8 +38,7 @@ void	ft_exit_graphics(const t_gamedata *gamedata)
 	mlx_destroy_image(gamedata->mlx, gamedata->image_wall);
 	mlx_destroy_image(gamedata->mlx, gamedata->image_exit_open);
 	mlx_destroy_image(gamedata->mlx, gamedata->image_exit_closed);
-	mlx_destroy_image(gamedata->mlx, gamedata->image_enemy_1);
+	mlx_destroy_image(gamedata->mlx, gamedata->image_enemy);
 	mlx_destroy_image(gamedata->mlx, gamedata->image_collectible);
-	mlx_destroy_image(gamedata->mlx, gamedata->image_drug);
 	mlx_destroy_display(gamedata->mlx);
 }

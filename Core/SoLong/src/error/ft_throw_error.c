@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/26 00:38:15 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 09:41:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void	ft_throw_error_sub(const int error)
 		ft_printf("Invalid characters in the map.");
 	else if (error == ERROR_FILE)
 		ft_printf("Map file not found.");
-	else
-		ft_printf("Error not registered yet.");
 }
 
 /**
@@ -68,9 +66,9 @@ void	ft_throw_error(const int error)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_throw_and_free(t_gamedata *gamedata, const int error)
+void	ft_throw_and_free(t_gamedata *gamedata, const int error, int map)
 {
-	if (gamedata->map->map)
+	if (map == 1)
 		ft_exit_map(gamedata->map->map);
 	free(gamedata->str_quest);
 	free(gamedata->str_collected);

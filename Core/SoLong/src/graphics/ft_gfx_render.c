@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:13:30 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/25 22:45:48 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 09:04:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,9 @@ static void	ft_characters_to_image_sub(t_gamedata *gd, int w, int x, int y)
 
 static void	ft_characters_to_image(t_gamedata *gd, int w, int x, int y)
 {
-	if (gd->map->map[y][x] == '3')
-		mlx_put_image_to_window(gd->mlx, gd->window,
-			gd->image_drug, w, y * IMG_WIDTH);
 	if (gd->map->map[y][x] == '2')
 		mlx_put_image_to_window(gd->mlx, gd->window,
-			gd->image_enemy_1, w, y * IMG_WIDTH);
+			gd->image_enemy, w, y * IMG_WIDTH);
 	if (gd->map->map[y][x] == '1')
 		mlx_put_image_to_window(gd->mlx, gd->window,
 			gd->image_wall,
