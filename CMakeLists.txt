@@ -193,3 +193,10 @@ add_executable(Pipex
 		"Core/Pipex/src/process/ft_process_parent.c"
 		"Core/Pipex/src/process/ft_process_execute.c"
 )
+
+add_executable(Fractol
+		"Core/Fractol/src/main/main.c"
+		"Core/Fractol/src/error/ft_throw_error.c"
+		"Core/Fractol/include/fractol.h"
+		"Core/Fractol/src/init/ft_init_mlx.c"
+)
