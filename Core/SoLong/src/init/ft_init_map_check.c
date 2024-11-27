@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 19:32:26 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/26 09:07:09 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/26 10:24:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_check_map(t_gamedata *gamedata)
 	{
 		while (x < ft_strlen(gamedata->map->map[y]) - 1)
 		{
-			if (ft_strchr("01CEP", gamedata->map->map[y][x]) == NULL)
+			if (ft_strchr("012CEP", gamedata->map->map[y][x]) == NULL)
 				ft_throw_and_free(gamedata, ERROR_MAP_OTHER, 1);
 			x++;
 		}
