@@ -199,4 +199,5 @@ add_executable(Fractol
 		"Core/Fractol/src/error/ft_throw_error.c"
 		"Core/Fractol/include/fractol.h"
 		"Core/Fractol/src/init/ft_init_mlx.c"
+		Core/Fractol/src/init/ft_init_data.c
 )

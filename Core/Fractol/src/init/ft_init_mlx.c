@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 08:54:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/26 21:17:29 by ibour            ###   ########.fr       */
+/*   Updated: 2024/11/29 10:11:47 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Initializes the MLX library and creates a new window
  * to work with.
  *
- * @param gamedata The data of the game.
+ * @param engine The data of the game.
  * @return 0 if the process was successful. -1 if an error occurred.
  */
 int	ft_init_mlx(t_engine *engine)
@@ -32,7 +32,7 @@ int	ft_init_mlx(t_engine *engine)
 /**
  * Exits the MLX library and closes any existing windows.
  *
- * @param gamedata The data of the game.
+ * @param engine The data of the game.
  */
 void	ft_exit_mlx(t_engine *engine)
 {
