@@ -47,7 +47,7 @@ clean-win:
 fclean: clean
 	$(RM) $(NAME)
 	make -C lib/libft fclean
-	make -C lib/mlx fclean
+	make -C lib/mlx clean
 
 fclean-win:	clean-win
 	$(RM_WIN) "$(NAME).exe"

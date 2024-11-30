@@ -199,5 +199,13 @@ add_executable(Fractol
 		"Core/Fractol/src/error/ft_throw_error.c"
 		"Core/Fractol/include/fractol.h"
 		"Core/Fractol/src/init/ft_init_mlx.c"
-		Core/Fractol/src/init/ft_init_data.c
+)
+
+add_executable(Exams
+		Exams/Exam-02/Level-2/alpha_mirror.c
+		Exams/Exam-02/Level-2/camel_to_snake.c
+		Exams/Exam-02/Level-2/ft_strcmp.c
+		Exams/Exam-02/Level-2/ft_strcspn.c
+		Exams/Exam-02/Level-2/ft_strdup.c
+		Exams/Exam-02/Level-2/ft_strrev.c
 )
