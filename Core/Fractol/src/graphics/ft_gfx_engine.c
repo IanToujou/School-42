@@ -6,11 +6,26 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 06:39:59 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 06:47:35 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/01 15:03:43 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fractol.h"
+
+void	ft_change_fractal(int key, t_engine *engine)
+{
+	ft_engine_reset(engine, MANDELBROT);
+	if (key == KEY_TWO)
+		engine->fractal.type = JULIA;
+	else if (key == KEY_THREE)
+		engine->fractal.type = BURNING_SHIP;
+	else if (key == KEY_FOUR)
+		engine->fractal.type = TRICORN;
+	else if (key == KEY_FIVE)
+		engine->fractal.type = MANDELBOX;
+	else if (key == KEY_SIX)
+		engine->fractal.type = CELTIC_MANDELBAR;
+}
 
 void	ft_engine_reset(t_engine *engine, int fractal)
 {
@@ -35,17 +50,17 @@ int	ft_calculate_fractal(t_fractal *fractal, t_complex *c, int x, int y)
 	else if (!fractal->julia_lock)
 		c->i = (fractal->mouse_y / fractal->zoom) + fractal->offset_y;
 	if (fractal->type == MANDELBROT)
-		i = calc_mandelbrot(fractal, c);
+		i = ft_gfx_mandelbrot(fractal, c);
 	else if (fractal->type == JULIA)
-		i = calc_julia(fractal, c, x, y);
+		i = ft_gfx_julia(fractal, c, x, y);
 	else if (fractal->type == BURNING_SHIP)
-		i = calc_burning_ship(fractal, c);
+		i = ft_gfx_burningship(fractal, c);
 	else if (fractal->type == TRICORN)
-		i = calc_tricorn(fractal, c);
+		i = ft_gfx_tricorn(fractal, c);
 	else if (fractal->type == MANDELBOX)
 		i = calc_mandelbox(fractal, c);
 	else if (fractal->type == CELTIC_MANDELBAR)
-		i = calc_celtic_mandelbar(fractal, c);
+		i = ft_gfx_celtic_mandelbar(fractal, c);
 	return (i);
 }
 

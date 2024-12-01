@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 06:52:09 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/01 15:03:20 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <math.h>
 
 # define WINDOW_NAME "Fractol"
 # define WINDOW_SIZE 500
+# define VIEW_CHANGE_SIZE 60
 # define MIN_ITERATIONS 256
 # define MAX_ITERATIONS 256
 # define DEFAULT_COLOR 265
@@ -96,6 +98,8 @@ int		ft_init_hooks(t_engine *engine);
 void	ft_set_fractal(t_engine *engine, char *fractal);
 int		ft_calculate_fractal(t_fractal *fractal, t_complex *c, int x, int y);
 void	ft_engine_reset(t_engine *engine, int fractal);
+void	ft_set_fractal(t_engine *engine, char *str);
+void	ft_change_fractal(int key, t_engine *engine);
 
 void	ft_render_fractal(t_engine *engine);
 void	ft_set_color(int key, t_engine *engine);
@@ -106,5 +110,11 @@ void	ft_event_close(const t_engine *engine);
 void	ft_event_keypress(int key, t_engine *engine);
 void	ft_event_mousemove(int x, int y, t_engine *engine);
 void	ft_event_mousekey(int key, int x, int y, t_engine *engine);
+
+int		ft_gfx_mandelbrot(const t_fractal *fractal, t_complex *c);
+int		ft_gfx_julia(const t_fractal *fractal, const t_complex *c, int x, int y);
+int		ft_gfx_burningship(t_fractal *fractal, t_complex *c);
+int		ft_gfx_tricorn(t_fractal *fractal, t_complex *c);
+int		ft_gfx_celtic_mandelbar(t_fractal *fractal, t_complex *c);
 
 #endif
