@@ -13,7 +13,14 @@
 NAME = fractol
 
 SRC =	src/error/ft_throw_error.c \
-		src/init/ft_init_mlx.c \
+		src/event/ft_event_close.c \
+		src/event/ft_event_keypress.c \
+		src/event/ft_event_mousekey.c \
+		src/event/ft_event_render.c \
+		src/graphics/ft_gfx_engine.c \
+		src/graphics/ft_gfx_render.c \
+		src/init/ft_init_engine.c \
+		src/init/ft_init_hooks.c \
 		src/main/main.c
 
 OBJ = $(SRC:.c=.o)

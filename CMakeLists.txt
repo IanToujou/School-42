@@ -199,6 +199,15 @@ add_executable(Fractol
 		"Core/Fractol/src/error/ft_throw_error.c"
 		"Core/Fractol/include/fractol.h"
 		"Core/Fractol/src/init/ft_init_mlx.c"
+		"Core/Fractol/src/init/ft_init_engine.c"
+		"Core/Fractol/src/graphics/ft_gfx_render.c"
+		"Core/Fractol/src/init/ft_init_hooks.c"
+		"Core/Fractol/src/event/ft_event_close.c"
+		"Core/Fractol/src/event/ft_event_keypress.c"
+		"Core/Fractol/src/event/ft_event_mousemove.c"
+		"Core/Fractol/src/event/ft_event_mousekey.c"
+		"Core/Fractol/include/keys.h"
+		"Core/Fractol/src/graphics/ft_gfx_engine.c"
 )
 
 add_executable(Exams

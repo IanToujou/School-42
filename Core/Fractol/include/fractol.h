@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/29 19:44:54 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/01 06:52:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include "errortype.h"
+# include "keys.h"
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -89,9 +90,21 @@ typedef struct s_complex
 
 void	ft_throw_error(int error);
 
-int		ft_init_data(t_engine **engine, char *fractal);
+void	ft_init_engine(t_engine *engine, char *fractal);
+int		ft_init_hooks(t_engine *engine);
 
-int		ft_init_mlx(t_engine *engine);
-void	ft_exit_mlx(t_engine *engine);
+void	ft_set_fractal(t_engine *engine, char *fractal);
+int		ft_calculate_fractal(t_fractal *fractal, t_complex *c, int x, int y);
+void	ft_engine_reset(t_engine *engine, int fractal);
+
+void	ft_render_fractal(t_engine *engine);
+void	ft_set_color(int key, t_engine *engine);
+void	ft_set_color_pixel(t_engine *engine, int x, int y, int color);
+void	ft_set_view(int key, t_engine *engine);
+
+void	ft_event_close(const t_engine *engine);
+void	ft_event_keypress(int key, t_engine *engine);
+void	ft_event_mousemove(int x, int y, t_engine *engine);
+void	ft_event_mousekey(int key, int x, int y, t_engine *engine);
 
 #endif
