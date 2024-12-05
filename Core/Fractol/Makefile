@@ -16,9 +16,10 @@ SRC =	src/error/ft_throw_error.c \
 		src/event/ft_event_close.c \
 		src/event/ft_event_keypress.c \
 		src/event/ft_event_mousekey.c \
-		src/event/ft_event_render.c \
+		src/event/ft_event_mousemove.c \
 		src/graphics/ft_gfx_engine.c \
 		src/graphics/ft_gfx_render.c \
+		src/graphics/ft_gfx_fractal.c \
 		src/init/ft_init_engine.c \
 		src/init/ft_init_hooks.c \
 		src/main/main.c
