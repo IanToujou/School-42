@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 06:31:39 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/03 07:52:07 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/09 08:31:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fractol.h"
 
-void	ft_event_mousekey(int key, const int x, const int y, t_engine *engine)
+int	ft_event_mousekey(int key, const int x, const int y, t_engine *engine)
 {
 	t_fractal	*fr;
 
@@ -34,4 +34,5 @@ void	ft_event_mousekey(int key, const int x, const int y, t_engine *engine)
 			--fr->iterations;
 	}
 	ft_render_fractal(engine);
+	return (0);
 }

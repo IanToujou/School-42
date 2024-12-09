@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 06:24:15 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 14:35:46 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/09 09:23:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_render_fractal(t_engine *engine)
 		while (++y < WINDOW_SIZE)
 		{
 			iter = ft_calculate_fractal(fractal, &c, x, y);
-			ft_set_color_pixel(engine, x, y, (int)(iter * engine->fractal.color));
+			ft_set_color_pixel(engine, x, y, iter * engine->fractal.color);
 		}
 	}
 	mlx_put_image_to_window(engine->mlx, engine->window, \

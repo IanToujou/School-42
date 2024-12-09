@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 15:03:20 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/09 09:22:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@
 # define JULIA 2
 # define BURNING_SHIP 3
 # define TRICORN 4
-# define MANDELBOX 5
-# define CELTIC_MANDELBAR 6
+# define CELTIC_MANDELBAR 5
 # define MANDELBROT_STR "mandelbrot"
 # define JULIA_STR "julia"
 # define BURNING_SHIP_STR "burning_ship"
 # define TRICORN_STR "tricorn"
-# define MANDELBOX_STR "mandelbox"
 # define CELTIC_MANDELBAR_STR "celtic_mandelbar"
 
 # define UINT u_int32_t
@@ -58,7 +56,8 @@ typedef struct s_image
 	int		line_length;
 }	t_image;
 
-typedef struct s_fractal {
+typedef struct s_fractal
+{
 	int			type;
 	double		zoom;
 	UINT		color;
@@ -106,13 +105,14 @@ void	ft_set_color(int key, t_engine *engine);
 void	ft_set_color_pixel(t_engine *engine, int x, int y, int color);
 void	ft_set_view(int key, t_engine *engine);
 
-void	ft_event_close(const t_engine *engine);
-void	ft_event_keypress(int key, t_engine *engine);
-void	ft_event_mousemove(int x, int y, t_engine *engine);
-void	ft_event_mousekey(int key, int x, int y, t_engine *engine);
+int		ft_event_close(const t_engine *engine);
+int		ft_event_keypress(int key, t_engine *engine);
+int		ft_event_mousemove(int x, int y, t_engine *engine);
+int		ft_event_mousekey(int key, int x, int y, t_engine *engine);
 
 int		ft_gfx_mandelbrot(const t_fractal *fractal, t_complex *c);
-int		ft_gfx_julia(const t_fractal *fractal, const t_complex *c, int x, int y);
+int		ft_gfx_julia(const t_fractal *fractal,
+			const t_complex *c, int x, int y);
 int		ft_gfx_burningship(t_fractal *fractal, t_complex *c);
 int		ft_gfx_tricorn(t_fractal *fractal, t_complex *c);
 int		ft_gfx_celtic_mandelbar(t_fractal *fractal, t_complex *c);

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 14:29:25 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 14:59:21 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/09 09:23:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_gfx_mandelbrot(const t_fractal *fractal, t_complex *c)
 	return (i);
 }
 
-int	ft_gfx_julia(const t_fractal *fractal, const t_complex *c, const int x, const int y)
+int	ft_gfx_julia(const t_fractal *fractal, const t_complex *c, int x, int y)
 {
 	double		r_temp;
 	t_complex	z;

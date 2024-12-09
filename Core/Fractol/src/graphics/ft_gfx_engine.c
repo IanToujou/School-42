@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 06:39:59 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/03 07:41:14 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/09 09:23:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	ft_str_tolower(char *str)
 {
-	while (*str) {
+	while (*str)
+	{
 		if (*str >= 'A' && *str <= 'Z')
 			*str += 32;
 		str++;
@@ -31,8 +32,6 @@ void	ft_change_fractal(int key, t_engine *engine)
 	else if (key == KEY_FOUR)
 		engine->fractal.type = TRICORN;
 	else if (key == KEY_FIVE)
-		engine->fractal.type = MANDELBOX;
-	else if (key == KEY_SIX)
 		engine->fractal.type = CELTIC_MANDELBAR;
 }
 
@@ -68,7 +67,6 @@ int	ft_calculate_fractal(t_fractal *fractal, t_complex *c, int x, int y)
 		i = ft_gfx_tricorn(fractal, c);
 	else if (fractal->type == CELTIC_MANDELBAR)
 		i = ft_gfx_celtic_mandelbar(fractal, c);
-	// todo add mandelbox
 	return (i);
 }
 
@@ -88,8 +86,6 @@ void	ft_set_fractal(t_engine *engine, char *fractal)
 		engine->fractal.type = BURNING_SHIP;
 	else if (ft_strncmp(fractal, TRICORN_STR, length) == 0)
 		engine->fractal.type = TRICORN;
-	else if (ft_strncmp(fractal, MANDELBOX_STR, length) == 0)
-		engine->fractal.type = MANDELBOX;
 	else if (ft_strncmp(fractal, CELTIC_MANDELBAR_STR, length) == 0)
 		engine->fractal.type = CELTIC_MANDELBAR;
 	else
