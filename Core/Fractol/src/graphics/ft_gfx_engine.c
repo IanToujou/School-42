@@ -6,11 +6,20 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 06:39:59 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 15:03:43 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/03 07:41:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fractol.h"
+
+static void	ft_str_tolower(char *str)
+{
+	while (*str) {
+		if (*str >= 'A' && *str <= 'Z')
+			*str += 32;
+		str++;
+	}
+}
 
 void	ft_change_fractal(int key, t_engine *engine)
 {
@@ -57,10 +66,9 @@ int	ft_calculate_fractal(t_fractal *fractal, t_complex *c, int x, int y)
 		i = ft_gfx_burningship(fractal, c);
 	else if (fractal->type == TRICORN)
 		i = ft_gfx_tricorn(fractal, c);
-	else if (fractal->type == MANDELBOX)
-		i = calc_mandelbox(fractal, c);
 	else if (fractal->type == CELTIC_MANDELBAR)
 		i = ft_gfx_celtic_mandelbar(fractal, c);
+	// todo add mandelbox
 	return (i);
 }
 
@@ -70,7 +78,7 @@ void	ft_set_fractal(t_engine *engine, char *fractal)
 
 	if (!engine || !fractal)
 		return ;
-	ft_strmap(fractal, ft_tolower);
+	ft_str_tolower(fractal);
 	length = ft_strlen(fractal);
 	if (ft_strncmp(fractal, MANDELBROT_STR, length) == 0)
 		engine->fractal.type = MANDELBROT;
