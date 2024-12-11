@@ -209,15 +209,3 @@ add_executable(Fractol
 		"Core/Fractol/src/graphics/ft_gfx_engine.c"
 		Core/Fractol/src/graphics/ft_gfx_fractal.c
 )
-
-add_executable(Exams
-		Exams/Exam-02/Level-2/last_word.c
-		Exams/Exam-02/Level-2/max.c
-		Exams/Exam-02/Level-2/print_bits.c
-		Exams/Exam-02/Level-2/reverse_bits.c
-		Exams/Exam-02/Level-2/swap_bits.c
-		Exams/Exam-02/Level-2/union.c
-		Exams/Exam-02/Level-2/wdmatch.c
-		Exams/Exam-02/Level-3/add_prime_sum.c
-		Exams/Exam-02/Level-3/epur_str.c
-)
