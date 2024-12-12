@@ -213,4 +213,7 @@ add_executable(FdF Core/FdF/src/main/main.c
 		Core/FdF/include/errortype.h
 		Core/FdF/include/fdf.h
 		Core/FdF/src/error/ft_throw_error.c
-		Core/FdF/src/init/ft_init_data.c)
+		Core/FdF/src/init/ft_init_data.c
+		Core/FdF/src/init/ft_init_map.c
+		Core/FdF/src/init/ft_init_mlx.c
+		Core/FdF/src/init/ft_init_hooks.c)

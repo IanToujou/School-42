@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errortype.h                                        :+:      :+:    :+:   */
+/*   ft_init_hooks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/12 14:35:30 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/12 14:32:28 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/12 14:38:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERRORTYPE_H
+#include "../../include/fdf.h"
 
-# define ERRORTYPE_H
+void	ft_init_hooks(t_data *data)
+{
 
-# define ERROR_UNKNOWN 0
-# define ERROR_SYNTAX 1
-# define ERROR_INIT_MLX 2
-# define ERROR_INIT_WINDOW 3
-# define ERROR_INIT_DATA 4
-# define ERROR_INIT_MAP 5
-
-#endif
+}

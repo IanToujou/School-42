@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/11 17:39:34 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/12 14:36:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_data {
 
 void	ft_throw_error(int error);
 
-int	ft_init_data(t_data **data);
+int		ft_init_data(t_data **data);
+int		ft_init_map(t_data *data, char *arg);
+int		ft_init_mlx(t_data *data);
+void	ft_init_hooks(t_data *data);
 
 #endif

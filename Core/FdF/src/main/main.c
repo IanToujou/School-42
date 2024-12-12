@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:24:42 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/11 17:39:53 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/12 14:37:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int main(const int argc, char **argv) {
 
 	if (argc != 2)
 		ft_throw_error(ERROR_SYNTAX);
-	ft_init_data(&data);
-	ft_init_map();
-	ft_init_mlx();
-	ft_init_hooks();
+	if (ft_init_data(&data))
+		ft_throw_error(ERROR_INIT_DATA);
+	if (ft_init_map(data, argv[1]))
+		ft_throw_error(ERROR_INIT_MAP);
+	if (ft_init_mlx(data))
+		ft_throw_error(ERROR_INIT_MLX);
+	ft_init_hooks(data);
 	return (0);
 }
