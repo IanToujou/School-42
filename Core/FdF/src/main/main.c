@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:24:42 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/12 14:37:04 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/12 14:47:46 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int main(const int argc, char **argv) {
 	if (ft_init_mlx(data))
 		ft_throw_error(ERROR_INIT_MLX);
 	ft_init_hooks(data);
+	(void)argv;
 	return (0);
 }

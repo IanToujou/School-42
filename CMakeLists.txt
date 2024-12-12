@@ -216,4 +216,7 @@ add_executable(FdF Core/FdF/src/main/main.c
 		Core/FdF/src/init/ft_init_data.c
 		Core/FdF/src/init/ft_init_map.c
 		Core/FdF/src/init/ft_init_mlx.c
-		Core/FdF/src/init/ft_init_hooks.c)
+		Core/FdF/src/init/ft_init_hooks.c
+		Core/FdF/src/graphics/ft_gfx_render.c
+		Core/FdF/src/event/ft_event_close.c
+		Core/FdF/src/event/ft_event_keypress.c)

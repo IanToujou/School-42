@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:31:44 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/12 14:36:49 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/12 14:46:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_init_map(t_data *data, char *arg)
 {
+	(void)data;
+	(void)arg;
 	return (0);
 }

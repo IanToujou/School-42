@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/12 14:36:57 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/12 14:44:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "errortype.h"
+# include "keys.h"
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -32,6 +33,10 @@ typedef struct s_map {
 }	t_map;
 
 typedef struct s_data {
+	void	*mlx;
+	void	*window;
+	int		window_width;
+	int		window_height;
 	t_map	*map;
 }	t_data;
 
@@ -41,5 +46,10 @@ int		ft_init_data(t_data **data);
 int		ft_init_map(t_data *data, char *arg);
 int		ft_init_mlx(t_data *data);
 void	ft_init_hooks(t_data *data);
+
+int		ft_event_close(t_data *data);
+int		ft_event_keypress(int keycode, t_data *data);
+
+int		ft_gfx_render(t_data *data);
 
 #endif

@@ -13,6 +13,9 @@
 NAME = fdf
 
 SRC =	src/error/ft_throw_error.c \
+		src/event/ft_event_close.c \
+		src/event/ft_event_keypress.c \
+		src/graphics/ft_gfx_render.c \
 		src/init/ft_init_data.c \
 		src/init/ft_init_hooks.c \
 		src/init/ft_init_map.c \
