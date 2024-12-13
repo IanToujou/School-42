@@ -20,7 +20,8 @@ SRC =	src/error/ft_throw_error.c \
 		src/init/ft_init_hooks.c \
 		src/init/ft_init_map.c \
 		src/init/ft_init_mlx.c \
-		src/main/main.c
+		src/main/main.c \
+		src/util/ft_util_free.c
 
 OBJ = $(SRC:.c=.o)
 

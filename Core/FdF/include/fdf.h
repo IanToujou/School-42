@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/12 14:44:57 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/13 10:27:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ int		ft_event_close(t_data *data);
 int		ft_event_keypress(int keycode, t_data *data);
 
 int		ft_gfx_render(t_data *data);
+
+void	ft_util_free(t_data *data);
 
 #endif

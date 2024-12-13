@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_util_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 17:24:42 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/13 10:42:59 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/13 10:24:49 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/13 11:44:20 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int main(const int argc, char **argv) {
-	t_data	*data;
-
-	if (argc != 2)
-		ft_throw_error(ERROR_SYNTAX);
-	if (ft_init_data(&data))
-		ft_throw_error(ERROR_INIT_DATA);
-	if (ft_init_map(data, argv[1]))
-		ft_throw_error(ERROR_INIT_MAP);
-	if (ft_init_mlx(data))
-		ft_throw_error(ERROR_INIT_MLX);
-	ft_init_hooks(data);
-	(void)argv;
-	ft_util_free(data);
-	return (0);
+void	ft_util_free(t_data *data)
+{
+	if (!data)
+		return ;
+	if (data->map)
+		free(data->map);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	free(data);
 }
