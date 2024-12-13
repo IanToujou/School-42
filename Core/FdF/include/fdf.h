@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/13 10:27:35 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/13 12:22:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@
 # define WINDOW_SIZE 900
 
 # define UINT u_int32_t
+
+# define COLOR_TEN			0x9e0142ff
+# define COLOR_NINE			0xd53e4fff
+# define COLOR_EIGHT		0xf46d43ff
+# define COLOR_SEVEN		0xfdae61ff
+# define COLOR_SIX			0xfee08bff
+# define COLOR_FIVE			0xe6f598ff
+# define COLOR_FOUR			0xabdda4ff
+# define COLOR_THREE		0x66c2a5ff
+# define COLOR_TWO			0x3288bdff
+# define COLOR_ONE			0x5e4fa2ff
 
 typedef struct s_map {
 	double **array;
