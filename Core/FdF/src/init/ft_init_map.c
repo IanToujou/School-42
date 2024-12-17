@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:31:44 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/13 12:41:20 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/17 07:57:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_init_map(t_data *data, char *arg)
 		ft_throw_error(ERROR_MALLOC);
 	}
 	ft_default_values(map);
-	// dimension parse
+	ft_util_parse_dimensions(fd, map);
 	close(fd);
 	// malloc grid
 	data->map = map;

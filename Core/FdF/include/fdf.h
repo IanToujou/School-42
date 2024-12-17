@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/13 12:22:56 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/17 08:17:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@
 # define COLOR_ONE			0x5e4fa2ff
 
 typedef struct s_map {
-	double **array;
+	int		cols;
+	int		rows;
+	int		high;
+	int		low;
 }	t_map;
 
 typedef struct s_data {
@@ -64,5 +67,6 @@ int		ft_event_keypress(int keycode, t_data *data);
 int		ft_gfx_render(t_data *data);
 
 void	ft_util_free(t_data *data);
+void	ft_util_parse_dimensions(int fd, t_map *map);
 
 #endif
