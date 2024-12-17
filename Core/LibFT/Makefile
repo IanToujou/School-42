@@ -57,7 +57,8 @@ BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstnew_bonus.c \
 			src/bonus/ft_lstsize_bonus.c
 
-CUSTOM =	src/custom/ft_ceil.c \
+CUSTOM =	src/custom/ft_atoi_base.c \
+			src/custom/ft_ceil.c \
 			src/custom/ft_factorial.c \
 			src/custom/ft_floor.c \
 			src/custom/ft_hashclear.c \
@@ -99,7 +100,7 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/other/printf/ft_print_ptr.c \
 			src/other/printf/ft_print_str.c \
 			src/other/printf/ft_printf.c \
-			src/other/getnextline/get_next_line.c
+			src/other/getnextline/get_next_line.c \
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I.

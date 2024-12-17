@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/17 08:19:26 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/17 09:21:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ void	ft_error_throw(const int error)
 		ft_printf("Error initializing window.");
 	ft_printf("\033[0m\n");
 	exit(EXIT_FAILURE);
+}
+
+void	ft_error_throw_map(const int fd, t_map *map, const int error)
+{
+	close(fd);
+	free(map);
+	ft_error_throw(error);
 }

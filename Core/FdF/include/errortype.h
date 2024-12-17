@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/13 12:41:08 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/17 09:34:01 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@
 # define ERROR_INIT_MAP 5
 # define ERROR_FILE 6
 # define ERROR_MALLOC 7
+
+# define ERROR_MAP_INVALID 8
+# define ERROR_MAP_FILE_EXTENSION 9
 
 #endif

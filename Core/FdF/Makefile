@@ -22,7 +22,8 @@ SRC =	src/error/ft_error_throw.c \
 		src/init/ft_init_mlx.c \
 		src/main/main.c \
 		src/util/ft_util_free.c \
-		src/util/ft_util_parse.c
+		src/util/ft_util_parse.c \
+		src/util/ft_util_str.c
 
 OBJ = $(SRC:.c=.o)
 

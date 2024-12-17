@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/07 13:02:51 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/17 09:45:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,7 @@ void				ft_print_str(char *str, int *i);
 void				ft_print_num_unsigned(unsigned int num, int *i);
 void				ft_print_hex(unsigned int num, int *i, char *base);
 void				ft_print_num_base(unsigned long int p, char *base, int *i);
+
+int					ft_atoi_base(const char *str, const char *base);
 
 #endif

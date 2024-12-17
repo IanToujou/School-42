@@ -91,6 +91,7 @@ add_library(LibFT
 		"Core/LibFT/src/other/printf/ft_print_num_unsigned.c"
 		"Core/LibFT/src/other/printf/ft_print_ptr.c"
 		"Core/LibFT/src/other/printf/ft_print_str.c"
+		Core/LibFT/src/custom/ft_atoi_base.c
 )
 
 add_library(PrintF
@@ -224,4 +225,5 @@ add_executable(FdF
 		"Core/FdF/include/fdf.h"
 		"Core/FdF/src/util/ft_util_parse.c"
 		"Core/FdF/src/error/ft_error_throw.c"
+		Core/FdF/src/util/ft_util_str.c
 )
