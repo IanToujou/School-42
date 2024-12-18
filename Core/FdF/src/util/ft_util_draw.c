@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:52:32 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/18 11:46:48 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/18 13:27:46 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,21 @@ void	ft_util_draw_map(t_map *map, const int i, const int j)
 	t_point3d	temp;
 	t_point2d	*new;
 
+	(void)i;
+	(void)j;
+	(void)map;
+	(void)previous;
+	(void)temp;
+	(void)new;
+
 	previous = &(map->grid3d[i][j]);
 	new = &(map->grid2d[i][j]);
 	temp.x = previous->x;
 	temp.y = previous->y;
 	temp.z = previous->z * map->z_scale;
-	ft_util_rotate_z(&temp.x, &temp.y, map->z_rotate);
+	/*ft_util_rotate_z(&temp.x, &temp.y, map->z_rotate);
 	ft_util_rotate_x(&temp.y, &temp.z, map->x_rotate);
-	ft_util_rotate_y(&temp.x, &temp.z, map->y_rotate);
+	ft_util_rotate_y(&temp.x, &temp.z, map->y_rotate);*/
 	new->x = (int)((temp.x * map->zoom - temp.y * map->zoom)
 			* cos(map->alpha) + map->x_offset);
 	new->y = (int)(-temp.z * map->zoom
@@ -87,8 +94,8 @@ void	ft_util_draw_image(const t_data *data)
 
 void	ft_util_draw_reset(const t_image *image)
 {
-	uint32_t	i;
-	uint32_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < image->height)

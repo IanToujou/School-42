@@ -21,9 +21,11 @@ SRC =	src/error/ft_error_throw.c \
 		src/init/ft_init_map.c \
 		src/init/ft_init_mlx.c \
 		src/main/main.c \
+		src/util/ft_util_algo.c \
+		src/util/ft_util_draw.c \
 		src/util/ft_util_free.c \
 		src/util/ft_util_parse.c \
-		src/util/ft_util_str.c
+		src/util/ft_util_str.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,7 +38,7 @@ RM_WIN = del /S /Q
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(OBJ) libft mlx
-	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11
+	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 libft:
 	make -C lib/libft custom

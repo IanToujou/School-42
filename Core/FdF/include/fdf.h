@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/18 11:46:59 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/18 13:44:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <math.h>
 # include <math.h>
 # include <limits.h>
 
@@ -117,6 +118,7 @@ int		ft_event_keypress(int keycode, t_data *data);
 int		ft_gfx_render(t_data *data);
 
 void	ft_util_parse_dimensions(int fd, t_map *map);
+void	ft_util_parse_map(int fd, t_map *map);
 void	ft_util_free(t_data *data);
 void	ft_util_free_map(t_map *map);
 void	ft_util_free_array(void **array, size_t length);
