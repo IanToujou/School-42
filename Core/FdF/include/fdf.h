@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/17 09:38:16 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/18 11:46:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "../lib/mlx/mlx_int.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
 # include <limits.h>
 
-# define WINDOW_NAME "FdF"
+# define WINDOW_NAME "FdF (More like Fdp)"
 # define WINDOW_SIZE 900
 
 # define UINT u_int32_t
@@ -81,12 +82,25 @@ typedef struct s_map {
 	t_point2d	**grid2d;
 }	t_map;
 
+typedef struct s_image
+{
+	int		width;
+	int		height;
+	void	*mlx_image;
+	char	*data_addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		steep;
+}	t_image;
+
 typedef struct s_data {
 	void	*mlx;
 	void	*window;
 	int		window_width;
 	int		window_height;
 	t_map	*map;
+	t_image	*image;
 }	t_data;
 
 void	ft_error_throw(int error);
@@ -107,5 +121,10 @@ void	ft_util_free(t_data *data);
 void	ft_util_free_map(t_map *map);
 void	ft_util_free_array(void **array, size_t length);
 void	ft_util_str_upper(unsigned int i, char *c);
+void	ft_util_algo_line(const t_image *image, t_point2d a, t_point2d b);
+void	ft_util_draw_image(const t_data *data);
+void	ft_util_draw_map(t_map *map, int i, int j);
+void	ft_util_draw_reset(const t_image *image);
+void	ft_put_pixel(const t_image *image, int x, int y, int color);
 
 #endif
