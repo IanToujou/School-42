@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 10:24:49 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/17 09:22:23 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/23 11:24:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_util_free_array(void **array, const size_t length)
 
 void	ft_util_free_map(t_map *map)
 {
-	if (!map)
+	if (!map) // todo bug here somewhere
 		return ;
 	if (map->grid2d)
 		ft_util_free_array((void **)map->grid2d, map->rows);
