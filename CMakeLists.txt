@@ -225,7 +225,15 @@ add_executable(FdF
 		"Core/FdF/include/fdf.h"
 		"Core/FdF/src/util/ft_util_parse.c"
 		"Core/FdF/src/error/ft_error_throw.c"
-		Core/FdF/src/util/ft_util_str.c
-		Core/FdF/src/util/ft_util_draw.c
-		Core/FdF/src/util/ft_util_algo.c
+		"Core/FdF/src/util/ft_util_str.c"
+		"Core/FdF/src/util/ft_util_draw.c"
+		"Core/FdF/src/util/ft_util_algo.c"
+)
+
+add_executable(Philo-Mandatory
+		"Core/Philosophers/philo/src/main/main.c"
+)
+
+add_executable(Philo-Bonus
+		"Core/Philosophers/philo_bonus/src/main/main.c"
 )
