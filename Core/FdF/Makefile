@@ -12,20 +12,10 @@
 
 NAME = fdf
 
-SRC =	src/error/ft_error_throw.c \
-		src/event/ft_event_close.c \
-		src/event/ft_event_keypress.c \
-		src/graphics/ft_gfx_render.c \
+SRC =	src/error/ft_throw_error.c \
 		src/init/ft_init_data.c \
-		src/init/ft_init_hooks.c \
 		src/init/ft_init_map.c \
-		src/init/ft_init_mlx.c \
-		src/main/main.c \
-		src/util/ft_util_algo.c \
-		src/util/ft_util_draw.c \
-		src/util/ft_util_free.c \
-		src/util/ft_util_parse.c \
-		src/util/ft_util_str.c \
+		src/main/main.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/17 09:45:15 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 01:56:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 
+double				ft_abs(double x);
 double				ft_pow(double x, int y);
 double				ft_min(double x, double y);
 double				ft_max(double x, double y);

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/18 13:44:37 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 01:47:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,111 +22,93 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
-# include <math.h>
-# include <math.h>
-# include <limits.h>
 
-# define WINDOW_NAME "FdF (More like Fdp)"
-# define WINDOW_SIZE 900
+# define FT_ULONG_MAX	((unsigned long)(~0L))
+# define FT_LONG_MAX	((long)(FT_ULONG_MAX >> 1))
+# define FT_LONG_MIN	((long)(~FT_LONG_MAX))
 
-# define UINT u_int32_t
+# define FT_UINT_MAX	((unsigned)(~0L))
+# define FT_INT_MAX		((int)(FT_UINT_MAX >> 1))
+# define FT_INT_MIN		((int)(~FT_INT_MAX))
 
-# define WIDTH				1920
-# define HEIGHT				1080
-# define TEXT_COLOR			0xEAEAEAFF
-# define BACKGROUND			0x22222200
-# define MENU_BACKGROUND	0x1E1E1EFF
+# define WINDOW_NAME "FdF"
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
+# define MENU_WIDTH 250
 
-# define COLOR_TEN			0x9e0142ff
-# define COLOR_NINE			0xd53e4fff
-# define COLOR_EIGHT		0xf46d43ff
-# define COLOR_SEVEN		0xfdae61ff
-# define COLOR_SIX			0xfee08bff
-# define COLOR_FIVE			0xe6f598ff
-# define COLOR_FOUR			0xabdda4ff
-# define COLOR_THREE		0x66c2a5ff
-# define COLOR_TWO			0x3288bdff
-# define COLOR_ONE			0x5e4fa2ff
+typedef enum
+{
+	ISOMETRIC,
+	PARALLEL
+}	t_projection;
 
-typedef struct s_point2d {
-	int	x;
-	int	y;
-	int	z;
-	int	rgba;
-}	t_point2d;
+typedef struct s_coord_val
+{
+	int					z;
+	int					color;
+	struct s_coord_val	*next;
+}	t_coord_val;
 
-typedef struct s_point3d {
-	double	x;
-	double	y;
-	double	z;
-	int		map_color;
-	int		z_color;
-}	t_point3d;
+typedef struct s_point
+{
+	int					x;
+	int					y;
+	int					z;
+	int					color;
+}	t_point;
 
-typedef struct s_map {
-	int			cols;
-	int			rows;
-	int			high;
-	int			low;
-	bool		use_z_color;
-	double		x_offset;
-	double		y_offset;
-	double		interval;
-	double		alpha;
-	double		beta;
-	double		x_rotate;
-	double		y_rotate;
-	double		z_rotate;
-	double		zoom;
-	double		z_scale;
-	t_point3d	**grid3d;
-	t_point2d	**grid2d;
+typedef struct s_camera
+{
+	t_projection	projection;
+	int				zoom;
+	double			alpha;
+	double			beta;
+	double			gamma;
+	float			z_divisor;
+	int				x_offset;
+	int				y_offset;
+}	t_camera;
+
+typedef struct s_map
+{
+	int	width;
+	int	height;
+	int	*coords_arr;
+	int	*colors_arr;
+	int	z_min;
+	int	z_max;
+	int	z_range;
 }	t_map;
 
-typedef struct s_image
+typedef struct s_mouse
 {
-	int		width;
-	int		height;
-	void	*mlx_image;
-	char	*data_addr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-	int		steep;
-}	t_image;
+	char	is_pressed;
+	int		x;
+	int		y;
+	int		previous_x;
+	int		previous_y;
+}	t_mouse;
 
-typedef struct s_data {
-	void	*mlx;
-	void	*window;
-	int		window_width;
-	int		window_height;
-	t_map	*map;
-	t_image	*image;
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*data_addr;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	t_camera	*camera;
+	t_map		*map;
+	t_mouse		*mouse;
 }	t_data;
 
-void	ft_error_throw(int error);
-void	ft_error_throw_map(int fd, t_map *map, int error);
+void	ft_throw_error(int error);
 
-int		ft_init_data(t_data **data);
-int		ft_init_map(t_data *data, const char *arg);
-int		ft_init_mlx(t_data *data);
-void	ft_init_hooks(t_data *data);
+t_map		*ft_init_map(void);
+t_data		*ft_init_data(t_map *map);
+t_camera	*ft_init_camera(t_data *data);
 
-int		ft_event_close(t_data *data);
-int		ft_event_keypress(int keycode, t_data *data);
-
-int		ft_gfx_render(t_data *data);
-
-void	ft_util_parse_dimensions(int fd, t_map *map);
-void	ft_util_parse_map(int fd, t_map *map);
-void	ft_util_free(t_data *data);
-void	ft_util_free_map(t_map *map);
-void	ft_util_free_array(void **array, size_t length);
-void	ft_util_str_upper(unsigned int i, char *c);
-void	ft_util_algo_line(const t_image *image, t_point2d a, t_point2d b);
-void	ft_util_draw_image(const t_data *data);
-void	ft_util_draw_map(t_map *map, int i, int j);
-void	ft_util_draw_reset(const t_image *image);
-void	ft_put_pixel(const t_image *image, int x, int y, int color);
+void		ft_graphics_draw(t_map *map, t_data *data);
 
 #endif

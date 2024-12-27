@@ -57,7 +57,8 @@ BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstnew_bonus.c \
 			src/bonus/ft_lstsize_bonus.c
 
-CUSTOM =	src/custom/ft_atoi_base.c \
+CUSTOM =	src/custom/ft_abs.c \
+			src/custom/ft_atoi_base.c \
 			src/custom/ft_ceil.c \
 			src/custom/ft_factorial.c \
 			src/custom/ft_floor.c \

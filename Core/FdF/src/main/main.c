@@ -6,26 +6,31 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:24:42 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/23 11:23:20 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 01:46:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
 int main(const int argc, char **argv) {
-	t_data	*data;
+	int			fd;
+	t_map		*map;
+	t_coord_val	*coords;
+	t_data		*data;
 
+	coords = NULL;
 	if (argc != 2)
-		ft_error_throw(ERROR_SYNTAX);
-	if (ft_init_data(&data))
-		ft_error_throw(ERROR_INIT_DATA);
-	if (ft_init_map(data, argv[1]))
-		ft_error_throw(ERROR_INIT_MAP);
-	if (ft_init_mlx(data))
-		ft_error_throw(ERROR_INIT_MLX);
-	ft_init_hooks(data);
-	(void)argv;
-	ft_util_free_map(data->map);
-	ft_util_free(data);
+		ft_throw_error(ERROR_SYNTAX);
+	if ((fd = open(argv[1], O_RDONLY)) < 0)
+		ft_throw_error(ERROR_FILE);
+	map = ft_init_map();
+	if (read_map(fd, &coords, map) == -1)
+		ft_throw_error(ERROR_MAP_INVALID);
+	data = ft_init_data(map);
+	ft_util_stack_to_array(&coords, map);
+	data->camera = ft_init_camera(data);
+	ft_graphics_draw(data->map, data);
+	setup_controls(data);
+	mlx_loop(data->mlx);
 	return (0);
 }

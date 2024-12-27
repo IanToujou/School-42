@@ -5,29 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 17:35:49 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/18 13:23:24 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/27 01:30:16 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/27 01:35:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-static void	ft_init_default(t_data *data)
+t_data		*ft_init_data(t_map *map)
 {
-	data->window_height = WINDOW_SIZE;
-	data->window_width = WINDOW_SIZE;
-}
+	t_data	*data;
 
-int	ft_init_data(t_data **data) {
-	t_map	*map;
-
-	*data = (t_data *) malloc(sizeof(t_data));
-	if (!*data)
-		return (-1);
-	map = (t_map *) malloc(sizeof(t_map));
-	if (!map)
-		return (-1);
-	(*data)->map = map;
-	ft_init_default(*data);
-	return (0);
+	data = (t_data *) malloc(sizeof(t_data));
+	if (!data)
+		ft_throw_error(ERROR_INIT_DATA);
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		ft_throw_error(ERROR_INIT_MLX);
+	data->win = mlx_new_window(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FdF");
+	if (!data->win)
+		ft_throw_error(ERROR_INIT_WINDOW);
+	data->img = mlx_new_image(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (!data->img)
+		ft_throw_error(ERROR_INIT_WINDOW);
+	data->data_addr = mlx_get_data_addr(data->img, &(data->bits_per_pixel),
+										&(data->size_line), &(data->endian));
+	data->map = map;
+	data->mouse = (t_mouse *) malloc(sizeof(t_mouse));
+	if (!data->mouse)
+		ft_throw_error(ERROR_INIT_WINDOW);
+	return (data);
 }

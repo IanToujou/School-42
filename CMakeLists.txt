@@ -212,20 +212,10 @@ add_executable(Fractol
 )
 add_executable(FdF
 		"Core/FdF/src/main/main.c"
-		"Core/FdF/include/errortype.h"
-		"Core/FdF/include/fdf.h"
-		"Core/FdF/src/init/ft_init_data.c"
-		"Core/FdF/src/init/ft_init_map.c"
-		"Core/FdF/src/init/ft_init_mlx.c"
-		"Core/FdF/src/init/ft_init_hooks.c"
-		"Core/FdF/src/graphics/ft_gfx_render.c"
-		"Core/FdF/src/event/ft_event_close.c"
-		"Core/FdF/src/event/ft_event_keypress.c"
-		"Core/FdF/src/util/ft_util_free.c"
-		"Core/FdF/include/fdf.h"
-		"Core/FdF/src/util/ft_util_parse.c"
-		"Core/FdF/src/error/ft_error_throw.c"
-		Core/FdF/src/util/ft_util_str.c
-		Core/FdF/src/util/ft_util_draw.c
-		Core/FdF/src/util/ft_util_algo.c
+		Core/FdF/src/init/ft_init_map.c
+		Core/FdF/src/error/ft_throw_error.c
+		Core/FdF/src/init/ft_init_data.c
+		Core/FdF/src/graphics/ft_graphics_draw.c
+		Core/FdF/src/init/ft_init_camera.c
+		Core/FdF/lib/libft/src/custom/ft_abs.c
 )

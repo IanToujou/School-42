@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_util_str.c                                      :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 09:36:50 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/17 09:50:19 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/27 01:53:45 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/27 01:56:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/libft.h"
 
-void	ft_util_str_upper(unsigned int i, char *c)
+/**
+ * Takes in a double and returns its absolute
+ * value.
+ *
+ * @param x The double to process.
+ * @return The absolute value.
+ */
+double	ft_abs(const double x)
 {
-	i++;
-	*c = ft_toupper(*c);
+	if (x < 0)
+		return (-x);
+	return (x);
 }
