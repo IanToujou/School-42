@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:32:42 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 02:35:06 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:45:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@ int	ft_event_key_press(int key, void *param)
 	t_data	*data;
 
 	data = (t_data *) param;
-	if (key == MAIN_PAD_ESC)
+	if (key == KEY_ESC)
 		exit(0);
-	if (key == NUM_PAD_PLUS || key == MAIN_PAD_PLUS
-		|| key == NUM_PAD_MINUS || key == MAIN_PAD_MINUS)
-		zoom(key, data);
-	else if (key == ARROW_LEFT || key == ARROW_RIGHT
-		|| key == ARROW_UP || key == ARROW_DOWN)
-		move(key, data);
-	else if (key == NUM_PAD_1 || key == MAIN_PAD_1
-		|| key == NUM_PAD_2 || key == MAIN_PAD_2
-		|| key == NUM_PAD_3 || key == MAIN_PAD_3
-		|| key == NUM_PAD_4 || key == MAIN_PAD_4
-		|| key == NUM_PAD_6 || key == MAIN_PAD_6
-		|| key == NUM_PAD_7 || key == MAIN_PAD_7
-		|| key == NUM_PAD_8 || key == MAIN_PAD_8
-		|| key == NUM_PAD_9 || key == MAIN_PAD_9)
-		rotate(key, data);
-	else if (key == MAIN_PAD_LESS || key == MAIN_PAD_MORE)
-		flatten(key, data);
-	else if (key == MAIN_PAD_P || key == MAIN_PAD_I)
-		change_projection(key, data);
+	if (key == KEY_NUMPAD_PLUS || key == KEY_PLUS
+		|| key == KEY_NUMPAD_MINUS || key == KEY_MINUS)
+		ft_util_controls_zoom(key, data);
+	else if (key == KEY_LEFT || key == KEY_RIGHT
+		|| key == KEY_UP || key == KEY_DOWN)
+		ft_util_controls_move(key, data);
+	else if (key == KEY_NUMPAD_ONE || key == KEY_ONE
+		|| key == KEY_NUMPAD_TWO || key == KEY_TWO
+		|| key == KEY_NUMPAD_THREE || key == KEY_THREE
+		|| key == KEY_NUMPAD_FOUR || key == KEY_FOUR
+		|| key == KEY_NUMPAD_SIX || key == KEY_SIX
+		|| key == KEY_NUMPAD_SEVEN || key == KEY_SEVEN
+		|| key == KEY_NUMPAD_EIGHT || key == KEY_EIGHT
+		|| key == KEY_NUMPAD_NINE || key == KEY_NINE)
+		ft_util_controls_rotate(key, data);
+	else if (key == KEY_C || key == KEY_V)
+		ft_util_controls_flatten(key, data);
+	else if (key == KEY_P || key == KEY_I)
+		ft_util_controls_project(key, data);
 	return (0);
 }

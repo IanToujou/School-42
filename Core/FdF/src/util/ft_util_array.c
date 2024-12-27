@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_event_mouse_press.c                             :+:      :+:    :+:   */
+/*   ft_util_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 02:41:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 04:46:39 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/27 04:14:48 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/27 04:15:24 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int	ft_event_mouse_press(int button, int x, int y, void *param)
+int		ft_util_array_index(const int x, const int y, const int width)
 {
-	t_data	*data;
-
-	(void)x;
-	(void)y;
-	data = (t_data *)param;
-	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
-		ft_util_controls_zoom(button, data);
-	else if (button == MOUSE_LEFT_CLICK)
-		data->mouse->is_pressed = true;
-	return (0);
+	return (y * width + x);
 }

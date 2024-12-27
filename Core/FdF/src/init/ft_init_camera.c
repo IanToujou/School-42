@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:41:32 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 01:46:04 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:22:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-t_camera	*ft_init_camera(t_data *data)
+t_camera	*ft_init_camera(const t_data *data)
 {
 	t_camera	*camera;
 

@@ -225,6 +225,18 @@ add_executable(FdF
 		"Core/FdF/src/event/ft_event_mouse_release.c"
 		"Core/FdF/src/event/ft_event_mouse_move.c"
 		"Core/FdF/src/util/ft_util_stack_to_arrays.c"
-		Core/FdF/src/util/ft_util_stack.c
-		Core/FdF/src/util/ft_util_map.c
+		"Core/FdF/src/util/ft_util_stack.c"
+		"Core/FdF/src/util/ft_util_map.c"
+		"Core/FdF/include/errortype.h"
+		"Core/FdF/include/fdf.h"
+		"Core/FdF/include/keys.h"
+		"Core/FdF/src/graphics/ft_graphics_project.c"
+		"Core/FdF/src/init/ft_init_point.c"
+		"Core/FdF/src/util/ft_util_array.c"
+		"Core/FdF/src/util/ft_util_color.c"
+		"Core/FdF/src/graphics/ft_graphics_menu.c"
+		"Core/FdF/src/util/ft_util.c"
+		"Core/FdF/src/util/ft_util_controls.c"
+		Core/FdF/src/util/ft_util_gnl.c
+		Core/FdF/src/util/ft_util_split.c
 )

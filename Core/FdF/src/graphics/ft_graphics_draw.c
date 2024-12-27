@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:40:51 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 02:29:41 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:23:31 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-static void	ft_graphic_draw_pixel(t_data *data, int x, int y, int color)
+static void	ft_graphic_draw_pixel(const t_data *data, const int x, const int y, const int color)
 {
 	int		i;
 
@@ -25,7 +25,7 @@ static void	ft_graphic_draw_pixel(t_data *data, int x, int y, int color)
 	}
 }
 
-static void	ft_graphics_draw_line(t_point f, t_point s, t_data *data)
+static void	ft_graphics_draw_line(const t_point f, const t_point s, t_data *data)
 {
 	t_point	delta;
 	t_point	sign;
@@ -40,7 +40,7 @@ static void	ft_graphics_draw_line(t_point f, t_point s, t_data *data)
 	cur = f;
 	while (cur.x != s.x || cur.y != s.y)
 	{
-		ft_graphic_draw_pixel(data, cur.x, cur.y, get_color(cur, f, s, delta));
+		ft_graphic_draw_pixel(data, cur.x, cur.y, ft_util_color_get(cur, f, s, delta));
 		if ((error[1] = error[0] * 2) > -delta.y)
 		{
 			error[0] -= delta.y;
@@ -82,15 +82,15 @@ void	ft_graphics_draw(t_map *map, t_data *data)
 		while (x < map->width)
 		{
 			if (x != data->map->width - 1)
-				ft_graphics_draw_line(project(new_point(x, y, map), data),
-					project(new_point(x + 1, y, map), data), data);
+				ft_graphics_draw_line(ft_graphics_project(ft_init_point(x, y, map), data),
+					ft_graphics_project(ft_init_point(x + 1, y, map), data), data);
 			if (y != data->map->height - 1)
-				ft_graphics_draw_line(project(new_point(x, y, map), data),
-					project(new_point(x, y + 1, map), data), data);
+				ft_graphics_draw_line(ft_graphics_project(ft_init_point(x, y, map), data),
+					ft_graphics_project(ft_init_point(x, y + 1, map), data), data);
 			x++;
 		}
 		y++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	print_menu(data);
+	ft_graphics_menu(data);
 }

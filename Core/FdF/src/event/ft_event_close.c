@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:35:49 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 02:37:09 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:27:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int		close(const void *param)
+int		ft_event_close(const void *param)
 {
 	(void)param;
 	exit(0);

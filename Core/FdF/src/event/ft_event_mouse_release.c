@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 02:41:37 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 02:48:46 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:23:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int	ft_event_mouse_release(int button, int x, int y, void *param)
+int	ft_event_mouse_release(const int button, const int x, const int y, void *param)
 {
 	t_data	*data;
 

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_event_mouse_press.c                             :+:      :+:    :+:   */
+/*   ft_init_point.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 02:41:10 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 04:46:39 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/27 04:13:53 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/27 04:15:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int	ft_event_mouse_press(int button, int x, int y, void *param)
+t_point	ft_init_point(int x, int y, t_map *map)
 {
-	t_data	*data;
+	t_point	point;
+	int		index;
 
-	(void)x;
-	(void)y;
-	data = (t_data *)param;
-	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
-		ft_util_controls_zoom(button, data);
-	else if (button == MOUSE_LEFT_CLICK)
-		data->mouse->is_pressed = true;
-	return (0);
+	index = ft_util_array_index(x, y, map->width);
+	point.x = x;
+	point.y = y;
+	point.z = map->coords_arr[index];
+	point.color = (map->colors_arr[index] == -1) ?
+			ft_util_color_default(point.z, map) : map->colors_arr[index];
+	return (point);
 }

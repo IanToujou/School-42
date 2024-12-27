@@ -19,11 +19,23 @@ SRC =	src/error/ft_throw_error.c \
 		src/event/ft_event_mouse_press.c \
 		src/event/ft_event_mouse_release.c \
 		src/graphics/ft_graphics_draw.c \
+		src/graphics/ft_graphics_menu.c \
+		src/graphics/ft_graphics_project.c \
+		src/init/ft_init_camera.c \
 		src/init/ft_init_data.c \
+		src/init/ft_init_hooks.c \
 		src/init/ft_init_map.c \
+		src/init/ft_init_point.c \
 		src/main/main.c \
+		src/util/ft_util.c \
+		src/util/ft_util_array.c \
+		src/util/ft_util_color.c \
+		src/util/ft_util_controls.c \
+		src/util/ft_util_gnl.c \
+		src/util/ft_util_map.c \
+		src/util/ft_util_split.c \
 		src/util/ft_util_stack.c \
-		src/util/ft_util_stack_to_array.c
+		src/util/ft_util_stack_to_arrays.c
 
 OBJ = $(SRC:.c=.o)
 

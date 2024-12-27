@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 06:36:05 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/01 06:36:32 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:45:47 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ enum e_keys
 	KEY_DOWN = 65364,
 	KEY_RIGHT = 65363,
 	KEY_LEFT = 65361,
+	KEY_NUMPAD_ZERO = 65438,
+	KEY_NUMPAD_ONE = 65436,
+	KEY_NUMPAD_TWO = 65433,
+	KEY_NUMPAD_THREE = 65435,
+	KEY_NUMPAD_FOUR = 65430,
+	KEY_NUMPAD_FIVE = 65437,
+	KEY_NUMPAD_SIX = 65432,
+	KEY_NUMPAD_SEVEN = 65429,
+	KEY_NUMPAD_EIGHT = 65431,
+	KEY_NUMPAD_NINE = 65434,
+	KEY_NUMPAD_PLUS = 65451,
+	KEY_NUMPAD_MINUS = 65453,
+	KEY_PLUS = 61,
+	KEY_MINUS = 45,
 	KEY_ZERO = 48,
 	KEY_ONE = 49,
 	KEY_TWO = 50,
@@ -29,6 +43,10 @@ enum e_keys
 	KEY_FOUR = 52,
 	KEY_FIVE = 53,
 	KEY_SIX = 54,
+	KEY_SEVEN = 55,
+	KEY_EIGHT = 56,
+	KEY_NINE = 57,
+	KEY_P = 112,
 	KEY_Q = 113,
 	KEY_W = 119,
 	KEY_E = 101,
@@ -41,7 +59,10 @@ enum e_keys
 	KEY_F = 102,
 	KEY_G = 103,
 	KEY_H = 104,
+	KEY_I = 105,
 	KEY_L = 108,
+	KEY_C = 99,
+	KEY_V = 118,
 	MOUSE_LEFT_CLICK = 1,
 	MOUSE_RIGHT_CLICK = 2,
 	MOUSE_SCROLL_CLICK = 3,

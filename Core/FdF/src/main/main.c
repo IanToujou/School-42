@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:24:42 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 03:18:54 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 04:59:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(const int argc, char **argv) {
 	ft_util_stack_to_arrays(&coords, map);
 	data->camera = ft_init_camera(data);
 	ft_graphics_draw(data->map, data);
-	setup_controls(data);
+	ft_init_hooks(data);
 	mlx_loop(data->mlx);
 	return (0);
 }
