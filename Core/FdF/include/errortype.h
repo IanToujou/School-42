@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 01:43:36 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 02:58:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,25 @@
 # define ERROR_FILE 3
 # define ERROR_FILE_MSG "Failed to open file."
 
-# define ERROR_INIT_MLX 4
+# define ERROR_ARRAY_CONVERSION 4
+# define ERROR_ARRAY_CONVERSION_MSG "Failed to convert array."
+
+# define ERROR_INIT_MLX 5
 # define ERROR_INIT_MLX_MSG "MLX initialization failed."
 
-# define ERROR_INIT_WINDOW 5
+# define ERROR_INIT_WINDOW 6
 # define ERROR_INIT_WINDOW_MSG "Window initialization failed."
 
-# define ERROR_INIT_DATA 6
+# define ERROR_INIT_DATA 7
 # define ERROR_INIT_DATA_MSG "Data initialization failed."
 
-# define ERROR_INIT_CAMERA 7
+# define ERROR_INIT_CAMERA 8
 # define ERROR_INIT_CAMERA_MSG "Camera initialization failed."
 
-# define ERROR_MAP_INVALID 8
+# define ERROR_MAP_INVALID 9
 # define ERROR_MAP_INVALID_MSG "The given map is invalid."
 
-# define ERROR_MAP_FILE_EXTENSION 9
+# define ERROR_MAP_FILE_EXTENSION 10
 # define ERROR_MAP_FILE_EXTENSION_MSG "The file extension needs to be fdf."
 
 #endif

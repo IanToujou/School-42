@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_map.c                                      :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:06:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 03:04:36 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/27 02:28:16 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/27 02:29:07 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#ifndef COLOR_H
 
-t_map		*ft_init_map(void)
-{
-	t_map	*map;
+# define COLOR_H
 
-	map = (t_map *) malloc(sizeof(t_map));
-	if (!map)
-		ft_throw_error(ERROR_MALLOC);
-	map->width = 0;
-	map->height = 0;
-	map->coords_arr = NULL;
-	map->colors_arr = NULL;
-	map->z_min = FT_INT_MAX;
-	map->z_max = FT_INT_MIN;
-	map->z_range = 0;
-	return (map);
-}
+# define TEXT_COLOR 0xEAEAEA
+# define BACKGROUND_COLOR 0x222222
+# define MENU_BACKGROUND_COLOR 0x1E1E1E
+
+# define COLOR_DISCO 0x9A1F6A
+# define COLOR_BRICK_RED 0xC2294E
+# define COLOR_FLAMINGO 0xEC4B27
+# define COLOR_JAFFA 0xEF8633
+# define COLOR_SAFFRON 0xF3AF3D
+
+#endif

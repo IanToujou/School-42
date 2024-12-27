@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_map.c                                      :+:      :+:    :+:   */
+/*   ft_event_mouse_release.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 01:06:12 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 03:04:36 by ibour            ###   ########.fr       */
+/*   Created: 2024/12/27 02:41:37 by ibour             #+#    #+#             */
+/*   Updated: 2024/12/27 02:48:46 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-t_map		*ft_init_map(void)
+int	ft_event_mouse_release(int button, int x, int y, void *param)
 {
-	t_map	*map;
+	t_data	*data;
 
-	map = (t_map *) malloc(sizeof(t_map));
-	if (!map)
-		ft_throw_error(ERROR_MALLOC);
-	map->width = 0;
-	map->height = 0;
-	map->coords_arr = NULL;
-	map->colors_arr = NULL;
-	map->z_min = FT_INT_MAX;
-	map->z_max = FT_INT_MIN;
-	map->z_range = 0;
-	return (map);
+	(void)x;
+	(void)y;
+	(void)button;
+	data = (t_data *)param;
+	data->mouse->is_pressed = false;
+	return (0);
 }

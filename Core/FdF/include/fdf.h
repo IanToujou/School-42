@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 01:47:38 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 03:19:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "errortype.h"
 # include "keys.h"
+# include "color.h"
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -110,5 +111,15 @@ t_data		*ft_init_data(t_map *map);
 t_camera	*ft_init_camera(t_data *data);
 
 void		ft_graphics_draw(t_map *map, t_data *data);
+
+int			ft_event_key_press(int key, void *param);
+int			ft_event_close(const void *param);
+int			ft_event_mouse_press(int button, int x, int y, void *param);
+int			ft_event_mouse_move(int x, int y, void *param);
+
+void		ft_util_stack_to_arrays(t_coord_val **coords_stack, t_map *map);
+void		ft_util_stack_push(t_coord_val **coords_stack, t_coord_val *new);
+t_coord_val	*ft_util_stack_pop(t_coord_val **coords_stack);
+int			ft_util_map_read(int fd, t_coord_val **coords_stack, t_map *map);
 
 #endif

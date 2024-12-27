@@ -13,9 +13,17 @@
 NAME = fdf
 
 SRC =	src/error/ft_throw_error.c \
+		src/event/ft_event_close.c \
+		src/event/ft_event_key_press.c \
+		src/event/ft_event_mouse_move.c \
+		src/event/ft_event_mouse_press.c \
+		src/event/ft_event_mouse_release.c \
+		src/graphics/ft_graphics_draw.c \
 		src/init/ft_init_data.c \
 		src/init/ft_init_map.c \
-		src/main/main.c
+		src/main/main.c \
+		src/util/ft_util_stack.c \
+		src/util/ft_util_stack_to_array.c
 
 OBJ = $(SRC:.c=.o)
 

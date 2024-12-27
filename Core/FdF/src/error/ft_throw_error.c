@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:10:09 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 01:22:40 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 03:01:33 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_throw_error(const int error)
 		ft_printf(ERROR_MALLOC_MSG);
 	else if (error == ERROR_FILE)
 		ft_printf(ERROR_FILE_MSG);
+	else if (error == ERROR_ARRAY_CONVERSION)
+		ft_printf(ERROR_ARRAY_CONVERSION_MSG);
 	else if (error == ERROR_INIT_MLX)
 		ft_printf(ERROR_INIT_MLX_MSG);
 	else if (error == ERROR_INIT_WINDOW)

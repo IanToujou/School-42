@@ -208,14 +208,23 @@ add_executable(Fractol
 		"Core/Fractol/src/event/ft_event_mousekey.c"
 		"Core/Fractol/include/keys.h"
 		"Core/Fractol/src/graphics/ft_gfx_engine.c"
-		Core/Fractol/src/graphics/ft_gfx_fractal.c
+		"Core/Fractol/src/graphics/ft_gfx_fractal.c"
 )
 add_executable(FdF
 		"Core/FdF/src/main/main.c"
-		Core/FdF/src/init/ft_init_map.c
-		Core/FdF/src/error/ft_throw_error.c
-		Core/FdF/src/init/ft_init_data.c
-		Core/FdF/src/graphics/ft_graphics_draw.c
-		Core/FdF/src/init/ft_init_camera.c
-		Core/FdF/lib/libft/src/custom/ft_abs.c
+		"Core/FdF/src/init/ft_init_map.c"
+		"Core/FdF/src/error/ft_throw_error.c"
+		"Core/FdF/src/init/ft_init_data.c"
+		"Core/FdF/src/graphics/ft_graphics_draw.c"
+		"Core/FdF/src/init/ft_init_camera.c"
+		"Core/FdF/src/init/ft_init_hooks.c"
+		"Core/FdF/include/color.h"
+		"Core/FdF/src/event/ft_event_key_press.c"
+		"Core/FdF/src/event/ft_event_close.c"
+		"Core/FdF/src/event/ft_event_mouse_press.c"
+		"Core/FdF/src/event/ft_event_mouse_release.c"
+		"Core/FdF/src/event/ft_event_mouse_move.c"
+		"Core/FdF/src/util/ft_util_stack_to_arrays.c"
+		Core/FdF/src/util/ft_util_stack.c
+		Core/FdF/src/util/ft_util_map.c
 )

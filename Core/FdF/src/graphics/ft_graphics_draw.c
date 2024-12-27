@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 01:40:51 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 01:57:06 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/27 02:29:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ static void	ft_graphic_draw_pixel(t_data *data, int x, int y, int color)
 		data->data_addr[++i] = color >> 16;
 	}
 }
-
-/*
-** Draw line
-*/
 
 static void	ft_graphics_draw_line(t_point f, t_point s, t_data *data)
 {
@@ -68,7 +64,7 @@ static void	ft_graphics_draw_background(t_data *data)
 	i = 0;
 	while (i < WINDOW_HEIGHT * WINDOW_WIDTH)
 	{
-		image[i] = (i % WINDOW_WIDTH < MENU_WIDTH) ? MENU_BACKGROUND : BACKGROUND;
+		image[i] = (i % WINDOW_WIDTH < MENU_WIDTH) ? MENU_BACKGROUND_COLOR : BACKGROUND_COLOR;
 		i++;
 	}
 }
