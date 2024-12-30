@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 21:12:20 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/27 05:21:08 by ibour            ###   ########.fr       */
+/*   Updated: 2024/12/30 07:10:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,9 @@ int			ft_util_color_get(t_point current, t_point start, t_point end, t_point del
 
 double		ft_util_percent(int start, int end, int current);
 int			ft_util_isnum(char *str, int base);
+int			ft_util_atoi_base(const char *str, int base);
 
 char		**ft_util_split(char const *s, char c);
-int			ft_util_gnl(int fd, char **line);
 
 void		ft_util_controls_zoom(int key, t_data *data);
 void		ft_util_controls_move(int key, t_data *data);
