@@ -240,3 +240,11 @@ add_executable(FdF
 		Core/FdF/src/util/ft_util_gnl.c
 		Core/FdF/src/util/ft_util_split.c
 )
+
+add_executable(Philosophers
+		"Core/Philosophers/philo/src/main/main.c"
+)
+
+add_executable(Philosophers-Bonus
+		"Core/Philosophers/philo_bonus/src/main/main.c"
+)
