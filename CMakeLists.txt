@@ -243,6 +243,7 @@ add_executable(FdF
 
 add_executable(Philosophers
 		"Core/Philosophers/philo/src/main/main.c"
+		Core/Philosophers/philo/include/philosophers.h
 )
 
 add_executable(Philosophers-Bonus
