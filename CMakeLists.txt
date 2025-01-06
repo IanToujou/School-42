@@ -243,9 +243,8 @@ add_executable(FdF
 
 add_executable(Philosophers
 		"Core/Philosophers/philo/src/main/main.c"
-		Core/Philosophers/philo/include/philosophers.h
-)
-
-add_executable(Philosophers-Bonus
-		"Core/Philosophers/philo_bonus/src/main/main.c"
+		"Core/Philosophers/philo/include/philosophers.h"
+		"Core/Philosophers/philo/src/error/ft_throw_error.c"
+		Core/Philosophers/philo/include/errortype.h
+		Core/Philosophers/philo/src/util/ft_util_atoi.c
 )

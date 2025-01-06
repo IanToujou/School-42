@@ -10,9 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
+RESET  = \033[0m
+GREEN  = \033[32m
+YELLOW = \033[33m
+BLUE   = \033[34m
+CYAN   = \033[36m
+RED    = \033[31m
+
 NAME = philo
 
-SRC =	src/main/main.c
+SRC =	src/error/ft_throw_error.c
+		src/main/main.c
+		src/util/ft_util_atoi.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -22,22 +31,33 @@ RM = rm -rf
 RM_WIN = del /S /Q
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@echo "$(YELLOW)Compiling $<...$(RESET)"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+	@echo "$(BLUE)Linking object files to create the executable $(CYAN)$(NAME)$(BLUE)...$(RESET)"
+	@$(CC) -o $(NAME) $(OBJ)
+	@echo "$(GREEN)Build complete!$(RESET) Run $(CYAN)./$(NAME)$(RESET) to execute."
 
 clean:
-	$(RM) $(OBJ)
+	@echo "$(RED)Cleaning up object files...$(RESET)"
+	@$(RM) $(OBJ)
+	@echo "$(GREEN)Cleanup complete.$(RESET)"
 
 clean-win:
-	$(RM_WIN) "*.o"
+	@echo "$(RED)Cleaning up object files (Windows)...$(RESET)"
+	@$(RM_WIN) "*.o"
+	@echo "$(GREEN)Cleanup complete (Windows).$(RESET)"
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "$(RED)Removing the executable $(CYAN)$(NAME)$(RED)...$(RESET)"
+	@$(RM) $(NAME)
+	@echo "$(GREEN)Full cleanup complete.$(RESET)"
 
-fclean-win:	clean-win
-	$(RM_WIN) "$(NAME).exe"
+fclean-win: clean-win
+	@echo "$(RED)Removing the executable $(CYAN)$(NAME).exe$(RED)...$(RESET)"
+	@$(RM_WIN) "$(NAME).exe"
+	@echo "$(GREEN)Full cleanup complete (Windows).$(RESET)"
 
 re: fclean all
 

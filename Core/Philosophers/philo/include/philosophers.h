@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:20:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/02 12:22:10 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/06 08:47:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
+
+# include "errortype.h"
 
 typedef struct s_philosopher
 {
@@ -55,5 +57,10 @@ typedef struct s_data
 	pthread_mutex_t		*right_fork;
 	t_philo				*philosophers;
 }	t_data;
+
+void	ft_throw_error(int error);
+
+int		ft_util_atoi(const char *str);
+long	ft_util_atol(const char *str);
 
 #endif
