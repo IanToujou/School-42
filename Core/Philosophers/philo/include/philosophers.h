@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 12:20:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/06 08:47:59 by ibour            ###   ########.fr       */
+/*   Created: 2025/01/07 19:03:12 by ibour             #+#    #+#             */
+/*   Updated: 2025/01/07 19:24:55 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define PHILOSOPHERS_H
 
 # define TRUE 		1
-# define SUCCESS	1
 # define FALSE		0
 
 # include <pthread.h>
@@ -37,7 +36,7 @@ typedef struct s_philosopher
 	int					time_to_eat;
 	int					number_of_meals;
 	pthread_t			thread_id;
-	struct s_general	*general;
+	struct s_data		*general;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
 }	t_philosopher;
@@ -55,10 +54,12 @@ typedef struct s_data
 	pthread_mutex_t		mutex;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
-	t_philo				*philosophers;
+	t_philosopher		*philosophers;
 }	t_data;
 
 void	ft_throw_error(int error);
+
+int		ft_init_data(t_data **data, char **argv);
 
 int		ft_util_atoi(const char *str);
 long	ft_util_atol(const char *str);
