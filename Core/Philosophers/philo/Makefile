@@ -19,9 +19,10 @@ RED    = \033[31m
 
 NAME = philo
 
-SRC =	src/error/ft_throw_error.c
-		src/main/main.c
-		src/util/ft_util_atoi.c
+SRC =	src/error/ft_throw_error.c \
+		src/main/main.c \
+		src/util/ft_util_atoi.c \
+		src/util/ft_util_str.c
 
 OBJ = $(SRC:.c=.o)
 

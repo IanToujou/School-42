@@ -248,4 +248,5 @@ add_executable(Philosophers
 		Core/Philosophers/philo/include/errortype.h
 		Core/Philosophers/philo/src/util/ft_util_atoi.c
 		Core/Philosophers/philo/src/init/ft_init_data.c
+		Core/Philosophers/philo/src/util/ft_util_str.c
 )

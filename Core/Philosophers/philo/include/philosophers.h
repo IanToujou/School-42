@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 19:03:12 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/07 19:24:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/13 22:47:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int		ft_init_data(t_data **data, char **argv);
 
 int		ft_util_atoi(const char *str);
 long	ft_util_atol(const char *str);
+int		ft_util_str_isnum(const char *str);
 
 #endif
