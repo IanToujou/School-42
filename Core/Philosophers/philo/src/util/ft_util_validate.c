@@ -1,29 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_util_validate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/24 13:10:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/14 17:05:02 by ibour            ###   ########.fr       */
+/*   Created: 2025/01/14 16:59:40 by ibour             #+#    #+#             */
+/*   Updated: 2025/01/14 17:01:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-int main(const int argc, char **argv) {
-	t_data	*data;
+int	ft_util_validate_limits(char **argv)
+{
+	int	i;
 
-	if (ft_util_validate_args(argc) == -1)
-		ft_throw_error(ERROR_SYNTAX);
-	if (ft_util_validate_num(argv) == -1)
-		ft_throw_error(ERROR_SYNTAX_NUM);
-	if (ft_util_validate_limits(argv) == -1)
-		ft_throw_error(ERROR_SYNTAX_LIMIT);
-	if (ft_init_data(&data, argv) == -1)
-		ft_throw_error(ERROR_INIT_DATA);
-	// Start program
-	// Free data
+	i = 0;
+	while (argv[++i])
+	{
+		if (ft_util_atol(argv[i]) > INT_MAX || ft_util_atol(argv[i]) < INT_MIN)
+			return (-1);
+	}
+	return (0);
+}
+
+int	ft_util_validate_num(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[++i])
+		if (!ft_util_str_is_num(argv[i])) return (-1);
+	return (0);
+}
+
+int	ft_util_validate_args(const int argc)
+{
+	if (argc < 5 || argc > 6)
+		return (-1);
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "../../include/philosophers.h"
 
-int	ft_util_str_isnum(const char *str) {
+int	ft_util_str_is_num(const char *str) {
 	int i;
 
 	i = 0;
