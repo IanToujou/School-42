@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 08:31:54 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/06 08:42:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/15 07:42:40 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void	ft_throw_error(const int error)
 		printf(ERROR_UNKNOWN_MSG);
 	else if (error == ERROR_SYNTAX)
 		printf(ERROR_SYNTAX_MSG);
+	else if (error == ERROR_SYNTAX_NUM)
+		printf(ERROR_SYNTAX_NUM_MSG);
+	else if (error == ERROR_SYNTAX_LIMIT)
+		printf(ERROR_SYNTAX_LIMIT_MSG);
 	else if (error == ERROR_MALLOC)
 		printf(ERROR_MALLOC_MSG);
 	else if (error == ERROR_INIT_DATA)
