@@ -60,12 +60,24 @@ typedef struct s_data
 void	ft_throw_error(int error);
 
 int		ft_init_data(t_data **data, char **argv);
+void    ft_init_thread_main(t_data *data);
+
+void    *ft_thread_philosopher(void *args);
 
 int		ft_util_atoi(const char *str);
 long	ft_util_atol(const char *str);
+void	ft_util_print(char *msg, const t_philosopher *philosopher);
 int		ft_util_str_is_num(const char *str);
 int		ft_util_validate_args(int argc);
 int		ft_util_validate_num(char **argv);
 int		ft_util_validate_limits(char **argv);
+void    ft_util_sleep(int time, t_philosopher *philosopher);
+int		ft_util_time();
+
+int		ft_util_philosopher_is_dead(t_philosopher *philosopher);
+int ft_util_philosopher_take_forks(t_philosopher* philosopher);
+void    ft_util_philosopher_eat(t_philosopher *philosopher);
+void    ft_util_philosopher_sleep(t_philosopher *philosopher);
+void    ft_util_philosopher_think(t_philosopher *philosopher);
 
 #endif

@@ -250,4 +250,8 @@ add_executable(Philosophers
 		"Core/Philosophers/philo/src/init/ft_init_data.c"
 		"Core/Philosophers/philo/src/util/ft_util_str.c"
 		"Core/Philosophers/philo/src/util/ft_util_validate.c"
+		"Core/Philosophers/philo/src/thread/ft_thread_philosopher.c"
+		"Core/Philosophers/philo/src/util/ft_util_time.c"
+		Core/Philosophers/philo/src/util/ft_util_philosopher.c
+		Core/Philosophers/philo/src/init/ft_init_thread.c
 )

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_util_time.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,19 @@
 
 #include "../../include/philosophers.h"
 
-int main(const int argc, char **argv) {
-	t_data	*data;
+void    ft_util_sleep(int time, t_philosopher *philosopher)
+{
+    int start;
 
-	if (ft_util_validate_args(argc) == -1)
-		ft_throw_error(ERROR_SYNTAX);
-	if (ft_util_validate_num(argv) == -1)
-		ft_throw_error(ERROR_SYNTAX_NUM);
-	if (ft_util_validate_limits(argv) == -1)
-		ft_throw_error(ERROR_SYNTAX_LIMIT);
-	if (ft_init_data(&data, argv) == -1)
-		ft_throw_error(ERROR_INIT_DATA);
-	ft_init_thread_main(data);
-	// Free data
-	return (0);
+    start = ft_util_time();
+    while ((ft_util_time() - start) < time && ft_util_philosopher_is_dead(philosopher) == 0)
+        usleep(50);
+}
+
+int     ft_util_time()
+{
+    static struct timeval t;
+
+    gettimeofday(&t, NULL);
+    return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 }

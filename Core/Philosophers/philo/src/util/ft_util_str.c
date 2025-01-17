@@ -12,6 +12,16 @@
 
 #include "../../include/philosophers.h"
 
+void	ft_util_print(char *msg, const t_philosopher *philosopher)
+{
+	if (philosopher->general->philosopher_dead == 0)
+	{
+		pthread_mutex_lock(&philosopher->general->mutex);
+		printf("%d %d %s\n", ft_util_time() - philosopher->general->starting_time, philosopher->id, msg);
+		pthread_mutex_lock(&philosopher->general->mutex);
+	}
+}
+
 int	ft_util_str_is_num(const char *str) {
 	int i;
 

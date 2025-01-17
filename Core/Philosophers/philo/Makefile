@@ -21,9 +21,13 @@ NAME = philo
 
 SRC =	src/error/ft_throw_error.c \
 		src/init/ft_init_data.c \
+		src/init/ft_init_thread.c \
 		src/main/main.c \
+		src/thread/ft_thread_philosopher.c \
 		src/util/ft_util_atoi.c \
+		src/util/ft_util_philosopher.c \
 		src/util/ft_util_str.c \
+		src/util/ft_util_time.c \
 		src/util/ft_util_validate.c
 
 OBJ = $(SRC:.c=.o)
