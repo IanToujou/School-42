@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:10:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 07:13:43 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/23 09:17:42 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void    *ft_thread_philosopher(void *args)
         ft_util_philosopher_take_forks(philosophers);
         if (ft_util_philosopher_is_dead(philosophers))
         {
-            pthread_mutex_unlock(philosophers->general->left_fork);
-            pthread_mutex_unlock(philosophers->general->right_fork);
+            pthread_mutex_unlock(philosophers->left_fork);
+            pthread_mutex_unlock(philosophers->right_fork);
             return (0);
         }
         ft_util_philosopher_eat(philosophers);

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:44:49 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 07:23:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/23 09:20:53 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_util_msg(char *msg, const t_philosopher *philosopher)
 {
-	if (philosopher->general->philosopher_dead == 0)
+	if (!ft_util_philosopher_is_dead(philosopher))
 	{
 		pthread_mutex_lock(&philosopher->general->mutex);
 		printf("%d %d %s\n", ft_util_time() - philosopher->general->starting_time, philosopher->id, msg);

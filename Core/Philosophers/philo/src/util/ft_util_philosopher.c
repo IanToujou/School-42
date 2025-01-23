@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 07:08:52 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 08:35:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/23 09:20:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int ft_util_philosopher_is_dead(const t_philosopher *philosopher)
 {
+    printf("called ft_util_philosopher_is_dead with philo id: %d\n", philosopher->id); fflush(stdout);
     pthread_mutex_lock(&philosopher->general->mutex);
     if (philosopher->general->philosopher_dead == 1)
     {
@@ -27,19 +28,21 @@ int ft_util_philosopher_is_dead(const t_philosopher *philosopher)
 int     ft_util_philosopher_take_forks(const t_philosopher* philosopher)
 {
     if (philosopher->id % 2 == 0)
-        pthread_mutex_lock(philosopher->general->right_fork);
+        pthread_mutex_lock(philosopher->right_fork);
     else
-        pthread_mutex_lock(philosopher->general->left_fork);
+        pthread_mutex_lock(philosopher->left_fork);
+    printf("test1\n"); fflush(stdout);
     if (!ft_util_philosopher_is_dead(philosopher))
         ft_util_msg("has taken a fork", philosopher);
+    printf("test2\n"); fflush(stdout);
     if (philosopher->id % 2 == 0) {
-        if (pthread_mutex_lock(philosopher->general->left_fork) != 0)
-            return (pthread_mutex_unlock(philosopher->general->right_fork), 1);
+        if (pthread_mutex_lock(philosopher->left_fork) != 0)
+            return (pthread_mutex_unlock(philosopher->right_fork), 1);
         if (!ft_util_philosopher_is_dead(philosopher))
             ft_util_msg("has taken a fork", philosopher);
     } else {
-        if (pthread_mutex_lock(philosopher->general->right_fork) != 0)
-            return (pthread_mutex_unlock(philosopher->general->left_fork), 1);
+        if (pthread_mutex_lock(philosopher->right_fork) != 0)
+            return (pthread_mutex_unlock(philosopher->left_fork), 1);
         if (!ft_util_philosopher_is_dead(philosopher))
             ft_util_msg("has taken a fork", philosopher);
     }
@@ -58,8 +61,8 @@ void    ft_util_philosopher_eat(t_philosopher *philosopher)
     if(philosopher->number_of_meals != -1)
         philosopher->number_of_meals++;
     pthread_mutex_unlock(&philosopher->general->mutex);
-    pthread_mutex_unlock(philosopher->general->right_fork);
-    pthread_mutex_unlock(philosopher->general->left_fork);
+    pthread_mutex_unlock(philosopher->right_fork);
+    pthread_mutex_unlock(philosopher->left_fork);
 }
 
 void    ft_util_philosopher_sleep(t_philosopher *philosopher)

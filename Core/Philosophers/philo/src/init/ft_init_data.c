@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 19:19:53 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 07:13:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/23 09:02:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,20 @@ static int	ft_init_mutex(t_data *data)
 	return (0);
 }
 
-int	ft_init_data(t_data **data, char **argv)
+int	ft_init_data(t_data *data, char **argv)
 {
-	(*data) = malloc(sizeof(t_data));
-	if (!(*data))
-		return (-1);
-	(*data)->number_of_philosophers = ft_util_atoi(argv[1]);
-	(*data)->time_to_die = ft_util_atoi(argv[2]);
-	(*data)->time_to_eat = ft_util_atoi(argv[3]);
-	(*data)->time_to_sleep = ft_util_atoi(argv[4]);
+	data->number_of_philosophers = ft_util_atoi(argv[1]);
+	data->time_to_die = ft_util_atoi(argv[2]);
+	data->time_to_eat = ft_util_atoi(argv[3]);
+	data->time_to_sleep = ft_util_atoi(argv[4]);
 	if (argv[5])
-		(*data)->number_of_meals = ft_util_atoi(argv[5]);
+		data->number_of_meals = ft_util_atoi(argv[5]);
 	else
-		(*data)->number_of_meals = -1;
-	(*data)->philosopher_dead = 0;
-	if (ft_init_mutex(*data) == -1)
+		data->number_of_meals = -1;
+	data->philosopher_dead = 0;
+	if (ft_init_mutex(data) == -1)
 		return (-1);
-	if (ft_init_philosophers(*data) == -1)
+	if (ft_init_philosophers(data) == -1)
 		return (-1);
 	return (0);
 }
