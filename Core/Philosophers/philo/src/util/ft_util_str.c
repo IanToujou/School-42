@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:44:49 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/13 22:47:54 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/23 07:23:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-void	ft_util_print(char *msg, const t_philosopher *philosopher)
+void	ft_util_msg(char *msg, const t_philosopher *philosopher)
 {
 	if (philosopher->general->philosopher_dead == 0)
 	{
