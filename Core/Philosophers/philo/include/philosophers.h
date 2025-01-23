@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 19:03:12 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/14 17:02:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/01/23 08:51:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	ft_throw_error(int error);
 
 int		ft_init_data(t_data **data, char **argv);
 void    ft_init_thread_main(t_data *data);
+void    ft_init_join(const t_data *data);
+void    *ft_init_monitoring(void *arg);
 
 void    *ft_thread_philosopher(void *args);
 
@@ -73,9 +75,10 @@ int		ft_util_validate_num(char **argv);
 int		ft_util_validate_limits(char **argv);
 void    ft_util_sleep(int time, t_philosopher *philosopher);
 int		ft_util_time();
+void	ft_util_free(const t_data *data);
 
 int		ft_util_philosopher_is_dead(const t_philosopher *philosopher);
-int ft_util_philosopher_take_forks(const t_philosopher* philosopher);
+int		ft_util_philosopher_take_forks(const t_philosopher* philosopher);
 void    ft_util_philosopher_eat(t_philosopher *philosopher);
 void    ft_util_philosopher_sleep(t_philosopher *philosopher);
 void    ft_util_philosopher_think(const t_philosopher *philosopher);
