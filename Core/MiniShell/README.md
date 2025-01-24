@@ -1,0 +1,3 @@
+# 🖥️ MiniShell
+
+❌ `Not Finished Yet`

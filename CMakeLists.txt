@@ -237,8 +237,8 @@ add_executable(FdF
 		"Core/FdF/src/graphics/ft_graphics_menu.c"
 		"Core/FdF/src/util/ft_util.c"
 		"Core/FdF/src/util/ft_util_controls.c"
-		Core/FdF/src/util/ft_util_gnl.c
-		Core/FdF/src/util/ft_util_split.c
+		"Core/FdF/src/util/ft_util_gnl.c"
+		"Core/FdF/src/util/ft_util_split.c"
 )
 
 add_executable(Philosophers
@@ -252,7 +252,13 @@ add_executable(Philosophers
 		"Core/Philosophers/philo/src/util/ft_util_validate.c"
 		"Core/Philosophers/philo/src/thread/ft_thread_philosopher.c"
 		"Core/Philosophers/philo/src/util/ft_util_time.c"
-		Core/Philosophers/philo/src/util/ft_util_philosopher.c
-		Core/Philosophers/philo/src/init/ft_init_thread.c
-		Core/Philosophers/philo/src/util/ft_util_free.c
+		"Core/Philosophers/philo/src/util/ft_util_philosopher.c"
+		"Core/Philosophers/philo/src/init/ft_init_thread.c"
+		"Core/Philosophers/philo/src/util/ft_util_free.c"
+)
+
+add_executable(MiniShell
+		"Core/MiniShell/src/main/main.c"
+		Core/MiniShell/include/minishell.h
+		Core/MiniShell/include/errortype.h
 )
