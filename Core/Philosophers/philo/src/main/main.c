@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:10:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/10 09:11:46 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 10:34:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
  * @param argv The argument vector.
  * @return The status code in case this fragile baby fucks up.
  */
-int main(const int argc, char **argv) {
+int	main(const int argc, char **argv)
+{
 	t_data	data;
 
 	if (ft_util_validate_args(argc) == -1)

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 19:03:12 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 09:02:34 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 10:05:01 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_data
 	int					time_to_sleep;
 	int					time_to_eat;
 	int					number_of_meals;
-	int					starting_time;
+	int					start;
 	int					philosopher_dead;
 	pthread_mutex_t		*fork_mutex;
 	pthread_mutex_t		mutex;
@@ -60,27 +60,28 @@ typedef struct s_data
 void	ft_throw_error(int error);
 
 int		ft_init_data(t_data *data, char **argv);
-void    ft_init_thread_main(t_data *data);
-void    ft_init_join(const t_data *data);
-void    *ft_init_monitoring(void *arg);
+void	ft_init_thread_main(t_data *data);
+void	ft_init_join(const t_data *data);
+void	*ft_init_monitoring(void *arg);
 
-void    *ft_thread_philosopher(void *args);
+void	*ft_thread_philosopher(void *args);
 
 int		ft_util_atoi(const char *str);
 long	ft_util_atol(const char *str);
 void	ft_util_msg(char *msg, const t_philosopher *philosopher);
 int		ft_util_str_is_num(const char *str);
+char	*ft_util_str_get_name(int num);
 int		ft_util_validate_args(int argc);
 int		ft_util_validate_num(char **argv);
 int		ft_util_validate_limits(char **argv);
-void    ft_util_sleep(int time, t_philosopher *philosopher);
-int		ft_util_time();
+void	ft_util_sleep(int time, const t_philosopher *philosopher);
+int		ft_util_time(void);
 void	ft_util_free(const t_data *data);
 
 int		ft_util_philosopher_is_dead(const t_philosopher *philosopher);
-int		ft_util_philosopher_take_forks(const t_philosopher* philosopher);
-void    ft_util_philosopher_eat(t_philosopher *philosopher);
-void    ft_util_philosopher_sleep(t_philosopher *philosopher);
-void    ft_util_philosopher_think(const t_philosopher *philosopher);
+int		ft_util_philosopher_take_forks(const t_philosopher *philosopher);
+void	ft_util_philosopher_eat(t_philosopher *philosopher);
+void	ft_util_philosopher_sleep(t_philosopher *philosopher);
+void	ft_util_philosopher_think(const t_philosopher *philosopher);
 
 #endif

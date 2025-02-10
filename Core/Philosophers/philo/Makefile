@@ -21,6 +21,7 @@ NAME = philo
 
 SRC =	src/error/ft_throw_error.c \
 		src/init/ft_init_data.c \
+		src/init/ft_init_monitoring.c \
 		src/init/ft_init_thread.c \
 		src/main/main.c \
 		src/thread/ft_thread_philosopher.c \
@@ -34,7 +35,7 @@ SRC =	src/error/ft_throw_error.c \
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I. -I/opt/X11/include
+CFLAGS = -Wall -Werror -Wextra -I.
 RM = rm -rf
 RM_WIN = del /S /Q
 

@@ -6,17 +6,19 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 19:19:53 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 09:02:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 10:30:39 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philosophers.h"
 
-static int	ft_init_philosophers(t_data *data) {
+static int	ft_init_philosophers(t_data *data)
+{
 	int	i;
 
 	i = 0;
-	data->philosophers = malloc(sizeof(t_philosopher) * data->number_of_philosophers);
+	data->philosophers = malloc(sizeof(t_philosopher)
+			* data->number_of_philosophers);
 	if (!data->philosophers)
 		return (-1);
 	while (i < data->number_of_philosophers)
