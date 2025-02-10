@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:44:49 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 09:20:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 08:12:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_util_msg(char *msg, const t_philosopher *philosopher)
 	{
 		pthread_mutex_lock(&philosopher->general->mutex);
 		printf("%d %d %s\n", ft_util_time() - philosopher->general->starting_time, philosopher->id, msg);
-		pthread_mutex_lock(&philosopher->general->mutex);
+		fflush(stdout);
+		pthread_mutex_unlock(&philosopher->general->mutex);
 	}
 }
 

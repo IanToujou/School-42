@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:10:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/01/23 09:17:42 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 08:59:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void    *ft_thread_philosopher(void *args)
 {
-    t_philosopher *philosophers;
+    t_philosopher	*philosophers;
 
-    philosophers = (t_philosopher *) args;
+    philosophers = (t_philosopher *)args;
     while (philosophers->general->philosopher_dead == 0)
     {
         if (ft_util_philosopher_is_dead(philosophers))
