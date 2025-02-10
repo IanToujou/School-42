@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/10 10:07:40 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 10:48:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define ERROR_SYNTAX_NUM_MSG "Syntax error. Need valid int or long numbers."
 
 # define ERROR_SYNTAX_LIMIT 3
-# define ERROR_SYNTAX_LIMIT_MSG "Syntax error. Not within the bounds of a long."
+# define ERROR_SYNTAX_LIMIT_MSG "Syntax error. Not within 0 - MAX_LONG."
 
 # define ERROR_MALLOC 4
 # define ERROR_MALLOC_MSG "Memory allocation error."

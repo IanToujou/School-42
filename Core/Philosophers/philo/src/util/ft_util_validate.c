@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:59:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/10 10:33:50 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/10 10:47:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_util_validate_limits(char **argv)
 	i = 0;
 	while (argv[++i])
 	{
-		if (ft_util_atol(argv[i]) > INT_MAX || ft_util_atol(argv[i]) < INT_MIN)
+		if (ft_util_atol(argv[i]) > INT_MAX || ft_util_atol(argv[i]) < 1)
 			return (-1);
 	}
 	return (0);
