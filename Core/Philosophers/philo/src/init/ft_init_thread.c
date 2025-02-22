@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 07:08:52 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/10 10:41:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/22 16:41:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ void	ft_init_thread_main(t_data *data)
 
 	i = 0;
 	data->start = ft_util_time();
+	if (data->number_of_philosophers == 1) {
+		ft_util_msg("Took a fork", &data->philosophers[0]);
+		usleep(data->time_to_die * 1000);
+		ft_util_msg("\033[91mDead", &data->philosophers[0]);
+		data->philosopher_dead = 1;
+		return;
+	}
 	while (i < data->number_of_philosophers)
 	{
 		pthread_create(&data->philosophers[i].thread_id, NULL,

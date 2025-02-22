@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:10:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/10 10:34:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/02/22 16:30:34 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ int	main(const int argc, char **argv)
 	if (ft_init_data(&data, argv) == -1)
 		ft_throw_error(ERROR_INIT_DATA);
 	ft_init_thread_main(&data);
-	ft_init_monitoring(&data);
-	ft_init_join(&data);
+	if (data.number_of_philosophers != 1)
+	{
+		ft_init_monitoring(&data);
+		ft_init_join(&data);
+	}
 	ft_util_free(&data);
 	return (0);
 }
