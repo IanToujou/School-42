@@ -262,4 +262,5 @@ add_executable(MiniShell
 		"Core/MiniShell/src/main/main.c"
 		Core/MiniShell/include/minishell.h
 		Core/MiniShell/include/errortype.h
+		Core/MiniShell/include/boolean.h
 )

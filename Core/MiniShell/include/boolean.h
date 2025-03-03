@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   boolean.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 16:48:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/03 01:58:39 by ibour            ###   ########.fr       */
+/*   Created: 2025/03/02 15:19:48 by ibour             #+#    #+#             */
+/*   Updated: 2025/03/02 15:20:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#ifndef BOOLEAN_H
 
-int main(int argc, char **argv, char **env) {
-	t_shell		*shell;
-	t_env_list	*env_list;
+# define BOOLEAN_H
+# define TRUE 1
+# define FALSE 0
 
-	(void) argc;
-	(void) argv;
-	env_list = NULL;
-	// Save env variables
-	// Check for shlvl
-
-	return (shell->exit_status);
-}
+#endif
