@@ -260,7 +260,12 @@ add_executable(Philosophers
 
 add_executable(MiniShell
 		"Core/MiniShell/src/main/main.c"
-		Core/MiniShell/include/minishell.h
-		Core/MiniShell/include/errortype.h
-		Core/MiniShell/include/boolean.h
+		"Core/MiniShell/include/minishell.h"
+		"Core/MiniShell/include/errortype.h"
+		"Core/MiniShell/include/boolean.h"
+)
+
+add_executable(Cub3D
+		"Core/Cub3D/src/main/main.c"
+		Core/Cub3D/include/cub3d.h
 )
