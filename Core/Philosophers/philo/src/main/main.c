@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 13:10:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/22 16:30:34 by ibour            ###   ########.fr       */
+/*   Updated: 2025/03/24 07:42:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  *
  * @param argc The argument count.
  * @param argv The argument vector.
- * @return The status code in case this fragile baby fucks up.
+ * @return The status code in case this bitch fucks up.
  */
 int	main(const int argc, char **argv)
 {

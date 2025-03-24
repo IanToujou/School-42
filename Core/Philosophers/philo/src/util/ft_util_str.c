@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 22:44:49 by ibour             #+#    #+#             */
-/*   Updated: 2025/02/10 10:32:23 by ibour            ###   ########.fr       */
+/*   Updated: 2025/03/24 07:44:34 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_util_str_get_name(const int num)
 	if (num == 2)
 		return ("Simon");
 	if (num == 3)
-		return ("Elliot");
+		return ("CFL Parking Guard");
 	if (num == 4)
 		return ("Gabrielle");
 	if (num == 5)
@@ -29,9 +29,9 @@ char	*ft_util_str_get_name(const int num)
 	if (num == 7)
 		return ("Joao");
 	if (num == 8)
-		return ("Rabiya");
+		return ("Joe");
 	if (num == 9)
-		return ("Sam");
+		return ("Delhaize Employee");
 	return ("Nameless");
 }
 
