@@ -262,10 +262,16 @@ add_executable(MiniShell
 		"Core/MiniShell/src/main/main.c"
 		"Core/MiniShell/include/minishell.h"
 		"Core/MiniShell/include/errortype.h"
-		"Core/MiniShell/include/boolean.h"
+		"Core/MiniShell/src/init/ft_init_main.c"
+		"Core/MiniShell/include/types.h"
+		"Core/MiniShell/src/parse/ft_parse_env.c"
+		Core/MiniShell/src/error/ft_error_throw.c
+		Core/MiniShell/src/util/ft_util_env.c
+		Core/MiniShell/src/util/ft_util_banner.c
+		Core/MiniShell/src/exit/ft_exit_main.c
 )
 
 add_executable(Cub3D
 		"Core/Cub3D/src/main/main.c"
-		Core/Cub3D/include/cub3d.h
+		"Core/Cub3D/include/cub3d.h"
 )

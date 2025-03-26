@@ -12,7 +12,12 @@
 
 NAME = minishell
 
-SRC =	src/main/main.c
+SRC =	src/error/ft_error_throw.c \
+		src/exit/ft_exit_main.c \
+		src/init/ft_init_main.c \
+		src/parse/ft_parse_env.c \
+		src/main/main.c \
+		src/util/ft_util_env.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -48,4 +53,6 @@ fclean-win:	clean-win
 
 re: fclean all
 
-.PHONY: all libft clean clean-win fclean fclean-win re
+bclean: all clean
+
+.PHONY: all libft clean clean-win fclean fclean-win re bclean

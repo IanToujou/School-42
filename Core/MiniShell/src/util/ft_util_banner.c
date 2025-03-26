@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   boolean.h                                          :+:      :+:    :+:   */
+/*   ft_util_banner.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 15:19:48 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/02 15:20:18 by ibour            ###   ########.fr       */
+/*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
+/*   Updated: 2025/03/26 12:59:11 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BOOLEAN_H
+#include "../../include/minishell.h"
 
-# define BOOLEAN_H
-# define TRUE 1
-# define FALSE 0
-
-#endif
+void ft_util_banner(void)
+{
+//todo
+}
