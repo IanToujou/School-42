@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:48:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/26 13:18:09 by ibour            ###   ########.fr       */
+/*   Updated: 2025/03/26 17:03:55 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ int	main(const int argc, char **argv, char **env)
 		ft_error_throw(ERROR_INIT_STD);
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
-	while (env_list != NULL && env_list->current) {
-		env_list = env_list->next;
-	}
 	ft_exit_env(&env_list);
 	return (shell.exit_status);
 }
