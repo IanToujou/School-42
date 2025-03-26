@@ -24,6 +24,7 @@ int	main(const int argc, char **argv, char **env)
 {
 	t_shell		shell;
 	t_env_list	*env_list;
+	char		*line;
 
 	(void) argc;
 	(void) argv;
@@ -38,5 +39,37 @@ int	main(const int argc, char **argv, char **env)
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
 	ft_exit_env(&env_list);
+	
+	while(0xCE77)
+	{
+		line = ft_read_line();
+		printf("%s\n", line);
+	}
+	
 	return (shell.exit_status);
+}
+
+/**
+ * Subjected to change (A LOT), it is not even his final form yet
+ * & discuss where to put it also.
+ * But it feels more like shell now amirite???
+ */
+char	*ft_read_line(void)
+{
+	char *buf;
+	size_t	bufsize;
+	char	cwd[BUFSIZ];
+
+	buf = NULL;
+	getcwd(cwd, sizeof(cwd));
+	printf("🐱%s🐱 > ", cwd);
+	if (getline(&buf, &bufsize, stdin) == -1)
+	{
+		buf = NULL;
+		if (feof(stdin))
+			printf("🐱[EOF]🐱 > ");
+		else
+			ft_error_throw(ERROR_EXIT_STD);
+	}
+	return (buf);
 }
