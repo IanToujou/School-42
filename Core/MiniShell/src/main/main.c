@@ -37,7 +37,7 @@ int	main(const int argc, char **argv, char **env)
 		ft_error_throw(ERROR_INIT_STD);
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
-	while (env_list->current) {
+	while (env_list != NULL && env_list->current) {
 		env_list = env_list->next;
 	}
 	ft_exit_env(&env_list);
