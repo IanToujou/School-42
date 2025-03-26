@@ -28,7 +28,7 @@ int	main(const int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	void ft_util_banner(void);
+	ft_util_banner();
 	env_list = NULL;
 	if (!ft_init_env(&shell, env_list, env))
 		ft_error_throw(ERROR_INIT_ENV);

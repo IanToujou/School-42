@@ -59,6 +59,7 @@ void	ft_error_throw(int error);
 char	*ft_util_env_get(t_env_list **env_list, const char *key);
 void	ft_util_env_var_add(t_env_list **env_list, char *var);
 void	ft_util_env_var_remove(t_env_list **env_list, const char *key);
+void	ft_util_banner(void);
 
 void	ft_parse_env(t_env_list **env_list, char **env);
 
