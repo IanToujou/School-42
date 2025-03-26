@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <sys/types.h>
+# include <readline/readline.h>
 
 # define TEMP_PATH "/tmp"
 # define TEMP_FILE "/_tmpfile_shell"
@@ -63,5 +64,7 @@ void	ft_parse_env(t_env_list **env_list, char **env);
 
 t_bool	ft_exit_std(const t_shell *shell);
 void	ft_exit_env(t_env_list **env_list);
+
+char	*ft_read_line(void); //TODO
 
 #endif
