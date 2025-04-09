@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:48:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/26 17:03:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/09 17:30:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(const int argc, char **argv, char **env)
 {
 	t_shell		shell;
 	t_env_list	*env_list;
-	char		*line;
 
 	(void) argc;
 	(void) argv;
@@ -39,13 +38,6 @@ int	main(const int argc, char **argv, char **env)
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
 	ft_exit_env(&env_list);
-	
-	while(0xCE77)
-	{
-		line = ft_read_line();
-		printf("%s\n", line);
-	}
-	
 	return (shell.exit_status);
 }
 
