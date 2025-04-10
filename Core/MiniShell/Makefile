@@ -15,10 +15,12 @@ NAME = minishell
 SRC =	src/error/ft_error_throw.c \
 		src/exit/ft_exit_main.c \
 		src/init/ft_init_main.c \
-		src/util/ft_util_banner.c \
+		src/init/ft_init_signal.c \
 		src/parse/ft_parse_env.c \
 		src/main/main.c \
-		src/util/ft_util_env.c
+		src/util/ft_util_env.c \
+		src/util/ft_util_banner.c \
+		src/util/ft_util_signal.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -31,7 +33,7 @@ RM_WIN = del /S /Q
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(OBJ) libft
-	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft
+	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -lreadline -lhistory
 
 libft:
 	make -C lib/libft custom

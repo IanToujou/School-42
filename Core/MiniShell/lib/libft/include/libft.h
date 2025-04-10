@@ -56,6 +56,7 @@
 typedef unsigned char	t_byte;
 
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);

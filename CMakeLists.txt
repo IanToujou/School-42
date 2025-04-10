@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 add_library(LibFT
 		"Core/LibFT/src/base/ft_atoi.c"
+		"Core/LibFT/src/base/ft_atol.c"
 		"Core/LibFT/src/base/ft_bzero.c"
 		"Core/LibFT/src/base/ft_calloc.c"
 		"Core/LibFT/src/base/ft_isalpha.c"
@@ -255,20 +256,22 @@ add_executable(Philosophers
 		"Core/Philosophers/philo/src/util/ft_util_philosopher.c"
 		"Core/Philosophers/philo/src/init/ft_init_thread.c"
 		"Core/Philosophers/philo/src/util/ft_util_free.c"
-		Core/Philosophers/philo/src/init/ft_init_monitoring.c
+		"Core/Philosophers/philo/src/init/ft_init_monitoring.c"
 )
 
 add_executable(MiniShell
 		"Core/MiniShell/src/main/main.c"
 		"Core/MiniShell/include/minishell.h"
 		"Core/MiniShell/include/errortype.h"
-		"Core/MiniShell/src/init/ft_init_main.c"
 		"Core/MiniShell/include/types.h"
+		"Core/MiniShell/src/init/ft_init_main.c"
+		"Core/MiniShell/src/init/ft_init_signal.c"
 		"Core/MiniShell/src/parse/ft_parse_env.c"
-		Core/MiniShell/src/error/ft_error_throw.c
-		Core/MiniShell/src/util/ft_util_env.c
-		Core/MiniShell/src/util/ft_util_banner.c
-		Core/MiniShell/src/exit/ft_exit_main.c
+		"Core/MiniShell/src/error/ft_error_throw.c"
+		"Core/MiniShell/src/util/ft_util_env.c"
+		"Core/MiniShell/src/util/ft_util_banner.c"
+		"Core/MiniShell/src/util/ft_util_signal.c"
+		"Core/MiniShell/src/exit/ft_exit_main.c"
 )
 
 add_executable(Cub3D

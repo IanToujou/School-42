@@ -12,6 +12,8 @@
 
 #include "../../include/minishell.h"
 
+volatile sig_atomic_t g_signal_status = 0;
+
 /**
  * Bro this is the main function, what do you expect it to do?
  *
@@ -27,6 +29,7 @@ int	main(const int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
+	ft_memset(&shell, 0, sizeof(t_shell));
 	ft_util_banner();
 	env_list = NULL;
 	if (!ft_init_env(&shell, env_list, env))
@@ -38,30 +41,54 @@ int	main(const int argc, char **argv, char **env)
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
 	ft_exit_env(&env_list);
+	ft_init_shell(&shell, env_list);
+	
 	return (shell.exit_status);
 }
 
 /**
- * Subjected to change (A LOT), it is not even his final form yet
- * & discuss where to put it also.
- * But it feels more like shell now amirite???
+ * Main shell execution loop to be improved.
  */
-char	*ft_read_line(void)
+void ft_init_shell(t_shell *shell, t_env_list *env_list)
 {
-	char *buf;
-	size_t	bufsize;
-	char	cwd[BUFSIZ];
+    while (1)
+    {
+        ft_echo_off();
+        ft_set_sig();
+        ft_init_shell_loop(shell, env_list);
+    }
+}
 
-	buf = NULL;
-	getcwd(cwd, sizeof(cwd));
-	printf("🐱%s🐱 > ", cwd);
-	if (getline(&buf, &bufsize, stdin) == -1)
+ 
+/**
+ * Handles one complete cycle of shell operation.
+ * Manages signal interrupts and updates shell status accordingly.
+ * Reads user input, adds it to history, and prepares for execution.
+ * Handles EOF (Ctrl+D) condition by exiting gracefully.
+ * Parsing to be added (when)
+ */
+void ft_init_shell_loop(t_shell *shell, t_env_list *env_list)
+{
+	char		*buffer;
+
+	if (g_signal_status == 130)
 	{
-		buf = NULL;
-		if (feof(stdin))
-			printf("🐱[EOF]🐱 > ");
-		else
-			ft_error_throw(ERROR_EXIT_STD);
+		shell->exit_status = 130;
+		g_signal_status = 0;
+		rl_reset_line_state();
+		return;
 	}
-	return (buf);
+	buffer = readline(PROMPT);
+	if (!buffer)
+	{
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
+		exit(shell->exit_status);
+	}
+	if(ft_strncmp(buffer, "exit", 4)==0)
+		ft_handle_exit(shell, buffer);
+	add_history(buffer);
+	(void)shell; // Temporary placeholder until parsing implemented
+	(void)env_list;
+	//ft_parse(shell, env_list, buffer, PROMPT);
+	free(buffer);
 }

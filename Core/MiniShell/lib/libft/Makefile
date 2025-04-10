@@ -45,7 +45,8 @@ SRC =		src/base/ft_atoi.c \
 			src/base/ft_strtrim.c \
 			src/base/ft_substr.c \
 			src/base/ft_tolower.c \
-			src/base/ft_toupper.c
+			src/base/ft_toupper.c \
+			src/base/ft_atol.c
 
 BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstadd_front_bonus.c \
