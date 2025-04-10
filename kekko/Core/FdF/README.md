@@ -1,3 +1,0 @@
-# ⛰️ FdF
-
-❌ `Not Finished Yet`

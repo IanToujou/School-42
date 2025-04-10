@@ -1,3 +1,0 @@
-# 🤔 Philosophers
-
-❌ `Not Finished Yet`

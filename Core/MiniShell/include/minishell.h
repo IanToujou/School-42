@@ -64,6 +64,7 @@ typedef struct s_env_list
 typedef struct s_shell
 {
 	int							exit_status;
+	bool							is_interactive;
 	char						*temp_file;
 	int							std_in;
 	int							std_out;

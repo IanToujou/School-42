@@ -15,6 +15,29 @@
 volatile sig_atomic_t	g_signal_status = 0;
 
 /**
+ * Gets input based on interactive mode
+ */
+static char	*get_input(t_shell *shell)
+{
+    if (shell->is_interactive) {
+        return readline(get_prompt());
+    } else {
+        char    *line = NULL;
+        size_t  len = 0;
+        ssize_t read;
+        
+        read = getline(&line, &len, stdin);
+        if (read == -1) {
+            free(line);
+            return NULL;
+        }
+        if (read > 0 && line[read-1] == '\n')
+            line[read-1] = '\0';
+        return line;
+    }
+}
+
+/**
  * Bro this is the main function, what do you expect it to do?
  *
  * @param argc The argument count.
@@ -30,6 +53,7 @@ int	main(const int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	ft_memset(&shell, 0, sizeof(t_shell));
+	shell.is_interactive = isatty(STDIN_FILENO) && isatty(STDOUT_FILENO);
 	ft_util_banner();
 	env_list = NULL;
 	if (!ft_init_env(&shell, env_list, env))
@@ -50,10 +74,10 @@ int	main(const int argc, char **argv, char **env)
  */
 void	ft_init_shell(t_shell *shell, t_env_list *env_list)
 {
+	ft_set_sig();
 	while (1)
 	{
 		ft_echo_off();
-		ft_set_sig();
 		ft_init_shell_loop(shell, env_list);
 	}
 }
@@ -73,18 +97,23 @@ void	ft_init_shell_loop(t_shell *shell, t_env_list *env_list)
 	{
 		shell->exit_status = 130;
 		g_signal_status = 0;
-		rl_reset_line_state();
+		if (shell->is_interactive)
+			rl_reset_line_state();
+		else
+			exit(130);
 		return ;
 	}
-	buffer = readline(get_prompt());
+	buffer = get_input(shell);
 	if (!buffer)
 	{
-		ft_putstr_fd("exit\n", STDOUT_FILENO);
+		if (shell->is_interactive)
+			ft_putstr_fd("exit\n", STDOUT_FILENO);
 		exit(shell->exit_status);
 	}
 	if (ft_strncmp(buffer, "exit", 4) == 0)
 		ft_handle_exit(shell, buffer);
-	add_history(buffer);
+	if (shell->is_interactive && buffer[0] != '\0')
+		add_history(buffer);
 	(void)shell; // Temporary placeholder until parsing implemented
 	(void)env_list;
 	// ft_parse(shell, env_list, buffer, PROMPT);
