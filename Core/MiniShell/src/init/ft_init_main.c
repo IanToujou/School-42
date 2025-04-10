@@ -42,7 +42,7 @@ t_bool	ft_init_env(t_shell *shell, t_env_list *env_list, char **env)
 		shell->shlvl = ft_atoi(ft_util_env_get(&env_list, "SHLVL"));
 	else
 		shell->shlvl = SHLVL_DEFAULT;
-	return TRUE;
+	return (TRUE);
 }
 
 /**
