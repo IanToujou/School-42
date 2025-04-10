@@ -1,0 +1,12 @@
+## ✅ Shell-01 Exercise Completion
+
+| Exercise | Status | Points | Note                                                                                                                                                                                                                        |
+|----------|--------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| EX-01    | ✅      | 10     | <img width="441" height="1">                                                                                                                                                                                                |
+| EX-02    | ✅      | 10     |                                                                                                                                                                                                                             |
+| EX-03    | ✅      | 10     |                                                                                                                                                                                                                             |
+| EX-04    | ✅      | 10     |                                                                                                                                                                                                                             |
+| EX-05    | ⚠️     | 15     | This exercise is not on GitHub, because the filename is only available on Linux. Create the file with escape characters and delete the invisible end of line character. Your file needs to have a size of 2 bytes, NOT 3!   |
+| EX-06    | ✅      | 15     |                                                                                                                                                                                                                             |
+| EX-07    | ✅      | 15     |                                                                                                                                                                                                                             |
+| EX-08    | ❌      | 15     | Did not do the exercise.                                                                                                                                                                                                    |
