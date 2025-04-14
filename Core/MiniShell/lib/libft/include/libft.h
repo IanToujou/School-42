@@ -6,7 +6,7 @@
 /*   By: ibour <ibour@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:08:21 by ibour             #+#    #+#             */
-/*   Updated: 2024/11/07 13:02:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/14 13:22:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@
 typedef unsigned char	t_byte;
 
 int					ft_atoi(const char *str);
-long				ft_atol(const char *str);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);
@@ -82,6 +81,7 @@ void				*ft_memmove(void *dst, void *src, size_t s);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				ft_bzero(void *s, size_t n);
+long				ft_atol(const char *str);
 
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -117,6 +117,7 @@ void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 
+double				ft_abs(double x);
 double				ft_pow(double x, int y);
 double				ft_min(double x, double y);
 double				ft_max(double x, double y);
@@ -187,5 +188,7 @@ void				ft_print_str(char *str, int *i);
 void				ft_print_num_unsigned(unsigned int num, int *i);
 void				ft_print_hex(unsigned int num, int *i, char *base);
 void				ft_print_num_base(unsigned long int p, char *base, int *i);
+
+int					ft_atoi_base(const char *str, const char *base);
 
 #endif

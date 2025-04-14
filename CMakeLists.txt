@@ -6,7 +6,6 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 add_library(LibFT
 		"Core/LibFT/src/base/ft_atoi.c"
-		"Core/LibFT/src/base/ft_atol.c"
 		"Core/LibFT/src/base/ft_bzero.c"
 		"Core/LibFT/src/base/ft_calloc.c"
 		"Core/LibFT/src/base/ft_isalpha.c"
@@ -93,6 +92,7 @@ add_library(LibFT
 		"Core/LibFT/src/other/printf/ft_print_ptr.c"
 		"Core/LibFT/src/other/printf/ft_print_str.c"
 		Core/LibFT/src/custom/ft_atoi_base.c
+		Core/LibFT/src/custom/ft_atol.c
 )
 
 add_library(PrintF
