@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:01:48 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/27 13:22:37 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/14 13:36:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ void	ft_parse_env(t_env_list **env_list, char **env)
 {
 	int	i;
 
-	if (!env)
-		return ;
+	printf("parse_env\n"); fflush(stdout);
+
+	if (!env) {
+		printf("balls\n"); fflush(stdout);
+		return;
+	}
 	i = 0;
-	while (env[i])
+	while (env[i]) {
+		printf("%s\n", env[i]);
 		ft_util_env_var_add(env_list, env[i++]);
+	}
 }

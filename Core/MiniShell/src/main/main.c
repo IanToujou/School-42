@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:48:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/10 10:11:30 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:31:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,19 @@ static char	*get_input(t_shell *shell)
 {
     if (shell->is_interactive) {
         return readline(get_prompt());
-    } else {
-        char    *line = NULL;
-        size_t  len = 0;
-        ssize_t read;
-        
-        read = getline(&line, &len, stdin);
-        if (read == -1) {
-            free(line);
-            return NULL;
-        }
-        if (read > 0 && line[read-1] == '\n')
-            line[read-1] = '\0';
-        return line;
     }
+    char    *line = NULL;
+    size_t  len = 0;
+    ssize_t read;
+        
+    read = getline(&line, &len, stdin);
+    if (read == -1) {
+	    free(line);
+	    return NULL;
+    }
+    if (read > 0 && line[read-1] == '\n')
+	    line[read-1] = '\0';
+    return line;
 }
 
 /**
@@ -52,9 +51,8 @@ int	main(const int argc, char **argv, char **env)
 
 	(void)argc;
 	(void)argv;
-	ft_memset(&shell, 0, sizeof(t_shell));
-	shell.is_interactive = isatty(STDIN_FILENO) && isatty(STDOUT_FILENO);
-	ft_util_banner();
+	/*shell.is_interactive = isatty(STDIN_FILENO) && isatty(STDOUT_FILENO);
+	ft_util_banner();*/
 	env_list = NULL;
 	if (!ft_init_env(&shell, env_list, env))
 		ft_error_throw(ERROR_INIT_ENV);
@@ -65,7 +63,7 @@ int	main(const int argc, char **argv, char **env)
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
 	ft_exit_env(&env_list);
-	ft_init_shell(&shell, env_list);
+	//ft_init_shell(&shell, env_list);
 	return (shell.exit_status);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/10 10:42:14 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:30:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_env_list
 typedef struct s_shell
 {
 	int							exit_status;
-	bool							is_interactive;
+	bool						is_interactive;
 	char						*temp_file;
 	int							std_in;
 	int							std_out;

@@ -1,1 +1,1 @@
-valgrind -s --leak-check=full --track-origins=yes ./minishell
+valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
