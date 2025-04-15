@@ -12,15 +12,16 @@
 
 NAME = minishell
 
-SRC =	src/error/ft_error_throw.c \
+SRC =	src/cmd/exit/ft_cmd_exit.c \
+		src/error/ft_error_throw.c \
 		src/exit/ft_exit_main.c \
 		src/init/ft_init_main.c \
-		src/init/ft_init_signal.c \
+		src/init/ft_init_shell.c \
 		src/parse/ft_parse_env.c \
 		src/main/main.c \
+		src/signal/ft_signal.c \
 		src/util/ft_util_env.c \
-		src/util/ft_util_banner.c \
-		src/util/ft_util_signal.c
+		src/util/ft_util_banner.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 09:36:37 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/14 13:35:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/15 08:47:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ t_bool	ft_init_std(t_shell *shell)
  * @param env The environment variables passed from the environment.
  * @return A boolean whether the action was performed or not.
  */
-t_bool	ft_init_env(t_shell *shell, t_env_list *env_list, char **env)
+t_bool	ft_init_env(t_shell *shell, t_env_list **env_list, char **env)
 {
-	printf("init env\n"); fflush(stdout);
-	ft_parse_env(&env_list, env);
-	if (ft_util_env_get(&env_list, "SHLVL"))
-		shell->shlvl = ft_atoi(ft_util_env_get(&env_list, "SHLVL"));
+	ft_parse_env(env_list, env);
+	if (ft_util_env_get(env_list, "SHLVL"))
+		shell->shlvl = ft_atoi(ft_util_env_get(env_list, "SHLVL"));
 	else
 		shell->shlvl = SHLVL_DEFAULT;
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/10 10:31:21 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:25:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ const char	*get_prompt(void)
 		O "🐱" RESET G "S" RESET Y "u" RESET B "p" RESET M "e" RESET \
 		C "r" RESET Y "~" RESET P "N" RESET P "y" RESET P "a" RESET Y "~" RESET \
 		G "S" RESET Y "h" RESET B "e" RESET Y "l" RESET B "l" RESET M "🐱" RESET \
-		O ">" RESET P "$" RESET Y
+		O "> " RESET Y
 	);
 }

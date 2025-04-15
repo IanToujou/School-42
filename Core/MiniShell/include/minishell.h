@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/14 13:30:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/15 10:22:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 # include "../lib/libft/include/libft.h"
 # include "errortype.h"
-# include "types.h"
+# include "bool.h"
+# include "status.h"
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -29,6 +30,10 @@
 # define TEMP_PATH "/tmp"
 # define TEMP_FILE "/_tmpfile_shell"
 # define SHLVL_DEFAULT 2
+
+# define PROCESS_LEVEL_DEFAULT 0
+# define PROCESS_LEVEL_CHILD 1
+# define PROCESS_LEVEL_PARENT 2
 
 # define O "\001\033[38;5;214m\002"
 # define G "\001\033[38;5;120m\002"
@@ -64,19 +69,24 @@ typedef struct s_env_list
 typedef struct s_shell
 {
 	int							exit_status;
+	bool						is_running;
 	bool						is_interactive;
 	char						*temp_file;
 	int							std_in;
 	int							std_out;
+	int							f_in;
+	int							f_out;
+	int							process_level;
 	int							shlvl;
 	pid_t						pid;
 }								t_shell;
 
 // init
 t_bool							ft_init_env(t_shell *shell,
-									t_env_list *env_list, char **env);
+									t_env_list **env_list, char **env);
 t_bool							ft_init_temp(t_shell *shell);
 t_bool							ft_init_std(t_shell *shell);
+void							ft_init_shell(t_env_list *env_list, t_shell *shell);
 
 extern volatile sig_atomic_t	g_signal_status;
 void							restore_terminal(void);
@@ -86,6 +96,12 @@ void							ft_sigint(int sig);
 
 // error
 void							ft_error_throw(int error);
+
+// signal
+void							ft_signal_mask(void);
+void							ft_signal_start(void);
+void							ft_signal_c_fork(int signal);
+void							ft_signal_c_fork_slash(int signal);
 
 // util
 char							*ft_util_env_get(t_env_list **env_list,
@@ -106,11 +122,11 @@ void							ft_parse_env(t_env_list **env_list, char **env);
 // exit
 t_bool							ft_exit_std(const t_shell *shell);
 void							ft_exit_env(t_env_list **env_list);
+void							ft_exit_temp(const t_shell *shell);
 
-// main
-void							ft_init_shell_loop(t_shell *shell,
-									t_env_list *env_list);
-void							ft_init_shell(t_shell *shell,
-									t_env_list *env_list);
+//cmd
+int	ft_is_numeric(const char *str);
+void	ft_free_split(char **split);
+void	ft_handle_exit(t_shell *shell, char *buffer);
 
 #endif

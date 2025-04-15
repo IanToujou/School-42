@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   ft_parse_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 09:47:53 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/26 09:55:27 by ibour            ###   ########.fr       */
+/*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
+/*   Updated: 2025/04/15 10:33:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
+#include "../../include/minishell.h"
 
-# define TYPES_H
+ft_parse(t_shell *shell, t_env_list *env_list, char *buffer)
+{
 
-# define TRUE 1
-# define FALSE 0
-
-typedef int	t_bool;
-
-#endif
+}

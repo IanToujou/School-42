@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_util_signal.c                                   :+:      :+:    :+:   */
+/*   ft_cmd_exit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/10 10:10:42 by mwelfrin         ###   ########.fr       */
+/*   Created: 2025/04/15 10:09:13 by ibour             #+#    #+#             */
+/*   Updated: 2025/04/15 10:13:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include "../../../include/minishell.h"
 
 int	ft_is_numeric(const char *str)
 {

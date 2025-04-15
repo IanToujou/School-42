@@ -263,15 +263,19 @@ add_executable(MiniShell
 		"Core/MiniShell/src/main/main.c"
 		"Core/MiniShell/include/minishell.h"
 		"Core/MiniShell/include/errortype.h"
-		"Core/MiniShell/include/types.h"
+		"Core/MiniShell/include/bool.h"
 		"Core/MiniShell/src/init/ft_init_main.c"
-		"Core/MiniShell/src/init/ft_init_signal.c"
 		"Core/MiniShell/src/parse/ft_parse_env.c"
 		"Core/MiniShell/src/error/ft_error_throw.c"
 		"Core/MiniShell/src/util/ft_util_env.c"
 		"Core/MiniShell/src/util/ft_util_banner.c"
-		"Core/MiniShell/src/util/ft_util_signal.c"
 		"Core/MiniShell/src/exit/ft_exit_main.c"
+		"Core/MiniShell/src/init/ft_init_shell.c"
+		"Core/MiniShell/include/status.h"
+		"Core/MiniShell/src/signal/ft_signal.c"
+		"Core/MiniShell/src/cmd/exit/ft_cmd_exit.c"
+		"Core/MiniShell/src/util/ft_util_parse.c"
+		"Core/MiniShell/src/parse/ft_parse_input.c"
 )
 
 add_executable(Cub3D
