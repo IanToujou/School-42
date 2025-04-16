@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:43:29 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/15 10:22:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/16 22:03:29 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_signal_c(const int signal)
 {
-	(void) signal;
+	(void)signal;
 	write(1, "\n", 1);
 	rl_on_new_line();
 	rl_replace_line("", 0);
@@ -23,13 +23,13 @@ static void	ft_signal_c(const int signal)
 
 void	ft_signal_c_fork_slash(const int signal)
 {
-	(void) signal;
+	(void)signal;
 	write(1, "Quit: 3\n", 8);
 }
 
 void	ft_signal_c_fork(const int signal)
 {
-	(void) signal;
+	(void)signal;
 	write(1, "\n", 1);
 }
 

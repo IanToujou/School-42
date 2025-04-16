@@ -16,6 +16,7 @@
 
 # include "../lib/libft/include/libft.h"
 # include "errortype.h"
+# include "tokentype.h"
 # include "bool.h"
 # include "status.h"
 # include <readline/history.h>
