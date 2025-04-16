@@ -18,7 +18,7 @@
 # define TOKEN_TRUNC 3
 # define TOKEN_APPEND 4
 # define TOKEN_INPUT 5
-# define TOKEN_DOBINP 6
+# define TOKEN_HEREDOC 6
 # define TOKEN_PIPE 7
 # define TOKEN_EOF 8
 
