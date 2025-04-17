@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-void	ft_util_banner(void)
+void	ft_util_banner_intro(void)
 {
 	const char	*banner[] = {
 		BANNER_LINE1,
@@ -36,7 +36,7 @@ void	ft_util_banner(void)
 	}
 }
 
-const char	*get_prompt(void)
+const char	*ft_util_banner_prompt(void)
 {
 	return (
 		O "🐱" RESET G "S" RESET Y "u" RESET B "p" RESET M "e" RESET \

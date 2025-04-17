@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 10:37:07 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/17 13:33:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ static void	ft_process_input(t_shell *shell, t_env_list *env_list, char *buffer)
  */
 static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 {
+	char	*prompt;
 	char	*buffer;
 
-	buffer = readline(get_prompt());
+	prompt = (char *) ft_util_banner_prompt();
+	buffer = readline(prompt);
 	if (!buffer)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
@@ -61,10 +63,12 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	free(buffer);
 }
 
-/*
- * Main shell initialization function
- * Sets up signals and runs main loop
- * Resets shell state each iteration
+/**
+ * Initializes the shell by setting the default values and
+ * running it.
+ *
+ * @param env_list The environment variable list.
+ * @param shell The main shell struct.
  */
 void	ft_init_shell(t_env_list *env_list, t_shell *shell)
 {

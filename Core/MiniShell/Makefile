@@ -25,6 +25,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/parse/ft_tokenizer.c \
 		src/parse/ft_tokenizer2.c \
 		src/signal/ft_signal.c \
+		src/signal/ft_signal_add.c \
 		src/util/ft_util_banner.c \
 		src/util/ft_util_env.c \
 		src/util/ft_util_parse.c

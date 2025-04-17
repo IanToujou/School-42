@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/15 10:22:56 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/17 13:20:53 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,9 @@ void							ft_signal_mask(void);
 void							ft_signal_start(void);
 void							ft_signal_c_fork(int signal);
 void							ft_signal_c_fork_slash(int signal);
+void							ft_signal_add_ignore(int signal);
+void							ft_signal_heredoc(int signal);
+void							ft_signal_empty(int signal);
 
 // util
 char							*ft_util_env_get(t_env_list **env_list,
@@ -120,8 +123,8 @@ void							ft_util_env_var_add(t_env_list **env_list,
 									char *var);
 void							ft_util_env_var_remove(t_env_list **env_list,
 									const char *key);
-void							ft_util_banner(void);
-const char						*get_prompt(void);
+void							ft_util_banner_intro(void);
+const char						*ft_util_banner_prompt(void);
 void							ft_token_add_back(t_token **lst, t_token *new);
 void							ft_free_tokens(t_token *lst);
 bool							is_quoted(char *str, int pos);
