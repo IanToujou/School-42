@@ -130,7 +130,7 @@ t_bool							ft_util_redirect_check(char *str, int *i, char *user);
 
 // parse
 void							ft_parse_env(t_env_list **env_list, char **env);
-t_bool							ft_parse_input(t_shell *shell, t_env_list *env_list, char *input, char *user);
+t_bool							ft_parse_input(t_shell *shell, t_env_list *env_list, const char *input, char *user);
 int								ft_parse_handle(t_shell *shell, t_env_list *env, char *str);
 
 // exit
