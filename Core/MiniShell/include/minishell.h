@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 13:20:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/17 13:51:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@
 # define PROCESS_LEVEL_CHILD 1
 # define PROCESS_LEVEL_PARENT 2
 
-# define O "\001\033[38;5;214m\002"
-# define G "\001\033[38;5;120m\002"
-# define Y "\001\033[38;5;228m\002"
-# define B "\001\033[38;5;81m\002"
-# define M "\001\033[38;5;177m\002"
-# define C "\001\033[38;5;51m\002"
-# define P "\001\033[38;5;218m\002"
-# define RESET "\001\033[0m\002"
+# define COLOR_ORANGE "\001\033[38;5;214m\002"
+# define COLOR_GREEN "\001\033[38;5;120m\002"
+# define COLOR_YELLOW "\001\033[38;5;228m\002"
+# define COLOR_BLUE "\001\033[38;5;81m\002"
+# define COLOR_MAGENTA "\001\033[38;5;177m\002"
+# define COLOR_CYAN "\001\033[38;5;51m\002"
+# define COLOR_PURPLE "\001\033[38;5;218m\002"
+# define COLOR_RESET "\001\033[0m\002"
 
 # define BANNER_LINE1 "　　　　 🌸＞　　フ"
 # define BANNER_LINE2 "　　　　 | 　_　 _"

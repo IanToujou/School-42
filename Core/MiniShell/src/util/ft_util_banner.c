@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/15 10:25:04 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/17 13:52:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void	ft_util_banner_intro(void)
 const char	*ft_util_banner_prompt(void)
 {
 	return (
-		O "🐱" RESET G "S" RESET Y "u" RESET B "p" RESET M "e" RESET \
-		C "r" RESET Y "~" RESET P "N" RESET P "y" RESET P "a" RESET Y "~" RESET \
-		G "S" RESET Y "h" RESET B "e" RESET Y "l" RESET B "l" RESET M "🐱" RESET \
-		O "> " RESET Y
+		COLOR_RESET "🐱 " COLOR_YELLOW ">> " COLOR_PURPLE "~/home" COLOR_RESET "\n"
+		"$ "
 	);
 }
