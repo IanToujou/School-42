@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 00:56:04 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 01:07:07 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ char							*ft_util_str_tab_trim(const char *str);
 t_bool							ft_util_quote_set(t_quotes *quotes, char c);
 t_bool							ft_util_quote_is_outside(const t_quotes *quotes);
 t_bool							ft_util_num_isnumber(const char *str);
-t_bool							ft_util_redirect_check(char *str, int *i);
+t_bool							ft_util_redirect_check(char *str, int *i, char *user);
 
 // parse
 void							ft_parse_env(t_env_list **env_list, char **env);
