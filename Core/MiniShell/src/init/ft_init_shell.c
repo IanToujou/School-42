@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 01:14:25 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 01:14:43 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	char	*buffer;
 	char	*user;
 
-	prompt = "kek";
+	prompt = ft_strjoin("kek", "");
 	buffer = readline(prompt);
 	if (!buffer) {
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
