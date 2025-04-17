@@ -147,6 +147,6 @@ char							*ft_strjoin_char(char *s, char c);
 //cmd
 int							ft_is_numeric(const char *str);
 void							ft_free_split(char **split);
-void							ft_handle_exit(t_shell *shell, char *buffer);
+void							ft_handle_exit(t_shell *shell, t_env_list *env_list, char *buffer);
 
 #endif

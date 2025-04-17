@@ -52,7 +52,7 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	}
 	if (ft_strncmp(buffer, "exit", 4) == 0)
 	{
-		ft_handle_exit(shell, buffer);
+		ft_handle_exit(shell, env_list, buffer);
 		shell->is_running = FALSE;
 		free(buffer);
 		return ;

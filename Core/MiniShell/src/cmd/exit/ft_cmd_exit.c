@@ -67,7 +67,7 @@ static int	ft_parse_exit_args(t_shell *shell, char **args)
 	}
 }
 
-void	ft_handle_exit(t_shell *shell, char *buffer)
+void	ft_handle_exit(t_shell *shell,	t_env_list *env_list,	char *buffer)
 {
 	char	**args;
 	int		exit_code;
@@ -75,9 +75,17 @@ void	ft_handle_exit(t_shell *shell, char *buffer)
 	args = ft_split(buffer, ' ');
 	free(buffer);
 	if (!args)
+	{
+		ft_exit_env(&env_list);
+		ft_exit_temp(shell);
 		exit(shell->exit_status);
+	}
 	exit_code = ft_parse_exit_args(shell, args);
 	ft_free_split(args);
 	if (exit_code != -1)
+	{
+		ft_exit_env(&env_list);
+		ft_exit_temp(shell);
 		exit((unsigned char)exit_code);
+	}
 }
