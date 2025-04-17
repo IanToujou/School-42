@@ -31,7 +31,6 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_env.c \
 		src/util/ft_util_num.c \
 		src/util/ft_util_quote.c \
-		src/util/ft_util_redirect.c \
 		src/util/ft_util_str.c
 
 OBJ = $(SRC:.c=.o)

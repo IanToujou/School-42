@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:15:00 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 00:52:43 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 01:07:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_bool	ft_util_redirect_check(char *str, int *i, char *user)
 		redirect_second = redirect_type(str, j);
 		if (error_redirect_check(redirect_first,
 				redirect_second, user) == false)
-			return (false);
+			return (FALSE);
 	}
-	return (true);
+	return (TRUE);
 }
