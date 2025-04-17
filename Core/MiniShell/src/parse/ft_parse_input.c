@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 01:04:22 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 01:11:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list, char *input, char *u
 		return ft_parse_exit(shell, result, STATUS_OK);
 	if (!ft_parse_handle(shell, env_list, result))
 		ft_error_throw(ERROR_MALLOC);
-	free(input);
+	if (input)
+		free(input);
 	return (TRUE);
 }
