@@ -19,7 +19,7 @@ t_bool	ft_exit_std(const t_shell *shell)
 
 void	ft_exit_temp(const t_shell *shell)
 {
-	if(shell && shell->temp_file)
+	if (shell && shell->temp_file)
 		free(shell->temp_file);
 }
 

@@ -6,12 +6,39 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/16 21:57:56 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/17 10:37:07 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/*
+ * Reads and processes user input in shell
+ * Handles exit conditions and empty input
+ * Maintains history and parses into tokens
+ * TODO execute
+ */
+static void	ft_process_input(t_shell *shell, t_env_list *env_list, char *buffer)
+{
+	t_token	*tokens;
+
+	if (buffer[0] != '\0')
+	{
+		add_history(buffer);
+		tokens = ft_parse(shell, env_list, buffer);
+		if (tokens)
+		{
+			// ft_execute(shell, env_list, tokens);
+			ft_free_tokens(tokens);
+		}
+	}
+}
+
+/*
+ * Runs the main shell loop
+ * Reads input, checks for exit condition, and processes non-empty input
+ * Calls `ft_process_input` to handle parsing and tokenization
+ */
 static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 {
 	char	*buffer;
@@ -27,16 +54,18 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	{
 		ft_handle_exit(shell, buffer);
 		shell->is_running = FALSE;
+		free(buffer);
 		return ;
 	}
-	if (buffer[0] != '\0')
-		add_history(buffer);
-	(void)shell;
-	(void)env_list;
-	// ft_parse(shell, env_list, buffer);
+	ft_process_input(shell, env_list, buffer);
 	free(buffer);
 }
 
+/*
+ * Main shell initialization function
+ * Sets up signals and runs main loop
+ * Resets shell state each iteration
+ */
 void	ft_init_shell(t_env_list *env_list, t_shell *shell)
 {
 	shell->is_running = TRUE;

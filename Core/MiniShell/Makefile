@@ -17,11 +17,17 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/exit/ft_exit_main.c \
 		src/init/ft_init_main.c \
 		src/init/ft_init_shell.c \
-		src/parse/ft_parse_env.c \
 		src/main/main.c \
+		src/parse/ft_expand.c \
+		src/parse/ft_parse_env.c \
+		src/parse/ft_parse_input.c \
+		src/parse/ft_syntax.c \
+		src/parse/ft_tokenizer.c \
+		src/parse/ft_tokenizer2.c \
 		src/signal/ft_signal.c \
+		src/util/ft_util_banner.c \
 		src/util/ft_util_env.c \
-		src/util/ft_util_banner.c
+		src/util/ft_util_parse.c
 
 OBJ = $(SRC:.c=.o)
 

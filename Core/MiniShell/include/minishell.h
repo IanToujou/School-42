@@ -16,9 +16,9 @@
 
 # include "../lib/libft/include/libft.h"
 # include "errortype.h"
-# include "tokentype.h"
 # include "bool.h"
 # include "status.h"
+# include "tokentype.h"
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -61,11 +61,26 @@ typedef struct s_env
 	char						*value;
 }								t_env;
 
-typedef struct s_env_list
+typedef	struct s_env_list
 {
 	t_env						*current;
 	struct s_env_list			*next;
 }								t_env_list;
+
+typedef	struct s_token {
+	char						*value;
+	int							type;
+	struct s_token					*next;
+	struct s_token					*prev;
+}								t_token;
+
+typedef	struct s_parse_state {
+	bool							in_single_quote;
+	bool							in_double_quote;
+	bool							syntax_error;
+	int							exit_status;
+}								t_parse_state;
+
 
 typedef struct s_shell
 {
@@ -89,12 +104,6 @@ t_bool							ft_init_temp(t_shell *shell);
 t_bool							ft_init_std(t_shell *shell);
 void							ft_init_shell(t_env_list *env_list, t_shell *shell);
 
-extern volatile sig_atomic_t	g_signal_status;
-void							restore_terminal(void);
-void							ft_echo_off(void);
-void							ft_set_sig(void);
-void							ft_sigint(int sig);
-
 // error
 void							ft_error_throw(int error);
 
@@ -113,21 +122,31 @@ void							ft_util_env_var_remove(t_env_list **env_list,
 									const char *key);
 void							ft_util_banner(void);
 const char						*get_prompt(void);
-void							ft_handle_exit(t_shell *shell, char *buffer);
-int								ft_is_numeric(const char *str);
-void							ft_free_split(char **split);
-
+void							ft_token_add_back(t_token **lst, t_token *new);
+void							ft_free_tokens(t_token *lst);
+bool							is_quoted(char *str, int pos);
+char							*ft_strjoin_free(char *s1, const char *s2);
 // parse
 void							ft_parse_env(t_env_list **env_list, char **env);
-
+t_token							*ft_parse(t_shell *shell, t_env_list *env_list, char *buffer);
+t_token							*tokenize(char *input, t_shell *shell);
+bool							validate_syntax(t_token *tokens);
+char							*expand_variables(char *input, t_env_list *env_list);
+char							*extract_var_name(const char *str);
+char							**ft_split_shell(const char *str);
+t_token							*create_token(char *value, int type);
+int							get_token_type(char *value);
+int							count_words(const char *str);
+char							*get_next_word(const char **str);
+char							**ft_split_shell(const char *str);
 // exit
 t_bool							ft_exit_std(const t_shell *shell);
 void							ft_exit_env(t_env_list **env_list);
 void							ft_exit_temp(const t_shell *shell);
-
+char							*ft_strjoin_char(char *s, char c);
 //cmd
-int	ft_is_numeric(const char *str);
-void	ft_free_split(char **split);
-void	ft_handle_exit(t_shell *shell, char *buffer);
+int							ft_is_numeric(const char *str);
+void							ft_free_split(char **split);
+void							ft_handle_exit(t_shell *shell, char *buffer);
 
 #endif
