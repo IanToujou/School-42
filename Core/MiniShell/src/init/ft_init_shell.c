@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 01:01:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 01:09:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	ft_parse_input(shell, env_list, buffer, user);
 	free(buffer);
 	free(prompt_full);
-	free(prompt_pre);
 }
 
 /**
