@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 14:04:28 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 00:55:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ void	ft_util_banner_intro(void)
 	}
 }
 
-const char	*ft_util_banner_prompt(void)
+const char	*ft_util_banner_prompt_pre(void)
 {
 	return (
-		COLOR_RESET "┌──(" COLOR_PINK "≽^•w•^≼" COLOR_RESET ")──[" COLOR_CYAN "~" COLOR_RESET "]\n"
+		COLOR_RESET "┌──(" COLOR_PINK "≽^•w•^≼" COLOR_RESET " | " COLOR_PINK
+	);
+}
+
+const char	*ft_util_banner_prompt_post(void)
+{
+	return (
+		COLOR_RESET ")──[" COLOR_CYAN "~/Projects" COLOR_RESET "]\n"
 		"└─$ " COLOR_RESET
 	);
 }
+

@@ -6,61 +6,38 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 13:33:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 01:01:53 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-/*
- * Reads and processes user input in shell
- * Handles exit conditions and empty input
- * Maintains history and parses into tokens
- * TODO execute
- */
-static void	ft_process_input(t_shell *shell, t_env_list *env_list, char *buffer)
-{
-	t_token	*tokens;
-
-	if (buffer[0] != '\0')
-	{
-		add_history(buffer);
-		tokens = ft_parse(shell, env_list, buffer);
-		if (tokens)
-		{
-			// ft_execute(shell, env_list, tokens);
-			ft_free_tokens(tokens);
-		}
-	}
-}
-
-/*
- * Runs the main shell loop
- * Reads input, checks for exit condition, and processes non-empty input
- * Calls `ft_process_input` to handle parsing and tokenization
- */
 static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 {
-	char	*prompt;
+	char	*prompt_pre;
+	char	*prompt_full;
 	char	*buffer;
+	char	*user;
 
-	prompt = (char *) ft_util_banner_prompt();
-	buffer = readline(prompt);
-	if (!buffer)
-	{
+	user = ft_util_env_get(&env_list, "USER");
+	if (user)
+		prompt_pre = ft_strjoin(ft_util_banner_prompt_pre(), user);
+	else
+		prompt_pre = ft_strjoin(ft_util_banner_prompt_pre(), "nya");
+	if (prompt_pre == NULL)
+		ft_error_throw(ERROR_MALLOC);
+	prompt_full = ft_strjoin(prompt_pre, ft_util_banner_prompt_post());
+	buffer = readline(prompt_full);
+	if (!buffer) {
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		shell->is_running = FALSE;
 		return ;
 	}
-	if (ft_strncmp(buffer, "exit", 4) == 0)
-	{
-		ft_handle_exit(shell, env_list, buffer);
-		shell->is_running = FALSE;
-		free(buffer);
-		return ;
-	}
-	ft_process_input(shell, env_list, buffer);
+	add_history(buffer);
+	ft_parse_input(shell, env_list, buffer, user);
 	free(buffer);
+	free(prompt_full);
+	free(prompt_pre);
 }
 
 /**

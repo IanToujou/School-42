@@ -19,6 +19,7 @@ static void	ft_signal_c(const int signal)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
+
 }
 
 void	ft_signal_c_fork_slash(const int signal)

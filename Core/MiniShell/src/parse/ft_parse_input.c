@@ -6,63 +6,70 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 10:02:09 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/18 01:04:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-/*
- * Trims whitespace and validates input
- * Returns false for empty or allocation failure
- */
-static bool	preprocess_input(char **buffer)
+static t_bool	ft_parse_input_str(char *str, t_quotes *quotes, int *i, char *user)
 {
-	char	*trimmed;
+	(void)str;
+	(void)quotes;
+	(void)user;
+	(void)i;
+	/*static char	*pool_symbols = "\\<>|;";
 
-	trimmed = ft_strtrim(*buffer, " \t");
-	if (!trimmed)
-		return (false);
-	if (ft_strlen(trimmed) == 0)
-	{
-		free(trimmed);
-		return (false);
-	}
-	free(*buffer);
-	*buffer = trimmed;
-	return (true);
+	ft_util_quote_set(quotes, str[*i]);
+	if (str[*i] == '\\' && quotes->two == true)
+		(*i)++;
+	else if (ft_strchr_bo(pool_symbols, str[*i]) == true
+		&& ft_util_quote_is_outside(quotes) == true)
+		if (ft_check_seps(str, i, user) == false
+			|| ft_util_redirect_check(str, i, user) == false)
+			return (FALSE);*/
+	return (TRUE);
 }
 
-/*
- * Main parsing function for shell input
- * Handles expansion, tokenization and validation
- * Returns NULL on error with proper exit status
- */
-t_token	*ft_parse(t_shell *shell, t_env_list *env_list, char *buffer)
-{
-	char	*processed;
-	char	*expanded;
-	t_token	*tokens;
+static t_bool	ft_parse_exit(t_shell *shell, char *result, int status) {
+	free(result);
+	if (status == STATUS_OK)
+		;
+	else if (status == STATUS_MAL)
+		shell->exit_status = STATUS_MAL;
+	return (FALSE);
+}
 
-	processed = ft_strdup(buffer);
-	if (!processed)
-		return (NULL);
-	if (!preprocess_input(&processed))
+static t_bool	ft_parse_preprocess(char *input, char *user)
+{
+	int			i;
+	t_quotes	quotes;
+
+	quotes = ft_init_quote();
+	i = 0;
+	while (input[i])
 	{
-		free(processed);
-		return (NULL);
+		if (!ft_parse_input_str(input, &quotes, &i, user))
+			return (FALSE);
+		if (input[i] != '\0')
+			i++;
 	}
-	expanded = expand_variables(processed, env_list);
-	free(processed);
-	if (!expanded)
-		return (NULL);
-	tokens = tokenize(expanded, shell);
-	free(expanded);
-	if (!tokens || !validate_syntax(tokens))
-	{
-		ft_free_tokens(tokens);
-		shell->exit_status = 258;
-		return (NULL);
-	}
-	return (tokens);
+	return (TRUE);
+}
+
+t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list, char *input, char *user)
+{
+	char	*result;
+
+	if (ft_util_str_tab_skip(input))
+		return  (FALSE);
+	result = ft_util_str_tab_trim(input);
+	if (!result)
+		ft_error_throw(ERROR_MALLOC);
+	if (!ft_parse_preprocess(result, user))
+		return ft_parse_exit(shell, result, STATUS_OK);
+	if (!ft_parse_handle(shell, env_list, result))
+		ft_error_throw(ERROR_MALLOC);
+	free(input);
+	return (TRUE);
 }

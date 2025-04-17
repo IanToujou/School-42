@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 14:00:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 00:56:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include "errortype.h"
 # include "bool.h"
 # include "status.h"
-# include "tokentype.h"
+# include "redirect.h"
+# include "token.h"
+
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -55,6 +57,12 @@
 # define BANNER_LINE8 "| (￣ヽ＿_ヽ_)__)"
 # define BANNER_LINE9 "＼二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二つ"
 
+typedef struct s_quotes
+{
+	t_bool	two;
+	t_bool	one;
+}	t_quotes;
+
 typedef struct s_env
 {
 	char						*key;
@@ -67,26 +75,12 @@ typedef	struct s_env_list
 	struct s_env_list			*next;
 }								t_env_list;
 
-typedef	struct s_token {
-	char						*value;
-	int							type;
-	struct s_token					*next;
-	struct s_token					*prev;
-}								t_token;
-
-typedef	struct s_parse_state {
-	bool							in_single_quote;
-	bool							in_double_quote;
-	bool							syntax_error;
-	int							exit_status;
-}								t_parse_state;
-
 
 typedef struct s_shell
 {
 	int							exit_status;
-	bool						is_running;
-	bool						is_interactive;
+	t_bool						is_running;
+	t_bool						is_interactive;
 	char						*temp_file;
 	int							std_in;
 	int							std_out;
@@ -103,6 +97,7 @@ t_bool							ft_init_env(t_shell *shell,
 t_bool							ft_init_temp(t_shell *shell);
 t_bool							ft_init_std(t_shell *shell);
 void							ft_init_shell(t_env_list *env_list, t_shell *shell);
+t_quotes						ft_init_quote(void);
 
 // error
 void							ft_error_throw(int error);
@@ -124,32 +119,31 @@ void							ft_util_env_var_add(t_env_list **env_list,
 void							ft_util_env_var_remove(t_env_list **env_list,
 									const char *key);
 void							ft_util_banner_intro(void);
-const char						*ft_util_banner_prompt(void);
-void							ft_token_add_back(t_token **lst, t_token *new);
-void							ft_free_tokens(t_token *lst);
-bool							is_quoted(char *str, int pos);
-char							*ft_strjoin_free(char *s1, const char *s2);
+const char						*ft_util_banner_prompt_pre(void);
+const char						*ft_util_banner_prompt_post(void);
+t_bool							ft_util_str_tab_skip(const char *str);
+char							*ft_util_str_tab_trim(const char *str);
+t_bool							ft_util_quote_set(t_quotes *quotes, char c);
+t_bool							ft_util_quote_is_outside(const t_quotes *quotes);
+t_bool							ft_util_num_isnumber(const char *str);
+t_bool							ft_util_redirect_check(char *str, int *i);
+
 // parse
 void							ft_parse_env(t_env_list **env_list, char **env);
-t_token							*ft_parse(t_shell *shell, t_env_list *env_list, char *buffer);
-t_token							*tokenize(char *input, t_shell *shell);
-bool							validate_syntax(t_token *tokens);
-char							*expand_variables(char *input, t_env_list *env_list);
-char							*extract_var_name(const char *str);
-char							**ft_split_shell(const char *str);
-t_token							*create_token(char *value, int type);
-int							get_token_type(char *value);
-int							count_words(const char *str);
-char							*get_next_word(const char **str);
-char							**ft_split_shell(const char *str);
+t_bool							ft_parse_input(t_shell *shell, t_env_list *env_list, char *input, char *user);
+int								ft_parse_handle(t_shell *shell, t_env_list *env, char *str);
+
 // exit
 t_bool							ft_exit_std(const t_shell *shell);
 void							ft_exit_env(t_env_list **env_list);
 void							ft_exit_temp(const t_shell *shell);
-char							*ft_strjoin_char(char *s, char c);
+
+// run
+void							ft_run_cmd(t_shell *shell, t_token *token, t_env_list *env_list);
+t_bool							ft_run_defined_is_defined(const t_token *token);
+void							ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list);
+
 //cmd
-int							ft_is_numeric(const char *str);
-void							ft_free_split(char **split);
-void							ft_handle_exit(t_shell *shell, t_env_list *env_list, char *buffer);
+void							ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token);
 
 #endif
