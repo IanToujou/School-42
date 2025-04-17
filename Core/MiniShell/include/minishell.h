@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 13:51:36 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/17 14:00:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define COLOR_BLUE "\001\033[38;5;81m\002"
 # define COLOR_MAGENTA "\001\033[38;5;177m\002"
 # define COLOR_CYAN "\001\033[38;5;51m\002"
-# define COLOR_PURPLE "\001\033[38;5;218m\002"
+# define COLOR_PINK "\001\033[38;5;218m\002"
 # define COLOR_RESET "\001\033[0m\002"
 
 # define BANNER_LINE1 "　　　　 🌸＞　　フ"

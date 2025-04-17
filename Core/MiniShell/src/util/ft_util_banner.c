@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 13:52:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/17 14:01:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_util_banner_intro(void)
 const char	*ft_util_banner_prompt(void)
 {
 	return (
-		COLOR_RESET "🐱 " COLOR_YELLOW ">> " COLOR_PURPLE "~/home" COLOR_RESET "\n"
-		"$ "
+		COLOR_RESET "┌──(" COLOR_PINK "ᓚᘏᗢ" COLOR_RESET ")─[" COLOR_CYAN "~" COLOR_RESET "]\n"
+		"└─$ " COLOR_YELLOW
 	);
 }
