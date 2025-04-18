@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 11:55:59 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 11:57:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	ft_run_token_process(t_shell *shell, t_token *token, t_env_list *env
 
 t_bool	ft_run_token(t_shell *shell, t_token *token, t_env_list *env_list)
 {
+	errno = 0;
 	shell->process_level = PROCESS_LEVEL_PARENT;
 	shell->executed = false;
 	if (token)
