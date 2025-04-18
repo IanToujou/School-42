@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 14:33:42 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 15:17:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_bool	ft_parse_input_str(char *str, t_quotes *quotes, int *i, char *user)
 {
-	static char	*pool_symbols = "\\<>|;";
+	//static char	*pool_symbols = "\\<>|;";
 
 	(void)str;
 	(void)quotes;
