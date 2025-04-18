@@ -20,6 +20,7 @@
 # include "status.h"
 # include "redirect.h"
 # include "token.h"
+# include "banner.h"
 
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -39,15 +40,6 @@
 # define PROCESS_LEVEL_DEFAULT 0
 # define PROCESS_LEVEL_CHILD 1
 # define PROCESS_LEVEL_PARENT 2
-
-# define COLOR_ORANGE "\001\033[38;5;214m\002"
-# define COLOR_GREEN "\001\033[38;5;120m\002"
-# define COLOR_YELLOW "\001\033[38;5;228m\002"
-# define COLOR_BLUE "\001\033[38;5;81m\002"
-# define COLOR_MAGENTA "\001\033[38;5;177m\002"
-# define COLOR_CYAN "\001\033[38;5;51m\002"
-# define COLOR_PINK "\001\033[38;5;218m\002"
-# define COLOR_RESET "\001\033[0m\002"
 
 typedef struct s_quotes
 {
@@ -117,8 +109,6 @@ char		*ft_util_env_get(t_env_list **env_list, const char *key);
 void		ft_util_env_var_add(t_env_list **env_list, char *var);
 void		ft_util_env_var_remove(t_env_list **env_list, const char *key);
 void		ft_util_env_free(t_env_list	*env_list);
-const char	*ft_util_banner_prompt_pre(void);
-const char	*ft_util_banner_prompt_post(void);
 t_bool		ft_util_str_tab_skip(const char *str);
 char		*ft_util_str_tab_trim(const char *str);
 char		*ft_util_str_tolower(const char *str);
