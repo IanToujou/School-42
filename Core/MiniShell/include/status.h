@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:33:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 12:09:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:17:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
+#ifndef STATUS_H
 
-# define TYPES_H
+# define STATUS_H
 
 # define STATUS_OK 0
 # define STATUS_MAIN 1

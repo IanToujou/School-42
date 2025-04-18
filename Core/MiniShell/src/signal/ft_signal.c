@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:43:29 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/17 12:55:18 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:02:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	ft_signal_c(const int signal)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
-
 }
 
 void	ft_signal_c_fork_slash(const int signal)

@@ -6,9 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 00:40:33 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:02:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+void	ft_run_bin(t_shell *shell, t_token *token, t_env_list *env_list)
+{
+
+}

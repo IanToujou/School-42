@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:02:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:11:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:08:55 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_bool	ft_util_str_strchr(const char *s, const int c)
 	return (false);
 }
 
-static size_t	ft_util_str_trim_all(const char *str, size_t size, size_t *begin, size_t *end)
+static size_t	ft_util_str_trim_all(const char *str, size_t size,
+		size_t *begin, size_t *end)
 {
 	while (ft_isblank(str[*begin]))
 	{

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:09:04 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:12:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:11:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static t_bool	ft_util_envcase_check_reg(char *str)
 	return (TRUE);
 }
 
-static t_bool	ft_util_envcase_check_around(const char *left, const char *right)
+static t_bool	ft_util_envcase_check_around(const char *left,
+		const char *right)
 {
 	if (left)
 	{

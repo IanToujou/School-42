@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/26 12:41:04 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:01:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@
 
 # define ERROR_EXIT_STD 7
 # define ERROR_EXIT_STD_MSG "Exiting standard in-out failed."
+
+# define ERROR_FORK 7
+# define ERROR_FORK_MSG "Failed to fork."
 
 #endif

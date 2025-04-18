@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:34:01 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:52:32 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:10:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static char	*ft_util_cmd_parse_additional(t_env_list *env_list, const char *str,
 	str_without_space = ft_util_str_tab_trim(str);
 	if (str_without_space == NULL)
 		ft_error_throw(ERROR_MALLOC);
-	str_command = ft_util_cmd_grow_str(env_list, str_without_space, shell, &parse->flag);
+	str_command = ft_util_cmd_grow_str(env_list, str_without_space,
+			shell, &parse->flag);
 	if (str_command == NULL && parse->flag == false)
 		ft_error_throw(ERROR_MALLOC);
 	if (ft_util_cmd_invalid_str(str_command, parse->pipe, -1) == true)
@@ -85,7 +86,8 @@ static char	*ft_util_cmd_split_new(char *str, t_parse *parse)
 	return (new);
 }
 
-char	**ft_util_cmd_split(t_env_list *env_list, char *str, t_parse *parse, t_shell *shell)
+char	**ft_util_cmd_split(t_env_list *env_list, char *str,
+		t_parse *parse, t_shell *shell)
 {
 	char	*new;
 	char	*cmd;

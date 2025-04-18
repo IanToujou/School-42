@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 01:17:59 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:08:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 		ft_error_throw(ERROR_MALLOC);
 	prompt_full = ft_strjoin(prompt_pre, ft_util_banner_prompt_post());
 	buffer = readline(prompt_full);
-	if (!buffer) {
+	if (!buffer)
+	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		shell->is_running = FALSE;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:53:26 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 12:55:45 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:11:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static t_bool	ft_init_token_cmd(char **cmds, t_parse *parse, const char *str)
 			parse->i - parse->begin_str);
 	if (cmds[parse->index_token] == NULL)
 		return (FALSE);
-	if (ft_util_str_strchr("<>|", str[parse->i]) == FALSE && str[parse->i] != '\0')
+	if (ft_util_str_strchr("<>|", str[parse->i]) == FALSE
+		&& str[parse->i] != '\0')
 	{
 		(parse->i)++;
 		while (ft_isblank(str[parse->i]))
@@ -31,7 +32,8 @@ static t_bool	ft_init_token_cmd(char **cmds, t_parse *parse, const char *str)
 	return (TRUE);
 }
 
-static t_bool	ft_init_token_sym_red(char **cmds, t_parse *parse, const char *str)
+static t_bool	ft_init_token_sym_red(char **cmds,
+		t_parse *parse, const char *str)
 {
 	if (ft_util_str_strchr("<>", str[parse->i + 1]))
 	{

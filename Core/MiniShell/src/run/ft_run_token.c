@@ -6,22 +6,47 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 11:58:26 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:01:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	ft_run_token_execute(t_shell *shell, t_token *token, t_token *next, t_env_list *env_list)
+static void	ft_run_token_delete_temp(const t_shell *shell)
+{
+	pid_t	pid;
+	char	**argv;
+
+	argv = malloc(sizeof(char *) * 3);
+	if (argv == NULL)
+		ft_error_throw(ERROR_MALLOC);
+	argv[0] = "/bin/rm";
+	argv[1] = shell->temp_file;
+	argv[2] = NULL;
+	pid = fork();
+	if (pid == 0)
+	{
+		errno = 0;
+		execve("/bin/rm", argv, NULL);
+	}
+	else if (pid > 0)
+		free(argv);
+	else
+		ft_error_throw(ERROR_FORK);
+}
+
+static void	ft_run_token_execute(t_shell *shell, t_token *token,
+		const t_token *next, t_env_list *env_list)
 {
 	(void)next;
 	if (token)
 		ft_run_cmd(shell, token, env_list);
-	/*if (next && next->type == TOKEN_DOBINP)
-		delete_tmpfile(shell);*/
+	if (next && next->type == TOKEN_DOBINP)
+		ft_run_token_delete_temp(shell);
 }
 
-static void	ft_run_token_process(t_shell *shell, t_token *token, t_env_list *env_list)
+static void	ft_run_token_process(t_shell *shell, t_token *token,
+		t_env_list *env_list)
 {
 	t_token	*prev;
 	t_token	*next;
@@ -34,7 +59,8 @@ static void	ft_run_token_process(t_shell *shell, t_token *token, t_env_list *env
 	process_level = ft_util_redirect_level(shell, token, prev, env_list);
 	if (next && process_level != PROCESS_LEVEL_PARENT)
 		ft_run_token_process(shell, next->next, env_list);
-	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed && (!prev || prev->type == TOKEN_PIPE)
+	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed
+		&& (!prev || prev->type == TOKEN_PIPE)
 		&& token->type == TOKEN_CMD && !errno)
 	{
 		if (process_level == PROCESS_LEVEL_CHILD)

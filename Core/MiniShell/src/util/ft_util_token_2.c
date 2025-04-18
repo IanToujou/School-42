@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:21:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 15:19:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:06:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,6 @@ static t_bool	ft_util_token_free_process(char *cmd, char **cmds)
 	return (FALSE);
 }
 
-static char	**ft_util_token_free_cmds(char **cmds)
-{
-	int			i;
-
-	i = -1;
-	if (cmds)
-	{
-		while (cmds[++i])
-			free(cmds[i]);
-		free(cmds);
-		cmds = NULL;
-	}
-	return (cmds);
-}
-
 static char	**ft_util_token_put(char *str, const int amount)
 {
 	t_parse		parse;
@@ -58,8 +43,8 @@ static char	**ft_util_token_put(char *str, const int amount)
 		if (str[parse.i] == '\\' && parse.quotes.two == true
 			&& str[parse.i + 1] == '\0')
 			parse.i++;
-		if ((ft_util_str_strchr("<>| \t", str[parse.i]) && parse.quotes.two == false
-				&& parse.quotes.one == false) || str[parse.i + 1] == '\0')
+		if ((ft_util_str_strchr("<>| \t", str[parse.i]) && !parse.quotes.two
+				&& !parse.quotes.one) || str[parse.i + 1] == '\0')
 		{
 			if (ft_init_token_data(cmds, &parse, str) == false)
 				return (ft_util_token_free_cmds(cmds));
@@ -121,7 +106,8 @@ static int	ft_util_token_count(char *cmd)
 	return (parse.token_amount);
 }
 
-t_bool	ft_util_token_process(t_shell *shell, char **commands, t_env_list *env_list)
+t_bool	ft_util_token_process(t_shell *shell,
+		char **commands, t_env_list *env_list)
 {
 	char	**cmds;
 	char	*cmd;

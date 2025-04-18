@@ -6,32 +6,34 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 15:17:38 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:03:44 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static t_bool	ft_parse_input_str(char *str, t_quotes *quotes, int *i, char *user)
+static t_bool	ft_parse_input_str(const char *str,
+		const t_quotes *quotes, int *i, const char *user)
 {
-	//static char	*pool_symbols = "\\<>|;";
+	static char	*pool_symbols = "\\<>|;";
 
 	(void)str;
 	(void)quotes;
 	(void)user;
 	(void)i;
-	/*ft_util_quote_set(quotes, str[*i]);
+	ft_util_quote_set(quotes, str[*i]);
 	if (str[*i] == '\\' && quotes->two == true)
 		(*i)++;
 	else if (ft_util_str_strchr(pool_symbols, str[*i]) == true
 		&& ft_util_quote_is_outside(quotes) == true)
 		if (ft_check_seps(str, i, user) == false
 			|| ft_util_redirect_check(str, i, user) == false)
-			return (FALSE);*/
+			return (FALSE);
 	return (TRUE);
 }
 
-static t_bool	ft_parse_exit(t_shell *shell, char *result, int status) {
+static t_bool	ft_parse_exit(t_shell *shell,
+		char *result, int status) {
 	free(result);
 	if (status == STATUS_OK)
 		;
@@ -57,12 +59,13 @@ static t_bool	ft_parse_preprocess(char *input, char *user)
 	return (TRUE);
 }
 
-t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list, const char *input, char *user)
+t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list,
+		const char *input, char *user)
 {
 	char	*result;
 
 	if (ft_util_str_tab_skip(input))
-		return  (FALSE);
+		return (FALSE);
 	result = ft_util_str_tab_trim(input);
 	if (!result)
 		ft_error_throw(ERROR_MALLOC);

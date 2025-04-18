@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:45:02 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:48:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:09:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ static char	*ft_util_cmd_grow_free(char *transform, char *cmd, t_shell *shell)
 	return (NULL);
 }
 
-char	*ft_util_cmd_grow_str(t_env_list *env_list, char *str, t_shell *shell, t_bool *flag)
+char	*ft_util_cmd_grow_str(t_env_list *env_list, char *str,
+		t_shell *shell, t_bool *flag)
 {
 	t_parse	parse;
 	char	*transform;

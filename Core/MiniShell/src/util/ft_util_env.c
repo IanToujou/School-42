@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/15 08:47:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:13:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,6 @@ char	*ft_util_env_get(t_env_list **env_list, const char *key)
 	return (NULL);
 }
 
-static void	ft_util_env_free(t_env_list	*env_list)
-{
-	if (!env_list)
-		return ;
-	if (env_list->current)
-	{
-		free(env_list->current->key);
-		free(env_list->current->value);
-		free(env_list->current);
-	}
-	free(env_list);
-}
-
 void	ft_util_env_var_remove(t_env_list **env_list, const char *key)
 {
 	t_env_list	*current;
@@ -138,18 +125,4 @@ void	ft_util_env_var_remove(t_env_list **env_list, const char *key)
 		ft_util_env_free(current);
 		*env_list = temp;
 	}
-	/*while (current && current->next != NULL)
-	{
-		printf("loop ft_strlen(%s) = %d\n", key, (int) ft_strlen(key)); fflush(stdout);
-		if (ft_strncmp(key, current->next->current->key,
-				ft_strlen(key) + 1) == 0)
-		{
-			printf("loop strncmp works\n"); fflush(stdout);
-			temp = current->next->next;
-			ft_util_env_free(current->next);
-			current->next = temp;
-			return ;
-		}
-		current = current->next;
-	}*/
 }

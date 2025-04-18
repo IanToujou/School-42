@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:13:42 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:15:16 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:04:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ void	ft_util_token_addon(const t_token *token)
 {
 	while (token)
 	{
-		if (token->type == TOKEN_CMD && ft_util_token_expand_cmd(token->str) == false)
+		if (token->type == TOKEN_CMD
+			&& ft_util_token_expand_cmd(token->str) == false)
 			ft_error_throw(ERROR_MALLOC);
-		if (token->type == TOKEN_INPUT && (!token->prev || token->prev->type == TOKEN_PIPE))
+		if (token->type == TOKEN_INPUT
+			&& (!token->prev || token->prev->type == TOKEN_PIPE))
 		{
 			if (token->next && token->next->type != TOKEN_PIPE
 				&& token->next->next && token->next->next->type != TOKEN_PIPE)

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:04:42 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:07:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 17:07:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ static void	ft_util_token_init(t_token *temp, const int i)
 		temp->type = ft_util_token_check_cmd(temp->str);
 	else
 		temp->type = TOKEN_ARG;
+}
+
+char	**ft_util_token_free_cmds(char **cmds)
+{
+	int			i;
+
+	i = -1;
+	if (cmds)
+	{
+		while (cmds[++i])
+			free(cmds[i]);
+		free(cmds);
+		cmds = NULL;
+	}
+	return (cmds);
 }
 
 t_token	*ft_util_token_to_struct(char **cmds, t_token **final)
