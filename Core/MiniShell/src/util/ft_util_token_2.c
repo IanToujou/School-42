@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:21:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:15:35 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 15:19:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_bool	ft_util_token_free_process(char *cmd, char **cmds)
 	return (FALSE);
 }
 
-static char	**ft_util_token_free(char **cmds)
+static char	**ft_util_token_free_cmds(char **cmds)
 {
 	int			i;
 
@@ -62,7 +62,7 @@ static char	**ft_util_token_put(char *str, const int amount)
 				&& parse.quotes.one == false) || str[parse.i + 1] == '\0')
 		{
 			if (ft_init_token_data(cmds, &parse, str) == false)
-				return (ft_util_token_free(cmds));
+				return (ft_util_token_free_cmds(cmds));
 			if (parse.flag == true)
 				return (cmds);
 		}
