@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:33:40 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 14:33:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_bool	ft_parse_handle_process(t_shell *shell, t_parse *parse, t_env_list
 {
 	char	**cmd;
 
-	cmd = ft_split_command(env_list, str, parse, shell);
+	cmd = ft_util_cmd_split(env_list, str, parse, shell);
 	if (cmd == NULL && parse->flag == false)
 		return (false);
 	parse->pipe = 0;

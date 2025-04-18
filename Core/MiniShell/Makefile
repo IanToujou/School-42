@@ -21,6 +21,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/init/ft_init_shell.c \
 		src/init/ft_init_token.c \
 		src/main/main.c \
+		src/parse/ft_parse_dollar.c \
 		src/parse/ft_parse_env.c \
 		src/parse/ft_parse_handle.c \
 		src/parse/ft_parse_input.c \
@@ -31,13 +32,19 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/signal/ft_signal.c \
 		src/signal/ft_signal_add.c \
 		src/util/ft_util_banner.c \
+		src/util/ft_util_cmd.c \
+		src/util/ft_util_cmd_2.c \
+		src/util/ft_util_cmd_3.c \
 		src/util/ft_util_env.c \
+		src/util/ft_util_envcase.c \
 		src/util/ft_util_num.c \
 		src/util/ft_util_quote.c \
 		src/util/ft_util_redirect.c \
 		src/util/ft_util_str.c \
 		src/util/ft_util_token.c \
-		src/util/ft_util_token_2.c
+		src/util/ft_util_token_2.c \
+		src/util/ft_util_token_3.c \
+		src/util/ft_util_token_4.c
 
 OBJ = $(SRC:.c=.o)
 
