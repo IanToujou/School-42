@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 11:58:03 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 13:48:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,18 @@ typedef struct s_quotes
 	t_bool	one;
 }	t_quotes;
 
+typedef struct s_parse
+{
+	t_quotes	quotes;
+	int			i;
+	int			begin_str;
+	int			pipe;
+	int			size;
+	t_bool		flag;
+	int			token_amount;
+	int			index_token;
+}			t_parse;
+
 typedef struct s_env
 {
 	char						*key;
@@ -101,6 +113,8 @@ t_bool							ft_init_temp(t_shell *shell);
 t_bool							ft_init_std(t_shell *shell);
 void							ft_init_shell(t_env_list *env_list, t_shell *shell);
 t_quotes						ft_init_quote(void);
+t_parse							ft_init_parse_data(void);
+t_bool							ft_init_token_data(char **cmds, t_parse *parse, char *str);
 
 // error
 void							ft_error_throw(int error);
@@ -126,18 +140,30 @@ const char						*ft_util_banner_prompt_pre(void);
 const char						*ft_util_banner_prompt_post(void);
 t_bool							ft_util_str_tab_skip(const char *str);
 char							*ft_util_str_tab_trim(const char *str);
-t_bool							ft_util_quote_set(t_quotes *quotes, char c);
+char							*ft_util_str_tolower(const char *str);
+t_bool							ft_util_quote_status(t_quotes *quotes, char c);
 t_bool							ft_util_quote_is_outside(const t_quotes *quotes);
+void							ft_util_quote_plus(t_token *cmds);
 t_bool							ft_util_num_isnumber(const char *str);
-
+t_bool							ft_util_str_strchr(const char *s, int c);
 t_token							*ft_util_token_previous(t_token	*token);
 t_token							*ft_util_token_next(t_token	*token);
+t_token							*ft_util_token_create(const char *content);
+void							ft_util_token_add_back(t_token **list, t_token *new);
+void							ft_util_token_free(t_token *list);
 int								ft_util_redirect_level(t_shell *shell, t_token *token, t_token *prev, t_env_list *env_list);
+t_bool							ft_util_token_process(t_shell *shell, char **commands, t_env_list *env_list);
+t_token							*ft_util_token_to_struct(char **cmds, t_token **final);
+void							ft_util_token_addon(const t_token *token);
+void							ft_util_envcase_token(char **cmds);
+char							**ft_util_cmd_get_cmds(char *str int pipe);
+char							**ft_util_cmd_split(t_env_list *env_list, char *str, t_parse *parse, t_shell *shell);
+char							*ft_util_cmd_grow_str(t_env_list *env_list, char *str, t_shell *shell, t_bool *flag);
 
 // parse
 void							ft_parse_env(t_env_list **env_list, char **env);
 t_bool							ft_parse_input(t_shell *shell, t_env_list *env_list, const char *input, char *user);
-int								ft_parse_handle(t_shell *shell, t_env_list *env, char *str);
+int								ft_parse_handle(t_shell *shell, t_env_list *env_list, char *str);
 
 // exit
 t_bool							ft_exit_std(const t_shell *shell);

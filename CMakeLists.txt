@@ -289,6 +289,16 @@ add_executable(MiniShell
 		Core/MiniShell/src/parse/ft_parse_handle.c
 		Core/MiniShell/src/run/ft_run_token.c
 		Core/MiniShell/src/util/ft_util_token.c
+		Core/MiniShell/src/init/ft_init_parse.c
+		Core/MiniShell/src/util/ft_util_token_2.c
+		Core/MiniShell/src/init/ft_init_token.c
+		Core/MiniShell/src/util/ft_util_token_3.c
+		Core/MiniShell/src/util/ft_util_envcase.c
+		Core/MiniShell/src/util/ft_util_token_4.c
+		Core/MiniShell/src/util/ft_util_cmd.c
+		Core/MiniShell/src/util/ft_util_cmd_2.c
+		Core/MiniShell/src/util/ft_util_cmd_3.c
+		Core/MiniShell/src/parse/ft_parse_dollar.c
 )
 
 add_executable(Cub3D

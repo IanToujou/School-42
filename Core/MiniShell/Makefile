@@ -16,8 +16,10 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/error/ft_error_throw.c \
 		src/exit/ft_exit_main.c \
 		src/init/ft_init_main.c \
+		src/init/ft_init_parse.c \
 		src/init/ft_init_quote.c \
 		src/init/ft_init_shell.c \
+		src/init/ft_init_token.c \
 		src/main/main.c \
 		src/parse/ft_parse_env.c \
 		src/parse/ft_parse_handle.c \
@@ -34,7 +36,8 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_quote.c \
 		src/util/ft_util_redirect.c \
 		src/util/ft_util_str.c \
-		src/util/ft_util_token.c
+		src/util/ft_util_token.c \
+		src/util/ft_util_token_2.c
 
 OBJ = $(SRC:.c=.o)
 

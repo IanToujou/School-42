@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 01:18:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 13:08:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static t_bool	ft_parse_exit(t_shell *shell, char *result, int status) {
 	free(result);
 	if (status == STATUS_OK)
 		;
-	else if (status == STATUS_MAL)
-		shell->exit_status = STATUS_MAL;
+	else if (status == STATUS_MALLOC)
+		shell->exit_status = STATUS_MALLOC;
 	return (FALSE);
 }
 
@@ -67,7 +67,7 @@ t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list, const char *input, c
 	if (!result)
 		ft_error_throw(ERROR_MALLOC);
 	if (!ft_parse_preprocess(result, user))
-		return ft_parse_exit(shell, result, STATUS_OK);
+		return (ft_parse_exit(shell, result, STATUS_OK));
 	if (!ft_parse_handle(shell, env_list, result))
 		ft_error_throw(ERROR_MALLOC);
 	free(result);
