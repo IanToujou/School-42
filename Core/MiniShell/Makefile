@@ -25,13 +25,15 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/run/ft_run_bin.c \
 		src/run/ft_run_cmd.c \
 		src/run/ft_run_defined.c \
+		src/run/ft_run_token.c \
 		src/signal/ft_signal.c \
 		src/signal/ft_signal_add.c \
 		src/util/ft_util_banner.c \
 		src/util/ft_util_env.c \
 		src/util/ft_util_num.c \
 		src/util/ft_util_quote.c \
-		src/util/ft_util_str.c
+		src/util/ft_util_str.c \
+		src/util/ft_util_token.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 01:07:07 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 11:54:45 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
+# include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
 
@@ -81,6 +82,7 @@ typedef struct s_shell
 	int							exit_status;
 	t_bool						is_running;
 	t_bool						is_interactive;
+	t_bool						executed;
 	char						*temp_file;
 	int							std_in;
 	int							std_out;
@@ -126,7 +128,10 @@ char							*ft_util_str_tab_trim(const char *str);
 t_bool							ft_util_quote_set(t_quotes *quotes, char c);
 t_bool							ft_util_quote_is_outside(const t_quotes *quotes);
 t_bool							ft_util_num_isnumber(const char *str);
-t_bool							ft_util_redirect_check(char *str, int *i, char *user);
+
+t_token							*ft_util_token_previous(t_token	*token);
+t_token							*ft_util_token_next(t_token	*token);
+int								ft_util_redirect_level(t_shell *shell, t_token *token, t_token *prev, t_env_list *env_list);
 
 // parse
 void							ft_parse_env(t_env_list **env_list, char **env);
@@ -142,6 +147,7 @@ void							ft_exit_temp(const t_shell *shell);
 void							ft_run_cmd(t_shell *shell, t_token *token, t_env_list *env_list);
 t_bool							ft_run_defined_is_defined(const t_token *token);
 void							ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list);
+t_bool							ft_run_token(t_shell *shell, t_token *token, t_env_list *env_list);
 
 //cmd
 void							ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token);
