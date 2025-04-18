@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:48:59 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 13:52:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ t_bool							ft_util_token_process(t_shell *shell, char **commands, t_env_list *
 t_token							*ft_util_token_to_struct(char **cmds, t_token **final);
 void							ft_util_token_addon(const t_token *token);
 void							ft_util_envcase_token(char **cmds);
-char							**ft_util_cmd_get_cmds(char *str int pipe);
+char							**ft_util_cmd_get_cmds(char *str, int pipe);
 char							**ft_util_cmd_split(t_env_list *env_list, char *str, t_parse *parse, t_shell *shell);
 char							*ft_util_cmd_grow_str(t_env_list *env_list, char *str, t_shell *shell, t_bool *flag);
 
@@ -164,6 +164,8 @@ char							*ft_util_cmd_grow_str(t_env_list *env_list, char *str, t_shell *shell
 void							ft_parse_env(t_env_list **env_list, char **env);
 t_bool							ft_parse_input(t_shell *shell, t_env_list *env_list, const char *input, char *user);
 int								ft_parse_handle(t_shell *shell, t_env_list *env_list, char *str);
+t_bool							ft_parse_dollar_search(const char *str);
+char							*ft_parse_dollar(t_env_list *env_list, t_parse *parse, const char *str, const t_shell *shell);
 
 // exit
 t_bool							ft_exit_std(const t_shell *shell);

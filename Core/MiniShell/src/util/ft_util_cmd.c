@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:34:01 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:48:38 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 13:52:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	**ft_util_cmd_split(t_env_list *env_list, char *str, t_parse *parse, t_shel
 	char	*cmd;
 
 	new = ft_util_cmd_split_new(str, parse);
-	if (ft_search_dollar(new) == true)
+	if (ft_parse_dollar_search(new) == true)
 	{
 		cmd = ft_util_cmd_parse_additional(env_list, new, parse, shell);
 		free(new);

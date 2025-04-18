@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:49:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:50:57 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 13:51:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static int	ft_parse_dollar_size(char *str, int i)
+static int	ft_parse_dollar_size(const char *str, int i)
 {
 	static char	*pool_symbols = "\"\'$/-*#=\t: ";
 	int			size;
@@ -28,7 +28,7 @@ static int	ft_parse_dollar_size(char *str, int i)
 	return (size);
 }
 
-static char	*key_dollar(char *str, int size, int i)
+static char	*key_dollar(const char *str, const int size, int i)
 {
 	char	*name_variable;
 	int		j;
@@ -45,34 +45,34 @@ static char	*key_dollar(char *str, int size, int i)
 	return (name_variable);
 }
 
-static char	*ft_parse_dollar_val(t_envs_lst *env, char *key)
+static char	*ft_parse_dollar_val(t_env_list *env_list, char *key)
 {
 	char	*tmp;
 	char	*value;
 
-	if (ft_util_env_get(&env, key) != NULL)
+	if (ft_util_env_get(&env_list, key) != NULL)
 	{
-		tmp = ft_util_env_get(&env, key);
+		tmp = ft_util_env_get(&env_list, key);
 		value = ft_strdup(tmp);
 		if (value == NULL)
-			ft_malloc_error();
+			ft_error_throw(ERROR_MALLOC);
 		tmp = value;
 		value = ft_strtrim(value, "\'\"");
 		if (value == NULL)
-			ft_malloc_error();
+			ft_error_throw(ERROR_MALLOC);
 		free(tmp);
 	}
 	else
 	{
 		value = ft_strdup("");
 		if (value == NULL)
-			ft_malloc_error();
+			ft_error_throw(ERROR_MALLOC);
 	}
 	return (value);
 }
 
-char	*ft_parse_dollar(t_envs_lst *env, t_parse *parse, char *str,
-						t_shell *shell)
+char	*ft_parse_dollar(t_env_list *env_list, t_parse *parse, const char *str,
+						const t_shell *shell)
 {
 	char	*key;
 	char	*value;
@@ -90,7 +90,7 @@ char	*ft_parse_dollar(t_envs_lst *env, t_parse *parse, char *str,
 	key = key_dollar(str, parse->size, parse->i);
 	if (key == NULL)
 		return (NULL);
-	value = ft_parse_dollar_val(env, key);
+	value = ft_parse_dollar_val(env_list, key);
 	if (key)
 		free(key);
 	if (value == NULL)
@@ -99,7 +99,7 @@ char	*ft_parse_dollar(t_envs_lst *env, t_parse *parse, char *str,
 	return (value);
 }
 
-bool	ft_parse_dollar_search(char *str)
+t_bool	ft_parse_dollar_search(const char *str)
 {
 	int			i;
 	t_bool		root;
@@ -107,14 +107,14 @@ bool	ft_parse_dollar_search(char *str)
 
 	quotes = ft_init_quote();
 	i = -1;
-	root = false;
+	root = FALSE;
 	while (str[++i])
 	{
 		ft_util_quote_status(&quotes, str[i]);
-		if (str[i] == '$' && ft_isblank(str[i + 1]) == false
-			&& quotes.one == false)
+		if (str[i] == '$' && ft_isblank(str[i + 1]) == FALSE
+			&& quotes.one == FALSE)
 		{
-			root = true;
+			root = TRUE;
 			break ;
 		}
 	}
@@ -123,6 +123,6 @@ bool	ft_parse_dollar_search(char *str)
 	while (root && ft_isblank(str[--i]))
 		;
 	if (root && str[i] && i > 0 && str[i] == '<' && str[i - 1] == '<')
-		root = false;
+		root = FALSE;
 	return (root);
 }
