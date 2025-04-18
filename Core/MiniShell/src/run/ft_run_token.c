@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 11:57:18 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/18 11:58:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_run_token_execute(t_shell *shell, t_token *token, t_token *next, t_env_list *env_list)
 {
+	(void)next;
 	if (token)
 		ft_run_cmd(shell, token, env_list);
 	/*if (next && next->type == TOKEN_DOBINP)
