@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:08:02 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/19 13:33:53 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_init_shell(t_env_list *env_list, t_shell *shell)
 {
 	shell->is_running = TRUE;
 	shell->exit_status = STATUS_OK;
+	ft_util_banner_intro();
 	while (shell->is_running)
 	{
 		ft_signal_mask();
