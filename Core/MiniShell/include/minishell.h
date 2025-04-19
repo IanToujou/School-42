@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:20:37 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/19 12:40:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define MINISHELL_H
 
 # include "../lib/libft/include/libft.h"
+
 # include "errortype.h"
 # include "bool.h"
 # include "status.h"
@@ -156,5 +157,9 @@ t_bool		ft_run_token(t_shell *shell, t_token *token, t_env_list *env_list);
 void		ft_run_bin(t_shell *shell, t_token *token, t_env_list *env_list);
 
 void		ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token);
+
+void		ft_util_banner_intro(void);
+const char	*ft_util_banner_prompt_pre(void);
+const char	*ft_util_banner_prompt_post(void);
 
 #endif

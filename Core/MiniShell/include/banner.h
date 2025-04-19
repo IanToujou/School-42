@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:52:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/19 12:39:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,5 @@
 
 # define BANNER_LINE8 "| (￣ヽ＿_ヽ_)__)"
 # define BANNER_LINE9 "＼二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二二つ"
-
-void							ft_util_banner_intro(void);
-const char						*ft_util_banner_prompt_pre(void);
-const char						*ft_util_banner_prompt_post(void);
 
 #endif
