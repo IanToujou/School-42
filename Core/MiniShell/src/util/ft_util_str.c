@@ -31,17 +31,13 @@ t_bool	ft_util_str_strchr(const char *s, const int c)
 static size_t	ft_util_str_trim_all(const char *str, size_t size,
 		size_t *begin, size_t *end)
 {
-	while (ft_isblank(str[*begin]))
-	{
+	while (*begin < size && ft_isblank(str[*begin]))
 		(*begin)++;
-		size--;
-	}
-	while (ft_isblank(str[*end]))
-	{
+	if (*begin == size)
+		return (0);
+	while (*end > *begin && ft_isblank(str[*end]))
 		(*end)--;
-		size--;
-	}
-	return (size);
+	return (*end - *begin + 1);
 }
 
 t_bool	ft_util_str_tab_skip(const char *str)
@@ -63,15 +59,19 @@ char	*ft_util_str_tab_trim(const char *str)
 	size_t	begin;
 	size_t	end;
 	size_t	size;
+	size_t	new_size;
 
-	begin = 0;
-	end = ft_strlen(str) - 1;
+	if (!str)
+		return (NULL);
 	size = ft_strlen(str);
 	if (size == 0)
 		return (ft_strdup(""));
-	if (ft_util_str_trim_all(str, size, &begin, &end) <= 0)
+	begin = 0;
+	end = size - 1;
+	new_size = ft_util_str_trim_all(str, size, &begin, &end);
+	if (new_size == 0)
 		return (ft_strdup(""));
-	return (ft_substr(str, begin, size));
+	return (ft_substr(str, begin, new_size));
 }
 
 char	*ft_util_str_tolower(const char *str)
