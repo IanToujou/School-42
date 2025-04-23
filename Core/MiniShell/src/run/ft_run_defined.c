@@ -18,6 +18,8 @@ t_bool	ft_run_defined_is_defined(const t_token *token)
 		return (FALSE);
 	if (ft_strncmp(token->str, "exit", ft_strlen(token->str) + 1) == 0)
 		return (TRUE);
+	if (ft_strncmp(token->str, "nya", ft_strlen(token->str) + 1) == 0)
+		return (TRUE);
 	if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)
 		return (TRUE);
 	if (ft_strncmp(token->str, "echo", ft_strlen(token->str) + 1) == 0)
@@ -37,11 +39,11 @@ void	ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list)
 {
 	if (ft_strncmp(token->str, "nya", ft_strlen(token->str) + 1) == 0)
 		ft_putstr_fd("Meow\n", STDOUT_FILENO);
-	if (ft_strncmp(token->str, "exit", ft_strlen(token->str) + 1) == 0)
+	else if (ft_strncmp(token->str, "exit", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_exit(shell, &env_list, token->next);
-	/*else if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)
+	else if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_env(shell, &env_list);
-	else if (ft_strncmp(token->str, "echo", ft_strlen(token->str) + 1) == 0)
+	/*else if (ft_strncmp(token->str, "echo", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_echo(shell, token->next);
 	else if (ft_strncmp(token->str, "pwd", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_pwd(shell);
