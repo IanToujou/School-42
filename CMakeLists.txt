@@ -275,6 +275,7 @@ add_executable(MiniShell
 		"Core/MiniShell/src/signal/ft_signal.c"
 		"Core/MiniShell/src/cmd/exit/ft_cmd_exit.c"
 		"Core/MiniShell/src/cmd/env/ft_cmd_env.c"
+		"Core/MiniShell/src/cmd/pwd/ft_cmd_pwd.c"
 		"Core/MiniShell/src/parse/ft_parse_input.c"
 		"Core/MiniShell/src/signal/ft_signal_add.c"
 		"Core/MiniShell/src/util/ft_util_str.c"

@@ -14,6 +14,7 @@ NAME = minishell
 
 SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/cmd/env/ft_cmd_env.c \
+		src/cmd/pwd/ft_cmd_pwd.c \
 		src/error/ft_error_throw.c \
 		src/exit/ft_exit_main.c \
 		src/init/ft_init_main.c \

@@ -43,10 +43,10 @@ void	ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list)
 		ft_cmd_exit(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_env(shell, &env_list);
-	/*else if (ft_strncmp(token->str, "echo", ft_strlen(token->str) + 1) == 0)
-		ft_cmd_echo(shell, token->next);
 	else if (ft_strncmp(token->str, "pwd", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_pwd(shell);
+	/*else if (ft_strncmp(token->str, "echo", ft_strlen(token->str) + 1) == 0)
+		ft_cmd_echo(shell, token->next);
 	else if (ft_strncmp(token->str, "cd", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_cd(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "export", ft_strlen(token->str) + 1) == 0)
