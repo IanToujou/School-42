@@ -158,6 +158,7 @@ void		ft_run_bin(t_shell *shell, t_token *token, t_env_list *env_list);
 
 void		ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token);
 void		ft_cmd_env(t_shell *shell, t_env_list **env_list);
+void		ft_cmd_echo(t_shell *shell, t_token *args);
 void		ft_cmd_pwd(t_shell *shell);
 
 void		ft_util_banner_intro(void);
