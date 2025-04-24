@@ -38,7 +38,10 @@
 # define ERROR_EXIT_STD 7
 # define ERROR_EXIT_STD_MSG "Exiting standard in-out failed."
 
-# define ERROR_FORK 7
+# define ERROR_FORK 8
 # define ERROR_FORK_MSG "Failed to fork."
+
+# define ERROR_GETCWD 9
+# define ERROR_GETCWD_MSG "Failed to get current working directory."
 
 #endif
