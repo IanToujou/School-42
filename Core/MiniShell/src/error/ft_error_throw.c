@@ -35,6 +35,10 @@ void	ft_error_throw(const int error)
 		printf(ERROR_INIT_TEMP_MSG);
 	else if (error == ERROR_INIT_STD)
 		printf(ERROR_INIT_STD_MSG);
+	else if (error == ERROR_FORK)
+		printf(ERROR_FORK_MSG);
+	else if (error == ERROR_GETCWD)
+		printf(ERROR_GETCWD_MSG);
 	printf("\033[0m\n");
 	exit(EXIT_FAILURE);
 }
