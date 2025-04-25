@@ -274,6 +274,8 @@ add_executable(MiniShell
 		"Core/MiniShell/include/status.h"
 		"Core/MiniShell/src/signal/ft_signal.c"
 		"Core/MiniShell/src/cmd/exit/ft_cmd_exit.c"
+  		"Core/MiniShell/src/cmd/export/ft_cmd_export.c"
+    		"Core/MiniShell/src/cmd/unset/ft_cmd_unset.c"
 		"Core/MiniShell/src/cmd/env/ft_cmd_env.c"
 		"Core/MiniShell/src/cmd/pwd/ft_cmd_pwd.c"
 		"Core/MiniShell/src/cmd/echo/ft_cmd_echo.c"
