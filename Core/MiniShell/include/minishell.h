@@ -173,6 +173,7 @@ void					ft_cmd_echo(t_shell *shell, t_token *args);
 void					ft_cmd_pwd(t_shell *shell);
 void					ft_cmd_export(t_shell *shell, t_env_list **env_list,
 							t_token *args);
+void    				ft_cmd_export_handle_env(t_env_list **env_list, char *str);
 void					ft_cmd_export_handle_env(t_env_list **env_list,
 							char *str);
 void					ft_cmd_unset(t_shell *shell, t_env_list **env_list,
