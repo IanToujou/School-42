@@ -22,25 +22,29 @@
  */
 static t_env	*ft_util_env_var_create(const char *var)
 {
-	int		i;
-	int		j;
 	t_env	*new;
+	char	*equal_sign;
 
-	new = (t_env *) malloc(sizeof(t_env));
+	new = (t_env *)malloc(sizeof(t_env));
 	if (!new)
 		ft_error_throw(ERROR_MALLOC);
-	i = 0;
-	while (var[i] != '=')
-		i++;
-	new->key = ft_substr(var, 0, i);
-	if (!new->key)
-		ft_error_throw(ERROR_MALLOC);
-	j = i + 1;
-	while (var[j] != '\0' && var[j] != '\n')
-		j++;
-	new->value = ft_substr(var, i + 1, j - i);
-	if (!new->value)
-		ft_error_throw(ERROR_MALLOC);
+	equal_sign = ft_strchr(var, '=');
+	if (equal_sign)
+	{
+		new->key = ft_substr(var, 0, equal_sign - var);
+		if (!new->key)
+			ft_error_throw(ERROR_MALLOC);
+		new->value = ft_strdup(equal_sign + 1);
+		if (!new->value)
+			ft_error_throw(ERROR_MALLOC);
+	}
+	else
+	{
+		new->key = ft_strdup(var);
+		if (!new->key)
+			ft_error_throw(ERROR_MALLOC);
+		new->value = NULL;
+	}
 	return (new);
 }
 
@@ -114,15 +118,24 @@ char	*ft_util_env_get(t_env_list **env_list, const char *key)
 void	ft_util_env_var_remove(t_env_list **env_list, const char *key)
 {
 	t_env_list	*current;
-	t_env_list	*temp;
+	t_env_list	*prev;
 
-	if (env_list == NULL || *env_list == NULL || key == NULL)
+	if (!env_list || !*env_list || !key)
 		return ;
 	current = *env_list;
-	if (ft_strncmp(current->current->key, key, ft_strlen(key) + 1) == 0)
+	prev = NULL;
+	while (current)
 	{
-		temp = current->next;
-		ft_util_env_free(current);
-		*env_list = temp;
+		if (ft_strncmp(current->current->key, key, ft_strlen(key) + 1) == 0)
+		{
+			if (prev)
+				prev->next = current->next;
+			else
+				*env_list = current->next;
+			ft_util_env_free(current);
+			return ;
+		}
+		prev = current;
+		current = current->next;
 	}
 }

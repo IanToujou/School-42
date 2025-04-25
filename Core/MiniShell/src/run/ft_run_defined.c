@@ -49,8 +49,8 @@ void	ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list)
 		ft_cmd_echo(shell, token->next);
 	else if (ft_strncmp(token->str, "cd", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_cd(shell, &env_list, token->next);
-	/*else if (ft_strncmp(token->str, "export", ft_strlen(token->str) + 1) == 0)
+	else if (ft_strncmp(token->str, "export", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_export(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "unset", ft_strlen(token->str) + 1) == 0)
-		ft_cmd_unset(shell, &env_list, token->next);*/
+		ft_cmd_unset(shell, &env_list, token->next);
 }

@@ -24,3 +24,36 @@ void	ft_util_env_free(t_env_list	*env_list)
 	}
 	free(env_list);
 }
+
+void	ft_util_env_print_exported(t_env_list *env_list)
+{
+	while (env_list)
+	{
+		ft_putstr_fd("declare -x ", STDOUT_FILENO);
+		ft_putstr_fd(env_list->current->key, STDOUT_FILENO);
+		if (env_list->current->value)
+		{
+			ft_putstr_fd("=\"", STDOUT_FILENO);
+			ft_putstr_fd(env_list->current->value, STDOUT_FILENO);
+			ft_putstr_fd("\"", STDOUT_FILENO);
+		}
+		ft_putstr_fd("\n", STDOUT_FILENO);
+		env_list = env_list->next;
+	}
+}
+
+int	ft_is_valid_env_name(const char *str)
+{
+	int	i;
+
+	if (!str || !*str || ft_isdigit(*str))
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '=')
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
