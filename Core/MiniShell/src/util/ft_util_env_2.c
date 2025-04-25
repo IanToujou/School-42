@@ -42,18 +42,19 @@ void	ft_util_env_print_exported(t_env_list *env_list)
 	}
 }
 
-int	ft_is_valid_env_name(const char *str)
+int ft_is_valid_env_name(const char *str)
 {
-	int	i;
+    int i;
 
-	if (!str || !*str || ft_isdigit(*str))
-		return (0);
-	i = 0;
-	while (str[i] && str[i] != '=')
-	{
-		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (0);
-		i++;
-	}
-	return (1);
+    if (!str || !*str || *str == '=' || ft_isdigit(*str))
+        return (0);
+    
+    i = 0;
+    while (str[i] && str[i] != '=')
+    {
+        if (!ft_isalnum(str[i]) && str[i] != '_')
+            return (0);
+        i++;
+    }
+    return (1);
 }
