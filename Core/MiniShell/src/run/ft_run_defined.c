@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/19 13:33:27 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/26 18:37:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_bool	ft_run_defined_is_defined(const t_token *token)
 void	ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list)
 {
 	if (ft_strncmp(token->str, "nya", ft_strlen(token->str) + 1) == 0)
-		ft_putstr_fd("Meow\n", STDOUT_FILENO);
+		ft_cmd_nya(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "exit", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_exit(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)

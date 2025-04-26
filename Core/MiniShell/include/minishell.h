@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/25 12:12:19 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/04/26 18:37:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,8 @@ void					ft_cmd_export_handle_env(t_env_list **env_list,
 							char *str);
 void					ft_cmd_unset(t_shell *shell, t_env_list **env_list,
 							t_token *args);
+void					ft_cmd_nya(t_shell *shell, t_env_list **env_list,
+							t_token *token);
 
 void					ft_util_banner_intro(void);
 const char				*ft_util_banner_prompt_pre(void);

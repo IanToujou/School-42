@@ -306,6 +306,7 @@ add_executable(MiniShell
 		Core/MiniShell/src/util/ft_util_cmd_3.c
 		Core/MiniShell/src/parse/ft_parse_dollar.c
 		Core/MiniShell/src/util/ft_util_env_2.c
+		Core/MiniShell/src/cmd/nya/ft_cmd_nya.c
 )
 
 add_executable(Cub3D

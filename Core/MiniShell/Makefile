@@ -18,6 +18,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/cmd/export/ft_cmd_export.c \
 		src/cmd/echo/ft_cmd_echo.c \
 		src/cmd/cd/ft_cmd_cd.c \
+		src/cmd/nya/ft_cmd_nya.c \
 		src/cmd/pwd/ft_cmd_pwd.c \
 		src/error/ft_error_throw.c \
 		src/exit/ft_exit_main.c \
