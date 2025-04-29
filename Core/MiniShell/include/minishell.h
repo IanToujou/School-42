@@ -178,8 +178,7 @@ void					ft_cmd_export_handle_env(t_env_list **env_list,
 							char *str);
 void					ft_cmd_unset(t_shell *shell, t_env_list **env_list,
 							t_token *args);
-void					ft_cmd_nya(t_shell *shell, t_env_list **env_list,
-							t_token *token);
+void					ft_cmd_nya();
 
 void					ft_util_banner_intro(void);
 const char				*ft_util_banner_prompt_pre(void);

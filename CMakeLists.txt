@@ -275,7 +275,7 @@ add_executable(MiniShell
 		"Core/MiniShell/src/signal/ft_signal.c"
 		"Core/MiniShell/src/cmd/exit/ft_cmd_exit.c"
   		"Core/MiniShell/src/cmd/export/ft_cmd_export.c"
-    		"Core/MiniShell/src/cmd/unset/ft_cmd_unset.c"
+		"Core/MiniShell/src/cmd/unset/ft_cmd_unset.c"
 		"Core/MiniShell/src/cmd/env/ft_cmd_env.c"
 		"Core/MiniShell/src/cmd/pwd/ft_cmd_pwd.c"
 		"Core/MiniShell/src/cmd/echo/ft_cmd_echo.c"
@@ -287,26 +287,26 @@ add_executable(MiniShell
 		"Core/MiniShell/src/util/ft_util_quote.c"
 		"Core/MiniShell/src/util/ft_util_redirect.c"
 		"Core/MiniShell/include/redirect.h"
-		Core/MiniShell/include/token.h
-		Core/MiniShell/src/util/ft_util_num.c
-		Core/MiniShell/src/run/ft_run_cmd.c
-		Core/MiniShell/src/run/ft_run_bin.c
-		Core/MiniShell/src/run/ft_run_defined.c
-		Core/MiniShell/src/parse/ft_parse_handle.c
-		Core/MiniShell/src/run/ft_run_token.c
-		Core/MiniShell/src/util/ft_util_token.c
-		Core/MiniShell/src/init/ft_init_parse.c
-		Core/MiniShell/src/util/ft_util_token_2.c
-		Core/MiniShell/src/init/ft_init_token.c
-		Core/MiniShell/src/util/ft_util_token_3.c
-		Core/MiniShell/src/util/ft_util_envcase.c
-		Core/MiniShell/src/util/ft_util_token_4.c
-		Core/MiniShell/src/util/ft_util_cmd.c
-		Core/MiniShell/src/util/ft_util_cmd_2.c
-		Core/MiniShell/src/util/ft_util_cmd_3.c
-		Core/MiniShell/src/parse/ft_parse_dollar.c
-		Core/MiniShell/src/util/ft_util_env_2.c
-		Core/MiniShell/src/cmd/nya/ft_cmd_nya.c
+		"Core/MiniShell/include/token.h"
+		"Core/MiniShell/src/util/ft_util_num.c"
+		"Core/MiniShell/src/run/ft_run_cmd.c"
+		"Core/MiniShell/src/run/ft_run_bin.c"
+		"Core/MiniShell/src/run/ft_run_defined.c"
+		"Core/MiniShell/src/parse/ft_parse_handle.c"
+		"Core/MiniShell/src/run/ft_run_token.c"
+		"Core/MiniShell/src/util/ft_util_token.c"
+		"Core/MiniShell/src/init/ft_init_parse.c"
+		"Core/MiniShell/src/util/ft_util_token_2.c"
+		"Core/MiniShell/src/init/ft_init_token.c"
+		"Core/MiniShell/src/util/ft_util_token_3.c"
+		"Core/MiniShell/src/util/ft_util_envcase.c"
+		"Core/MiniShell/src/util/ft_util_token_4.c"
+		"Core/MiniShell/src/util/ft_util_cmd.c"
+		"Core/MiniShell/src/util/ft_util_cmd_2.c"
+		"Core/MiniShell/src/util/ft_util_cmd_3.c"
+		"Core/MiniShell/src/parse/ft_parse_dollar.c"
+		"Core/MiniShell/src/util/ft_util_env_2.c"
+		"Core/MiniShell/src/cmd/nya/ft_cmd_nya.c"
 )
 
 add_executable(Cub3D
