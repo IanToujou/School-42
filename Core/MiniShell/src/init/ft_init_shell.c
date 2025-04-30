@@ -14,20 +14,13 @@
 
 static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 {
-	char	*prompt_pre;
-	char	*prompt_full;
+	char	*prompt;
 	char	*buffer;
 	char	*user;
 
 	user = ft_util_env_get(&env_list, "USER");
-	if (user)
-		prompt_pre = ft_strjoin(ft_util_banner_prompt_pre(), user);
-	else
-		prompt_pre = ft_strjoin(ft_util_banner_prompt_pre(), "nya");
-	if (prompt_pre == NULL)
-		ft_error_throw(ERROR_MALLOC);
-	prompt_full = ft_strjoin(prompt_pre, ft_util_banner_prompt_post());
-	buffer = readline(prompt_full);
+	prompt = ft_util_prompt(env_list);
+	buffer = readline(prompt);
 	if (!buffer)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
@@ -37,8 +30,7 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	add_history(buffer);
 	ft_parse_input(shell, env_list, buffer, user);
 	free(buffer);
-	free(prompt_full);
-	free(prompt_pre);
+	free(prompt);
 }
 
 /**

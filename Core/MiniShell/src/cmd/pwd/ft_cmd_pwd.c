@@ -12,7 +12,7 @@
 
 #include "../../../include/minishell.h"
 
-char	*ft_cmd_pwd_additional(void)
+char	*ft_cmd_pwd_get(void)
 {
 	char	*cwd;
 	size_t	buf_size;
@@ -41,7 +41,7 @@ void	ft_cmd_pwd(t_shell *shell)
 {
 	char	*cwd;
 
-	cwd = ft_cmd_pwd_additional();
+	cwd = ft_cmd_pwd_get();
 	ft_putstr_fd(cwd, shell->std_out);
 	ft_putstr_fd("\n", shell->std_out);
 	free(cwd);

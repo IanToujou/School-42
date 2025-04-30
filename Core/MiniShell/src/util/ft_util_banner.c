@@ -12,21 +12,6 @@
 
 #include "../../include/minishell.h"
 
-const char	*ft_util_banner_prompt_pre(void)
-{
-	return (
-		COLOR_RESET "┌──(" COLOR_PINK "≽^•w•^≼" COLOR_RESET " | " COLOR_PINK
-	);
-}
-
-const char	*ft_util_banner_prompt_post(void)
-{
-	return (
-		COLOR_RESET ")──[" COLOR_CYAN "~/Projects" COLOR_RESET "]\n"
-		"└─$ " COLOR_RESET
-	);
-}
-
 void	ft_util_banner_intro(void)
 {
 	int			i;

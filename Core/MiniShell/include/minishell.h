@@ -171,6 +171,7 @@ void					ft_cmd_exit(t_shell *shell, t_env_list **env_list,
 void					ft_cmd_env(t_shell *shell, t_env_list **env_list);
 void					ft_cmd_echo(t_shell *shell, t_token *args);
 void					ft_cmd_pwd(t_shell *shell);
+char					*ft_cmd_pwd_get(void);
 void					ft_cmd_export(t_shell *shell, t_env_list **env_list,
 							t_token *args);
 void    				ft_cmd_export_handle_env(t_env_list **env_list, char *str);
@@ -181,7 +182,6 @@ void					ft_cmd_unset(t_shell *shell, t_env_list **env_list,
 void					ft_cmd_nya();
 
 void					ft_util_banner_intro(void);
-const char				*ft_util_banner_prompt_pre(void);
-const char				*ft_util_banner_prompt_post(void);
+char					*ft_util_prompt(t_env_list *env_list);
 
 #endif
