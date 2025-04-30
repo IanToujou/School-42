@@ -12,26 +12,25 @@
 
 #include "../../../include/minishell.h"
 
-void	ft_cmd_echo(t_shell *shell, t_token *args)
+void	ft_cmd_echo(t_shell *shell, t_token *token)
 {
-	t_token	*current;
 	t_bool	newline;
 
-	current = args;
 	newline = TRUE;
-	if (current && ft_strncmp(current->str, "-n", 3) == 0)
+	if (token && token ->str
+		&& ft_strncmp(token->str, "-n", ft_strlen("-n") + 1) == 0)
 	{
 		newline = FALSE;
-		current = current->next;
+		token = token->next;
 	}
-	while (current)
+	while (token && token->type == TOKEN_ARG)
 	{
-		ft_putstr_fd(current->str, shell->std_out);
-		if (current->next)
-			ft_putchar_fd(' ', shell->std_out);
-		current = current->next;
+		ft_putstr_fd(token->str, STDOUT_FILENO);
+		if (token->next && token->next->type == TOKEN_ARG)
+			ft_putchar_fd(' ', STDOUT_FILENO);
+		token = token->next;
 	}
 	if (newline)
-		ft_putchar_fd('\n', shell->std_out);
+		ft_putchar_fd('\n', STDOUT_FILENO);
 	shell->exit_status = STATUS_OK;
 }
