@@ -308,6 +308,9 @@ add_executable(MiniShell
 		"Core/MiniShell/src/util/ft_util_env_2.c"
 		"Core/MiniShell/src/cmd/nya/ft_cmd_nya.c"
 		Core/MiniShell/src/util/ft_util_prompt.c
+		Core/MiniShell/src/util/ft_util_bin.c
+		Core/MiniShell/src/util/ft_util_bin_2.c
+		Core/MiniShell/src/util/ft_util_env_3.c
 )
 
 add_executable(Cub3D

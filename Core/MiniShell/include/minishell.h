@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/26 18:37:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/30 19:49:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void					ft_util_env_var_remove(t_env_list **env_list,
 							const char *key);
 void					ft_util_env_free(t_env_list *env_list);
 void					ft_util_env_print_exported(t_env_list *env_list);
+void					ft_util_env_update_shlvl(t_shell *shell, const t_token *token, t_env_list **env_list);
 int						ft_is_valid_env_name(const char *str);
 t_bool					ft_util_str_tab_skip(const char *str);
 char					*ft_util_str_tab_trim(const char *str);
@@ -140,6 +141,10 @@ char					**ft_util_cmd_split(t_env_list *env_list, char *str,
 char					*ft_util_cmd_grow_str(t_env_list *env_list, char *str,
 							t_shell *shell, t_bool *flag);
 char					**ft_util_token_free_cmds(char **cmds);
+void					ft_util_bin_signal(const t_token *token);
+void					ft_util_bin_free_paths(char **paths, char *cmd_with_slash);
+void					ft_util_launch_execve(t_env_list *env_list, char **args);
+char					**ft_util_env_to_array(t_env_list **env_list);
 
 void					ft_parse_env(t_env_list **env_list, char **env);
 t_bool					ft_parse_input(t_shell *shell, t_env_list *env_list,
@@ -161,7 +166,7 @@ void					ft_run_defined(t_shell *shell, t_token *token,
 							t_env_list *env_list);
 t_bool					ft_run_token(t_shell *shell, t_token *token,
 							t_env_list *env_list);
-void					ft_run_bin(t_shell *shell, t_token *token,
+void					ft_run_bin(t_shell *shell, const t_token *token,
 							t_env_list *env_list);
 
 void					ft_cmd_cd(t_shell *shell, t_env_list **env_list,

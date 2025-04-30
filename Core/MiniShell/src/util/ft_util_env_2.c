@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:13:07 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:13:21 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/30 19:42:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,25 @@ int ft_is_valid_env_name(const char *str)
         i++;
     }
     return (1);
+}
+
+void	ft_util_env_update_shlvl(t_shell *shell, const t_token *token, t_env_list **env_list)
+{
+	char	*line;
+	char	*lvl;
+
+	if (ft_strnstr(token->str, "minishell", ft_strlen(token->str)) != NULL)
+	{
+		shell->shlvl++;
+		lvl = ft_itoa(shell->shlvl);
+		if (lvl == NULL)
+			ft_error_throw(ERROR_MALLOC);
+		line = ft_strjoin("SHLVL=", ft_itoa(shell->shlvl));
+		if (line == NULL)
+			ft_error_throw(ERROR_MALLOC);
+		ft_util_env_var_remove(env_list, "SHLVL");
+		ft_util_env_var_add(env_list, line);
+		free(line);
+		free(lvl);
+	}
 }
