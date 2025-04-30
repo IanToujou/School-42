@@ -52,7 +52,8 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_token.c \
 		src/util/ft_util_token_2.c \
 		src/util/ft_util_token_3.c \
-		src/util/ft_util_token_4.c
+		src/util/ft_util_token_4.c \
+		src/util/ft_util_prompt.c
 
 OBJ = $(SRC:.c=.o)
 
