@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:17:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 19:44:28 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/30 19:56:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static char	*check_path_dirs(const char *command, t_env_list *env_list)
+static char	*ft_util_bin_check_path(const char *command, t_env_list *env_list)
 {
 	char	**paths;
 	char	*path;
@@ -40,13 +40,13 @@ static char	*check_path_dirs(const char *command, t_env_list *env_list)
 	return (NULL);
 }
 
-static char	*get_full_path(char *command, t_env_list *env_list)
+static char	*ft_util_bin_full_path(char *command, t_env_list *env_list)
 {
 	char	*path;
 
 	if (ft_strlen(command) == 0)
 		return (NULL);
-	path = check_path_dirs(command, env_list);
+	path = ft_util_bin_check_path(command, env_list);
 	if (path != NULL)
 		return (path);
 	else if (access(command, S_IXUSR) >= 0)
@@ -59,7 +59,7 @@ static char	*parse_cmd(char *buffer, t_env_list *env_list)
 {
 	char	*full_path;
 
-	full_path = get_full_path(buffer, env_list);
+	full_path = ft_util_bin_full_path(buffer, env_list);
 	if (ft_strlen(buffer) == 0
 		|| (full_path == NULL && ft_util_env_get(&env_list, "PATH") != NULL))
 	{
