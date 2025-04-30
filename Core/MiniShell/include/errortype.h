@@ -47,4 +47,16 @@
 # define ERROR_EXECVE 9
 # define ERROR_EXECVE_MSG "Failed to execute command."
 
+# define ERROR_OPEN 10
+# define ERROR_OPEN_MSG "Failed to open file."
+
+# define ERROR_DUP2 11
+# define ERROR_DUP2_MSG "Failed to duplicate file descriptor."
+
+# define ERROR_CLOSE 12
+# define ERROR_CLOSE_MSG "Process terminated with close error."
+
+# define ERROR_PIPE 13
+# define ERROR_PIPE_MSG "Process terminated with pipe error."
+
 #endif

@@ -35,10 +35,20 @@ void	ft_error_throw(const int error)
 		printf(ERROR_INIT_TEMP_MSG);
 	else if (error == ERROR_INIT_STD)
 		printf(ERROR_INIT_STD_MSG);
+	else if (error == ERROR_EXIT_STD)
+		printf(ERROR_EXIT_STD_MSG);
 	else if (error == ERROR_FORK)
 		printf(ERROR_FORK_MSG);
 	else if (error == ERROR_GETCWD)
 		printf(ERROR_GETCWD_MSG);
+	else if (error == ERROR_DUP2)
+		printf(ERROR_DUP2_MSG);
+	else if (error == ERROR_OPEN)
+		printf(ERROR_OPEN_MSG);
+	else if (error == ERROR_CLOSE)
+		printf(ERROR_CLOSE_MSG);
+	else if (error == ERROR_PIPE)
+		printf(ERROR_PIPE_MSG);
 	printf("\033[0m\n");
 	exit(EXIT_FAILURE);
 }

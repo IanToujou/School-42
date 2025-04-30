@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_util_env_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 17:13:07 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 19:42:35 by ibour            ###   ########.fr       */
+/*   Updated: 2025/04/30 22:03:02 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	ft_util_env_free(t_env_list	*env_list)
+void	ft_util_env_free(t_env_list *env_list)
 {
 	if (!env_list)
 		return ;
@@ -42,24 +42,24 @@ void	ft_util_env_print_exported(t_env_list *env_list)
 	}
 }
 
-int ft_is_valid_env_name(const char *str)
+int	ft_is_valid_env_name(const char *str)
 {
-    int i;
+	int	i;
 
-    if (!str || !*str || *str == '=' || ft_isdigit(*str))
-        return (0);
-    
-    i = 0;
-    while (str[i] && str[i] != '=')
-    {
-        if (!ft_isalnum(str[i]) && str[i] != '_')
-            return (0);
-        i++;
-    }
-    return (1);
+	if (!str || !*str || *str == '=' || ft_isdigit(*str))
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '=')
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-void	ft_util_env_update_shlvl(t_shell *shell, const t_token *token, t_env_list **env_list)
+void	ft_util_env_update_shlvl(t_shell *shell, const t_token *token,
+		t_env_list **env_list)
 {
 	char	*line;
 	char	*lvl;
