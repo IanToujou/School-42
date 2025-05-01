@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 22:10:21 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:11:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define MINISHELL_H
 
-# include "../lib/GetNextLine/get_next_line.h"
 # include "../lib/libft/include/libft.h"
 # include "banner.h"
 # include "bool.h"
