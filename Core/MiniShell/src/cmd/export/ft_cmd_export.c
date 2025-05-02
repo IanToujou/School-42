@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd_export.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwelfrin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 09:18:07 by mwelfrin          #+#    #+#             */
-/*   Updated: 2025/04/25 09:18:09 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/02 15:29:24 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static int	ft_handle_export_arg(t_env_list **env, t_token *arg)
 	return (0);
 }
 
-static void	ft_process_export_args(t_shell *shell, t_env_list **env, t_token *args)
+static void	ft_process_export_args(t_shell *shell, t_env_list **env,
+		t_token *args)
 {
 	int	has_error;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_util_env_3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 19:42:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 19:43:24 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/02 15:54:39 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static	void	ft_util_env_fill_array(t_env_list **env_list, char **parsed_envs)
+static void	ft_util_env_fill_array(t_env_list **env_list, char **parsed_envs)
 {
 	int			i;
 	t_env_list	*current;
@@ -47,7 +47,7 @@ char	**ft_util_env_to_array(t_env_list **env_list)
 	i = -1;
 	while (++i > -1 && current != NULL)
 		current = current->next;
-	parsed_envs = (char **) malloc(sizeof(char *) * (i + 1));
+	parsed_envs = (char **)malloc(sizeof(char *) * (i + 1));
 	if (parsed_envs == NULL)
 		ft_error_throw(ERROR_MALLOC);
 	ft_util_env_fill_array(env_list, parsed_envs);

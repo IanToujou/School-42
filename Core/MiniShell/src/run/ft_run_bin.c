@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_run_bin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 19:51:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/02 15:53:17 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	ft_run_bin_token_length(const t_token *token)
 	return (size);
 }
 
-static void	ft_run_bin_handle(t_shell *shell, const t_token *token, t_env_list *env_list)
+static void	ft_run_bin_handle(t_shell *shell, const t_token *token,
+		t_env_list *env_list)
 {
 	int		size;
 	int		i;
@@ -34,7 +35,7 @@ static void	ft_run_bin_handle(t_shell *shell, const t_token *token, t_env_list *
 	if (token->type == TOKEN_CMD)
 		ft_util_env_update_shlvl(shell, token, &env_list);
 	size = ft_run_bin_token_length(token->next);
-	args = (char **) malloc(sizeof(char *) * (size + 1));
+	args = (char **)malloc(sizeof(char *) * (size + 1));
 	if (args == NULL)
 		ft_error_throw(ERROR_MALLOC);
 	i = -1;

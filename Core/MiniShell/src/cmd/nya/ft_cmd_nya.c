@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd_nya.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 18:36:12 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/26 18:36:56 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/02 15:29:37 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-void	ft_cmd_nya()
+void	ft_cmd_nya(void)
 {
 	ft_putstr_fd("Meow\n", STDERR_FILENO);
 }

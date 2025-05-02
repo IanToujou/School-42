@@ -12,13 +12,7 @@
 
 #include "../../include/minishell.h"
 
-/**
- * Handles error messages and exits the program with
- * the error status code.
- *
- * @param error The type of error that occurred.
- */
-void	ft_error_throw(const int error)
+static void	print_error_message(const int error)
 {
 	printf("Error\n\033[31m");
 	if (error == ERROR_UNKNOWN)
@@ -37,7 +31,19 @@ void	ft_error_throw(const int error)
 		printf(ERROR_INIT_STD_MSG);
 	else if (error == ERROR_EXIT_STD)
 		printf(ERROR_EXIT_STD_MSG);
-	else if (error == ERROR_FORK)
+	printf("\033[0m\n");
+}
+
+/**
+ * Handles error messages and exits the program with
+ * the error status code.
+ *
+ * @param error The type of error that occurred.
+ */
+void	ft_error_throw(const int error)
+{
+	print_error_message(error);
+	if (error == ERROR_FORK)
 		printf(ERROR_FORK_MSG);
 	else if (error == ERROR_GETCWD)
 		printf(ERROR_GETCWD_MSG);

@@ -38,7 +38,7 @@ t_bool	ft_run_defined_is_defined(const t_token *token)
 void	ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list)
 {
 	if (ft_strncmp(token->str, "nya", ft_strlen(token->str) + 1) == 0)
-		ft_cmd_nya(shell, &env_list, token->next);
+		ft_cmd_nya();
 	else if (ft_strncmp(token->str, "exit", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_exit(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/21 13:55:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/02 15:58:37 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static const char	*ft_util_prompt_two(void)
 	);
 }
 
-static const char	*ft_util_prompt_three(void) {
+static const char	*ft_util_prompt_three(void)
+{
 	return (
 		COLOR_RESET "]\n"
 		"└─$ " COLOR_RESET

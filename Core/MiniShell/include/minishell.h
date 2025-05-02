@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/01 11:11:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/02 15:43:24 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@
 # include "status.h"
 # include "token.h"
 # include <errno.h>
+# include <errno.h>
 # include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <sys/wait.h>
@@ -130,6 +132,8 @@ t_token					*ft_util_token_previous(t_token *token);
 t_token					*ft_util_token_next(t_token *token);
 t_token					*ft_util_token_create(const char *content);
 void					ft_util_token_add_back(t_token **list, t_token *new);
+void					ft_util_env_set(t_env_list **env_list, const char *key,
+							const char *value);
 void					ft_util_token_free(t_token *list);
 t_bool					ft_util_token_process(t_shell *shell, char **commands,
 							t_env_list *env_list);
@@ -204,7 +208,7 @@ void					ft_cmd_export_handle_env(t_env_list **env_list,
 							char *str);
 void					ft_cmd_unset(t_shell *shell, t_env_list **env_list,
 							t_token *args);
-void					ft_cmd_nya();
+void					ft_cmd_nya(void);
 
 void					ft_util_banner_intro(void);
 char					*ft_util_prompt(t_env_list *env_list);
