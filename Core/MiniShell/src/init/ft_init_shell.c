@@ -21,6 +21,7 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	user = ft_util_env_get(&env_list, "USER");
 	prompt = ft_util_prompt(env_list);
 	buffer = readline(prompt);
+	free(prompt);
 	if (!buffer)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
@@ -30,7 +31,6 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
 	add_history(buffer);
 	ft_parse_input(shell, env_list, buffer, user);
 	free(buffer);
-	free(prompt);
 }
 
 /**
