@@ -29,7 +29,7 @@ static char	*ft_util_bin_check_path(const char *command, t_env_list *env_list)
 		path = ft_strjoin(paths[i], cmd_with_slash);
 		if (path == NULL)
 			ft_error_throw(ERROR_MALLOC);
-		if (access(path, S_IXUSR) >= 0)
+		if (access(path, F_OK | X_OK) == 0)
 		{
 			ft_util_bin_free_paths(paths, cmd_with_slash);
 			return (path);
