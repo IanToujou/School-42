@@ -15,13 +15,19 @@
 void	ft_cmd_echo(t_shell *shell, t_token *token)
 {
 	t_bool	newline;
+	int		i;
 
 	newline = TRUE;
-	if (token && token ->str
-		&& ft_strncmp(token->str, "-n", ft_strlen("-n") + 1) == 0)
+	while (token && token->type == TOKEN_ARG && token->str[0] == '-')
 	{
+		i = 1;
+		while (token->str[i] == 'n')
+			i++;
+		if (i > 1 && token->str[i] == '\0')
+			token = token->next;
+		else
+			break ;
 		newline = FALSE;
-		token = token->next;
 	}
 	while (token && token->type == TOKEN_ARG)
 	{

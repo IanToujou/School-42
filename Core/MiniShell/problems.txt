@@ -3,21 +3,5 @@
 
 :            doesnt give empty promptline
 
->            segfault
-                      
-<	     segfault  all these redirections should be taken care of more delicately when parsing
-
->>           segfault
-
-<<           segfault 
-
->>>>>>>>>>>>> seggggglaifu
-
-echo -nnn test  doesnt behave like bash
-
-echo test >  segfault!!!!!11111
-
-cat <        segfault >:( 
-
 cat and after ctrl+\ was supposed to core dump or exit it prints exit but it doesnt exit
 
