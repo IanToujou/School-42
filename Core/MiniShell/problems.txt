@@ -3,5 +3,7 @@
 
 :            doesnt give empty promptline
 
+>>echo>>    this still gives segfault
+
 cat and after ctrl+\ was supposed to core dump or exit it prints exit but it doesnt exit
 
