@@ -13,22 +13,18 @@
 #include "../../include/minishell.h"
 
 static t_bool	ft_parse_input_str(const char *str,
-		const t_quotes *quotes, int *i, const char *user)
+		t_quotes *quotes, int *i, const char *user)
 {
-	//static char	*pool_symbols = "\\<>|;";
+	static char	*pool_symbols = "\\<>|;";
 
-	(void)str;
-	(void)quotes;
-	(void)user;
-	(void)i;
-	/*ft_util_quote_set(quotes, str[*i]);
+	ft_util_quote_set(quotes, str[*i]);
 	if (str[*i] == '\\' && quotes->two == true)
 		(*i)++;
 	else if (ft_util_str_strchr(pool_symbols, str[*i]) == true
 		&& ft_util_quote_is_outside(quotes) == true)
 		if (ft_check_seps(str, i, user) == false
 			|| ft_util_redirect_check(str, i, user) == false)
-			return (FALSE);*/
+			return (FALSE);
 	return (TRUE);
 }
 

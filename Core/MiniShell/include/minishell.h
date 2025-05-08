@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/02 15:43:24 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:48:06 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,7 @@ int						ft_is_valid_env_name(const char *str);
 t_bool					ft_util_str_tab_skip(const char *str);
 char					*ft_util_str_tab_trim(const char *str);
 char					*ft_util_str_tolower(const char *str);
-t_bool					ft_util_quote_status(t_quotes *quotes, char c);
-t_bool					ft_util_quote_is_outside(const t_quotes *quotes);
+bool					ft_util_quote_status(t_quotes *quotes, char ch);
 void					ft_util_quote_plus(t_token *cmds);
 t_bool					ft_util_num_isnumber(const char *str);
 t_bool					ft_util_str_strchr(const char *s, int c);
@@ -176,7 +175,7 @@ int						ft_parse_handle(t_shell *shell, t_env_list *env_list,
 t_bool					ft_parse_dollar_search(const char *str);
 char					*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
 							const char *str, const t_shell *shell);
-
+bool					ft_check_redirect(char *str, int *i, char *name);
 t_bool					ft_exit_std(const t_shell *shell);
 void					ft_exit_env(t_env_list **env_list);
 void					ft_exit_temp(const t_shell *shell);
@@ -211,5 +210,21 @@ void					ft_cmd_nya(void);
 
 void					ft_util_banner_intro(void);
 char					*ft_util_prompt(t_env_list *env_list);
+
+bool					ft_util_quote_set(t_quotes *quotes, char ch);
+bool					ft_util_quote_is_outside(const t_quotes *quotes);
+bool					ft_check_seps(const char *str, int *i,
+							const char *name);
+;
+bool					ft_is_whitespace(char c);
+bool					ft_strchr_bo(const char *s, int c);
+bool					ft_util_redirect_check(const char *str, int *i,
+							const char *name);
+int						ft_check_redirect_type(t_shell *shell, t_token *token,
+							t_token *prev, t_env_list *env);
+
+bool					error_syntax_token(char ch, const char *name);
+bool					error_redirect_check(int redirect_first,
+							int redirect_second, const char *name);
 
 #endif

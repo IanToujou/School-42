@@ -6,11 +6,69 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:15:00 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 22:05:01 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:47:18 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+static int	redirect_type(const char *str, int i)
+{
+	if (str[i] == '<' && str[i + 1] == '<')
+		return (REDIRECT_IN_TWO);
+	if (str[i] == '<')
+		return (REDIRECT_IN);
+	if (str[i] == '>' && str[i + 1] == '>')
+		return (REDIRECT_OUT_TWO);
+	if (str[i] == '>')
+		return (REDIRECT_OUT);
+	return (REDIRECT_EMPTY);
+}
+
+bool	ft_util_redirect_check(const char *str, int *i, const char *name)
+{
+	int	redirect_first;
+	int	redirect_second;
+	int	j;
+
+	redirect_first = REDIRECT_EMPTY;
+	redirect_second = REDIRECT_EMPTY;
+	if (str[*i] == '<' || str[*i] == '>')
+	{
+		redirect_first = redirect_type(str, *i);
+		(*i)++;
+		if (redirect_first == REDIRECT_IN_TWO
+			|| redirect_first == REDIRECT_IN_TWO)
+			(*i)++;
+		j = *i;
+		while (ft_is_whitespace(str[j]))
+			j++;
+		if (str[j] == '\0' || str[j] == ';')
+			return (error_syntax_token('\n', name));
+		redirect_second = redirect_type(str, j);
+		if (error_redirect_check(redirect_first, redirect_second,
+				name) == false)
+			return (false);
+	}
+	return (true);
+}
+
+int	ft_check_redirect_type(t_shell *shell, t_token *token, t_token *prev,
+		t_env_list *env)
+{
+	int	lvl;
+
+	lvl = PROCESS_LEVEL_DEFAULT;
+	if (prev && (prev->type == TOKEN_TRUNC || prev->type == TOKEN_APPEND))
+		ft_handle_redirections(shell, token);
+	else if (prev && (prev->type == TOKEN_INPUT))
+		ft_handle_input(shell, token, env);
+	else if (prev && (prev->type == TOKEN_DOBINP))
+		ft_handle_dobinp(shell, token, env);
+	else if (prev && (prev->type == TOKEN_PIPE))
+		lvl = ft_check_pipe_io(shell, prev);
+	return (lvl);
+}
 
 int	ft_util_redirect_level(t_shell *shell, t_token *token, t_token *prev,
 		t_env_list *env_list)
@@ -221,4 +279,31 @@ int	ft_handle_parent_pipe(t_shell *shell, int *fd, pid_t pid)
 	if (close(fd[1]) == -1)
 		ft_error_throw(ERROR_CLOSE);
 	return (PROCESS_LEVEL_PARENT);
+}
+
+bool	error_syntax_token(char ch, const char *name)
+{
+	write(2, name, ft_strlen(name) + 1);
+	if (ch == '\0')
+		write(2, ": these commands are not supported\n", 35);
+	else if (ch == '\n')
+		write(2, ": syntax error near unexpected token `newline'\n", 47);
+	else if (ch == ';')
+		write(2, ": syntax error near unexpected token `;'\n", 41);
+	else if (ch == '\\')
+		write(2, ": syntax error near unexpected token `\\'\n", 41);
+	else if (ch == '|')
+		write(2, ": syntax error near unexpected token `|'\n", 41);
+	return (false);
+}
+
+bool	error_redirect_check(int redirect_first, int redirect_second,
+		const char *name)
+{
+	(void)name;
+	if (redirect_first == REDIRECT_IN && redirect_second == REDIRECT_IN)
+		return (error_syntax_token('<', name));
+	if (redirect_first == REDIRECT_OUT && redirect_second == REDIRECT_OUT)
+		return (error_syntax_token('>', name));
+	return (true);
 }
