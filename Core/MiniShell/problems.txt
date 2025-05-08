@@ -1,0 +1,41 @@
+/bin/ls
+/bin/ls -l     supposed to run ls it doesnt
+
+/bin/echo hello world     supposed to echo but no
+hello world
+
+/bin/doesnotexist   it gives wrong error message instead of 'no such file or directory:'	
+
+/bin/grep main minishell.c  didnt grep lel
+
+./minishell       doesnt run minishell
+
+expr "$1" + "$2"   if we have a basic .sh script like this and try to run it with arguments such as
+./add.sh 5 7    it is supposed to give us the result but our minishell cant run it.
+
+\n           doesnt give empty promptline
+
+:            doesnt give empty promptline
+
+>            segfault
+                      
+<	     segfault  all these redirections should be taken care of more delicately when parsing
+
+>>           segfault
+
+<<           segfault 
+
+>>>>>>>>>>>>> seggggglaifu
+
+echo -nnn test  doesnt behave like bash
+
+echo test >  segfault!!!!!11111
+
+cat <        segfault >:( 
+
+cat and after ctrl+\ was supposed to core dump or exit it prints exit but it doesnt exit
+
+unset PATH
+ls       # it no longer listing but should give error "command not found" we dont give error message
+export PATH="/bin:/usr/bin"
+ls       ls works again

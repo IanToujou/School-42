@@ -49,6 +49,12 @@ static char	*ft_util_bin_full_path(char *command, t_env_list *env_list)
 	path = ft_util_bin_check_path(command, env_list);
 	if (path != NULL)
 		return (path);
+	if (ft_strchr(command, '/'))
+	{
+		if (access(command, F_OK | X_OK) == 0)
+			return (ft_strdup(command));
+		return (NULL);
+	}
 	else if (access(command, S_IXUSR) >= 0)
 		return (command);
 	else
