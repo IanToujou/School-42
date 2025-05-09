@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/09 19:56:47 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/09 19:59:01 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 			printf("test 5\n"); fflush(stdout);
 			shell->executed = true;
 		}
+		printf("eeee\n"); fflush(stdout);
 		ft_run_token_execute(shell, token, next, env_list);
 	}
+	printf("ccccc\n"); fflush(stdout);
 }
 
 t_bool	ft_run_token(t_shell *shell, t_token *token, t_env_list *env_list)
