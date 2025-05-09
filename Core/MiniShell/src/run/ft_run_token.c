@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/09 19:59:01 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/09 20:10:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,21 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	t_token	*next;
 	int		process_level;
 
-	printf("run token process\n"); fflush(stdout);
 	prev = ft_util_token_previous(token);
 	next = ft_util_token_next(token);
-	if (!prev && token && token->type != TOKEN_CMD) {
-		printf("test 1\n"); fflush(stdout);
+	if (!prev && token && token->type != TOKEN_CMD)
 		ft_run_token_process(shell, token->next, env_list);
-	}
-	printf("test 2\n"); fflush(stdout);
 	process_level = ft_util_redirect_level(shell, token, prev, env_list);
-	printf("post\n"); fflush(stdout);
-	if (next && process_level != PROCESS_LEVEL_PARENT) {
-		printf("test 3\n"); fflush(stdout);
+	if (next && process_level != PROCESS_LEVEL_PARENT)
 		ft_run_token_process(shell, next->next, env_list);
-	}
-	printf("d32d32d\n"); fflush(stdout);
-	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed
+	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed // todo fix
 		&& (!prev || prev->type == TOKEN_PIPE)
 		&& token->type == TOKEN_CMD && !errno)
 	{
-		printf("test 4\n"); fflush(stdout);
-		if (process_level == PROCESS_LEVEL_CHILD) {
-			printf("test 5\n"); fflush(stdout);
+		if (process_level == PROCESS_LEVEL_CHILD)
 			shell->executed = true;
-		}
-		printf("eeee\n"); fflush(stdout);
 		ft_run_token_execute(shell, token, next, env_list);
 	}
-	printf("ccccc\n"); fflush(stdout);
 }
 
 t_bool	ft_run_token(t_shell *shell, t_token *token, t_env_list *env_list)
