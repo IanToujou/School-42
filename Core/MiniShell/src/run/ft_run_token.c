@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/09 19:56:22 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/09 19:56:47 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 		printf("test 3\n"); fflush(stdout);
 		ft_run_token_process(shell, next->next, env_list);
 	}
+	printf("d32d32d\n"); fflush(stdout);
 	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed
 		&& (!prev || prev->type == TOKEN_PIPE)
 		&& token->type == TOKEN_CMD && !errno)
