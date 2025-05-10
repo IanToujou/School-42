@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/10 05:30:09 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/10 05:31:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,18 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	t_token	*next;
 	int		process_level;
 
-	printf("TOKEN IS: %p\n", token);
+	printf("TOKEN IS: %p\n", token); fflush(stdout);
 	prev = ft_util_token_previous(token);
 	next = ft_util_token_next(token);
-	if (!prev && token && token->type != TOKEN_CMD)
+	if (!prev && token && token->type != TOKEN_CMD) {
+		printf("One\n"); fflush(stdout);
 		ft_run_token_process(shell, token->next, env_list);
+	}
 	process_level = ft_util_redirect_level(shell, token, prev, env_list);
-	if (next && process_level != PROCESS_LEVEL_PARENT)
+	if (next && process_level != PROCESS_LEVEL_PARENT) {
+		printf("Two\n"); fflush(stdout);
 		ft_run_token_process(shell, next->next, env_list);
+	}
 	printf("Before\n"); fflush(stdout);
 	printf("process level is: %d\n", process_level); fflush(stdout);
 	printf("shell->executed is: %d\n", shell->executed); fflush(stdout);
