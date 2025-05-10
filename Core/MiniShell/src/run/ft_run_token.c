@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/10 05:33:44 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/10 08:15:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,18 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	t_token	*next;
 	int		process_level;
 
-	printf("TOKEN IS: %p\n", token); fflush(stdout);
+	if (!token) {
+		printf("%s: syntax error near unexpected token `newline'\n", ft_util_env_get(&env_list, "USER"));
+		return ;
+	}
 	prev = ft_util_token_previous(token);
 	next = ft_util_token_next(token);
-	if (!prev && token && token->type != TOKEN_CMD) {
-		printf("One\n"); fflush(stdout);
-		ft_run_token_process(shell, token->next, env_list); // token->next is null
-	}
+	if (!prev && token && token->type != TOKEN_CMD)
+		ft_run_token_process(shell, token->next, env_list);
 	process_level = ft_util_redirect_level(shell, token, prev, env_list);
 	if (next && process_level != PROCESS_LEVEL_PARENT)
 		ft_run_token_process(shell, next->next, env_list);
-	printf("Before\n"); fflush(stdout);
-	printf("process level is: %d\n", process_level); fflush(stdout);
-	printf("shell->executed is: %d\n", shell->executed); fflush(stdout);
-	printf("token is %p\n", token); fflush(stdout); // todo segfault
-	printf("token->type is %d\n", token->type); fflush(stdout);
-	printf("prev is: %p\n", prev); fflush(stdout);
-	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed // todo fix
+	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed
 		&& (!prev || prev->type == TOKEN_PIPE)
 		&& token->type == TOKEN_CMD && !errno)
 	{
