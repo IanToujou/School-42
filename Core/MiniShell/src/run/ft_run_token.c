@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/09 20:10:23 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/10 05:24:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	process_level = ft_util_redirect_level(shell, token, prev, env_list);
 	if (next && process_level != PROCESS_LEVEL_PARENT)
 		ft_run_token_process(shell, next->next, env_list);
+	printf("Before\n"); fflush(stdout);
+	printf("process level is: %d\n", process_level); fflush(stdout);
 	if (process_level != PROCESS_LEVEL_PARENT && !shell->executed // todo fix
 		&& (!prev || prev->type == TOKEN_PIPE)
 		&& token->type == TOKEN_CMD && !errno)
