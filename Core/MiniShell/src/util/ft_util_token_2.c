@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:21:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:06:54 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/10 05:40:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	ft_util_token_split(t_parse *parse, const char *cmd)
 
 static int	ft_util_token_count(char *cmd)
 {
-	static char	*pool_symbols = "<>|\t ";
+	static char	*pool_symbols = "";
 	t_parse		parse;
 
 	parse = ft_init_parse_data();
