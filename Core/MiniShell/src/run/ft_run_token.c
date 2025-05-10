@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/10 05:29:27 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/10 05:30:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	t_token	*next;
 	int		process_level;
 
+	printf("TOKEN IS: %p\n", token);
 	prev = ft_util_token_previous(token);
 	next = ft_util_token_next(token);
 	if (!prev && token && token->type != TOKEN_CMD)
