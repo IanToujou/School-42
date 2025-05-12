@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/12 08:46:56 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/12 17:55:15 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,19 +153,20 @@ void					ft_util_launch_execve(t_env_list *env_list,
 char					**ft_util_env_to_array(t_env_list **env_list);
 int						ft_util_redirect_level(t_shell *shell, t_token *token,
 							t_token *prev, t_env_list *env_list);
-bool					ft_prev_redirect(t_token *token);
-void					ft_handle_redirections(t_shell *shell, t_token *token);
-void					ft_handle_input(t_shell *shell, t_token *token,
+bool					ft_util_prev_redirect(t_token *token);
+void					ft_util_handle_redirections(t_shell *shell,
+							t_token *token);
+void					ft_util_handle_input(t_shell *shell, t_token *token,
 							t_env_list *env_list);
-void					ft_handle_dobinp(t_shell *shell, t_token *token,
+void					ft_util_handle_dobinp(t_shell *shell, t_token *token,
 							t_env_list *env_list);
-void					ft_handle_child_dobinp(int fd, char *eof);
-void					ft_handle_parent_dobinp(t_shell *shell, int fd,
+void					ft_util_handle_child_dobinp(int fd, char *eof);
+void					ft_util_handle_parent_dobinp(t_shell *shell, int fd,
 							pid_t pid, t_env_list *env_list);
-int						ft_check_pipe_io(t_shell *shell, t_token *prev);
-int						ft_handle_pipe(t_shell *shell);
-int						ft_handle_child_pipe(t_shell *shell, int *fd);
-int						ft_handle_parent_pipe(t_shell *shell, int *fd,
+int						ft_util_check_pipe_io(t_shell *shell, t_token *prev);
+int						ft_util_handle_pipe(t_shell *shell);
+int						ft_util_handle_child_pipe(t_shell *shell, int *fd);
+int						ft_util_handle_parent_pipe(t_shell *shell, int *fd,
 							pid_t pid);
 
 void					ft_parse_env(t_env_list **env_list, char **env);
@@ -214,18 +215,16 @@ char					*ft_util_prompt(t_env_list *env_list);
 
 bool					ft_util_quote_set(t_quotes *quotes, char ch);
 bool					ft_util_quote_is_outside(const t_quotes *quotes);
-bool					ft_check_seps(const char *str, int *i,
+bool					ft_util_check_seps(const char *str, int *i,
 							const char *name);
 
-bool					ft_is_whitespace(char c);
-bool					ft_strchr_bo(const char *s, int c);
+bool					ft_util_is_whitespace(char c);
+bool					ft_util_strchr(const char *s, int c);
 bool					ft_util_redirect_check(const char *str, int *i,
 							const char *name);
-int						ft_check_redirect_type(t_shell *shell, t_token *token,
-							t_token *prev, t_env_list *env);
 
-bool					error_syntax_token(char ch, const char *name);
-bool					error_redirect_check(int redirect_first,
+bool					ft_error_syntax_token(char ch, const char *name);
+bool					ft_error_redirect_check(int redirect_first,
 							int redirect_second, const char *name);
 
 #endif

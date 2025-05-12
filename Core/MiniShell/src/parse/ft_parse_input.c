@@ -22,7 +22,7 @@ static t_bool	ft_parse_input_str(const char *str,
 		(*i)++;
 	else if (ft_util_str_strchr(pool_symbols, str[*i]) == true
 		&& ft_util_quote_is_outside(quotes) == true)
-		if (ft_check_seps(str, i, user) == false
+		if (ft_util_check_seps(str, i, user) == false
 			|| ft_util_redirect_check(str, i, user) == false)
 			return (FALSE);
 	return (TRUE);

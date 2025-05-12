@@ -21,6 +21,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/cmd/nya/ft_cmd_nya.c \
 		src/cmd/pwd/ft_cmd_pwd.c \
 		src/error/ft_error_throw.c \
+		src/error/ft_error_check.c \
 		src/exit/ft_exit_main.c \
 		src/init/ft_init_main.c \
 		src/init/ft_init_parse.c \
@@ -48,7 +49,10 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_envcase.c \
 		src/util/ft_util_num.c \
 		src/util/ft_util_quote.c \
+		src/util/ft_util_quote2.c \
 		src/util/ft_util_redirect.c \
+		src/util/ft_util_redirect2.c \
+		src/util/ft_util_redirect3.c \
 		src/util/ft_util_str.c \
 		src/util/ft_util_token.c \
 		src/util/ft_util_token_2.c \
