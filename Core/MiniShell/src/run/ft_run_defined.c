@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/26 18:37:50 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/12 08:36:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ t_bool	ft_run_defined_is_defined(const t_token *token)
 	return (FALSE);
 }
 
-void	ft_run_defined(t_shell *shell, t_token *token, t_env_list *env_list)
+void	ft_run_defined(t_shell *shell, const t_token *token, t_env_list *env_list, char **cmds)
 {
 	if (ft_strncmp(token->str, "nya", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_nya();
 	else if (ft_strncmp(token->str, "exit", ft_strlen(token->str) + 1) == 0)
-		ft_cmd_exit(shell, &env_list, token->next);
+		ft_cmd_exit(shell, &env_list, token->next, cmds);
 	else if (ft_strncmp(token->str, "env", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_env(shell, &env_list);
 	else if (ft_strncmp(token->str, "pwd", ft_strlen(token->str) + 1) == 0)

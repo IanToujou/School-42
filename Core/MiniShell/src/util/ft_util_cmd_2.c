@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:36:31 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 13:38:02 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/12 08:37:07 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static char	**ft_util_cmd_free(char **cmds)
+char	**ft_util_cmd_free(char **cmds)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static char	**ft_util_cmd_free(char **cmds)
 	return (NULL);
 }
 
-static char	**ft_util_cmd_one(char *str)
+static char	**ft_util_cmd_one(const char *str)
 {
 	char	**cmd;
 

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:03:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/12 08:24:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static t_bool	ft_parse_handle_process(t_shell *shell, t_parse *parse,
 	if (ft_util_token_process(shell, cmd, env_list) == false)
 		return (ft_parse_handle_exit(cmd, shell, false));
 	return (ft_parse_handle_exit(cmd, shell, true));
+	free(cmd);
 }
 
 t_bool	ft_parse_handle(t_shell *shell, t_env_list *env_list, char *str)

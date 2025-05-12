@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_run_cmd.c                                       :+:      :+:    :+:   */
+/*   ggcollect.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 00:39:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/12 08:36:20 by ibour            ###   ########.fr       */
+/*   Created: 2025/05/12 08:55:40 by ibour             #+#    #+#             */
+/*   Updated: 2025/05/12 09:08:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#ifndef GGCOLLECT_H
 
-void	ft_run_cmd(t_shell *shell, t_token *token, t_env_list *env_list, char **cmds)
+# define GGCOLLECT_H
+
+# include <stdlib.h>
+
+# define HEAP_SIZE 1024 * 1024
+# define MAX_ROOTS 1024
+
+typedef struct s_gg_object
 {
-	if (ft_run_defined_is_defined(token))
-		ft_run_defined(shell, token, env_list, cmds);
-	else
-		ft_run_bin(shell, token, env_list);
-}
+	size_t				size;
+	int					marked;
+	struct s_gg_object	*next;
+	char				*data;
+} t_gg_object;
+
+typedef struct s_gg_data {
+	t_gg_object	*heap;
+	void		*roots[MAX_ROOTS];
+	size_t		root_count;
+} t_gg_data;
+
+void	*gg_malloc(size_t size);
+
+#endif

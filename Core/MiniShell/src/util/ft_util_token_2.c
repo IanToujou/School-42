@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:21:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/10 05:41:07 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/12 08:51:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ t_bool	ft_util_token_process(t_shell *shell,
 	}
 	ft_util_quote_plus(final);
 	ft_util_token_addon(final);
-	ft_run_token(shell, final, env_list);
+	ft_run_token(shell, final, env_list, commands);
 	ft_util_token_free(final);
 	return (TRUE);
 }

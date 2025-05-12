@@ -6,11 +6,20 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:09:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/19 12:39:11 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/12 08:49:40 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
+
+static void	ft_cmd_exit_handle(const int status, const t_shell *shell, t_env_list **env_list, t_token *token, char **cmds)
+{
+	ft_exit_env(env_list);
+	ft_exit_temp(shell);
+	ft_util_cmd_free(cmds);
+	ft_util_token_free(token);
+	exit(status);
+}
 
 static int	ft_cmd_argument_count(const t_token *token)
 {
@@ -25,7 +34,7 @@ static int	ft_cmd_argument_count(const t_token *token)
 	return (size);
 }
 
-void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token)
+void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token, char **cmds)
 {
 	ft_putstr_fd("exit\n", STDERR_FILENO);
 	if (token && token->str && !ft_util_num_isnumber(token->str))
@@ -43,7 +52,7 @@ void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token)
 		shell->exit_status = STATUS_OK;
 	}
 	else if (!token)
-		exit(STATUS_OK);
+		ft_cmd_exit_handle(STATUS_OK, shell, env_list, token, cmds);
 	else
-		exit(ft_atoi(token->str) % 256);
+		ft_cmd_exit_handle(ft_atoi(token->str) % 256, shell, env_list, token, cmds);
 }

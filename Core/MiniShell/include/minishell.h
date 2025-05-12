@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/08 13:48:06 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/12 08:46:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ char					**ft_util_cmd_split(t_env_list *env_list, char *str,
 							t_parse *parse, t_shell *shell);
 char					*ft_util_cmd_grow_str(t_env_list *env_list, char *str,
 							t_shell *shell, t_bool *flag);
+char					**ft_util_cmd_free(char **cmds);
 char					**ft_util_token_free_cmds(char **cmds);
 void					ft_util_bin_signal(const t_token *token);
 void					ft_util_bin_free_paths(char **paths,
@@ -181,19 +182,19 @@ void					ft_exit_env(t_env_list **env_list);
 void					ft_exit_temp(const t_shell *shell);
 
 void					ft_run_cmd(t_shell *shell, t_token *token,
-							t_env_list *env_list);
+							t_env_list *env_list, char **cmd);
 t_bool					ft_run_defined_is_defined(const t_token *token);
-void					ft_run_defined(t_shell *shell, t_token *token,
-							t_env_list *env_list);
+void					ft_run_defined(t_shell *shell, const t_token *token,
+							t_env_list *env_list, char **cmd);
 t_bool					ft_run_token(t_shell *shell, t_token *token,
-							t_env_list *env_list);
+							t_env_list *env_list, char **cmd);
 void					ft_run_bin(t_shell *shell, const t_token *token,
 							t_env_list *env_list);
 
 void					ft_cmd_cd(t_shell *shell, t_env_list **env_list,
 							t_token *args);
 void					ft_cmd_exit(t_shell *shell, t_env_list **env_list,
-							t_token *token);
+							t_token *token, char **cmd);
 void					ft_cmd_env(t_shell *shell, t_env_list **env_list);
 void					ft_cmd_echo(t_shell *shell, t_token *token);
 void					ft_cmd_pwd(t_shell *shell);
@@ -215,7 +216,7 @@ bool					ft_util_quote_set(t_quotes *quotes, char ch);
 bool					ft_util_quote_is_outside(const t_quotes *quotes);
 bool					ft_check_seps(const char *str, int *i,
 							const char *name);
-;
+
 bool					ft_is_whitespace(char c);
 bool					ft_strchr_bo(const char *s, int c);
 bool					ft_util_redirect_check(const char *str, int *i,
