@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:11:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/08 13:46:12 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:10:48 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,21 @@ static int	ft_util_size_str(const char *str, int count)
 	quotes = ft_init_quote();
 	while (str[++i])
 	{
-		if (ft_util_quote_status(&quotes, str[i]) == false)
+		if (ft_util_quote_set(&quotes, str[i]))
+			continue ;
+		if (str[i] == '\\' && quotes.two == true)
 		{
-			if (str[i] == '\\' && quotes.two == true)
+			if (str[i + 1] == '\"' || str[i + 1] == '$' || str[i + 1] == '`'
+				|| str[i + 1] == '\\')
 			{
-				if (str[i + 1] == '\"' || str[i + 1] == '$' || str[i + 1] == '`'
-					|| str[i + 1] == '\\')
-				{
-					count++;
-					i++;
-				}
-				else
-					count++;
+				count++;
+				i++;
 			}
 			else
 				count++;
 		}
+		else
+			count++;
 	}
 	return (count);
 }
@@ -50,21 +49,20 @@ static char	*ft_util_bye_quotes(const char *str, t_quotes *quotes, int i, int j)
 	new_str = (char *)ft_calloc(new_size + 1, sizeof(char));
 	if (new_str == NULL)
 		ft_error_throw(ERROR_MALLOC);
-	while (str[++i] && j < new_size)
+	while (str[++i])
 	{
-		if (!ft_util_quote_status(quotes, str[i]))
+		if (ft_util_quote_set(quotes, str[i]))
+			continue ;
+		if (str[i] == '\\' && quotes->two)
 		{
-			if (str[i] == '\\' && quotes->two)
-			{
-				if (str[i + 1] != '"' && str[i + 1] != '`' && str[i + 1] != '$'
-					&& str[i + 1] != '\\')
-				{
-					new_str[j++] = '\\';
-				}
-				i++;
-			}
-			new_str[j++] = str[i];
+			if (str[i + 1] == '"' || str[i + 1] == '\\' || str[i + 1] == '$'
+				|| str[i + 1] == '`')
+				new_str[j++] = str[++i];
+			else
+				new_str[j++] = str[i];
 		}
+		else
+			new_str[j++] = str[i];
 	}
 	new_str[j] = '\0';
 	return (new_str);

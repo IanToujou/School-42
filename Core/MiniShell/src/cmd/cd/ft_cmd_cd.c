@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:17:42 by mwelfrin          #+#    #+#             */
-/*   Updated: 2025/05/02 15:41:47 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/13 16:12:13 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_cmd_cd(t_shell *shell, t_env_list **env, t_token *args)
 	char	*prev;
 
 	prev = getcwd(NULL, 0);
-	if(!prev)
+	if (!prev)
 	{
 		ft_putstr_fd("minishell: cd: getcwd failed\n", 2);
 		return ;

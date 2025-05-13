@@ -6,14 +6,14 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/19 13:29:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/13 16:15:44 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static t_bool	ft_parse_input_str(const char *str,
-		t_quotes *quotes, int *i, const char *user)
+static t_bool	ft_parse_input_str(const char *str, t_quotes *quotes,
+					int *i, const char *user)
 {
 	static char	*pool_symbols = "\\<>|;";
 
@@ -22,14 +22,16 @@ static t_bool	ft_parse_input_str(const char *str,
 		(*i)++;
 	else if (ft_util_str_strchr(pool_symbols, str[*i]) == true
 		&& ft_util_quote_is_outside(quotes) == true)
+	{
 		if (ft_util_check_seps(str, i, user) == false
 			|| ft_util_redirect_check(str, i, user) == false)
 			return (FALSE);
+	}
 	return (TRUE);
 }
 
-static t_bool	ft_parse_exit(t_shell *shell,
-		char *result, int status) {
+static t_bool	ft_parse_exit(t_shell *shell, char *result, int status)
+{
 	free(result);
 	if (status == STATUS_OK)
 		;
@@ -56,7 +58,7 @@ static t_bool	ft_parse_preprocess(char *input, char *user)
 }
 
 t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list,
-		const char *input, char *user)
+			const char *input, char *user)
 {
 	char	*result;
 
