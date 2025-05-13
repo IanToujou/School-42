@@ -44,6 +44,8 @@ static char	*get_path(t_shell *shell, t_env_list **env, t_token *args)
 static void	update_vars(t_shell *shell, t_env_list **env, char *path,
 		char *prev)
 {
+	char	*current;
+
 	if (!path || chdir(path) != 0)
 	{
 		ft_putstr_fd("minishell: cd: ", 2);
@@ -55,10 +57,12 @@ static void	update_vars(t_shell *shell, t_env_list **env, char *path,
 		free(prev);
 		return ;
 	}
+	current = getcwd(NULL, 0);
 	ft_util_env_set(env, "OLDPWD", prev);
-	ft_util_env_set(env, "PWD", getcwd(NULL, 0));
+	ft_util_env_set(env, "PWD", current);
 	shell->exit_status = STATUS_OK;
 	free(prev);
+	free(current);
 }
 
 void	ft_cmd_cd(t_shell *shell, t_env_list **env, t_token *args)
@@ -67,6 +71,11 @@ void	ft_cmd_cd(t_shell *shell, t_env_list **env, t_token *args)
 	char	*prev;
 
 	prev = getcwd(NULL, 0);
+	if(!prev)
+	{
+		ft_putstr_fd("minishell: cd: getcwd failed\n", 2);
+		return ;
+	}
 	path = get_path(shell, env, args);
 	if (!path)
 	{
