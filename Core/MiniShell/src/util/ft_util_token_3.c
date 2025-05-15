@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:04:42 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:07:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 09:52:33 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,25 @@ char	**ft_util_token_free_cmds(char **cmds)
 	return (cmds);
 }
 
-t_token	*ft_util_token_to_struct(char **cmds, t_token **final)
+t_token	*ft_util_token_to_struct(char **cmds)
 {
 	int		i;
 	t_token	*head;
 	t_token	*temp;
 
 	i = -1;
+	head = NULL;
 	while (cmds[++i])
 	{
 		temp = ft_util_token_create(cmds[i]);
 		if (temp == NULL)
+		{
+			ft_util_token_free(head);
 			ft_error_throw(ERROR_MALLOC);
-		if (i == 0)
-			head = temp;
-		else
-			ft_util_token_add_back(&head, temp);
+		}
+		ft_util_token_add_back(&head, temp);
 		if (temp->str)
 			ft_util_token_init(temp, i);
 	}
-	if (final == NULL)
-		return (head);
-	ft_util_token_add_back(final, head);
-	return (*final);
+	return head;
 }

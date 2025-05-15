@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:21:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 09:00:44 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 09:43:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ t_bool	ft_util_token_process(t_shell *shell,
 		if (cmds == NULL)
 			ft_error_throw(ERROR_MALLOC);
 		ft_util_envcase_token(cmds);
-		final = ft_util_token_to_struct(cmds, &final);
+		final = ft_util_token_to_struct(cmds);
 		ft_util_token_free_process(cmd, cmds);
 	}
 	ft_util_quote_plus(final);

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 08:54:21 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 09:40:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void					ft_util_env_set(t_env_list **env_list, const char *key,
 void					ft_util_token_free(t_token *list);
 t_bool					ft_util_token_process(t_shell *shell, char **commands,
 							t_env_list *env_list);
-t_token					*ft_util_token_to_struct(char **cmds, t_token **final);
+t_token					*ft_util_token_to_struct(char **cmds);
 void					ft_util_token_addon(const t_token *token);
 void					ft_util_envcase_token(char **cmds);
 char					**ft_util_cmd_get_cmds(char *str, int pipe);
