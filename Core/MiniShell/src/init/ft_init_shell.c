@@ -40,20 +40,81 @@ static void	ft_run_shell(t_shell *shell, t_env_list *env_list)
  * @param env_list The environment variable list.
  * @param shell The main shell struct.
  */
-void	ft_init_shell(t_env_list *env_list, t_shell *shell)
+void	ft_run_interactive_shell(t_env_list *env_list, t_shell *shell)
 {
 	shell->is_running = TRUE;
+	shell->is_interactive = TRUE;
 	shell->exit_status = STATUS_OK;
 	ft_util_banner_intro();
 	while (shell->is_running)
 	{
-		ft_signal_mask();
-		ft_signal_start();
+		ft_signal_mask(shell);
+		ft_signal_start(shell);
 		shell->pid = 0;
 		shell->f_in = -1;
 		shell->f_out = -1;
 		shell->process_level = PROCESS_LEVEL_DEFAULT;
 		ft_run_shell(shell, env_list);
-		ft_signal_start();
+		ft_signal_start(shell);
 	}
+}
+
+void ft_run_non_interactive_shell(t_env_list *env_list, t_shell *shell)
+{
+	char *input;
+	char *user;
+
+	shell->is_running = TRUE;
+	shell->is_interactive = FALSE;
+	ft_signal_start(shell);
+	ft_signal_mask(shell);
+
+	if (!ft_init_std(shell)) {
+		shell->exit_status = 1;
+		shell->is_running = FALSE;
+		return;
+	}
+
+	user = ft_util_env_get(&env_list, "USER");
+	input = ft_read_all_stdin();
+	if (!input) {
+		shell->is_running = FALSE;
+		shell->exit_status = 0;
+		return;
+	}
+
+	if (!ft_parse_input(shell, env_list, input, user)) {
+		shell->exit_status = 1;
+	}
+
+	free(input);
+	shell->is_running = FALSE;
+}
+
+char *ft_read_all_stdin(void)
+{
+	char buffer[1024];
+	char *result = ft_strdup("");
+	char *tmp;
+	ssize_t bytes;
+
+	if (!result)
+		return NULL;
+
+	while ((bytes = read(STDIN_FILENO, buffer, sizeof(buffer) - 1)) > 0) {
+		buffer[bytes] = '\0';
+		tmp = ft_strjoin(result, buffer);
+		free(result);
+		if (!tmp) {
+			return NULL;
+		}
+		result = tmp;
+	}
+
+	if (bytes < 0) {
+		free(result);
+		return NULL;
+	}
+
+	return result;
 }

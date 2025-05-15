@@ -34,7 +34,11 @@ int	main(const int argc, char **argv, char **env)
 		ft_error_throw(ERROR_INIT_TEMP);
 	if (!ft_init_std(&shell))
 		ft_error_throw(ERROR_INIT_STD);
-	ft_init_shell(env_list, &shell);
+	shell.is_interactive = (isatty(fileno(stdin)) && argc == 1);
+	if (shell.is_interactive)
+		ft_run_interactive_shell(env_list, &shell);
+	else
+		ft_run_non_interactive_shell(env_list, &shell);
 	if (!ft_exit_std(&shell))
 		ft_error_throw(ERROR_EXIT_STD);
 	ft_exit_env(&env_list);

@@ -33,16 +33,25 @@ void	ft_signal_c_fork(const int signal)
 	write(1, "\n", 1);
 }
 
-void	ft_signal_start(void)
+void	ft_signal_start(t_shell *shell)
 {
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, ft_signal_c);
+	if (shell->is_interactive)
+	{
+		signal(SIGINT, ft_signal_c);
+		signal(SIGQUIT, SIG_IGN);
+	}
+	else
+	{
+		signal(SIGINT, ft_signal_c_fork);
+		signal(SIGQUIT, ft_signal_c_fork_slash);
+	}
 }
 
-void	ft_signal_mask(void)
+void	ft_signal_mask(t_shell *shell)
 {
 	struct termios	term;
-
+	if (!shell->is_interactive)
+		return;
 	tcgetattr(0, &term);
 	term.c_cflag &= ~ECHOCTL;
 	tcsetattr(0, 0, &term);

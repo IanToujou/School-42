@@ -100,7 +100,9 @@ t_bool					ft_init_env(t_shell *shell, t_env_list **env_list,
 							char **env);
 t_bool					ft_init_temp(t_shell *shell);
 t_bool					ft_init_std(t_shell *shell);
-void					ft_init_shell(t_env_list *env_list, t_shell *shell);
+void					ft_run_interactive_shell(t_env_list *env_list, t_shell *shell);
+void					ft_run_non_interactive_shell(t_env_list *env_list, t_shell *shell);
+char					*ft_read_all_stdin(void);
 t_quotes				ft_init_quote(void);
 t_parse					ft_init_parse_data(void);
 t_bool					ft_init_token_data(char **cmds, t_parse *parse,
@@ -108,8 +110,8 @@ t_bool					ft_init_token_data(char **cmds, t_parse *parse,
 
 void					ft_error_throw(int error);
 
-void					ft_signal_mask(void);
-void					ft_signal_start(void);
+void					ft_signal_mask(t_shell *shell);
+void					ft_signal_start(t_shell *shell);
 void					ft_signal_c_fork(int signal);
 void					ft_signal_c_fork_slash(int signal);
 void					ft_signal_add_ignore(int signal);
