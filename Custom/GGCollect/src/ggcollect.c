@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 08:58:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/12 09:12:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 07:34:34 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void gg_add_root(t_gg_data data, void* ptr) {
 	data.roots[data.root_count++] = ptr;
 }
 
-void gg_mark(t_gg_object* obj)
+void gg_mark(t_gg_object *obj)
 {
 	if (!obj || obj->marked) return;
 	obj->marked = 1;
@@ -36,9 +36,13 @@ void gg_mark(t_gg_object* obj)
 
 void gg_mark_all(const t_gg_data data)
 {
-	for (size_t i = 0; i < data.root_count; i++) {
+	size_t	i;
+
+	i = 0;
+	while (i < data.root_count) {
 		t_gg_object *obj = ((t_gg_object *) data.roots[i]) - 1;
 		gg_mark(obj);
+		i++;
 	}
 }
 

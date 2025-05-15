@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/13 16:15:44 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:05:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list,
 	if (ft_util_str_tab_skip(input))
 		return (FALSE);
 	result = ft_util_str_tab_trim(input);
+	shell->garbage = (t_garbage *) malloc(sizeof(t_garbage));
+	shell->garbage->result = result;
 	if (!result)
 		ft_error_throw(ERROR_MALLOC);
 	if (!ft_parse_preprocess(result, user))
@@ -72,5 +74,6 @@ t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list,
 	if (!ft_parse_handle(shell, env_list, result))
 		ft_error_throw(ERROR_MALLOC);
 	free(result);
+	free(shell->garbage);
 	return (TRUE);
 }

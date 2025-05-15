@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 08:55:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/12 09:08:02 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 07:32:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_gg_data {
 	size_t		root_count;
 } t_gg_data;
 
-void	*gg_malloc(size_t size);
+t_gg_data	gg_init();
+void		*gg_malloc(size_t size);
 
 #endif

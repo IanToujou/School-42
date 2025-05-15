@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:09:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/13 16:13:00 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/15 09:00:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	ft_cmd_exit_handle(const int status, const t_shell *shell,
 	ft_exit_temp(shell);
 	ft_util_cmd_free(cmds);
 	ft_util_token_free(token);
+	free(shell->garbage->result);
+	free(shell->garbage);
 	exit(status);
 }
 

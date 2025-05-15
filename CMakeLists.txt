@@ -98,6 +98,7 @@ add_library(LibFT
 add_library(GGCollect
 		"Custom/GGCollect/include/ggcollect.h"
 		"Custom/GGCollect/src/ggcollect.c"
+		Custom/GGCollect/src/main.c
 )
 
 add_library(PrintF

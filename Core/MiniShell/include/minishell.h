@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/12 17:55:15 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/15 08:54:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ typedef struct s_env_list
 	struct s_env_list	*next;
 }						t_env_list;
 
+typedef struct s_garbage
+{
+	void				*result;
+}						t_garbage;
+
 typedef struct s_shell
 {
 	int					exit_status;
@@ -87,6 +92,7 @@ typedef struct s_shell
 	int					process_level;
 	int					shlvl;
 	pid_t				pid;
+	t_garbage			*garbage;
 }						t_shell;
 
 t_bool					ft_init_env(t_shell *shell, t_env_list **env_list,
@@ -177,7 +183,7 @@ int						ft_parse_handle(t_shell *shell, t_env_list *env_list,
 t_bool					ft_parse_dollar_search(const char *str);
 char					*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
 							const char *str, const t_shell *shell);
-bool					ft_check_redirect(char *str, int *i, char *name);
+t_bool					ft_check_redirect(char *str, int *i, char *name);
 t_bool					ft_exit_std(const t_shell *shell);
 void					ft_exit_env(t_env_list **env_list);
 void					ft_exit_temp(const t_shell *shell);

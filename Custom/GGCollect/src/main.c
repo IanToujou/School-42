@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_run_cmd.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 00:39:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 08:46:19 by ibour            ###   ########.fr       */
+/*   Created: 2025/05/15 07:30:57 by ibour             #+#    #+#             */
+/*   Updated: 2025/05/15 07:50:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#include <stdio.h>
 
-void	ft_run_cmd(t_shell *shell, t_token *token, t_env_list *env_list, char **cmds)
+#include "../include/ggcollect.h"
+
+int main()
 {
-	if (ft_run_defined_is_defined(token))
-		ft_run_defined(shell, token, env_list, cmds);
-	else
-		ft_run_bin(shell, token, env_list);
+
 }
