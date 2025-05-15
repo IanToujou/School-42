@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:04:42 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 09:52:33 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 10:49:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	**ft_util_token_free_cmds(char **cmds)
 	return (cmds);
 }
 
-t_token	*ft_util_token_to_struct(char **cmds)
+t_token	*ft_util_token_to_struct(char **cmds, t_shell *shell)
 {
 	int		i;
 	t_token	*head;
@@ -67,7 +67,7 @@ t_token	*ft_util_token_to_struct(char **cmds)
 	head = NULL;
 	while (cmds[++i])
 	{
-		temp = ft_util_token_create(cmds[i]);
+		temp = ft_util_token_create(shell, cmds[i]);
 		if (temp == NULL)
 		{
 			ft_util_token_free(head);

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:09:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 09:00:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 11:06:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	ft_cmd_exit_handle(const int status, const t_shell *shell,
 	ft_exit_temp(shell);
 	ft_util_cmd_free(cmds);
 	ft_util_token_free(token);
+	ft_lstclear(&shell->garbage->tokens, free);
+	free(shell->garbage->tokens);
 	free(shell->garbage->result);
 	free(shell->garbage);
 	exit(status);
@@ -47,7 +49,7 @@ void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token,
 		ft_putstr_fd(": exit: ", STDERR_FILENO);
 		ft_putstr_fd(token->str, STDERR_FILENO);
 		ft_putstr_fd(": numeric argument required\n", STDERR_FILENO);
-		exit(STATUS_EXIT);
+		ft_cmd_exit_handle(STATUS_EXIT, shell, env_list, token, cmds);
 	}
 	if (ft_cmd_argument_count(token) > 1)
 	{

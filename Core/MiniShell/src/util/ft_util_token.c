@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:44:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 09:42:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/15 11:05:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token	*ft_util_token_next(t_token	*token)
 	return (token);
 }
 
-t_token	*ft_util_token_create(const char *content)
+t_token	*ft_util_token_create(t_shell *shell, const char *content)
 {
 	t_token	*token;
 
@@ -43,6 +43,8 @@ t_token	*ft_util_token_create(const char *content)
 		free(token);
 		return NULL;
 	}
+	ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(token));
+	ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(token->str));
 	return token;
 }
 
