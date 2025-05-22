@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 08:48:26 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/22 10:13:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	t_token	*next;
 	int		process_level;
 
-	if (!token) {
-		printf("%s: syntax error near unexpected token `newline'\n", ft_util_env_get(&env_list, "USER"));
+	if (!token)
+	{
+		printf("%s: syntax error near unexpected token `newline'\n",
+			ft_util_env_get(&env_list, "USER"));
 		return ;
 	}
 	prev = ft_util_token_previous(token);
@@ -73,7 +75,8 @@ static void	ft_run_token_process(t_shell *shell, t_token *token,
 	}
 }
 
-t_bool	ft_run_token(t_shell *shell, t_token *token, t_env_list *env_list, char **cmds)
+t_bool	ft_run_token(t_shell *shell, t_token *token,
+			t_env_list *env_list, char **cmds)
 {
 	errno = 0;
 	shell->process_level = PROCESS_LEVEL_PARENT;

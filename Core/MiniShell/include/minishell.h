@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 10:56:05 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/22 10:13:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,10 @@ t_bool					ft_init_env(t_shell *shell, t_env_list **env_list,
 							char **env);
 t_bool					ft_init_temp(t_shell *shell);
 t_bool					ft_init_std(t_shell *shell);
-void					ft_run_interactive_shell(t_env_list *env_list, t_shell *shell);
-void					ft_run_non_interactive_shell(t_env_list *env_list, t_shell *shell);
+void					ft_run_interactive_shell(t_env_list *env_list,
+							t_shell *shell);
+void					ft_run_non_interactive_shell(t_env_list *env_list,
+							t_shell *shell);
 char					*ft_read_all_stdin(void);
 t_quotes				ft_init_quote(void);
 t_parse					ft_init_parse_data(void);
@@ -137,7 +139,8 @@ t_bool					ft_util_num_isnumber(const char *str);
 t_bool					ft_util_str_strchr(const char *s, int c);
 t_token					*ft_util_token_previous(t_token *token);
 t_token					*ft_util_token_next(t_token *token);
-t_token					*ft_util_token_create(t_shell *shell, const char *content);
+t_token					*ft_util_token_create(t_shell *shell,
+							const char *content);
 void					ft_util_token_add_back(t_token **list, t_token *new);
 void					ft_util_env_set(t_env_list **env_list, const char *key,
 							const char *value);
@@ -197,7 +200,7 @@ t_bool					ft_run_defined_is_defined(const t_token *token);
 void					ft_run_defined(t_shell *shell, const t_token *token,
 							t_env_list *env_list, char **cmd);
 t_bool					ft_run_token(t_shell *shell, t_token *token,
-							t_env_list *env_list, char **cmd);
+							t_env_list *env_list, char **cmds);
 void					ft_run_bin(t_shell *shell, const t_token *token,
 							t_env_list *env_list);
 
