@@ -1,15 +1,7 @@
 
-\n           doesnt give empty promptline
-
 :            doesnt give empty promptline
 
 &&  &   &&&&&&&& variations doesnt five syntax error 
 
->>echo>>    this still gives segfault
-
-<>          this segfaults too 
-
 if it is like this >> >> >> it is fine but if it is alone > > > > it doesnt give a syntax error
-
-cat and after ctrl+\ was supposed to core dump or exit it prints exit but it doesnt exit
 

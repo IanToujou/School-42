@@ -180,7 +180,7 @@ int						ft_util_handle_parent_pipe(t_shell *shell, int *fd,
 
 void					ft_parse_env(t_env_list **env_list, char **env);
 t_bool					ft_parse_input(t_shell *shell, t_env_list *env_list,
-							const char *input, char *user);
+							const char *input, const char *user);
 int						ft_parse_handle(t_shell *shell, t_env_list *env_list,
 							char *str);
 t_bool					ft_parse_dollar_search(const char *str);

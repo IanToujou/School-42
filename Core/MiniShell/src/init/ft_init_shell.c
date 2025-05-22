@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 10:47:27 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/22 08:50:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ char *ft_read_all_stdin(void)
 
 	if (!result)
 		return NULL;
-
 	while ((bytes = read(STDIN_FILENO, buffer, sizeof(buffer) - 1)) > 0) {
 		buffer[bytes] = '\0';
 		tmp = ft_strjoin(result, buffer);
