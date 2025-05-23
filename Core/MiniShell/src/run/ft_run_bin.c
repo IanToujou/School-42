@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/04 23:45:25 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/23 14:28:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,24 @@ static void	ft_run_bin_handle(t_shell *shell, const t_token *token,
 	ft_util_launch_execve(env_list, args);
 }
 
+/**
+ * @brief Executes a binary command in a new process.
+ *
+ * This function is responsible for executing binary commands. It creates a new
+ * process using `fork` and then attempts to execute the binary specified by
+ * the provided token structure in the child process. Signal handling and the
+ * shell's process lifecycle are managed in this function.
+ *
+ * In the parent process, the function waits for the child process to complete
+ * and retrieves the exit status. If the `fork` operation fails, an error is
+ * thrown.
+ *
+ * @param shell A pointer to the shell structure, managing shell state and settings.
+ * @param token A constant pointer to the token structure that represents the
+ *        command and its arguments to be executed.
+ * @param env_list A pointer to the linked list of environment variables used
+ *        during the execution of the binary.
+ */
 void	ft_run_bin(t_shell *shell, const t_token *token, t_env_list *env_list)
 {
 	pid_t	pid;

@@ -6,12 +6,19 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:35:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:15:40 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/23 14:30:07 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * @brief Displays an introductory banner to the terminal with formatted colors and text.
+ *
+ * This function outputs a multi-line banner comprising various pre-defined text and
+ * colors. It iterates through a set of predefined strings, which include ANSI color
+ * escape codes, and prints each line to the standard output.
+ */
 void	ft_util_banner_intro(void)
 {
 	int			i;
