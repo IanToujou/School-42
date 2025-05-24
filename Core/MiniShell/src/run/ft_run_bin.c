@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/23 14:28:13 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/24 23:42:57 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ static void	ft_run_bin_handle(t_shell *shell, const t_token *token,
  * and retrieves the exit status. If the `fork` operation fails, an error is
  * thrown.
  *
- * @param shell A pointer to the shell structure, managing shell state and settings.
+ * @param shell A pointer to the shell structure,
+	managing shell state and settings.
  * @param token A constant pointer to the token structure that represents the
  *        command and its arguments to be executed.
  * @param env_list A pointer to the linked list of environment variables used

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_run_defined.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 08:45:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/24 23:42:35 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_bool	ft_run_defined_is_defined(const t_token *token)
 	return (FALSE);
 }
 
-void	ft_run_defined(t_shell *shell, const t_token *token, t_env_list *env_list, char **cmds)
+void	ft_run_defined(t_shell *shell, const t_token *token,
+		t_env_list *env_list, char **cmds)
 {
 	if (ft_strncmp(token->str, "nya", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_nya();

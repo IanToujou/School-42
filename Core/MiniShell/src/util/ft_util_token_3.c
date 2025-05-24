@@ -77,5 +77,5 @@ t_token	*ft_util_token_to_struct(char **cmds, t_shell *shell)
 		if (temp->str)
 			ft_util_token_init(temp, i);
 	}
-	return head;
+	return (head);
 }

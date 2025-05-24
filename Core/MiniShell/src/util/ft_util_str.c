@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_util_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:02:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/22 07:27:00 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/24 23:29:20 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static size_t	ft_util_str_trim_all(const char *str, size_t size,
 	return (*end - *begin + 1);
 }
 
-
 /**
  * Skips leading blank characters (spaces or tabs) in a given string
  * and determines if the remaining string is empty.
@@ -64,15 +63,17 @@ t_bool	ft_util_str_tab_skip(const char *str)
 	return (FALSE);
 }
 
-
 /**
- * Trims leading and trailing blank characters (spaces or tabs) from the given string
- * and returns a new string containing the trimmed content.
+ * Trims leading and trailing blank characters (spaces or tabs)
+ * from the given string and returns a new string containing
+ * the trimmed content.
  *
- * @param str The string to trim. Must be null-terminated. If null, the function returns NULL.
+ * @param str The string to trim. Must be null-terminated.
+ * If null, the function returns NULL.
  *
- * @return A new dynamically allocated string containing the trimmed content.
- * If the input string is empty or only contains blank characters, an empty string is returned.
+ * @return A new dynamically allocated string containing the
+ * trimmed content. If the input string is empty or only contains
+ * blank characters, an empty string is returned.
  * Returns NULL if memory allocation fails.
  */
 char	*ft_util_str_tab_trim(const char *str)

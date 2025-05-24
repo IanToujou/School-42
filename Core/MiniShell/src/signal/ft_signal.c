@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:43:29 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:02:29 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/24 23:34:19 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ void	ft_signal_start(t_shell *shell)
 void	ft_signal_mask(t_shell *shell)
 {
 	struct termios	term;
+
 	if (!shell->is_interactive)
-		return;
+		return ;
 	tcgetattr(0, &term);
 	term.c_cflag &= ~ECHOCTL;
 	tcsetattr(0, 0, &term);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_util_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:44:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/15 11:05:38 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/24 23:37:16 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_token	*ft_util_token_previous(t_token	*token)
+t_token	*ft_util_token_previous(t_token *token)
 {
 	if (token && token->type >= TOKEN_TRUNC)
 		token = token->prev;
@@ -21,7 +21,7 @@ t_token	*ft_util_token_previous(t_token	*token)
 	return (token);
 }
 
-t_token	*ft_util_token_next(t_token	*token)
+t_token	*ft_util_token_next(t_token *token)
 {
 	if (token && token->type >= TOKEN_TRUNC)
 		token = token->next;
@@ -36,16 +36,16 @@ t_token	*ft_util_token_create(t_shell *shell, const char *content)
 
 	token = (t_token *)ft_calloc(1, sizeof(t_token));
 	if (token == NULL)
-		return NULL;
+		return (NULL);
 	token->str = ft_strdup(content);
 	if (token->str == NULL)
 	{
 		free(token);
-		return NULL;
+		return (NULL);
 	}
 	ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(token));
 	ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(token->str));
-	return token;
+	return (token);
 }
 
 void	ft_util_token_add_back(t_token **list, t_token *new)
@@ -53,11 +53,11 @@ void	ft_util_token_add_back(t_token **list, t_token *new)
 	t_token	*current;
 
 	if (!list || !new)
-		return;
+		return ;
 	if (*list == NULL)
 	{
 		*list = new;
-		return;
+		return ;
 	}
 	current = *list;
 	while (current->next)

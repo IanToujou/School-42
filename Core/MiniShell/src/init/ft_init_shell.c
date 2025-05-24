@@ -59,61 +59,59 @@ void	ft_run_interactive_shell(t_env_list *env_list, t_shell *shell)
 	}
 }
 
-void ft_run_non_interactive_shell(t_env_list *env_list, t_shell *shell)
+void	ft_run_non_interactive_shell(t_env_list *env_list, t_shell *shell)
 {
-	char *input;
-	char *user;
+	char	*input;
+	char	*user;
 
 	shell->is_running = TRUE;
 	shell->is_interactive = FALSE;
 	ft_signal_start(shell);
 	ft_signal_mask(shell);
-
-	if (!ft_init_std(shell)) {
+	if (!ft_init_std(shell))
+	{
 		shell->exit_status = 1;
 		shell->is_running = FALSE;
-		return;
+		return ;
 	}
-
 	user = ft_util_env_get(&env_list, "USER");
 	input = ft_read_all_stdin();
-	if (!input) {
+	if (!input)
+	{
 		shell->is_running = FALSE;
 		shell->exit_status = 0;
-		return;
+		return ;
 	}
-
-	if (!ft_parse_input(shell, env_list, input, user)) {
+	if (!ft_parse_input(shell, env_list, input, user))
 		shell->exit_status = 1;
-	}
-
 	free(input);
 	shell->is_running = FALSE;
 }
 
-char *ft_read_all_stdin(void)
+char	*ft_read_all_stdin(void)
 {
-	char buffer[1024];
-	char *result = ft_strdup("");
-	char *tmp;
-	ssize_t bytes;
+	char	buffer[1024];
+	char	*result;
+	char	*tmp;
+	ssize_t	bytes;
 
+	result = ft_strdup("");
 	if (!result)
-		return NULL;
-	while ((bytes = read(STDIN_FILENO, buffer, sizeof(buffer) - 1)) > 0) {
+		return (NULL);
+	bytes = read(STDIN_FILENO, buffer, sizeof(buffer) - 1);
+	while (bytes > 0)
+	{
 		buffer[bytes] = '\0';
 		tmp = ft_strjoin(result, buffer);
 		free(result);
-		if (!tmp) {
-			return NULL;
-		}
+		if (!tmp)
+			return (NULL);
 		result = tmp;
 	}
-
-	if (bytes < 0) {
+	if (bytes < 0)
+	{
 		free(result);
-		return NULL;
+		return (NULL);
 	}
-
-	return result;
+	return (result);
 }

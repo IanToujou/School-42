@@ -13,11 +13,13 @@
 #include "../../include/minishell.h"
 
 /**
- * @brief Displays an introductory banner to the terminal with formatted colors and text.
+ * @brief Displays an introductory banner to the terminal with
+ * formatted colors and text.
  *
- * This function outputs a multi-line banner comprising various pre-defined text and
- * colors. It iterates through a set of predefined strings, which include ANSI color
- * escape codes, and prints each line to the standard output.
+ * This function outputs a multi-line banner comprising various
+ * pre-defined text and colors. It iterates through a set of
+ * predefined strings, which include ANSI color escape codes,
+ * and prints each line to the standard output.
  */
 void	ft_util_banner_intro(void)
 {
