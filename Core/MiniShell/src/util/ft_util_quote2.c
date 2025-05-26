@@ -21,14 +21,13 @@ bool	ft_util_quote_status(t_quotes *quotes, char ch)
 	return (quotes->one || quotes->two);
 }
 
-bool	ft_util_check_seps(const char *str, int *i, const char *name)
+bool ft_util_check_seps(const char *str, int *i, const char *name)
 {
-	static const char	*pool_symbols = ";|";
+	static const char *pool_symbols = ";|&";
 
-	if (str[*i] == ';' || str[*i] == '|' || str[*i] == '\\')
+	if (str[*i] == ';' || str[*i] == '|' || str[*i] == '\\' || str[*i] == '&')
 	{
-		if (ft_util_strchr(pool_symbols, str[*i]) && (ft_strlen(str) == 1
-				|| *i == 0))
+		if (ft_util_strchr(pool_symbols, str[*i]) && (ft_strlen(str) == 1 || *i == 0))
 			return (ft_error_syntax_token(str[*i], name));
 		if (str[*i] == '\\')
 			return (ft_error_syntax_token(str[*i], name));
@@ -36,10 +35,14 @@ bool	ft_util_check_seps(const char *str, int *i, const char *name)
 			(*i)++;
 		if (str[*i] == '|' && str[*i + 1] == '\0')
 			return (ft_error_syntax_token(str[*i + 1], name));
-		if (str[*i + 1] == '|' || str[*i + 1] == ';')
+		if (str[*i + 1] == '|' || str[*i + 1] == ';' || str[*i + 1] == '&')
 			return (ft_error_syntax_token(str[*i + 1], name));
 		if (str[*i] == '\\' && str[*i + 1] == '\0')
 			return (ft_error_syntax_token(str[*i], name));
+		if (str[*i] == '&' && str[*i + 1] == '&')
+			return (ft_error_syntax_token('&', name));
+		if (str[*i] == '&' && (str[*i + 1] == '\0' || !ft_util_is_whitespace(str[*i + 1])))
+			return (ft_error_syntax_token('&', name));
 	}
 	return (true);
 }

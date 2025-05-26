@@ -32,6 +32,8 @@ t_bool	ft_run_defined_is_defined(const t_token *token)
 		return (TRUE);
 	if (ft_strncmp(token->str, "unset", ft_strlen(token->str) + 1) == 0)
 		return (TRUE);
+	if (ft_strncmp(token->str, ":", ft_strlen(token->str) + 1) == 0)
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -54,4 +56,6 @@ void	ft_run_defined(t_shell *shell, const t_token *token,
 		ft_cmd_export(shell, &env_list, token->next);
 	else if (ft_strncmp(token->str, "unset", ft_strlen(token->str) + 1) == 0)
 		ft_cmd_unset(shell, &env_list, token->next);
+	else if (ft_strncmp(token->str, ":", ft_strlen(token->str) + 1) == 0)
+		return ;
 }

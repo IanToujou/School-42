@@ -189,7 +189,6 @@ int						ft_parse_handle(t_shell *shell, t_env_list *env_list,
 t_bool					ft_parse_dollar_search(const char *str);
 char					*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
 							const char *str, const t_shell *shell);
-t_bool					ft_check_redirect(char *str, int *i, char *name);
 t_bool					ft_exit_std(const t_shell *shell);
 void					ft_exit_env(t_env_list **env_list);
 void					ft_exit_temp(const t_shell *shell);

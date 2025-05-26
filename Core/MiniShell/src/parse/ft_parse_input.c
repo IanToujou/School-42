@@ -28,7 +28,7 @@
 static t_bool	ft_parse_input_str(const char *str, t_quotes *quotes, int *i,
 		const char *user)
 {
-	static char	*pool_symbols = "\\<>|;";
+	static char *pool_symbols = "\\<>|;&";
 
 	ft_util_quote_set(quotes, str[*i]);
 	if (str[*i] == '\\' && quotes->two == true)
