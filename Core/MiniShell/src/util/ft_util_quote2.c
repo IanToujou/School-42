@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 20:11:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/08 13:46:12 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:14:57 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ bool	ft_util_quote_status(t_quotes *quotes, char ch)
 	return (quotes->one || quotes->two);
 }
 
-bool ft_util_check_seps(const char *str, int *i, const char *name)
+bool	ft_util_check_seps(const char *str, int *i, const char *name)
 {
-	static const char *pool_symbols = ";|&";
+	static const char	*pool_symbols = ";|&";
 
 	if (str[*i] == ';' || str[*i] == '|' || str[*i] == '\\' || str[*i] == '&')
 	{
-		if (ft_util_strchr(pool_symbols, str[*i]) && (ft_strlen(str) == 1 || *i == 0))
+		if (ft_util_strchr(pool_symbols, str[*i]) && (ft_strlen(str) == 1
+				|| *i == 0))
 			return (ft_error_syntax_token(str[*i], name));
 		if (str[*i] == '\\')
 			return (ft_error_syntax_token(str[*i], name));
@@ -41,7 +42,8 @@ bool ft_util_check_seps(const char *str, int *i, const char *name)
 			return (ft_error_syntax_token(str[*i], name));
 		if (str[*i] == '&' && str[*i + 1] == '&')
 			return (ft_error_syntax_token('&', name));
-		if (str[*i] == '&' && (str[*i + 1] == '\0' || !ft_util_is_whitespace(str[*i + 1])))
+		if (str[*i] == '&' && (str[*i + 1] == '\0'
+				|| !ft_util_is_whitespace(str[*i + 1])))
 			return (ft_error_syntax_token('&', name));
 	}
 	return (true);

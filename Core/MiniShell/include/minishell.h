@@ -34,6 +34,11 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
+# include <limits.h>
+
+# ifndef PATH_MAX
+#  define PATH_MAX 4096
+# endif
 
 # define TEMP_PATH "/tmp"
 # define TEMP_FILE "/_tmpfile_shell"
@@ -94,6 +99,9 @@ typedef struct s_shell
 	int					shlvl;
 	pid_t				pid;
 	t_garbage			*garbage;
+	t_env_list			*env_list;
+	char				**current_cmds;
+	t_token				*current_token;
 }						t_shell;
 
 t_bool					ft_init_env(t_shell *shell, t_env_list **env_list,

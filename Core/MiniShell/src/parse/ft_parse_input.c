@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/24 23:32:38 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:15:31 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 static t_bool	ft_parse_input_str(const char *str, t_quotes *quotes, int *i,
 		const char *user)
 {
-	static char *pool_symbols = "\\<>|;&";
+	static char	*pool_symbols = "\\<>|;&";
 
 	ft_util_quote_set(quotes, str[*i]);
 	if (str[*i] == '\\' && quotes->two == true)

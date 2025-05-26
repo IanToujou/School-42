@@ -79,25 +79,3 @@ void	ft_util_env_update_shlvl(t_shell *shell, const t_token *token,
 		free(lvl);
 	}
 }
-
-void	ft_util_env_set(t_env_list **env_list, const char *key,
-		const char *value)
-{
-	t_env_list	*current;
-
-	if (!env_list || !key || !value)
-		return ;
-	current = *env_list;
-	while (current)
-	{
-		if (ft_strncmp(current->current->key, key, ft_strlen(key) + 1) == 0)
-		{
-			free(current->current->value);
-			current->current->value = ft_strdup(value);
-			return ;
-		}
-		current = current->next;
-	}
-	ft_util_env_var_add(env_list, ft_strjoin(key, "="));
-	ft_util_env_var_add(env_list, ft_strjoin(key, value));
-}

@@ -12,13 +12,11 @@
 
 #include "../../../include/minishell.h"
 
-static void	ft_cmd_exit_handle(const int status, const t_shell *shell,
-		t_env_list **env_list, t_token *token, char **cmds)
+static void	ft_cmd_exit_handle(const int status, t_shell *shell)
 {
-	ft_exit_env(env_list);
+	ft_exit_env(&shell->env_list);
 	ft_exit_temp(shell);
-	ft_util_cmd_free(cmds);
-	ft_util_token_free(token);
+	ft_util_cmd_free(shell->current_cmds);
 	ft_lstclear(&shell->garbage->tokens, free);
 	free(shell->garbage->tokens);
 	free(shell->garbage->result);
@@ -42,6 +40,9 @@ static int	ft_cmd_argument_count(const t_token *token)
 void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token,
 		char **cmds)
 {
+	shell->env_list = *env_list;
+	shell->current_token = token;
+	shell->current_cmds = cmds;
 	ft_putstr_fd("exit\n", STDERR_FILENO);
 	if (token && token->str && !ft_util_num_isnumber(token->str))
 	{
@@ -49,7 +50,7 @@ void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token,
 		ft_putstr_fd(": exit: ", STDERR_FILENO);
 		ft_putstr_fd(token->str, STDERR_FILENO);
 		ft_putstr_fd(": numeric argument required\n", STDERR_FILENO);
-		ft_cmd_exit_handle(STATUS_EXIT, shell, env_list, token, cmds);
+		ft_cmd_exit_handle(STATUS_EXIT, shell);
 	}
 	if (ft_cmd_argument_count(token) > 1)
 	{
@@ -58,8 +59,7 @@ void	ft_cmd_exit(t_shell *shell, t_env_list **env_list, t_token *token,
 		shell->exit_status = STATUS_OK;
 	}
 	else if (!token)
-		ft_cmd_exit_handle(STATUS_OK, shell, env_list, token, cmds);
+		ft_cmd_exit_handle(STATUS_OK, shell);
 	else
-		ft_cmd_exit_handle(ft_atoi(token->str) % 256, shell, env_list, token,
-			cmds);
+		ft_cmd_exit_handle(ft_atoi(token->str) % 256, shell);
 }

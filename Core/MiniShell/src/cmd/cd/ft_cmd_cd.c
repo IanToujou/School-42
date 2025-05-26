@@ -6,81 +6,105 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:17:42 by mwelfrin          #+#    #+#             */
-/*   Updated: 2025/05/13 16:12:13 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/26 18:23:03 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/minishell.h"
 
-static char	*get_path(t_shell *shell, t_env_list **env, t_token *args)
+static char	*get_current_dir(t_env_list **env)
 {
-	char	*path;
+	char	buffer[PATH_MAX];
+	char	*dir;
 
-	if (!args || !args->str || (args->str[0] == '~' && !args->str[1]))
-		path = ft_util_env_get(env, "HOME");
-	else if (args->next)
-	{
-		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
-		shell->exit_status = STATUS_MAIN;
-		return (NULL);
-	}
-	else if (strcmp(args->str, "-") == 0)
-	{
-		path = ft_util_env_get(env, "OLDPWD");
-		if (!path)
-		{
-			ft_putstr_fd("minishell: cd: OLDPWD not set\n", 2);
-			shell->exit_status = STATUS_MAIN;
-			return (NULL);
-		}
-		ft_putstr_fd(path, 1);
-		ft_putstr_fd("\n", 1);
-	}
+	dir = getcwd(buffer, PATH_MAX);
+	if (!dir)
+		dir = ft_strdup(ft_util_env_get(env, "PWD"));
 	else
-		path = args->str;
-	return (path);
+		dir = ft_strdup(dir);
+	if (!dir)
+	{
+		ft_putstr_fd("minishell: cd: getcwd failed: ", 2);
+		ft_putstr_fd(strerror(errno), 2);
+		ft_putstr_fd("\n", 2);
+	}
+	return (dir);
 }
 
-static void	update_vars(t_shell *shell, t_env_list **env, char *path,
-		char *prev)
+static char	*get_target_path(t_shell *s, t_env_list **env, t_token *args)
 {
-	char	*current;
+	char	*oldpwd;
 
-	if (!path || chdir(path) != 0)
+	if (!args || !args->str || (args->str[0] == '~' && !args->str[1]))
+		return (ft_util_env_get(env, "HOME"));
+	if (args->next)
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+		s->exit_status = STATUS_MAIN;
+		return (NULL);
+	}
+	if (!strcmp(args->str, "-"))
+	{
+		oldpwd = ft_util_env_get(env, "OLDPWD");
+		if (!oldpwd)
+		{
+			ft_putstr_fd("minishell: cd: OLDPWD not set\n", 2);
+			s->exit_status = STATUS_MAIN;
+			return (NULL);
+		}
+		ft_putstr_fd(oldpwd, 1);
+		ft_putstr_fd("\n", 1);
+		return (oldpwd);
+	}
+	return (args->str);
+}
+
+static int	handle_chdir(t_shell *s, char *path)
+{
+	if (!path || chdir(path))
 	{
 		ft_putstr_fd("minishell: cd: ", 2);
 		ft_putstr_fd(path, 2);
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(strerror(errno), 2);
 		ft_putstr_fd("\n", 2);
-		shell->exit_status = STATUS_MAIN;
-		free(prev);
-		return ;
+		s->exit_status = STATUS_MAIN;
+		return (0);
 	}
-	current = getcwd(NULL, 0);
-	ft_util_env_set(env, "OLDPWD", prev);
-	ft_util_env_set(env, "PWD", current);
-	shell->exit_status = STATUS_OK;
-	free(prev);
-	free(current);
+	return (1);
 }
 
-void	ft_cmd_cd(t_shell *shell, t_env_list **env, t_token *args)
+static void	update_pwd_and_oldpwd(t_env_list **env, char *prev)
 {
-	char	*path;
-	char	*prev;
+	char	*cur;
 
-	prev = getcwd(NULL, 0);
+	cur = getcwd(NULL, 0);
+	if (cur)
+	{
+		ft_util_env_set(env, "OLDPWD", prev);
+		ft_util_env_set(env, "PWD", cur);
+		free(cur);
+	}
+}
+
+void	ft_cmd_cd(t_shell *s, t_env_list **env, t_token *args)
+{
+	char	*prev;
+	char	*path;
+
+	prev = get_current_dir(env);
 	if (!prev)
 	{
-		ft_putstr_fd("minishell: cd: getcwd failed\n", 2);
+		s->exit_status = STATUS_MAIN;
 		return ;
 	}
-	path = get_path(shell, env, args);
-	if (!path)
+	path = get_target_path(s, env, args);
+	if (!path || !handle_chdir(s, path))
 	{
 		free(prev);
 		return ;
 	}
-	update_vars(shell, env, path, prev);
+	update_pwd_and_oldpwd(env, prev);
+	free(prev);
+	s->exit_status = STATUS_OK;
 }
