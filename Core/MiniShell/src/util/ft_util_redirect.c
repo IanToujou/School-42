@@ -37,7 +37,7 @@ bool	ft_util_redirect_check(const char *str, int *i, const char *name)
 	{
 		redirect_first = ft_util_redirect_type(str, *i);
 		(*i)++;
-		if (redirect_first == REDIRECT_IN_TWO
+		if (redirect_first == REDIRECT_OUT_TWO
 			|| redirect_first == REDIRECT_IN_TWO)
 			(*i)++;
 		j = *i;
