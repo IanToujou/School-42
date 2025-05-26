@@ -59,6 +59,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_token_2.c \
 		src/util/ft_util_token_3.c \
 		src/util/ft_util_token_4.c \
+		src/util/ft_util_token_5.c \
 		src/util/ft_util_prompt.c \
 		src/util/ft_util_bin.c \
 		src/util/ft_util_bin_2.c

@@ -17,8 +17,11 @@ static void	ft_cmd_exit_handle(const int status, t_shell *shell)
 	ft_exit_env(&shell->env_list);
 	ft_exit_temp(shell);
 	ft_util_cmd_free(shell->current_cmds);
-	ft_lstclear(&shell->garbage->tokens, free);
-	free(shell->garbage->tokens);
+	if (shell->garbage->tokens)
+	{
+		ft_lstclear(&shell->garbage->tokens, ft_util_token_delete);
+		free(shell->garbage->tokens);
+	}
 	free(shell->garbage->result);
 	free(shell->garbage);
 	exit(status);

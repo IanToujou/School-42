@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:44:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/24 23:37:16 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:45:44 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_token	*ft_util_token_next(t_token *token)
 t_token	*ft_util_token_create(t_shell *shell, const char *content)
 {
 	t_token	*token;
+	t_list	*node;
 
 	token = (t_token *)ft_calloc(1, sizeof(t_token));
 	if (token == NULL)
@@ -43,8 +44,17 @@ t_token	*ft_util_token_create(t_shell *shell, const char *content)
 		free(token);
 		return (NULL);
 	}
-	ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(token));
-	ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(token->str));
+	node = ft_lstnew(token);
+	if (!node)
+	{
+		free(token->str);
+		free(token);
+		return (NULL);
+	}
+	if (!shell->garbage->tokens)
+		shell->garbage->tokens = node;
+	else
+		ft_lstadd_back(&shell->garbage->tokens, node);
 	return (token);
 }
 
@@ -66,16 +76,14 @@ void	ft_util_token_add_back(t_token **list, t_token *new)
 	new->prev = current;
 }
 
-void	ft_util_token_free(t_token *list)
+void	ft_util_token_delete(void *ptr)
 {
-	t_token	*tmp;
+	t_token	*token;
 
-	while (list)
-	{
-		tmp = list->next;
-		if (list->str)
-			free(list->str);
-		free(list);
-		list = tmp;
-	}
+	if (!ptr)
+		return ;
+	token = (t_token *)ptr;
+	if (token->str)
+		free(token->str);
+	free(token);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_util_token_4.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:13:42 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 17:04:41 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/26 21:47:19 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static t_bool	ft_util_token_expand_additional(char *str, const int quotes[2])
 
 	j = 0;
 	i = -1;
-	new = (char *)malloc(sizeof(char)
-			* (ft_strlen(str) - quotes[0] - quotes[1] + 1));
+	new = (char *)malloc(sizeof(char) * (ft_strlen(str) - quotes[0] - quotes[1]
+				+ 1));
 	if (new == NULL)
 		return (FALSE);
 	while (str[++i])
@@ -41,8 +41,8 @@ static t_bool	ft_util_token_expand_additional(char *str, const int quotes[2])
 
 static t_bool	ft_util_token_expand_cmd(char *str)
 {
-	int			i;
-	int			quotes[2];
+	int	i;
+	int	quotes[2];
 
 	i = -1;
 	ft_memset(quotes, 0, sizeof(int) * 2);
@@ -69,8 +69,8 @@ void	ft_util_token_addon(const t_token *token)
 		if (token->type == TOKEN_CMD
 			&& ft_util_token_expand_cmd(token->str) == false)
 			ft_error_throw(ERROR_MALLOC);
-		if (token->type == TOKEN_INPUT
-			&& (!token->prev || token->prev->type == TOKEN_PIPE))
+		if (token->type == TOKEN_INPUT && (!token->prev
+				|| token->prev->type == TOKEN_PIPE))
 		{
 			if (token->next && token->next->type != TOKEN_PIPE
 				&& token->next->next && token->next->next->type != TOKEN_PIPE)
@@ -80,5 +80,47 @@ void	ft_util_token_addon(const t_token *token)
 			}
 		}
 		token = token->next;
+	}
+}
+
+void	ft_util_token_cleanup(t_shell *shell, t_token *list)
+{
+	t_token	*current;
+	t_token	*next;
+	t_list	*garbage_current;
+	t_list	*garbage_next;
+
+	current = list;
+	while (current)
+	{
+		next = current->next;
+		if (current->str)
+			free(current->str);
+		free(current);
+		current = next;
+	}
+	garbage_current = shell->garbage->tokens;
+	while (garbage_current)
+	{
+		garbage_next = garbage_current->next;
+		free(garbage_current);
+		garbage_current = garbage_next;
+	}
+	shell->garbage->tokens = NULL;
+}
+
+void	ft_util_token_free(t_token *list)
+{
+	t_token		*tmp;
+	t_token		*current;
+
+	current = list;
+	while (current)
+	{
+		tmp = current->next;
+		if (current->str)
+			free(current->str);
+		free(current);
+		current = tmp;
 	}
 }

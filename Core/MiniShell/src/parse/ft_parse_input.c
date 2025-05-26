@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:29:13 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/26 16:15:31 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/26 21:56:18 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,33 @@ static t_bool	ft_parse_preprocess(const char *input, const char *user)
 	return (TRUE);
 }
 
+static t_bool	ft_parse_input_prepare(t_shell *shell, const char *input,
+		const char *user)
+{
+	char	*result;
+
+	if (ft_util_str_tab_skip(input))
+		return (FALSE);
+	result = ft_util_str_tab_trim(input);
+	if (!result)
+		ft_error_throw(ERROR_MALLOC);
+	shell->garbage = (t_garbage *)malloc(sizeof(t_garbage));
+	if (!shell->garbage)
+	{
+		free(result);
+		ft_error_throw(ERROR_MALLOC);
+	}
+	shell->garbage->result = result;
+	shell->garbage->tokens = NULL;
+	if (!ft_parse_preprocess(result, user))
+	{
+		free(result);
+		free(shell->garbage);
+		return (FALSE);
+	}
+	return (TRUE);
+}
+
 /**
  * Parses the input command string provided by the user and
  * processes it within the context of the shell.
@@ -90,23 +117,12 @@ t_bool	ft_parse_input(t_shell *shell, t_env_list *env_list, const char *input,
 {
 	char	*result;
 
-	if (ft_util_str_tab_skip(input))
+	if (!ft_parse_input_prepare(shell, input, user))
 		return (FALSE);
-	result = ft_util_str_tab_trim(input);
-	if (!result)
-		ft_error_throw(ERROR_MALLOC);
-	shell->garbage = (t_garbage *)malloc(sizeof(t_garbage));
-	shell->garbage->result = result;
-	shell->garbage->tokens = ft_lstnew(NULL);
-	if (!ft_parse_preprocess(result, user))
-	{
-		free(result);
-		return (FALSE);
-	}
+	result = shell->garbage->result;
 	if (!ft_parse_handle(shell, env_list, result))
 		ft_error_throw(ERROR_MALLOC);
 	free(result);
-	free(shell->garbage->tokens);
 	free(shell->garbage);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/22 10:13:04 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/26 22:02:02 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "token.h"
 # include <errno.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -34,7 +35,6 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
-# include <limits.h>
 
 # ifndef PATH_MAX
 #  define PATH_MAX 4096
@@ -153,6 +153,9 @@ void					ft_util_token_add_back(t_token **list, t_token *new);
 void					ft_util_env_set(t_env_list **env_list, const char *key,
 							const char *value);
 void					ft_util_token_free(t_token *list);
+void					ft_util_token_cleanup(t_shell *shell, t_token *list);
+char					**ft_util_token_put(char *str, const int amount);
+void					ft_util_token_delete(void *ptr);
 t_bool					ft_util_token_process(t_shell *shell, char **commands,
 							t_env_list *env_list);
 t_token					*ft_util_token_to_struct(char **cmds, t_shell *shell);
@@ -166,6 +169,9 @@ char					*ft_util_cmd_grow_str(t_env_list *env_list, char *str,
 char					**ft_util_cmd_free(char **cmds);
 char					**ft_util_token_free_cmds(char **cmds);
 void					ft_util_bin_signal(const t_token *token);
+char					**ft_util_token_put(char *str, const int amount);
+t_bool					ft_util_token_loop_step(char **cmds, t_parse *parse,
+							char *str);
 void					ft_util_bin_free_paths(char **paths,
 							char *cmd_with_slash);
 void					ft_util_launch_execve(t_env_list *env_list,
