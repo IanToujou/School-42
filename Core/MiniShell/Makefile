@@ -32,6 +32,10 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/parse/ft_parse_dollar.c \
 		src/parse/ft_parse_env.c \
 		src/parse/ft_parse_handle.c \
+		src/parse/ft_parse_handle_2.c \
+		src/parse/ft_parse_handle_3.c \
+		src/parse/ft_parse_handle_4.c \
+		src/parse/ft_parse_handle_5.c \
 		src/parse/ft_parse_input.c \
 		src/run/ft_run_bin.c \
 		src/run/ft_run_bin_2.c \

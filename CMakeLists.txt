@@ -323,6 +323,10 @@ add_executable(MiniShell
 		Core/MiniShell/src/util/ft_util_env_3.c
 		Core/MiniShell/src/util/ft_util_bin.c
 		Core/MiniShell/src/run/ft_run_bin_2.c
+		Core/MiniShell/src/parse/ft_parse_handle_2.c
+		Core/MiniShell/src/parse/ft_parse_handle_3.c
+		Core/MiniShell/src/parse/ft_parse_handle_4.c
+		Core/MiniShell/src/parse/ft_parse_handle_5.c
 )
 
 add_executable(Cub3D

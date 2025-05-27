@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:14:09 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:43:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,7 +225,31 @@ void					ft_parse_env(t_env_list **env_list, char **env);
 t_bool					ft_parse_input(t_shell *shell, t_env_list *env_list,
 							const char *input, const char *user);
 int						ft_parse_handle(t_shell *shell, t_env_list *env_list,
-							char *str);
+								char *str);
+int						ft_parse_handle_extract_word(const char *str, char **result,
+								int *i, int count);
+void					ft_parse_handle_free_result(char **result, int count);
+int						ft_parse_handle_count_words(const char *str);
+char					*ft_parse_handle_strndup(const char *s, size_t n);
+t_bool					ft_parse_handle_exit(char **cmd, t_shell *shell, t_bool status);
+void					ft_parse_handle_setup_io(int pipes[][2], int pipe_count,
+								int cmd_index, int cmd_count);
+void					ft_parse_handle_close_pipes(int pipes[][2], int pipe_count);
+t_bool					ft_parse_handle_setup_pipes(int pipes[][2],
+								int pipe_count);
+char					**ft_parse_handle_split_cmd(const char *cmd_str);
+char					**ft_parse_handle_extract_words(const char *trimmed,
+								int word_count);
+int						ft_parse_handle_count_segments(const char *input);
+t_bool					ft_parse_handle_pipe_cmd(t_shell *shell, char **cmds,
+								t_env_list *env_list, int pipe_count);
+void					ft_parse_handle_wait_children(int cmd_count);
+void					ft_parse_handle_spawn_pipe(t_shell *shell, char **cmds,
+								t_env_list *env_list, int pipes[][2], int pipe_count, int cmd_count);
+void					ft_parse_handle_execute(t_shell *shell, char *cmd_str,
+								t_env_list *env_list);
+void					ft_parse_handle_update_quote(char c,
+								int *in_quotes, char *quote_char);
 t_bool					ft_parse_dollar_search(const char *str);
 char					*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
 							const char *str, const t_shell *shell);
