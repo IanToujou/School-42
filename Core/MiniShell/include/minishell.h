@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 10:55:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 11:46:03 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,15 +208,15 @@ t_bool					ft_exit_std(const t_shell *shell);
 void					ft_exit_env(t_env_list **env_list);
 void					ft_exit_temp(const t_shell *shell);
 
-void					ft_run_cmd(t_shell *shell, t_token *token,
-							t_env_list *env_list, char **cmd);
+void					ft_run_cmd(t_shell *shell, const t_token *token,
+							t_env_list *env_list, char **args, int pipe_count);
 t_bool					ft_run_defined_is_defined(const t_token *token);
 void					ft_run_defined(t_shell *shell, const t_token *token,
 							t_env_list *env_list, char **cmd);
 t_bool					ft_run_token(t_shell *shell, t_token *token,
 							t_env_list *env_list, char **cmds);
 void					ft_run_bin(t_shell *shell, const t_token *token,
-							t_env_list *env_list);
+							t_env_list *env_list, int pipe_count);
 
 void					ft_cmd_cd(t_shell *shell, t_env_list **env_list,
 							t_token *args);

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 11:30:21 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 11:54:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,23 +127,17 @@ static char **ft_split_command(const char *cmd_str)
 	return result;
 }
 
-static t_bool ft_handle_piped_commands(t_shell *shell, char **cmds, t_env_list *env_list, int pipe_count)
+static t_bool ft_handle_piped_commands(t_shell *shell, char **cmds, t_env_list *env_list, const int pipe_count)
 {
     int i;
     int cmd_count = 0;
     pid_t pid;
-    int pipes[10][2]; // Support up to 10 pipes
+    int pipes[10][2];
     t_token *token;
     char **args;
 
-    // Count number of commands and print them for debugging
-    printf("Pipeline commands:\n");
-    while (cmds[cmd_count] != NULL) {
-        printf("Command %d: '%s'\n", cmd_count, cmds[cmd_count]);
-        cmd_count++;
-    }
-    printf("Total commands: %d, Pipe count: %d\n", cmd_count, pipe_count);
-    fflush(stdout);
+    while (cmds[cmd_count] != NULL)
+    	cmd_count++;
 
     // Create all necessary pipes
     for (i = 0; i < pipe_count; i++) {
@@ -158,47 +152,21 @@ static t_bool ft_handle_piped_commands(t_shell *shell, char **cmds, t_env_list *
         }
     }
 
-    // Execute each command in the pipeline
     for (i = 0; i < cmd_count; i++) {
-        printf("Processing command %d: '%s'\n", i, cmds[i]);
-        fflush(stdout);
-
         pid = fork();
-        if (pid == -1) {
-            perror("fork failed");
-            return (false);
-        }
+        if (pid == -1)
+        	ft_error_throw(ERROR_FORK);
 
-        if (pid == 0) {
-            // Child process
-            printf("Child process for command: '%s'\n", cmds[i]);
-            fflush(stdout);
-
-            // Set up stdin from previous pipe (if not first command)
-            if (i > 0) {
-                if (dup2(pipes[i-1][0], STDIN_FILENO) == -1) {
-                    perror("dup2 stdin");
-                    exit(EXIT_FAILURE);
-                }
-            }
-
-            // Set up stdout to next pipe (if not last command)
-            if (i < cmd_count - 1) {
-                if (dup2(pipes[i][1], STDOUT_FILENO) == -1) {
-                    perror("dup2 stdout");
-                    exit(EXIT_FAILURE);
-                }
-            }
-
-            // Close all pipe file descriptors
+        if (pid == 0)
+        {
+            if (i > 0 && dup2(pipes[i-1][0], STDIN_FILENO) == -1)
+            	ft_error_throw(ERROR_DUP2);
+            if (i < cmd_count - 1 && dup2(pipes[i][1], STDOUT_FILENO) == -1)
+            	ft_error_throw(ERROR_DUP2);
             for (int j = 0; j < pipe_count; j++) {
                 close(pipes[j][0]);
                 close(pipes[j][1]);
             }
-
-            // Print raw command string
-            printf("Raw command string: '%s'\n", cmds[i]);
-            fflush(stdout);
 
             // Parse the command string into arguments
             args = ft_split_command(cmds[i]);
@@ -209,52 +177,25 @@ static t_bool ft_handle_piped_commands(t_shell *shell, char **cmds, t_env_list *
 
         	shell->current_cmds = args;
 
-            // Print parsed arguments
-            printf("Parsed arguments for '%s':\n", cmds[i]);
-            for (int j = 0; args[j]; j++) {
-                printf("  Arg[%d]: '%s'\n", j, args[j]);
-            }
-            fflush(stdout);
-
             // Create token for command execution
             token = ft_util_token_create(shell, args[0]);
-            if (!token) {
-                fprintf(stderr, "Token creation failed\n");
-                ft_util_cmd_free(args);
-                exit(EXIT_FAILURE);
-            }
+            if (!token)
+            	ft_error_throw(ERROR_TOKEN);
             token->type = TOKEN_CMD;
-
-            // Execute the command
-            printf("Executing command: '%s'\n", args[0]);
-            fflush(stdout);
-            ft_run_cmd(shell, token, env_list, args);
-
-            // Free resources and exit
+            ft_run_cmd(shell, token, env_list, args, pipe_count);
             free(token);
             ft_util_cmd_free(args);
-            printf("Child process for '%s' exiting with status %d\n",
-                   args[0], shell->exit_status);
-            fflush(stdout);
             exit(shell->exit_status);
         }
     }
-
-    // Parent process - close all pipes
     for (i = 0; i < pipe_count; i++) {
         close(pipes[i][0]);
         close(pipes[i][1]);
     }
-
-    // Wait for all child processes
     for (i = 0; i < cmd_count; i++) {
         int status;
         wait(&status);
-        printf("Child process %d exited with status %d\n", i,
-               WIFEXITED(status) ? WEXITSTATUS(status) : 0);
-        fflush(stdout);
     }
-
     return (true);
 }
 
