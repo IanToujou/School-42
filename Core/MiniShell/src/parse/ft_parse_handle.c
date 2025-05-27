@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 15:08:23 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 15:09:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,11 @@ static t_bool	ft_handle_piped_commands(t_shell *shell, char **cmds,
 			s.j = 0;
 			while (s.j < pipe_count)
 			{
-				close(pipes[j][0]);
-				close(pipes[j][1]);
+				close(pipes[s.j][0]);
+				close(pipes[s.j][1]);
 				s.j++;
 			}
-			args = ft_split_command(cmds[i]);
+			args = ft_split_command(cmds[s.i]);
 			if (!args || !args[0])
 				ft_error_throw(ERROR_PARSE);
 			shell->current_cmds = args;
