@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:04:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:27:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,68 +51,212 @@ char	*ft_strndup(const char *s, size_t n)
 	return (result);
 }
 
-static char	**ft_split_command(const char *cmd_str)
+static int	ft_count_words(const char *str)
 {
 	t_split_cmd	s;
-	char		**result;
-	char		*trimmed;
 
 	s.i = 0;
-	s.j = 0;
 	s.count = 0;
 	s.in_word = 0;
 	s.in_quotes = 0;
-	if (!cmd_str)
-		return (NULL);
-	trimmed = ft_strtrim(cmd_str, " \t\n\r");
-	if (!trimmed)
-		return (NULL);
-	while (trimmed[s.i])
+	while (str[s.i])
 	{
-		if (trimmed[s.i] == '"' || trimmed[s.i] == '\'')
+		if (str[s.i] == '"' || str[s.i] == '\'')
 			s.in_quotes = !s.in_quotes;
-		if (!s.in_quotes && trimmed[s.i] == ' ' && s.in_word)
+		if (!s.in_quotes && str[s.i] == ' ' && s.in_word)
 			s.in_word = 0;
-		else if (!s.in_quotes && trimmed[s.i] != ' ' && !s.in_word)
+		else if (!s.in_quotes && str[s.i] != ' ' && !s.in_word)
 		{
 			s.in_word = 1;
 			s.count++;
 		}
 		s.i++;
 	}
-	result = (char **)malloc(sizeof(char *) * (s.count + 1));
+	return (s.count);
+}
+
+static void	ft_free_result(char **result, int count)
+{
+	while (--count >= 0)
+		free(result[count]);
+	free(result);
+}
+
+static int	ft_extract_word(const char *str, char **result,
+	int *i, const int count)
+{
+	int	j;
+	int	in_quotes;
+
+	while (str[*i] && (str[*i] == ' ' || str[*i] == '|'))
+		(*i)++;
+	if (!str[*i])
+		return (0);
+	j = *i;
+	in_quotes = 0;
+	while (str[*i] && (in_quotes || str[*i] != ' '))
+	{
+		if (str[*i] == '"' || str[*i] == '\'')
+			in_quotes = !in_quotes;
+		(*i)++;
+	}
+	result[count] = ft_strndup(str + j, *i - j);
+	if (!result[count])
+		return (-1);
+	return (1);
+}
+
+static char	**ft_extract_words(const char *trimmed,
+	const int word_count)
+{
+	t_split_cmd	s;
+	char		**result;
+	int			status;
+
+	result = (char **) malloc(sizeof(char *) * (word_count + 1));
 	if (!result)
-		return (free(trimmed), NULL);
+		return (NULL);
 	s.i = 0;
 	s.count = 0;
 	while (trimmed[s.i])
 	{
-		while (trimmed[s.i] && (trimmed[s.i] == ' ' || trimmed[s.i] == '|'))
-			s.i++;
-		if (!trimmed[s.i])
+		status = ft_extract_word(trimmed, result, &s.i, s.count);
+		if (status == 0)
 			break ;
-		s.j = s.i;
-		s.in_quotes = 0;
-		while (trimmed[s.i] && (s.in_quotes || trimmed[s.i] != ' '))
+		if (status == -1)
 		{
-			if (trimmed[s.i] == '"' || trimmed[s.i] == '\'')
-				s.in_quotes = !s.in_quotes;
-			s.i++;
-		}
-		result[s.count] = ft_strndup(trimmed + s.j, s.i - s.j);
-		if (!result[s.count])
-		{
-			while (--s.count >= 0)
-				free(result[s.count]);
-			free(result);
-			free(trimmed);
+			ft_free_result(result, s.count);
 			return (NULL);
 		}
 		s.count++;
 	}
 	result[s.count] = NULL;
+	return (result);
+}
+
+static char	**ft_split_command(const char *cmd_str)
+{
+	char	*trimmed;
+	char	**result;
+	int		word_count;
+
+	if (!cmd_str)
+		return (NULL);
+	trimmed = ft_strtrim(cmd_str, " \t\n\r");
+	if (!trimmed)
+		return (NULL);
+	word_count = ft_count_words(trimmed);
+	result = ft_extract_words(trimmed, word_count);
 	free(trimmed);
 	return (result);
+}
+
+static t_bool	ft_setup_pipes(int pipes[][2], int pipe_count)
+{
+	int	i;
+
+	i = 0;
+	while (i < pipe_count)
+	{
+		if (pipe(pipes[i]) == -1)
+		{
+			perror("pipe creation failed");
+			while (--i >= 0)
+			{
+				close(pipes[i][0]);
+				close(pipes[i][1]);
+			}
+			return (FALSE);
+		}
+		i++;
+	}
+	return (TRUE);
+}
+
+static void	ft_close_all_pipes(int pipes[][2], const int pipe_count)
+{
+	int	i;
+
+	i = 0;
+	while (i < pipe_count)
+	{
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		i++;
+	}
+}
+
+static void	ft_setup_child_io(int pipes[][2], int pipe_count,
+		int cmd_index, int cmd_count)
+{
+	int	j;
+
+	if (cmd_index > 0 && dup2(pipes[cmd_index - 1][0], STDIN_FILENO) == -1)
+		ft_error_throw(ERROR_DUP2);
+	if (cmd_index < cmd_count - 1
+		&& dup2(pipes[cmd_index][1], STDOUT_FILENO) == -1)
+		ft_error_throw(ERROR_DUP2);
+	j = 0;
+	while (j < pipe_count)
+	{
+		close(pipes[j][0]);
+		close(pipes[j][1]);
+		j++;
+	}
+}
+
+static void	ft_execute_command(t_shell *shell, char *cmd_str,
+		t_env_list *env_list)
+{
+	char	**args;
+	t_token	*token;
+
+	args = ft_split_command(cmd_str);
+	if (!args || !args[0])
+		ft_error_throw(ERROR_PARSE);
+	shell->current_cmds = args;
+	token = ft_util_token_create(shell, args[0]);
+	if (!token)
+		ft_error_throw(ERROR_TOKEN);
+	token->type = TOKEN_CMD;
+	ft_run_cmd(shell, token, env_list, args);
+	free(token);
+	ft_util_cmd_free(args);
+	exit(shell->exit_status);
+}
+
+static void	ft_spawn_child_processes(t_shell *shell, char **cmds,
+	t_env_list *env_list, int pipes[][2], int pipe_count, int cmd_count)
+{
+	int		i;
+	pid_t	pid;
+
+	i = 0;
+	while (i < cmd_count)
+	{
+		pid = fork();
+		if (pid == -1)
+			ft_error_throw(ERROR_FORK);
+		if (pid == 0)
+		{
+			ft_setup_child_io(pipes, pipe_count, i, cmd_count);
+			ft_execute_command(shell, cmds[i], env_list);
+		}
+		i++;
+	}
+}
+
+static void	ft_wait_for_children(const int cmd_count)
+{
+	int	i;
+	int	status;
+
+	i = 0;
+	while (i < cmd_count)
+	{
+		wait(&status);
+		i++;
+	}
 }
 
 static t_bool	ft_handle_piped_commands(t_shell *shell, char **cmds,
@@ -120,86 +264,24 @@ static t_bool	ft_handle_piped_commands(t_shell *shell, char **cmds,
 {
 	t_handle_pipe	s;
 	int				pipes[10][2];
-	t_token			*token;
-	char			**args;
-	int				status;
 
 	s.cmd_count = 0;
 	while (cmds[s.cmd_count])
 		s.cmd_count++;
-	s.i = 0;
-	while (s.i < pipe_count)
-	{
-		if (pipe(pipes[s.i]) == -1)
-		{
-			perror("pipe creation failed");
-			while (--s.i >= 0)
-			{
-				close(pipes[s.i][0]);
-				close(pipes[s.i][1]);
-			}
-			return (FALSE);
-		}
-		s.i++;
-	}
-	s.i = 0;
-	while (s.i < s.cmd_count)
-	{
-		s.pid = fork();
-		if (s.pid == -1)
-			ft_error_throw(ERROR_FORK);
-		if (s.pid == 0)
-		{
-			if (s.i > 0 && dup2(pipes[s.i - 1][0], STDIN_FILENO) == -1)
-				ft_error_throw(ERROR_DUP2);
-			if (s.i < s.cmd_count - 1 && dup2(pipes[s.i][1], STDOUT_FILENO) == -1)
-				ft_error_throw(ERROR_DUP2);
-			s.j = 0;
-			while (s.j < pipe_count)
-			{
-				close(pipes[s.j][0]);
-				close(pipes[s.j][1]);
-				s.j++;
-			}
-			args = ft_split_command(cmds[s.i]);
-			if (!args || !args[0])
-				ft_error_throw(ERROR_PARSE);
-			shell->current_cmds = args;
-			token = ft_util_token_create(shell, args[0]);
-			if (!token)
-				ft_error_throw(ERROR_TOKEN);
-			token->type = TOKEN_CMD;
-			ft_run_cmd(shell, token, env_list, args);
-			free(token);
-			ft_util_cmd_free(args);
-			exit(shell->exit_status);
-		}
-		s.i++;
-	}
-	s.i = 0;
-	while (s.i < pipe_count)
-	{
-		close(pipes[s.i][0]);
-		close(pipes[s.i][1]);
-		s.i++;
-	}
-	s.i = 0;
-	while (s.i < s.cmd_count)
-	{
-		wait(&status);
-		s.i++;
-	}
+	if (!ft_setup_pipes(pipes, pipe_count))
+		return (FALSE);
+	ft_spawn_child_processes(shell, cmds, env_list, pipes,
+		pipe_count, s.cmd_count);
+	ft_close_all_pipes(pipes, pipe_count);
+	ft_wait_for_children(s.cmd_count);
 	return (TRUE);
 }
 
-static char	**ft_split_by_pipes(const char *input)
+static int	ft_count_pipe_segments(const char *input)
 {
 	t_split_pipe	s;
-	char			**result;
-	char			*trimmed;
 
 	s.i = 0;
-	s.start = 0;
 	s.count = 1;
 	s.in_quotes = 0;
 	s.quote_char = 0;
@@ -219,44 +301,87 @@ static char	**ft_split_by_pipes(const char *input)
 			s.count++;
 		s.i++;
 	}
-	result = (char **)malloc(sizeof(char *) * (s.count + 1));
-	if (!result)
+	return (s.count);
+}
+
+static void	ft_update_quote_state(char c, int *in_quotes,
+	char *quote_char)
+{
+	if (c == '\'' || c == '"')
+	{
+		if (!(*in_quotes))
+		{
+			*in_quotes = 1;
+			*quote_char = c;
+		}
+		else if (c == *quote_char)
+			*in_quotes = 0;
+	}
+}
+
+static char	*ft_extract_and_trim_segment(const char *input,
+	const int start, const int end)
+{
+	char	*segment;
+	char	*trimmed;
+
+	segment = ft_strndup(input + start, end - start);
+	if (!segment)
 		return (NULL);
+	trimmed = ft_strtrim(segment, " \t\n\r");
+	free(segment);
+	return (trimmed);
+}
+
+static int	ft_extract_pipe_segments(const char *input,
+	char **result)
+{
+	t_split_pipe	s;
+
 	s.i = 0;
+	s.start = 0;
 	s.count = 0;
 	s.in_quotes = 0;
 	while (input[s.i])
 	{
-		if (input[s.i] == '\'' || input[s.i] == '"')
-		{
-			if (!s.in_quotes)
-			{
-				s.in_quotes = 1;
-				s.quote_char = input[s.i];
-			}
-			else if (input[s.i] == s.quote_char)
-				s.in_quotes = 0;
-		}
+		ft_update_quote_state(input[s.i], &s.in_quotes, &s.quote_char);
 		if (input[s.i] == '|' && !s.in_quotes)
 		{
-			result[s.count] = ft_strndup(input + s.start, s.i - s.start);
+			result[s.count] = ft_extract_and_trim_segment(input, s.start, s.i);
 			if (!result[s.count])
-				return (free(result), NULL);
-			trimmed = ft_strtrim(result[s.count], " \t\n\r");
-			free(result[s.count]);
-			result[s.count] = trimmed;
+				return (0);
 			s.count++;
 			s.start = s.i + 1;
 		}
 		s.i++;
 	}
-	result[s.count] = ft_strndup(input + s.start, s.i - s.start);
+	result[s.count] = ft_extract_and_trim_segment(input, s.start, s.i);
 	if (!result[s.count])
-		return (free(result), NULL);
-	trimmed = ft_strtrim(result[s.count], " \t\n\r");
-	free(result[s.count]);
-	result[s.count] = trimmed;
-	result[s.count + 1] = NULL;
+		return (0);
+	return (1);
+}
+
+static char	**ft_split_by_pipes(const char *input)
+{
+	int		i;
+	int		count;
+	char	**result;
+
+	if (!input)
+		return (NULL);
+	count = ft_count_pipe_segments(input);
+	result = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!result)
+		return (NULL);
+	if (!ft_extract_pipe_segments(input, result))
+	{
+		i = 0;
+		while (result[i])
+			free(result[i++]);
+		free(result);
+		return (NULL);
+	}
+	result[count] = NULL;
 	return (result);
 }
 

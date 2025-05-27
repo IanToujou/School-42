@@ -6,13 +6,13 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 14:57:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:13:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static int	ft_run_bin_token_length(const t_token *token)
+int	ft_run_bin_token_length(const t_token *token)
 {
 	int	size;
 
@@ -51,45 +51,22 @@ static void	ft_run_bin_handle(t_shell *shell, const t_token *token,
 }
 
 static void	ft_run_bin_handle_piped(t_shell *shell, const t_token *token,
-		t_env_list *env_list)
-{
-	int				size;
+		t_env_list *env_list) {
 	int				i;
 	char			**args;
-	const t_token	*current;
 
 	if (token->type == TOKEN_CMD)
 		ft_util_env_update_shlvl(shell, token, &env_list);
 	if (shell->current_cmds != NULL)
-	{
-		args = shell->current_cmds;
-		i = 0;
-		while (args[i])
-			i++;
-	}
+		ft_run_bin_piped_prepare_existing(shell, &args, &i);
 	else
-	{
-		size = ft_run_bin_token_length(token->next);
-		args = (char **) malloc(sizeof(char *) * (size + 1));
-		if (args == NULL)
-			ft_error_throw(ERROR_MALLOC);
-		current = token;
-		i = -1;
-		while (++i < size)
-		{
-			args[i] = ft_strtrim(current->str, " ");
-			if (args[i] == NULL)
-				ft_error_throw(ERROR_MALLOC);
-			current = current->next;
-		}
-		args[size] = NULL;
-	}
+		args = ft_run_bin_piped_args(token);
 	ft_util_launch_execve(env_list, args);
 	ft_util_cmd_free(shell->current_cmds);
 }
 
 void	ft_run_bin(t_shell *shell, const t_token *token, t_env_list *env_list,
-		int pipe_count)
+		const int pipe_count)
 {
 	pid_t	pid;
 	int		status;

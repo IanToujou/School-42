@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 19:51:42 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:14:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,13 @@ t_bool					ft_run_token(t_shell *shell, t_token *token,
 							t_env_list *env_list, char **cmds);
 void					ft_run_bin(t_shell *shell, const t_token *token,
 							t_env_list *env_list, int pipe_count);
+void					ft_run_bin_piped_prepare_existing(const t_shell *shell,
+							char ***args, int *i);
+char					**ft_run_bin_piped_allocate(int size);
+void					ft_run_bin_piped_populate(char **args,
+							const t_token *current, int size);
+char					**ft_run_bin_piped_args(const t_token *token);
+int						ft_run_bin_token_length(const t_token *token);
 
 void					ft_cmd_cd(t_shell *shell, t_env_list **env_list,
 							t_token *args);

@@ -34,6 +34,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/parse/ft_parse_handle.c \
 		src/parse/ft_parse_input.c \
 		src/run/ft_run_bin.c \
+		src/run/ft_run_bin_2.c \
 		src/run/ft_run_cmd.c \
 		src/run/ft_run_defined.c \
 		src/run/ft_run_token.c \
