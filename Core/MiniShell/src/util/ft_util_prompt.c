@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/13 16:11:44 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/27 14:52:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static const char	*ft_util_prompt_one(void)
 {
 	return (
-		COLOR_RESET "┌──(" COLOR_PINK "≽^•w•^≼" COLOR_RESET " | " COLOR_PINK
+		COLOR_RESET "┌──(" COLOR_PINK "≽^•w•^≼"
+		COLOR_RESET " | " COLOR_PINK
 	);
 }
 

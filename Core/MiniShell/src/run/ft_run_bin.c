@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 13:08:19 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/27 14:53:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	ft_run_bin_handle_piped(t_shell *shell, const t_token *token,
 	else
 	{
 		size = ft_run_bin_token_length(token->next);
-		args = (char **)malloc(sizeof(char *) * (size + 1));
+		args = (char **) malloc(sizeof(char *) * (size + 1));
 		if (args == NULL)
 			ft_error_throw(ERROR_MALLOC);
 		current = token;
