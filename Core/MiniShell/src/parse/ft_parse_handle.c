@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 13:05:42 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:08:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,68 +53,64 @@ char	*ft_strndup(const char *s, size_t n)
 
 static char	**ft_split_command(const char *cmd_str)
 {
-	char	**result;
-	char	*trimmed;
-	int		i;
-	int		j;
-	int		count;
-	int		in_word;
-	int		in_quotes;
+	t_split_cmd	s;
+	char		**result;
+	char		*trimmed;
 
-	i = 0;
-	j = 0;
-	count = 0;
-	in_word = 0;
-	in_quotes = 0;
+	s.i = 0;
+	s.j = 0;
+	s.count = 0;
+	s.in_word = 0;
+	s.in_quotes = 0;
 	if (!cmd_str)
 		return (NULL);
 	trimmed = ft_strtrim(cmd_str, " \t\n\r");
 	if (!trimmed)
 		return (NULL);
-	while (trimmed[i])
+	while (trimmed[s.i])
 	{
-		if (trimmed[i] == '"' || trimmed[i] == '\'')
-			in_quotes = !in_quotes;
-		if (!in_quotes && trimmed[i] == ' ' && in_word)
-			in_word = 0;
-		else if (!in_quotes && trimmed[i] != ' ' && !in_word)
+		if (trimmed[s.i] == '"' || trimmed[s.i] == '\'')
+			s.in_quotes = !s.in_quotes;
+		if (!s.in_quotes && trimmed[s.i] == ' ' && s.in_word)
+			s.in_word = 0;
+		else if (!s.in_quotes && trimmed[s.i] != ' ' && !s.in_word)
 		{
-			in_word = 1;
-			count++;
+			s.in_word = 1;
+			s.count++;
 		}
-		i++;
+		s.i++;
 	}
-	result = (char **)malloc(sizeof(char *) * (count + 1));
+	result = (char **)malloc(sizeof(char *) * (s.count + 1));
 	if (!result)
 		return (free(trimmed), NULL);
-	i = 0;
-	count = 0;
-	while (trimmed[i])
+	s.i = 0;
+	s.count = 0;
+	while (trimmed[s.i])
 	{
-		while (trimmed[i] && (trimmed[i] == ' ' || trimmed[i] == '|'))
-			i++;
-		if (!trimmed[i])
+		while (trimmed[s.i] && (trimmed[i] == ' ' || trimmed[i] == '|'))
+			s.i++;
+		if (!trimmed[s.i])
 			break ;
-		j = i;
-		in_quotes = 0;
-		while (trimmed[i] && (in_quotes || trimmed[i] != ' '))
+		s.j = s.i;
+		s.in_quotes = 0;
+		while (trimmed[s.i] && (s.in_quotes || trimmed[s.i] != ' '))
 		{
-			if (trimmed[i] == '"' || trimmed[i] == '\'')
-				in_quotes = !in_quotes;
-			i++;
+			if (trimmed[s.i] == '"' || trimmed[s.i] == '\'')
+				s.in_quotes = !s.in_quotes;
+			s.i++;
 		}
-		result[count] = ft_strndup(trimmed + j, i - j);
-		if (!result[count])
+		result[s.count] = ft_strndup(trimmed + s.j, s.i - s.j);
+		if (!result[s.count])
 		{
-			while (--count >= 0)
-				free(result[count]);
+			while (--s.count >= 0)
+				free(result[s.count]);
 			free(result);
 			free(trimmed);
 			return (NULL);
 		}
-		count++;
+		s.count++;
 	}
-	result[count] = NULL;
+	result[s.count] = NULL;
 	free(trimmed);
 	return (result);
 }
@@ -122,58 +118,52 @@ static char	**ft_split_command(const char *cmd_str)
 static t_bool	ft_handle_piped_commands(t_shell *shell, char **cmds,
 		t_env_list *env_list, const int pipe_count)
 {
-	int		i;
-	int		j;
-	int		cmd_count;
-	pid_t	pid;
-	int		pipes[10][2];
-	t_token	*token;
-	char	**args;
-	int		status;
+	t_handle_pipe	s;
+	int				pipes[10][2];
+	t_token			*token;
+	char			**args;
+	int				status;
 
-	cmd_count = 0;
-	while (cmds[cmd_count])
-		cmd_count++;
-	i = 0;
-	while (i < pipe_count)
+	s.cmd_count = 0;
+	while (cmds[s.cmd_count])
+		s.cmd_count++;
+	s.i = 0;
+	while (s.i < pipe_count)
 	{
-		if (pipe(pipes[i]) == -1)
+		if (pipe(pipes[s.i]) == -1)
 		{
 			perror("pipe creation failed");
-			while (--i >= 0)
+			while (--s.i >= 0)
 			{
-				close(pipes[i][0]);
-				close(pipes[i][1]);
+				close(pipes[s.i][0]);
+				close(pipes[s.i][1]);
 			}
 			return (FALSE);
 		}
-		i++;
+		s.i++;
 	}
-	i = 0;
-	while (i < cmd_count)
+	s.i = 0;
+	while (s.i < s.cmd_count)
 	{
-		pid = fork();
-		if (pid == -1)
+		s.pid = fork();
+		if (s.pid == -1)
 			ft_error_throw(ERROR_FORK);
-		if (pid == 0)
+		if (s.pid == 0)
 		{
-			if (i > 0 && dup2(pipes[i - 1][0], STDIN_FILENO) == -1)
+			if (s.i > 0 && dup2(pipes[s.i - 1][0], STDIN_FILENO) == -1)
 				ft_error_throw(ERROR_DUP2);
-			if (i < cmd_count - 1 && dup2(pipes[i][1], STDOUT_FILENO) == -1)
+			if (s.i < s.cmd_count - 1 && dup2(pipes[s.i][1], STDOUT_FILENO) == -1)
 				ft_error_throw(ERROR_DUP2);
-			j = 0;
-			while (j < pipe_count)
+			s.j = 0;
+			while (s.j < pipe_count)
 			{
 				close(pipes[j][0]);
 				close(pipes[j][1]);
-				j++;
+				s.j++;
 			}
 			args = ft_split_command(cmds[i]);
 			if (!args || !args[0])
-			{
-				fprintf(stderr, "Command parsing error\n");
-				exit(EXIT_FAILURE);
-			}
+				ft_error_throw(ERROR_PARSE);
 			shell->current_cmds = args;
 			token = ft_util_token_create(shell, args[0]);
 			if (!token)
@@ -184,129 +174,116 @@ static t_bool	ft_handle_piped_commands(t_shell *shell, char **cmds,
 			ft_util_cmd_free(args);
 			exit(shell->exit_status);
 		}
-		i++;
+		s.i++;
 	}
-	i = 0;
-	while (i < pipe_count)
+	s.i = 0;
+	while (s.i < pipe_count)
 	{
-		close(pipes[i][0]);
-		close(pipes[i][1]);
-		i++;
+		close(pipes[s.i][0]);
+		close(pipes[s.i][1]);
+		s.i++;
 	}
-	i = 0;
-	while (i < cmd_count)
+	s.i = 0;
+	while (s.i < s.cmd_count)
 	{
 		wait(&status);
-		i++;
+		s.i++;
 	}
 	return (TRUE);
 }
 
-static char	**ft_split_by_pipes(char *input)
+static char	**ft_split_by_pipes(const char *input)
 {
-	int		i;
-	int		start;
-	int		count;
-	int		in_quotes;
-	char	quote_char;
-	char	**result;
-	char	*trimmed;
+	t_split_pipe	s;
+	char			**result;
+	char			*trimmed;
 
-	i = 0;
-	start = 0;
-	count = 1;
-	in_quotes = 0;
-	quote_char = 0;
-	while (input[i])
+	s.i = 0;
+	s.start = 0;
+	s.count = 1;
+	s.in_quotes = 0;
+	s.quote_char = 0;
+	while (input[s.i])
 	{
-		if (input[i] == '\'' || input[i] == '"')
+		if (input[s.i] == '\'' || input[s.i] == '"')
 		{
-			if (!in_quotes)
+			if (!s.in_quotes)
 			{
-				in_quotes = 1;
-				quote_char = input[i];
+				s.in_quotes = 1;
+				s.quote_char = input[s.i];
 			}
-			else if (input[i] == quote_char)
-				in_quotes = 0;
+			else if (input[s.i] == s.quote_char)
+				s.in_quotes = 0;
 		}
-		if (input[i] == '|' && !in_quotes)
-			count++;
-		i++;
+		if (input[s.i] == '|' && !s.in_quotes)
+			s.count++;
+		s.i++;
 	}
-	result = (char **)malloc(sizeof(char *) * (count + 1));
+	result = (char **)malloc(sizeof(char *) * (s.count + 1));
 	if (!result)
 		return (NULL);
-	i = 0;
-	count = 0;
-	in_quotes = 0;
-	while (input[i])
+	s.i = 0;
+	s.count = 0;
+	s.in_quotes = 0;
+	while (input[s.i])
 	{
-		if (input[i] == '\'' || input[i] == '"')
+		if (input[s.i] == '\'' || input[s.i] == '"')
 		{
-			if (!in_quotes)
+			if (!s.in_quotes)
 			{
-				in_quotes = 1;
-				quote_char = input[i];
+				s.in_quotes = 1;
+				s.quote_char = input[s.i];
 			}
-			else if (input[i] == quote_char)
-				in_quotes = 0;
+			else if (input[s.i] == s.quote_char)
+				s.in_quotes = 0;
 		}
-		if (input[i] == '|' && !in_quotes)
+		if (input[s.i] == '|' && !s.in_quotes)
 		{
-			result[count] = ft_strndup(input + start, i - start);
-			if (!result[count])
+			result[s.count] = ft_strndup(input + s.start, s.i - s.start);
+			if (!result[s.count])
 				return (free(result), NULL);
-			trimmed = ft_strtrim(result[count], " \t\n\r");
-			free(result[count]);
-			result[count] = trimmed;
-			count++;
-			start = i + 1;
+			trimmed = ft_strtrim(result[s.count], " \t\n\r");
+			free(result[s.count]);
+			result[s.count] = trimmed;
+			s.count++;
+			s.start = s.i + 1;
 		}
-		i++;
+		s.i++;
 	}
-	result[count] = ft_strndup(input + start, i - start);
-	if (!result[count])
+	result[s.count] = ft_strndup(input + s.start, s.i - s.start);
+	if (!result[s.count])
 		return (free(result), NULL);
-	trimmed = ft_strtrim(result[count], " \t\n\r");
-	free(result[count]);
-	result[count] = trimmed;
-	result[count + 1] = NULL;
+	trimmed = ft_strtrim(result[s.count], " \t\n\r");
+	free(result[s.count]);
+	result[s.count] = trimmed;
+	result[s.count + 1] = NULL;
 	return (result);
 }
 
 static t_bool	ft_parse_handle_process(t_shell *shell, t_parse *parse,
-		t_env_list *env_list, char *str)
+		t_env_list *env_list, const char *str)
 {
 	char	**cmd;
 	int		pipe_count;
 	int		i;
 
-	fflush(stdout);
 	pipe_count = parse->pipe;
 	cmd = ft_split_by_pipes(str);
 	if (!cmd)
 		return (FALSE);
 	i = 0;
 	while (cmd[i])
-	{
-		printf("  cmd[%d]: '%s'\n", i, cmd[i]);
 		i++;
-	}
-	fflush(stdout);
 	parse->begin_str = parse->i + 1;
 	if (parse->flag == TRUE)
 		return (ft_parse_handle_exit(cmd, shell, TRUE));
 	if (pipe_count > 0)
 	{
-		fflush(stdout);
 		if (!ft_handle_piped_commands(shell, cmd, env_list, pipe_count))
 			return (ft_parse_handle_exit(cmd, shell, FALSE));
 	}
-	else
-	{
-		if (!ft_util_token_process(shell, cmd, env_list))
-			return (ft_parse_handle_exit(cmd, shell, FALSE));
-	}
+	else if (!ft_util_token_process(shell, cmd, env_list))
+		return (ft_parse_handle_exit(cmd, shell, FALSE));
 	parse->pipe = 0;
 	return (ft_parse_handle_exit(cmd, shell, TRUE));
 }

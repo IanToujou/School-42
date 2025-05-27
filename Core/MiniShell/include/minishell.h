@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 11:46:03 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 15:07:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,30 @@ typedef struct s_garbage
 	void				*result;
 	t_list				*tokens;
 }						t_garbage;
+
+typedef struct s_split_pipe {
+	int					i;
+	int					start;
+	int					count;
+	int					in_quotes;
+	char				quote_char;
+}						t_split_pipe;
+
+typedef struct s_split_cmd {
+	int					i;
+	int					j;
+	int					count;
+	int					in_word;
+	int					in_quotes;
+}						t_split_cmd;
+
+typedef struct s_handle_pipe {
+	int					i;
+	int					j;
+	int					cmd_count;
+	pid_t				pid;
+
+}						t_handle_pipe;
 
 typedef struct s_shell
 {

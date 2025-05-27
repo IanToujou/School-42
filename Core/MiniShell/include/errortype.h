@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/30 19:47:29 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 15:03:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,11 @@
 
 # define ERROR_PIPE 13
 # define ERROR_PIPE_MSG "Process terminated with pipe error."
+
+# define ERROR_PARSE 14
+# define ERROR_PARSE_MSG "Process terminated with parse error."
+
+# define ERROR_TOKEN 15
+# define ERROR_TOKEN_MSG "Process terminated with token error."
 
 #endif

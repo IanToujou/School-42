@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:40:14 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 14:53:29 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 14:57:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,7 @@ static void	ft_run_bin_handle_piped(t_shell *shell, const t_token *token,
 		args[size] = NULL;
 	}
 	ft_util_launch_execve(env_list, args);
-	if (shell->current_cmds == NULL)
-	{
-		i = 0;
-		while (args[i])
-		{
-			free(args[i]);
-			i++;
-		}
-		free(args);
-	}
+	ft_util_cmd_free(shell->current_cmds);
 }
 
 void	ft_run_bin(t_shell *shell, const t_token *token, t_env_list *env_list,
