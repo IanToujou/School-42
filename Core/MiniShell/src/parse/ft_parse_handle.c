@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 15:09:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 15:09:56 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char	**ft_split_command(const char *cmd_str)
 	s.count = 0;
 	while (trimmed[s.i])
 	{
-		while (trimmed[s.i] && (trimmed[i] == ' ' || trimmed[i] == '|'))
+		while (trimmed[s.i] && (trimmed[s.i] == ' ' || trimmed[s.i] == '|'))
 			s.i++;
 		if (!trimmed[s.i])
 			break ;
