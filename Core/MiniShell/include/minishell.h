@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/26 22:02:02 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:55:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ t_bool					ft_util_num_isnumber(const char *str);
 t_bool					ft_util_str_strchr(const char *s, int c);
 t_token					*ft_util_token_previous(t_token *token);
 t_token					*ft_util_token_next(t_token *token);
-t_token					*ft_util_token_create(t_shell *shell,
+t_token					*ft_util_token_create(const t_shell *shell,
 							const char *content);
 void					ft_util_token_add_back(t_token **list, t_token *new);
 void					ft_util_env_set(t_env_list **env_list, const char *key,
@@ -159,6 +159,7 @@ void					ft_util_token_delete(void *ptr);
 t_bool					ft_util_token_process(t_shell *shell, char **commands,
 							t_env_list *env_list);
 t_token					*ft_util_token_to_struct(char **cmds, t_shell *shell);
+t_token					*ft_util_token_process_loop(char **commands, t_shell *shell);
 void					ft_util_token_addon(const t_token *token);
 void					ft_util_envcase_token(char **cmds);
 char					**ft_util_cmd_get_cmds(char *str, int pipe);

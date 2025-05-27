@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:44:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/26 21:45:44 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:50:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_token	*ft_util_token_next(t_token *token)
 	return (token);
 }
 
-t_token	*ft_util_token_create(t_shell *shell, const char *content)
+t_token	*ft_util_token_create(const t_shell *shell, const char *content)
 {
 	t_token	*token;
 	t_list	*node;
