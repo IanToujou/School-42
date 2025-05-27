@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:43:50 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:55:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ typedef struct s_garbage
 	t_list				*tokens;
 }						t_garbage;
 
-typedef struct s_split_pipe {
+typedef struct s_split_pipe
+{
 	int					i;
 	int					start;
 	int					count;
@@ -92,7 +93,8 @@ typedef struct s_split_pipe {
 	char				quote_char;
 }						t_split_pipe;
 
-typedef struct s_split_cmd {
+typedef struct s_split_cmd
+{
 	int					i;
 	int					j;
 	int					count;
@@ -100,13 +102,22 @@ typedef struct s_split_cmd {
 	int					in_quotes;
 }						t_split_cmd;
 
-typedef struct s_handle_pipe {
+typedef struct s_handle_pipe
+{
 	int					i;
 	int					j;
 	int					cmd_count;
 	pid_t				pid;
 
 }						t_handle_pipe;
+
+typedef struct s_handle_pipe_cmd
+{
+	int					pipes[10][2];
+	int					pipe_count;
+	int					i;
+	int					cmd_count;
+}						t_handle_pipe_cmd;
 
 typedef struct s_shell
 {
@@ -184,7 +195,8 @@ void					ft_util_token_delete(void *ptr);
 t_bool					ft_util_token_process(t_shell *shell, char **commands,
 							t_env_list *env_list);
 t_token					*ft_util_token_to_struct(char **cmds, t_shell *shell);
-t_token					*ft_util_token_process_loop(char **commands, t_shell *shell);
+t_token					*ft_util_token_process_loop(char **commands,
+							t_shell *shell);
 void					ft_util_token_addon(const t_token *token);
 void					ft_util_envcase_token(char **cmds);
 char					**ft_util_cmd_get_cmds(char *str, int pipe);
@@ -225,31 +237,33 @@ void					ft_parse_env(t_env_list **env_list, char **env);
 t_bool					ft_parse_input(t_shell *shell, t_env_list *env_list,
 							const char *input, const char *user);
 int						ft_parse_handle(t_shell *shell, t_env_list *env_list,
-								char *str);
-int						ft_parse_handle_extract_word(const char *str, char **result,
-								int *i, int count);
+							char *str);
+int						ft_parse_handle_extract_word(const char *str,
+							char **result, int *i, int count);
 void					ft_parse_handle_free_result(char **result, int count);
 int						ft_parse_handle_count_words(const char *str);
 char					*ft_parse_handle_strndup(const char *s, size_t n);
-t_bool					ft_parse_handle_exit(char **cmd, t_shell *shell, t_bool status);
+t_bool					ft_parse_handle_exit(char **cmd, t_shell *shell,
+							t_bool status);
 void					ft_parse_handle_setup_io(int pipes[][2], int pipe_count,
-								int cmd_index, int cmd_count);
-void					ft_parse_handle_close_pipes(int pipes[][2], int pipe_count);
+							int cmd_index, int cmd_count);
+void					ft_parse_handle_close_pipes(int pipes[][2],
+							int pipe_count);
 t_bool					ft_parse_handle_setup_pipes(int pipes[][2],
-								int pipe_count);
+							int pipe_count);
 char					**ft_parse_handle_split_cmd(const char *cmd_str);
 char					**ft_parse_handle_extract_words(const char *trimmed,
-								int word_count);
+							int word_count);
 int						ft_parse_handle_count_segments(const char *input);
 t_bool					ft_parse_handle_pipe_cmd(t_shell *shell, char **cmds,
-								t_env_list *env_list, int pipe_count);
+							t_env_list *env_list, int pipe_count);
 void					ft_parse_handle_wait_children(int cmd_count);
 void					ft_parse_handle_spawn_pipe(t_shell *shell, char **cmds,
-								t_env_list *env_list, int pipes[][2], int pipe_count, int cmd_count);
+							t_env_list *env_list, t_handle_pipe_cmd pipe_info);
 void					ft_parse_handle_execute(t_shell *shell, char *cmd_str,
-								t_env_list *env_list);
+							t_env_list *env_list);
 void					ft_parse_handle_update_quote(char c,
-								int *in_quotes, char *quote_char);
+							int *in_quotes, char *quote_char);
 t_bool					ft_parse_dollar_search(const char *str);
 char					*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
 							const char *str, const t_shell *shell);

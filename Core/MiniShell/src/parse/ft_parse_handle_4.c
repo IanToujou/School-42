@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:37:09 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:39:01 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:52:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,32 @@ void	ft_parse_handle_execute(t_shell *shell, char *cmd_str,
 	exit(shell->exit_status);
 }
 
-void	ft_parse_handle_spawn_pipe(t_shell *shell, char **cmds,
-	t_env_list *env_list, int pipes[][2], int pipe_count, int cmd_count)
+static void	ft_spawn_single_child(t_shell *shell, char *cmd,
+	t_env_list *env_list, t_handle_pipe_cmd *pipe_info)
 {
-	int		i;
 	pid_t	pid;
 
-	i = 0;
-	while (i < cmd_count)
+	pid = fork();
+	if (pid == -1)
+		ft_error_throw(ERROR_FORK);
+	if (pid == 0)
 	{
-		pid = fork();
-		if (pid == -1)
-			ft_error_throw(ERROR_FORK);
-		if (pid == 0)
-		{
-			ft_parse_handle_setup_io(pipes, pipe_count, i, cmd_count);
-			ft_parse_handle_execute(shell, cmds[i], env_list);
-		}
+		ft_parse_handle_setup_io(pipe_info->pipes, pipe_info->pipe_count,
+			pipe_info->i, pipe_info->cmd_count);
+		ft_parse_handle_execute(shell, cmd, env_list);
+	}
+}
+
+void	ft_parse_handle_spawn_pipe(t_shell *shell, char **cmds,
+	t_env_list *env_list, t_handle_pipe_cmd pipe_info)
+{
+	int	i;
+
+	i = 0;
+	while (i < pipe_info.cmd_count)
+	{
+		pipe_info.i = i;
+		ft_spawn_single_child(shell, cmds[i], env_list, &pipe_info);
 		i++;
 	}
 }
@@ -67,46 +76,18 @@ void	ft_parse_handle_wait_children(const int cmd_count)
 }
 
 t_bool	ft_parse_handle_pipe_cmd(t_shell *shell, char **cmds,
-		t_env_list *env_list, const int pipe_count)
+	t_env_list *env_list, const int pipe_count)
 {
-	t_handle_pipe	s;
-	int				pipes[10][2];
+	t_handle_pipe_cmd	pipe_info;
 
-	s.cmd_count = 0;
-	while (cmds[s.cmd_count])
-		s.cmd_count++;
-	if (!ft_parse_handle_setup_pipes(pipes, pipe_count))
+	pipe_info.pipe_count = pipe_count;
+	pipe_info.cmd_count = 0;
+	while (cmds[pipe_info.cmd_count])
+		pipe_info.cmd_count++;
+	if (!ft_parse_handle_setup_pipes(pipe_info.pipes, pipe_count))
 		return (FALSE);
-	ft_parse_handle_spawn_pipe(shell, cmds, env_list, pipes,
-		pipe_count, s.cmd_count);
-	ft_parse_handle_close_pipes(pipes, pipe_count);
-	ft_parse_handle_wait_children(s.cmd_count);
+	ft_parse_handle_spawn_pipe(shell, cmds, env_list, pipe_info);
+	ft_parse_handle_close_pipes(pipe_info.pipes, pipe_count);
+	ft_parse_handle_wait_children(pipe_info.cmd_count);
 	return (TRUE);
-}
-
-int	ft_parse_handle_count_segments(const char *input)
-{
-	t_split_pipe	s;
-
-	s.i = 0;
-	s.count = 1;
-	s.in_quotes = 0;
-	s.quote_char = 0;
-	while (input[s.i])
-	{
-		if (input[s.i] == '\'' || input[s.i] == '"')
-		{
-			if (!s.in_quotes)
-			{
-				s.in_quotes = 1;
-				s.quote_char = input[s.i];
-			}
-			else if (input[s.i] == s.quote_char)
-				s.in_quotes = 0;
-		}
-		if (input[s.i] == '|' && !s.in_quotes)
-			s.count++;
-		s.i++;
-	}
-	return (s.count);
 }
