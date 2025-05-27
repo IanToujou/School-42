@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 15:07:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 19:51:42 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct s_shell
 	t_env_list			*env_list;
 	char				**current_cmds;
 	t_token				*current_token;
+	int					pipe_count;
 }						t_shell;
 
 t_bool					ft_init_env(t_shell *shell, t_env_list **env_list,
@@ -233,7 +234,7 @@ void					ft_exit_env(t_env_list **env_list);
 void					ft_exit_temp(const t_shell *shell);
 
 void					ft_run_cmd(t_shell *shell, const t_token *token,
-							t_env_list *env_list, char **args, int pipe_count);
+							t_env_list *env_list, char **args);
 t_bool					ft_run_defined_is_defined(const t_token *token);
 void					ft_run_defined(t_shell *shell, const t_token *token,
 							t_env_list *env_list, char **cmd);

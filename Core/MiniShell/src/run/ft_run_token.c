@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:20:33 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 15:13:41 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 19:53:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	ft_run_token_execute(t_shell *shell, const t_token *next)
 	(void)next;
 	if (shell->current_token)
 		ft_run_cmd(shell, shell->current_token, shell->env_list,
-			shell->current_cmds, 0);
+			shell->current_cmds);
 	if (next && next->type == TOKEN_DOBINP)
 		ft_run_token_delete_temp(shell);
 }

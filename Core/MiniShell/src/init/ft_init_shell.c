@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 09:28:30 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/22 08:50:04 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 19:52:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_run_interactive_shell(t_env_list *env_list, t_shell *shell)
 		shell->pid = 0;
 		shell->f_in = -1;
 		shell->f_out = -1;
+		shell->pipe_count = 0;
 		shell->process_level = PROCESS_LEVEL_DEFAULT;
 		ft_run_shell(shell, env_list);
 		ft_signal_start(shell);
