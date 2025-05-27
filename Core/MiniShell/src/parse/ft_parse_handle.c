@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 15:09:56 by ibour            ###   ########.fr       */
+/*   Updated: 2025/05/27 20:04:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ static t_bool	ft_handle_piped_commands(t_shell *shell, char **cmds,
 			if (!token)
 				ft_error_throw(ERROR_TOKEN);
 			token->type = TOKEN_CMD;
-			ft_run_cmd(shell, token, env_list, args, pipe_count);
+			ft_run_cmd(shell, token, env_list, args);
 			free(token);
 			ft_util_cmd_free(args);
 			exit(shell->exit_status);
@@ -279,6 +279,7 @@ static t_bool	ft_parse_handle_process(t_shell *shell, t_parse *parse,
 		return (ft_parse_handle_exit(cmd, shell, TRUE));
 	if (pipe_count > 0)
 	{
+		shell->pipe_count = pipe_count;
 		if (!ft_handle_piped_commands(shell, cmd, env_list, pipe_count))
 			return (ft_parse_handle_exit(cmd, shell, FALSE));
 	}
