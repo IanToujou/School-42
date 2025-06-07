@@ -6,14 +6,14 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/05 23:31:29 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/06/07 14:01:05 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*ft_parse_handle_extract_trim(const char *input,
-			const int start, const int end)
+char	*ft_parse_handle_extract_trim(const char *input, const int start,
+		const int end)
 {
 	char	*segment;
 	char	*trimmed;
@@ -36,12 +36,10 @@ int	ft_parse_handle_extract(const char *input, char **result)
 	s.in_quotes = 0;
 	while (input[s.i])
 	{
-		ft_parse_handle_update_quote(input[s.i],
-			&s.in_quotes, &s.quote_char);
+		ft_parse_handle_update_quote(input[s.i], &s.in_quotes, &s.quote_char);
 		if (input[s.i] == '|' && !s.in_quotes)
 		{
-			result[s.count] = ft_parse_handle_extract_trim(input,
-					s.start, s.i);
+			result[s.count] = ft_parse_handle_extract_trim(input, s.start, s.i);
 			if (!result[s.count])
 				return (0);
 			s.count++;
@@ -79,10 +77,11 @@ char	**ft_parse_handle_split_pipes(const char *input)
 	return (result);
 }
 
-t_bool ft_parse_handle_process(t_shell *shell, t_parse *parse, t_env_list *env_list, const char *str)
+t_bool	ft_parse_handle_process(t_shell *shell, t_parse *parse,
+		t_env_list *env_list, const char *str)
 {
-	char **cmd;
-	int i;
+	char	**cmd;
+	int		i;
 
 	cmd = ft_parse_handle_split_pipes(str);
 	if (!cmd)
@@ -116,7 +115,8 @@ t_bool	ft_parse_handle(t_shell *shell, t_env_list *env_list, char *str)
 	while (str[data.i])
 	{
 		ft_util_quote_status(&data.quotes, str[data.i]);
-		if (str[data.i] == '\0' || (str[data.i] == ';'
+		if (str[data.i] == '\0'
+			|| (str[data.i] == ';'
 				&& ft_util_quote_is_outside(&data.quotes) == TRUE)
 			|| str[data.i + 1] == '\0')
 		{
