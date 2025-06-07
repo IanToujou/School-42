@@ -14,10 +14,11 @@
 
 bool	ft_util_quote_status(t_quotes *quotes, char ch)
 {
-	if (ch == '\'' && quotes->two == false)
+	if (ch == '\'' && !quotes->two)
 		quotes->one = !quotes->one;
-	else if (ch == '"' && quotes->one == false)
+	else if (ch == '"' && !quotes->one)
 		quotes->two = !quotes->two;
+	quotes->none = !(quotes->one || quotes->two);
 	return (quotes->one || quotes->two);
 }
 

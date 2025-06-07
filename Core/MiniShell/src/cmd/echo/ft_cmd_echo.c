@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:17:42 by mwelfrin          #+#    #+#             */
-/*   Updated: 2025/06/05 21:02:51 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:03:14 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,57 @@ static t_token	*ft_cmd_echo_handle_n_flags(t_token *token, t_bool *newline)
 	return (token);
 }
 
-static void	ft_cmd_echo_print_args(t_shell *shell, t_token *token)
+void	ft_handle_escape_sequences(const char *str, int *i)
 {
-	t_parse	parse;
-	char	*expanded_str;
-
-	while (token && token->type == TOKEN_ARG)
+	(*i)++;
+	if (str[*i] == '\0')
+		return ;
+	if (str[*i] == 'n')
+		ft_putchar_fd('\n', STDOUT_FILENO);
+	else if (str[*i] == 't')
+		ft_putchar_fd('\t', STDOUT_FILENO);
+	else if (str[*i] == 'r')
+		ft_putchar_fd('\r', STDOUT_FILENO);
+	else if (str[*i] == '\\')
+		ft_putchar_fd('\\', STDOUT_FILENO);
+	else
 	{
-		parse = ft_init_parse_data();
-		if (ft_parse_dollar_search(token->str))
-		{
-			expanded_str = ft_parse_dollar(shell->env_list, &parse, token->str,
-					shell);
-			if (expanded_str)
-			{
-				ft_putstr_fd(expanded_str, STDOUT_FILENO);
-				free(expanded_str);
-			}
-		}
-		else
-			ft_putstr_fd(token->str, STDOUT_FILENO);
-		if (token->next && token->next->type == TOKEN_ARG)
-			ft_putchar_fd(' ', STDOUT_FILENO);
+		ft_putchar_fd('\\', STDOUT_FILENO);
+		ft_putchar_fd(str[*i], STDOUT_FILENO);
+	}
+	(*i)++;
+}
+
+static t_bool	has_redirection(t_token *token)
+{
+	while (token)
+	{
+		if (token->type == REDIRECT_OUT || token->type == REDIRECT_OUT_TWO)
+			return (TRUE);
 		token = token->next;
+	}
+	return (FALSE);
+}
+
+void	ft_print_quoted_single(t_shell *shell, char *str)
+{
+	int	i;
+
+	i = 0;
+	if (shell->is_redirected)
+	{
+		while (str[i])
+		{
+			if (str[i] == '\\')
+				ft_handle_escape_sequences(str, &i);
+			else
+				ft_putchar_fd(str[i++], STDOUT_FILENO);
+		}
+	}
+	else
+	{
+		while (str[i])
+			ft_putchar_fd(str[i++], STDOUT_FILENO);
 	}
 }
 
@@ -63,6 +91,7 @@ void	ft_cmd_echo(t_shell *shell, t_token *token)
 {
 	t_bool	newline;
 
+	shell->is_redirected = has_redirection(token);
 	token = ft_cmd_echo_handle_n_flags(token, &newline);
 	ft_cmd_echo_print_args(shell, token);
 	if (newline)

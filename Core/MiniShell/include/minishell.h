@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/06 09:49:32 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:03:51 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_quotes
 {
 	t_bool				two;
 	t_bool				one;
+	t_bool				none;
 }						t_quotes;
 
 typedef struct s_parse
@@ -139,6 +140,7 @@ typedef struct s_shell
 	char				**current_cmds;
 	t_token				*current_token;
 	int					pipe_count;
+	t_bool				is_redirected;
 }						t_shell;
 
 typedef struct s_pipe_exec_info
@@ -235,7 +237,7 @@ t_bool					ft_util_token_process(t_shell *shell, char **commands,
 t_token					*ft_util_token_to_struct(char **cmds, t_shell *shell);
 t_token					*ft_util_token_process_loop(char **commands,
 							t_shell *shell);
-void					ft_util_token_addon(const t_token *token);
+void					ft_util_token_addon(t_token *token);
 void					ft_util_envcase_token(char **cmds);
 char					**ft_util_cmd_get_cmds(char *str, int pipe);
 char					**ft_util_cmd_split(t_env_list *env_list, char *str,
@@ -401,4 +403,8 @@ t_bool					ft_setup_input_redirection(char **cmd);
 void					ft_setup_child_pipes(int pipes[11][2], int i,
 							int cmd_count);
 t_bool					ft_execute_pipeline(t_pipeline_info *info);
+char					*ft_strjoin_free(char *s1, char *s2);
+void					ft_handle_escape_sequences(const char *str, int *i);
+void					ft_cmd_echo_print_args(t_shell *shell, t_token *token);
+void					ft_print_quoted_single(t_shell *shell, char *str);
 #endif

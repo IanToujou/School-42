@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_dollar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:49:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 15:56:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/07 15:07:28 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,13 @@ static char	*key_dollar(const char *str, const int size, int i)
 
 static char	*ft_parse_dollar_val(t_env_list *env_list, char *key)
 {
-	char	*tmp;
 	char	*value;
 
 	if (ft_util_env_get(&env_list, key) != NULL)
 	{
-		tmp = ft_util_env_get(&env_list, key);
-		value = ft_strdup(tmp);
+		value = ft_strdup(ft_util_env_get(&env_list, key));
 		if (value == NULL)
 			ft_error_throw(ERROR_MALLOC);
-		tmp = value;
-		value = ft_strtrim(value, "\'\"");
-		if (value == NULL)
-			ft_error_throw(ERROR_MALLOC);
-		free(tmp);
 	}
 	else
 	{
@@ -71,8 +64,8 @@ static char	*ft_parse_dollar_val(t_env_list *env_list, char *key)
 	return (value);
 }
 
-char	*ft_parse_dollar(t_env_list *env_list, t_parse *parse, const char *str,
-						const t_shell *shell)
+char	*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
+			const char *str, const t_shell *shell)
 {
 	char	*key;
 	char	*value;
@@ -102,27 +95,17 @@ char	*ft_parse_dollar(t_env_list *env_list, t_parse *parse, const char *str,
 t_bool	ft_parse_dollar_search(const char *str)
 {
 	int			i;
-	t_bool		root;
 	t_quotes	quotes;
 
+	i = 0;
 	quotes = ft_init_quote();
-	i = -1;
-	root = FALSE;
-	while (str[++i])
+	while (str[i])
 	{
 		ft_util_quote_status(&quotes, str[i]);
-		if (str[i] == '$' && ft_isblank(str[i + 1]) == FALSE
-			&& quotes.one == FALSE)
-		{
-			root = TRUE;
-			break ;
-		}
+		if (str[i] == '$' && !quotes.one
+			&& !ft_isblank(str[i + 1]) && str[i + 1] != '\0')
+			return (TRUE);
+		i++;
 	}
-	while (root && ft_util_str_strchr("\'\"", str[--i]))
-		;
-	while (root && ft_isblank(str[--i]))
-		;
-	if (root && str[i] && i > 0 && str[i] == '<' && str[i - 1] == '<')
-		root = FALSE;
-	return (root);
+	return (FALSE);
 }

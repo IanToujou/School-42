@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 11:44:11 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 10:50:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/07 15:14:12 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,60 +30,59 @@ t_token	*ft_util_token_next(t_token *token)
 	return (token);
 }
 
+static void	set_token_type(t_token *token, const char *content)
+{
+	if (ft_strcmp(content, "echo") == 0)
+		token->type = TOKEN_CMD;
+	else
+		token->type = TOKEN_ARG;
+}
+
+static char	*strip_quotes(const char *content, size_t len, char *quote_type)
+{
+	char	*stripped;
+
+	if (len >= 2 && content[0] == '\'' && content[len - 1] == '\'')
+	{
+		*quote_type = 's';
+		stripped = (char *)malloc(len - 1);
+		if (stripped)
+			ft_memcpy(stripped, content + 1, len - 2);
+	}
+	else if (len >= 2 && content[0] == '"' && content[len - 1] == '"')
+	{
+		*quote_type = 'd';
+		stripped = (char *)malloc(len - 1);
+		if (stripped)
+			ft_memcpy(stripped, content + 1, len - 2);
+	}
+	else
+		return (ft_strdup(content));
+	if (stripped)
+		stripped[len - 2] = '\0';
+	return (stripped);
+}
+
 t_token	*ft_util_token_create(const t_shell *shell, const char *content)
 {
-	t_token	*token;
-	t_list	*node;
+	t_token	*new_token;
+	size_t	len;
 
-	token = (t_token *)ft_calloc(1, sizeof(t_token));
-	if (token == NULL)
+	new_token = (t_token *)malloc(sizeof(t_token));
+	if (!new_token)
 		return (NULL);
-	token->str = ft_strdup(content);
-	if (token->str == NULL)
-	{
-		free(token);
-		return (NULL);
-	}
-	node = ft_lstnew(token);
-	if (!node)
-	{
-		free(token->str);
-		free(token);
-		return (NULL);
-	}
-	if (!shell->garbage->tokens)
-		shell->garbage->tokens = node;
-	else
-		ft_lstadd_back(&shell->garbage->tokens, node);
-	return (token);
-}
-
-void	ft_util_token_add_back(t_token **list, t_token *new)
-{
-	t_token	*current;
-
-	if (!list || !new)
-		return ;
-	if (*list == NULL)
-	{
-		*list = new;
-		return ;
-	}
-	current = *list;
-	while (current->next)
-		current = current->next;
-	current->next = new;
-	new->prev = current;
-}
-
-void	ft_util_token_delete(void *ptr)
-{
-	t_token	*token;
-
-	if (!ptr)
-		return ;
-	token = (t_token *)ptr;
-	if (token->str)
-		free(token->str);
-	free(token);
+	len = ft_strlen(content);
+	new_token->is_quoted = FALSE;
+	new_token->quote_type = 'n';
+	new_token->prev = NULL;
+	new_token->next = NULL;
+	set_token_type(new_token, content);
+	new_token->str = strip_quotes(content, len, &new_token->quote_type);
+	if (new_token->quote_type != 'n')
+		new_token->is_quoted = TRUE;
+	if (!new_token->str)
+		return (free(new_token), NULL);
+	if (shell->garbage)
+		ft_lstadd_back(&shell->garbage->tokens, ft_lstnew(new_token));
+	return (new_token);
 }
