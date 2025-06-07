@@ -12,23 +12,6 @@
 
 #include "../../include/minishell.h"
 
-t_bool	ft_parse_handle_exit(char **cmd, t_shell *shell, t_bool status)
-{
-	int	i;
-
-	i = -1;
-	if (cmd)
-	{
-		while (cmd[++i])
-			free(cmd[i]);
-		free(cmd);
-	}
-	if (status)
-		return (TRUE);
-	shell->exit_status = STATUS_MALLOC;
-	return (FALSE);
-}
-
 char	*ft_parse_handle_strndup(const char *s, size_t n)
 {
 	char	*result;
@@ -75,15 +58,8 @@ int	ft_parse_handle_count_words(const char *str)
 	return (s.count);
 }
 
-void	ft_parse_handle_free_result(char **result, int count)
-{
-	while (--count >= 0)
-		free(result[count]);
-	free(result);
-}
-
 int	ft_parse_handle_extract_word(const char *str, char **result,
-	int *i, const int count)
+		int *i, const int count)
 {
 	int	j;
 	int	in_quotes;
@@ -104,4 +80,43 @@ int	ft_parse_handle_extract_word(const char *str, char **result,
 	if (!result[count])
 		return (-1);
 	return (1);
+}
+
+int	find_redirection(char **parts, char **outfile)
+{
+	int	i;
+
+	i = 0;
+	while (parts[i])
+	{
+		if (ft_strcmp(parts[i], ">") == 0)
+		{
+			if (parts[i + 1])
+				*outfile = ft_strdup(parts[i + 1]);
+			return (i);
+		}
+		i++;
+	}
+	return (-1);
+}
+
+char	*parse_command_for_redirection(char *cmd, char **outfile)
+{
+	char	**parts;
+	char	*result;
+	int		redir_pos;
+
+	parts = ft_split(cmd, ' ');
+	if (!parts)
+		return (NULL);
+	redir_pos = find_redirection(parts, outfile);
+	if (redir_pos != -1)
+	{
+		parts[redir_pos] = NULL;
+		result = ft_strjoin_array(parts, " ");
+	}
+	else
+		result = ft_strdup(cmd);
+	ft_util_cmd_free(parts);
+	return (result);
 }

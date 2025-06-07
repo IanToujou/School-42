@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   token.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:31:42 by ibour             #+#    #+#             */
-/*   Updated: 2025/04/18 00:32:39 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/05 21:01:59 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_H
 
 # define TOKEN_H
+
+# include "minishell.h"
 
 # define TOKEN_CMD 1
 # define TOKEN_ARG 2
@@ -28,6 +30,6 @@ typedef struct s_token
 	int				type;
 	struct s_token	*prev;
 	struct s_token	*next;
-}	t_token;
+}					t_token;
 
 #endif

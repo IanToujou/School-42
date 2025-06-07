@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cmd_echo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwelfrin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:17:42 by mwelfrin          #+#    #+#             */
-/*   Updated: 2025/04/23 15:17:58 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/06/05 21:02:51 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	ft_cmd_echo_print_args(t_shell *shell, t_token *token)
 		parse = ft_init_parse_data();
 		if (ft_parse_dollar_search(token->str))
 		{
-			expanded_str = ft_parse_dollar(shell->env_list, &parse,
-					token->str, shell);
+			expanded_str = ft_parse_dollar(shell->env_list, &parse, token->str,
+					shell);
 			if (expanded_str)
 			{
 				ft_putstr_fd(expanded_str, STDOUT_FILENO);

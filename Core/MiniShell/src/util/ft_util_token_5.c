@@ -54,3 +54,16 @@ char	**ft_util_token_put(char *str, const int amount)
 	}
 	return (cmds);
 }
+
+t_token	*ft_create_arg_token(char *cmd)
+{
+	t_token	*arg_token;
+
+	arg_token = malloc(sizeof(t_token));
+	if (!arg_token)
+		return (NULL);
+	arg_token->str = ft_strdup(cmd);
+	arg_token->type = TOKEN_ARG;
+	arg_token->next = NULL;
+	return (arg_token);
+}

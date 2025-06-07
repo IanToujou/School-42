@@ -6,7 +6,7 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:50:27 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:55:36 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/06 09:49:32 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define PROCESS_LEVEL_DEFAULT 0
 # define PROCESS_LEVEL_CHILD 1
 # define PROCESS_LEVEL_PARENT 2
+# define PROCESS_LEVEL_ERROR -1
 
 typedef struct s_quotes
 {
@@ -139,6 +140,43 @@ typedef struct s_shell
 	t_token				*current_token;
 	int					pipe_count;
 }						t_shell;
+
+typedef struct s_pipe_exec_info
+{
+	t_shell				*shell;
+	char				**cmds;
+	t_env_list			*env_list;
+	t_handle_pipe_cmd	*pipe_info;
+	pid_t				*pids;
+}						t_pipe_exec_info;
+
+typedef struct s_child_process_info
+{
+	int					i;
+	int					pipe_count;
+	t_handle_pipe_cmd	*pipe_info;
+	t_shell				*shell;
+	char				**cmds;
+	t_env_list			*env_list;
+}						t_child_process_info;
+
+typedef struct s_execute_child_info
+{
+	char				**cmds;
+	int					(*pipes)[2];
+	int					i;
+	int					cmd_count;
+	t_env_list			*env_list;
+}						t_execute_child_info;
+
+typedef struct s_pipeline_info
+{
+	t_shell				*shell;
+	char				**cmds;
+	t_env_list			*env_list;
+	int					pipes[11][2];
+	pid_t				*pids;
+}						t_pipeline_info;
 
 t_bool					ft_init_env(t_shell *shell, t_env_list **env_list,
 							char **env);
@@ -262,8 +300,8 @@ void					ft_parse_handle_spawn_pipe(t_shell *shell, char **cmds,
 							t_env_list *env_list, t_handle_pipe_cmd pipe_info);
 void					ft_parse_handle_execute(t_shell *shell, char *cmd_str,
 							t_env_list *env_list);
-void					ft_parse_handle_update_quote(char c,
-							int *in_quotes, char *quote_char);
+void					ft_parse_handle_update_quote(char c, int *in_quotes,
+							char *quote_char);
 t_bool					ft_parse_dollar_search(const char *str);
 char					*ft_parse_dollar(t_env_list *env_list, t_parse *parse,
 							const char *str, const t_shell *shell);
@@ -322,5 +360,45 @@ bool					ft_util_redirect_check(const char *str, int *i,
 bool					ft_error_syntax_token(char ch, const char *name);
 bool					ft_error_redirect_check(int redirect_first,
 							int redirect_second, const char *name);
+char					**ft_parse_handle_split_pipes(const char *input);
+t_bool					ft_parse_handle_exit(char **cmd, t_shell *shell,
+							t_bool status);
+t_bool					ft_handle_pipe_execution(t_shell *shell, char **cmds,
+							t_env_list *env_list);
+char					*ft_strjoin_array(char **array, const char *sep);
+void					execute_with_redirection(t_shell *shell, char *cmd,
+							t_env_list *env_list);
+char					*parse_command_for_redirection(char *cmd,
+							char **outfile);
+t_bool					ft_util_token_free_process(char *cmd, char **cmds);
 
+int						ft_util_create_pipe_and_fork(int fd[2], pid_t *pid);
+t_token					*ft_create_cmd_token(char *cmd, int *i);
+t_token					*ft_create_arg_token(char *cmd);
+t_bool					ft_process_defined(t_shell *shell, t_token *cmd_token,
+							char **commands, t_env_list *env_list);
+t_bool					ft_process_execve(t_shell *shell, char **commands,
+							t_env_list *env_list);
+t_bool					ft_util_token_process_pipe_internal(t_shell *shell,
+							char **commands, t_env_list *env_list,
+							t_token *cmd_token);
+int						find_redirection(char **parts, char **outfile);
+char					**ft_parse_handle_clean_words(char **words);
+char					*ft_parse_handle_clean_word(char *word);
+void					ft_spawn_single_child(t_shell *shell, char *cmd,
+							t_env_list *env_list, t_handle_pipe_cmd *pipe_info);
+void					ft_child_process(t_child_process_info *info);
+int						handle_redirection(char *cmd, int *fd_out);
+char					*rebuild_command(char **parts);
+int						open_redirection_file(char **parts, int *fd_out);
+void					ft_wait_for_children(pid_t *pids, int cmd_count,
+							t_shell *shell);
+void					ft_close_all_pipes(int pipes[11][2], int pipe_count);
+void					ft_execute_child(t_execute_child_info *info);
+int						ft_count_commands(char **cmds);
+t_bool					ft_create_pipes(int pipes[11][2], int cmd_count);
+t_bool					ft_setup_input_redirection(char **cmd);
+void					ft_setup_child_pipes(int pipes[11][2], int i,
+							int cmd_count);
+t_bool					ft_execute_pipeline(t_pipeline_info *info);
 #endif

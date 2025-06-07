@@ -6,27 +6,11 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:21:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/26 21:52:29 by mwelfrin         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:35:16 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-t_bool	ft_util_token_free_process(char *cmd, char **cmds)
-{
-	int	i;
-
-	i = -1;
-	if (cmd != NULL)
-		free(cmd);
-	if (cmds != NULL)
-	{
-		while (cmds[++i])
-			free(cmds[i]);
-		free(cmds);
-	}
-	return (FALSE);
-}
 
 int	ft_util_token_split(t_parse *parse, const char *cmd)
 {

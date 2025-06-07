@@ -12,18 +12,13 @@
 
 #include "../../include/minishell.h"
 
-char	**ft_util_cmd_free(char **cmds)
+t_bool	ft_util_token_free_process(char *cmd, char **cmds)
 {
-	int	i;
-
-	i = -1;
-	if (cmds != NULL)
-	{
-		while (cmds[++i])
-			free(cmds[i]);
-		free(cmds);
-	}
-	return (NULL);
+	if (cmd)
+		free(cmd);
+	if (cmds)
+		ft_util_cmd_free(cmds);
+	return (FALSE);
 }
 
 static char	**ft_util_cmd_one(const char *str)

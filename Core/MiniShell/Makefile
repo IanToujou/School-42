@@ -36,6 +36,11 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/parse/ft_parse_handle_3.c \
 		src/parse/ft_parse_handle_4.c \
 		src/parse/ft_parse_handle_5.c \
+		src/parse/ft_parse_handle_6.c \
+		src/parse/ft_parse_handle_7.c \
+		src/parse/ft_parse_handle_8.c \
+		src/parse/ft_parse_handle_9.c \
+		src/parse/ft_parse_handle_10.c \
 		src/parse/ft_parse_input.c \
 		src/run/ft_run_bin.c \
 		src/run/ft_run_bin_2.c \
@@ -48,6 +53,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_cmd.c \
 		src/util/ft_util_cmd_2.c \
 		src/util/ft_util_cmd_3.c \
+		src/util/ft_util_cmd_4.c \
 		src/util/ft_util_env.c \
 		src/util/ft_util_env_2.c \
 		src/util/ft_util_env_3.c \
@@ -65,6 +71,7 @@ SRC =	src/cmd/exit/ft_cmd_exit.c \
 		src/util/ft_util_token_3.c \
 		src/util/ft_util_token_4.c \
 		src/util/ft_util_token_5.c \
+		src/util/ft_util_token_6.c \
 		src/util/ft_util_prompt.c \
 		src/util/ft_util_bin.c \
 		src/util/ft_util_bin_2.c

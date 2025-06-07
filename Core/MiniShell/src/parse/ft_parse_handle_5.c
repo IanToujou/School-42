@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:39:24 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:49:49 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/04 14:55:42 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,48 @@ int	ft_parse_handle_count_segments(const char *input)
 		s.i++;
 	}
 	return (s.count);
+}
+
+void	execute_with_redirection(t_shell *shell, char *cmd,
+	t_env_list *env_list)
+{
+	int	fd_out;
+
+	fd_out = -1;
+	if (!handle_redirection(cmd, &fd_out))
+		exit(EXIT_FAILURE);
+	if (fd_out != -1)
+	{
+		if (dup2(fd_out, STDOUT_FILENO) == -1)
+		{
+			close(fd_out);
+			exit(EXIT_FAILURE);
+		}
+		close(fd_out);
+	}
+	ft_parse_handle_execute(shell, cmd, env_list);
+}
+
+void	ft_parse_handle_free_result(char **result, int count)
+{
+	while (--count >= 0)
+		free(result[count]);
+	free(result);
+}
+
+t_bool	ft_parse_handle_exit(char **cmd, t_shell *shell, t_bool status)
+{
+	int	i;
+
+	i = -1;
+	if (cmd)
+	{
+		while (cmd[++i])
+			free(cmd[i]);
+		free(cmd);
+	}
+	if (status)
+		return (TRUE);
+	shell->exit_status = STATUS_MALLOC;
+	return (FALSE);
 }

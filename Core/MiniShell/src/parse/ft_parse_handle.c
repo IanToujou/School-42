@@ -6,14 +6,14 @@
 /*   By: mwelfrin <mwelfrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:47:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/05/27 20:39:40 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/05 23:31:29 by mwelfrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
 char	*ft_parse_handle_extract_trim(const char *input,
-	const int start, const int end)
+			const int start, const int end)
 {
 	char	*segment;
 	char	*trimmed;
@@ -26,8 +26,7 @@ char	*ft_parse_handle_extract_trim(const char *input,
 	return (trimmed);
 }
 
-int	ft_parse_handle_extract(const char *input,
-	char **result)
+int	ft_parse_handle_extract(const char *input, char **result)
 {
 	t_split_pipe	s;
 
@@ -37,10 +36,12 @@ int	ft_parse_handle_extract(const char *input,
 	s.in_quotes = 0;
 	while (input[s.i])
 	{
-		ft_parse_handle_update_quote(input[s.i], &s.in_quotes, &s.quote_char);
+		ft_parse_handle_update_quote(input[s.i],
+			&s.in_quotes, &s.quote_char);
 		if (input[s.i] == '|' && !s.in_quotes)
 		{
-			result[s.count] = ft_parse_handle_extract_trim(input, s.start, s.i);
+			result[s.count] = ft_parse_handle_extract_trim(input,
+					s.start, s.i);
 			if (!result[s.count])
 				return (0);
 			s.count++;
@@ -78,31 +79,31 @@ char	**ft_parse_handle_split_pipes(const char *input)
 	return (result);
 }
 
-t_bool	ft_parse_handle_process(t_shell *shell, t_parse *parse,
-		t_env_list *env_list, const char *str)
+t_bool ft_parse_handle_process(t_shell *shell, t_parse *parse, t_env_list *env_list, const char *str)
 {
-	char	**cmd;
-	int		pipe_count;
-	int		i;
+	char **cmd;
+	int i;
 
-	pipe_count = parse->pipe;
 	cmd = ft_parse_handle_split_pipes(str);
 	if (!cmd)
 		return (FALSE);
 	i = 0;
 	while (cmd[i])
 		i++;
+	shell->pipe_count = i - 1;
 	parse->begin_str = parse->i + 1;
 	if (parse->flag == TRUE)
 		return (ft_parse_handle_exit(cmd, shell, TRUE));
-	if (pipe_count > 0)
+	if (shell->pipe_count > 0)
 	{
-		shell->pipe_count = pipe_count;
-		if (!ft_parse_handle_pipe_cmd(shell, cmd, env_list, pipe_count))
+		if (!ft_parse_handle_pipe_cmd(shell, cmd, env_list, shell->pipe_count))
 			return (ft_parse_handle_exit(cmd, shell, FALSE));
 	}
-	else if (!ft_util_token_process(shell, cmd, env_list))
-		return (ft_parse_handle_exit(cmd, shell, FALSE));
+	else
+	{
+		if (!ft_util_token_process(shell, cmd, env_list))
+			return (ft_parse_handle_exit(cmd, shell, FALSE));
+	}
 	parse->pipe = 0;
 	return (ft_parse_handle_exit(cmd, shell, TRUE));
 }
