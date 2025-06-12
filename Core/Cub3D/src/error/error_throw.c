@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error_throw.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:49:55 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/12 13:39:49 by ibour            ###   ########.fr       */
+/*   Created: 2025/06/12 13:37:49 by ibour             #+#    #+#             */
+/*   Updated: 2025/06/12 13:43:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
+#include "../../include/cub3d.h"
 
-# define CUB3D_H
+__attribute__((noreturn))
+void	error_throw(const int error) {
 
-# include "../lib/libft/include/libft.h"
-# include "../lib/mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <fcntl.h>
-# include <math.h>
-
-typedef struct s_heap {
-	void	*a;
-	void	*b;
-	void	*c;
-	void	*d;
-}	t_heap;
-
-typedef struct s_data {
-	t_heap	*heap;
-}	t_data;
-
-t_data	*init_data(void);
-
-#endif
+}

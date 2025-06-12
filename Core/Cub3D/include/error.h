@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:49:55 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/12 13:39:49 by ibour            ###   ########.fr       */
+/*   Created: 2025/06/12 13:36:29 by ibour             #+#    #+#             */
+/*   Updated: 2025/06/12 13:43:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
+#ifndef ERROR_H
 
-# define CUB3D_H
+# define ERROR_H
 
-# include "../lib/libft/include/libft.h"
-# include "../lib/mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <fcntl.h>
-# include <math.h>
+# define ERR_NONE 0
+# define ERR_UNKNOWN 1
+# define ERR_MALLOC 2
 
-typedef struct s_heap {
-	void	*a;
-	void	*b;
-	void	*c;
-	void	*d;
-}	t_heap;
-
-typedef struct s_data {
-	t_heap	*heap;
-}	t_data;
-
-t_data	*init_data(void);
+void	error_throw(int error);
 
 #endif

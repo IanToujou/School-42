@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 12:49:55 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/12 13:39:49 by ibour            ###   ########.fr       */
+/*   Created: 2025/06/12 13:34:54 by ibour             #+#    #+#             */
+/*   Updated: 2025/06/12 13:39:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
+#include "../../include/cub3d.h"
 
-# define CUB3D_H
+t_data	*init_data(void)
+{
+	t_data	*result;
 
-# include "../lib/libft/include/libft.h"
-# include "../lib/mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
-# include <fcntl.h>
-# include <math.h>
-
-typedef struct s_heap {
-	void	*a;
-	void	*b;
-	void	*c;
-	void	*d;
-}	t_heap;
-
-typedef struct s_data {
-	t_heap	*heap;
-}	t_data;
-
-t_data	*init_data(void);
-
-#endif
+	result = malloc(sizeof(t_data));
+	if (!result)
+		error_throw(ERR_MALLOC);
+	result->map = NULL;
+	result->player = NULL;
+	result->mlx = NULL;
+	result->win = NULL;
+	return (result);
+}

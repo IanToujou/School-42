@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 12:48:29 by ibour             #+#    #+#             */
-/*   Updated: 2025/03/24 13:13:11 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/12 13:39:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
-
+	data = init_data();
 }

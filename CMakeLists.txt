@@ -332,4 +332,7 @@ add_executable(MiniShell
 add_executable(Cub3D
 		"Core/Cub3D/src/main/main.c"
 		"Core/Cub3D/include/cub3d.h"
+		Core/Cub3D/src/init/init_data.c
+		Core/Cub3D/include/error.h
+		Core/Cub3D/src/error/error_throw.c
 )
