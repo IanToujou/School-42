@@ -317,22 +317,26 @@ add_executable(MiniShell
 		"Core/MiniShell/src/parse/ft_parse_dollar.c"
 		"Core/MiniShell/src/util/ft_util_env_2.c"
 		"Core/MiniShell/src/cmd/nya/ft_cmd_nya.c"
-		Core/MiniShell/src/util/ft_util_prompt.c
-		Core/MiniShell/src/util/ft_util_bin.c
-		Core/MiniShell/src/util/ft_util_bin_2.c
-		Core/MiniShell/src/util/ft_util_env_3.c
-		Core/MiniShell/src/util/ft_util_bin.c
-		Core/MiniShell/src/run/ft_run_bin_2.c
-		Core/MiniShell/src/parse/ft_parse_handle_2.c
-		Core/MiniShell/src/parse/ft_parse_handle_3.c
-		Core/MiniShell/src/parse/ft_parse_handle_4.c
-		Core/MiniShell/src/parse/ft_parse_handle_5.c
+		"Core/MiniShell/src/util/ft_util_prompt.c"
+		"Core/MiniShell/src/util/ft_util_bin.c"
+		"Core/MiniShell/src/util/ft_util_bin_2.c"
+		"Core/MiniShell/src/util/ft_util_env_3.c"
+		"Core/MiniShell/src/util/ft_util_bin.c"
+		"Core/MiniShell/src/run/ft_run_bin_2.c"
+		"Core/MiniShell/src/parse/ft_parse_handle_2.c"
+		"Core/MiniShell/src/parse/ft_parse_handle_3.c"
+		"Core/MiniShell/src/parse/ft_parse_handle_4.c"
+		"Core/MiniShell/src/parse/ft_parse_handle_5.c"
 )
 
 add_executable(Cub3D
 		"Core/Cub3D/src/main/main.c"
 		"Core/Cub3D/include/cub3d.h"
-		Core/Cub3D/src/init/init_data.c
-		Core/Cub3D/include/error.h
-		Core/Cub3D/src/error/error_throw.c
+		"Core/Cub3D/src/init/init_data.c"
+		"Core/Cub3D/include/error.h"
+		"Core/Cub3D/src/error/error_throw.c"
+)
+
+add_executable(CPP-00-EX00
+		"Core/CPP/Module-00/ex00/src/megaphone.cpp"
 )
