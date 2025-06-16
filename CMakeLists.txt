@@ -340,3 +340,6 @@ add_executable(Cub3D
 add_executable(CPP-00-EX00
 		"Core/CPP/Module-00/ex00/src/megaphone.cpp"
 )
+add_executable(CPP-00-EX01 Core/CPP/Module-00/ex01/src/PhoneBook.cpp Core/CPP/Module-00/ex01/src/PhoneBook.h
+		Core/CPP/Module-00/ex01/src/Contact.cpp
+		Core/CPP/Module-00/ex01/src/Contact.h)
