@@ -8,7 +8,9 @@ public:
 	~PhoneBook();
 private:
 	int index;
+	bool full;
 	Contact contacts[8];
+	void createContact();
 };
 
 #endif

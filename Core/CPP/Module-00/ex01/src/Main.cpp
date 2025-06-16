@@ -1,9 +1,10 @@
 #include <iostream>
-
 #include "../include/PhoneBook.h"
 #include "../include/Contact.h"
 
 int main() {
+
+	PhoneBook book;
 
 	std::string cmd;
 	std::cout << "Enter your command [ADD, SEARCH, EXIT]:" << std::endl;
@@ -13,6 +14,10 @@ int main() {
 		if (std::cin.eof()) {
 			std::cout << "Exiting..." << std::endl;
 			break;
+		}
+
+		if (cmd == "ADD") {
+			continue;
 		}
 
 		if (cmd == "EXIT") {
