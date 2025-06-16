@@ -1,5 +1,7 @@
-//
-// Created by ibour on 6/16/25.
-//
+#include "../include/Contact.h"
 
-#include "Contact.h"
+Contact::Contact() {
+
+}
+
+Contact::~Contact() = default;

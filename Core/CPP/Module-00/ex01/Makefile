@@ -12,7 +12,9 @@
 
 NAME = PhoneBook
 
-SRC =	src/PhoneBook.cpp
+SRC =	src/main.cpp \
+		src/PhoneBook.cpp \
+		src/Contact.cpp
 
 OBJ = $(SRC:.c=.o)
 
