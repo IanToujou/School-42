@@ -330,11 +330,11 @@ add_executable(MiniShell
 )
 
 add_executable(Cub3D
-		"Core/Cub3D/src/main/main.c"
-		"Core/Cub3D/include/cub3d.h"
-		"Core/Cub3D/src/init/init_data.c"
-		"Core/Cub3D/include/error.h"
-		"Core/Cub3D/src/error/error_throw.c"
+		"Core/MiniRT/src/main/main.c"
+		"Core/MiniRT/include/cub3d.h"
+		"Core/MiniRT/src/init/init_data.c"
+		"Core/MiniRT/include/error.h"
+		"Core/MiniRT/src/error/error_throw.c"
 )
 
 add_executable(CPP-00-EX00
