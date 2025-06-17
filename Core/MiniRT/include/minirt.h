@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/16 14:26:24 by mpoesy           ###   ########.fr       */
+/*   Updated: 2025/06/17 10:48:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINIRT_H
 
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "../lib/mlx/mlx.h"
 # include "structs.h" // structs here
 # include <fcntl.h>   // open/read
 # include <math.h>

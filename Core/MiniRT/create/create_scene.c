@@ -6,11 +6,11 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:54:55 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/17 10:35:23 by mpoesy           ###   ########.fr       */
+/*   Updated: 2025/06/17 10:47:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../include/minirt.h"
 
 void	init_window(t_scene *scene, int width, int height, char *title)
 {
