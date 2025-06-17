@@ -329,18 +329,40 @@ add_executable(MiniShell
 		"Core/MiniShell/src/parse/ft_parse_handle_5.c"
 )
 
-add_executable(Cub3D
-		"Core/MiniRT/src/main/main.c"
-		"Core/MiniRT/include/cub3d.h"
-		"Core/MiniRT/src/init/init_data.c"
-		"Core/MiniRT/include/error.h"
-		"Core/MiniRT/src/error/error_throw.c"
+add_executable(MiniRT
+		"Core/MiniRT/main.c"
+		"Core/MiniRT/create/create_scene.c"
+		"Core/MiniRT/include/minirt.h"
+		"Core/MiniRT/include/structs.h"
+		"Core/MiniRT/render/calculate_lighting.c"
+		"Core/MiniRT/render/generate_ray.c"
+		"Core/MiniRT/render/render.c"
+		"Core/MiniRT/render/trace_ray.c"
+		"Core/MiniRT/render/intersect/cylinder.c"
+		"Core/MiniRT/render/intersect/intersect.c"
+		"Core/MiniRT/render/intersect/plane.c"
+		"Core/MiniRT/render/intersect/sphere.c"
+		"Core/MiniRT/utils/add_color.c"
+		"Core/MiniRT/utils/color_scale.c"
+		"Core/MiniRT/utils/vec.c"
+		"Core/MiniRT/utils/vec_add.c"
+		"Core/MiniRT/utils/vec_add_value.c"
+		"Core/MiniRT/utils/vec_cross.c"
+		"Core/MiniRT/utils/vec_div.c"
+		"Core/MiniRT/utils/vec_dot.c"
+		"Core/MiniRT/utils/vec_len.c"
+		"Core/MiniRT/utils/vec_mul.c"
+		"Core/MiniRT/utils/vec_normalize.c"
+		"Core/MiniRT/utils/vec_sub.c"
 )
 
 add_executable(CPP-00-EX00
 		"Core/CPP/Module-00/ex00/src/megaphone.cpp"
 )
-add_executable(CPP-00-EX01 Core/CPP/Module-00/ex01/src/PhoneBook.cpp Core/CPP/Module-00/ex01/include/PhoneBook.h
-		Core/CPP/Module-00/ex01/src/Contact.cpp
-		Core/CPP/Module-00/ex01/include/Contact.h
-		Core/CPP/Module-00/ex01/src/Main.cpp)
+add_executable(CPP-00-EX01
+		"Core/CPP/Module-00/ex01/src/PhoneBook.cpp"
+		"Core/CPP/Module-00/ex01/include/PhoneBook.h"
+		"Core/CPP/Module-00/ex01/src/Contact.cpp"
+		"Core/CPP/Module-00/ex01/include/Contact.h"
+		"Core/CPP/Module-00/ex01/src/Main.cpp"
+)
