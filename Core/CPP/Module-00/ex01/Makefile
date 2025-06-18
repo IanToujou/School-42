@@ -12,7 +12,7 @@
 
 NAME = PhoneBook
 
-SRC =	src/main.cpp \
+SRC =	src/Main.cpp \
 		src/PhoneBook.cpp \
 		src/Contact.cpp
 

@@ -6,11 +6,11 @@ class PhoneBook {
 public:
 	PhoneBook();
 	~PhoneBook();
+	void createContact();
+	void listContacts() const;
 private:
 	int index;
-	bool full;
 	Contact contacts[8];
-	void createContact();
 };
 
 #endif
