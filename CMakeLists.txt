@@ -366,3 +366,8 @@ add_executable(CPP-00-EX01
 		"Core/CPP/Module-00/ex01/include/Contact.h"
 		"Core/CPP/Module-00/ex01/src/Main.cpp"
 )
+add_executable(CPP-00-EX02
+		"Core/CPP/Module-00/ex02/include/Account.hpp"
+		"Core/CPP/Module-00/ex02/src/tests.cpp"
+		Core/CPP/Module-00/ex02/src/Account.cpp
+)
