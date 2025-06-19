@@ -87,25 +87,25 @@ int key_press(int keycode, void *param)
 	}
 	else if (keycode == KEY_W)
 	{
-		scene->camera.origin = vec_add(scene->camera.origin,
+		scene->camera.position = vec_add(scene->camera.position,
 		                               vec_mul(scene->camera.direction, MOVE_SPEED));
 		render_scene(scene);
 	}
 	else if (keycode == KEY_S)
 	{
-		scene->camera.origin = vec_sub(scene->camera.origin,
+		scene->camera.position = vec_sub(scene->camera.position,
 		                               vec_mul(scene->camera.direction, MOVE_SPEED));
 		render_scene(scene);
 	}
 	else if (keycode == KEY_D)
 	{
-		scene->camera.origin = vec_add(scene->camera.origin,
+		scene->camera.position = vec_add(scene->camera.position,
 		                               vec_mul(scene->camera.right, MOVE_SPEED));
 		render_scene(scene);
 	}
 	else if (keycode == KEY_A)
 	{
-		scene->camera.origin = vec_sub(scene->camera.origin,
+		scene->camera.position = vec_sub(scene->camera.position,
 		                               vec_mul(scene->camera.right, MOVE_SPEED));
 		render_scene(scene);
 	}

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:21:31 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:51:45 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,32 @@
 # define ERROR_PARSE_NUM 8
 # define ERROR_PARSE_NUM_MSG "Failed to parse number."
 
-# define ERROR_PARSE_COLOR 8
+# define ERROR_PARSE_COLOR 9
 # define ERROR_PARSE_COLOR_MSG "Failed to parse color."
+
+# define ERROR_PARSE_VECTOR 10
+# define ERROR_PARSE_VECTOR_MSG "Failed to parse vector."
+
+# define ERROR_PARSE_AMBIENT 11
+# define ERROR_PARSE_AMBIENT_MSG "Failed to parse ambient light."
+
+# define ERROR_PARSE_CAMERA 12
+# define ERROR_PARSE_CAMERA_MSG "Failed to parse camera."
+
+# define ERROR_PARSE_SPOTLIGHT 13
+# define ERROR_PARSE_SPOTLIGHT_MSG "Failed to parse spotlight."
+
+# define ERROR_PARSE_PLANE 14
+# define ERROR_PARSE_PLANE_MSG "Failed to parse plane."
+
+# define ERROR_PARSE_SPHERE 15
+# define ERROR_PARSE_SPHERE_MSG "Failed to parse sphere."
+
+# define ERROR_PARSE_CYLINDER 16
+# define ERROR_PARSE_CYLINDER_MSG "Failed to parse cylinder."
+
+# define ERROR_RENDER_AMBIENT_RATIO 17
+# define ERROR_RENDER_AMBIENT_RATIO_MSG "Ambient ration cannot be 0."
 
 void	error_throw(int error);
 

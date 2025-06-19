@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient.c                                    :+:      :+:    :+:   */
+/*   util_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 13:06:52 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:44:31 by ibour            ###   ########.fr       */
+/*   Created: 2025/06/19 14:41:56 by ibour             #+#    #+#             */
+/*   Updated: 2025/06/19 14:52:51 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_ambient(t_scene *scene, char **str)
+void util_array_free(void **array)
 {
-	if (util_array_count((void **)str) != 3)
-		error_throw(ERROR_PARSE_AMBIENT);
-	scene->ambient.ratio = util_num_parse(str[1]);
-	if (scene->ambient.ratio <= 0.0)
-		error_throw(ERROR_RENDER_AMBIENT_RATIO);
-	scene->ambient.color = util_color_parse(str[2]);
+	int i;
+
+	if (!array)
+		return;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+int	util_array_count(void **array)
+{
+	int	count;
+
+	count = 0;
+	if (!array)
+		return (0);
+	while (array[count])
+		count++;
+	return (count);
+
 }

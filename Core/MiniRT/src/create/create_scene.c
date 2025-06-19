@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:54:55 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:53:31 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 15:08:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,18 @@ int create_scene(char *file, t_scene *scene)
 
 	(void) file;
 	init_window(scene, WIDTH, HEIGHT, "miniRT");
-	scene->camera.origin.x = 0.0;
-	scene->camera.origin.y = 0.0;
-	scene->camera.origin.z = 6.0;
-	scene->camera.direction.x = 0.0;
-	scene->camera.direction.y = -1.0;
-	scene->camera.direction.z = 1.0;
+	//scene->camera.position.x = 0.0;
+	//scene->camera.position.y = 0.0;
+	//scene->camera.position.z = 6.0;
+	//scene->camera.direction.x = 0.0;
+	//scene->camera.direction.y = -1.0;
+	//scene->camera.direction.z = 1.0;
 	scene->camera.up = (t_vec3){0.0, 1.0, 0.0};
 	scene->camera.forward = vec_normalize(scene->camera.direction);
 	scene->camera.right = vec_normalize(vec_cross(scene->camera.forward,
 	                                              scene->camera.up));
 	// scene->camera.up = vec_normalize(vec_cross(scene->camera.right, scene->camera.forward));
-	scene->camera.fov = 70.0;
+	//scene->camera.fov = 70.0;
 	/*
 	scene->light.position.x = -10.0;
 	scene->light.position.y = 10.0;

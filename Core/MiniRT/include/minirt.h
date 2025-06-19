@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 14:24:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:56:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_color
 // how wide can the camera see
 typedef struct s_camera
 {
-	t_vec3			origin;
+	t_vec3			position;
 	t_vec3			direction;
 	t_vec3			up;
 	t_vec3			right;
@@ -82,6 +82,7 @@ typedef struct s_ambient
 {
 	t_color			color;
 	double			ratio;
+	t_vec3			position; // todo remove
 }					t_light;
 
 typedef struct s_image
@@ -164,12 +165,16 @@ typedef struct s_hit_info
 int	init_parse(t_scene *scene, const char *file_name);
 
 // Parse
-void	parse_ambient(t_scene *scene, char *str);
+void	parse_ambient(t_scene *scene, char **str);
+void	parse_camera(t_scene *scene, char **str);
 
 // Math utilities
 
 double	util_num_parse(char *str);
+t_vec3	util_vector_parse(char *str);
 t_color	util_color_parse(char *str);
+void	util_array_free(void **array);
+int		util_array_count(void **array);
 t_vec3 vec3(double x, double y, double z);
 
 t_vec3 vec_add(t_vec3 a, t_vec3 b);

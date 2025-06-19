@@ -358,6 +358,13 @@ add_executable(MiniRT
 		Core/MiniRT/src/parse/parse_ambient.c
 		Core/MiniRT/src/util/util_num.c
 		Core/MiniRT/src/util/util_color.c
+		Core/MiniRT/src/util/util_array.c
+		Core/MiniRT/src/parse/parse_spotlight.c
+		Core/MiniRT/src/parse/parse_camera.c
+		Core/MiniRT/src/parse/parse_sphere.c
+		Core/MiniRT/src/parse/parse_cylinder.c
+		Core/MiniRT/src/parse/parse_plane.c
+		Core/MiniRT/src/util/util_vector.c
 )
 
 add_executable(CPP-00-EX00

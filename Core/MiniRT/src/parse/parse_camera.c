@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient.c                                    :+:      :+:    :+:   */
+/*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 13:06:52 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:44:31 by ibour            ###   ########.fr       */
+/*   Created: 2025/06/19 14:44:59 by ibour             #+#    #+#             */
+/*   Updated: 2025/06/19 15:07:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_ambient(t_scene *scene, char **str)
+void	parse_camera(t_scene *scene, char **str)
 {
-	if (util_array_count((void **)str) != 3)
-		error_throw(ERROR_PARSE_AMBIENT);
-	scene->ambient.ratio = util_num_parse(str[1]);
-	if (scene->ambient.ratio <= 0.0)
-		error_throw(ERROR_RENDER_AMBIENT_RATIO);
-	scene->ambient.color = util_color_parse(str[2]);
+	if (util_array_count((void **)str) != 4)
+		error_throw(ERROR_PARSE_CAMERA);
+	scene->camera.position = util_vector_parse(str[1]);
+	scene->camera.direction = vec_normalize(util_vector_parse(str[2]));
+	scene->camera.fov = util_num_parse(str[3]);
+	scene->camera.fov = fmin(fmax(scene->camera.fov, 0.0), 180.0); // todo maybe remove
 }

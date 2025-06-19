@@ -1,3 +1,4 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -101,11 +102,12 @@ CUSTOM =	src/custom/ft_ceil.c \
 			src/other/printf/ft_printf.c \
 			src/other/getnextline/get_next_line.c
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I.
+CC = clang
+CFLAGS = -Wall -Werror -Wextra -I. -Ofast -march=native -ffast-math -flto
 RM = rm -rf
 RM_WIN = del /S /Q
-AR = ar crs
+AR = llvm-ar-12 rcs
+RANLIB = llvm-ranlib-12
 
 OBJS = $(SRC:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
@@ -113,6 +115,7 @@ CUSTOM_OBJS = $(CUSTOM:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
+	$(RANLIB) $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
@@ -135,8 +138,10 @@ re:	fclean all
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+	$(RANLIB) $(NAME)
 
 custom: $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
 	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
+	$(RANLIB) $(NAME)
 
 .PHONY:	all clean clean-win fclean fclean-win re bonus custom

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:05:21 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 12:18:40 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:58:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,36 @@ static void print_error_message(const int error)
 		printf(ERROR_MALLOC_MSG);
 	else if (error == ERROR_INIT_DATA)
 		printf(ERROR_INIT_DATA_MSG);
+	else if (error == ERROR_INIT_PARSE)
+		printf(ERROR_INIT_PARSE_MSG);
+	else if (error == ERROR_INIT_SCENE)
+		printf(ERROR_INIT_SCENE_MSG);
+	else if (error == ERROR_FILE_INVALID)
+		printf(ERROR_FILE_INVALID_MSG);
+	else if (error == ERROR_FILE_EMPTY)
+		printf(ERROR_FILE_EMPTY_MSG);
+	else if (error == ERROR_PARSE_NUM)
+		printf(ERROR_PARSE_NUM_MSG);
+	else if (error == ERROR_PARSE_COLOR)
+		printf(ERROR_PARSE_COLOR_MSG);
+	else if (error == ERROR_PARSE_VECTOR)
+		printf(ERROR_PARSE_VECTOR_MSG);
+	else if (error == ERROR_PARSE_AMBIENT)
+		printf(ERROR_PARSE_AMBIENT_MSG);
+	else if (error == ERROR_PARSE_CAMERA)
+		printf(ERROR_PARSE_CAMERA_MSG);
+	else if (error == ERROR_PARSE_SPOTLIGHT)
+		printf(ERROR_PARSE_SPOTLIGHT_MSG);
+	else if (error == ERROR_PARSE_PLANE)
+		printf(ERROR_PARSE_PLANE_MSG);
+	else if (error == ERROR_PARSE_SPHERE)
+		printf(ERROR_PARSE_SPHERE_MSG);
+	else if (error == ERROR_PARSE_CYLINDER)
+		printf(ERROR_PARSE_CYLINDER_MSG);
+	else if (error == ERROR_RENDER_AMBIENT_RATIO)
+		printf(ERROR_RENDER_AMBIENT_RATIO_MSG);
 	printf("\033[0m\n");
+
 }
 
 /**

@@ -11,6 +11,7 @@ RESET = \033[0m
 SRC =	src/create/create_scene.c \
 		src/init/init_parse.c \
 		src/parse/parse_ambient.c \
+		src/parse/parse_camera.c \
 		src/main/main.c \
 		src/error/error_throw.c \
 		src/render/calculate_lighting.c \
@@ -33,44 +34,47 @@ SRC =	src/create/create_scene.c \
 		src/util/vec_len.c \
 		src/util/add_color.c \
 		src/util/color_scale.c \
-		src/util/util_num.c
+		src/util/util_num.c \
+		src/util/util_color.c \
+		src/util/util_array.c \
+		src/util/util_vector.c
 
 OBJ = $(SRC:.c=.o)
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I. -I/opt/X11/include
+CC = clang
+CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -I. -I/opt/X11/include
 RM = rm -rf
 RM_WIN = del /S /Q
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(OBJ) libft mlx
-	$(CC) -o $(NAME) $(OBJ) -no-pie -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
+	@$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm -flto
 
 libft:
-	make -C lib/libft custom
+	@make -C lib/libft custom --silent
 
 mlx:
-	make -C lib/mlx
+	@make -C lib/mlx --silent
 
 clean:
-	$(RM) $(OBJ)
-	make -C lib/libft clean
-	make -C lib/mlx clean
+	@$(RM) $(OBJ)
+	@make -C lib/libft clean --silent
+	@make -C lib/mlx clean --silent
 
 clean-win:
-	$(RM_WIN) "*.o"
-	make -C lib/libft clean-win
+	@$(RM_WIN) "*.o"
+	@make -C lib/libft clean-win --silent
 
 fclean: clean
-	$(RM) $(NAME)
-	make -C lib/libft fclean
-	make -C lib/mlx clean
+	@$(RM) $(NAME)
+	@make -C lib/libft fclean --silent
+	@make -C lib/mlx clean --silent
 
 fclean-win:	clean-win
-	$(RM_WIN) "$(NAME).exe"
-	make -C lib/libft fclean-win
+	@$(RM_WIN) "$(NAME).exe"
+	@make -C lib/libft fclean-win --silent
 
 re: fclean all
 
