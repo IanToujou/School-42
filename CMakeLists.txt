@@ -382,3 +382,7 @@ add_executable(CPP-00-EX02
 		"Core/CPP/Module-00/ex02/src/tests.cpp"
 		Core/CPP/Module-00/ex02/src/Account.cpp
 )
+add_executable(CPP-01-EX00 Core/CPP/Module-01/ex00/src/Zombie.cpp Core/CPP/Module-01/ex00/include/Zombie.h
+		Core/CPP/Module-01/ex00/src/newZombie.cpp
+		Core/CPP/Module-01/ex00/src/randomChump.cpp
+		Core/CPP/Module-01/ex00/src/main.cpp)

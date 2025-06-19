@@ -43,4 +43,4 @@ fclean-win:	clean-win
 
 re: fclean all
 
-.PHONY: all libft clean clean-win fclean fclean-win re
+.PHONY: all clean clean-win fclean fclean-win re
