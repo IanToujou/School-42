@@ -12,9 +12,9 @@
 
 #include "../../include/minirt.h"
 
-t_color	add_color(t_color a, t_color b)
+t_color add_color(t_color a, t_color b)
 {
-	t_color	result;
+	t_color result;
 
 	result.r = fmin(a.r + b.r, 255);
 	result.g = fmin(a.g + b.g, 255);

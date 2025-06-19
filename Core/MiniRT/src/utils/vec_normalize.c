@@ -12,9 +12,9 @@
 
 #include "../../include/minirt.h"
 
-t_vec3	vec_normalize(t_vec3 v)
+t_vec3 vec_normalize(t_vec3 v)
 {
-	double	length;
+	double length;
 
 	length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 	if (length == 0.0)

@@ -12,27 +12,27 @@
 
 #include "../../include/minirt.h"
 
-double	project_length(t_vec3 v, t_vec3 axis)
+double project_length(t_vec3 v, t_vec3 axis)
 {
 	return (vec_dot(v, axis));
 }
 
-t_vec3	project_vector(t_vec3 v, t_vec3 axis)
+t_vec3 project_vector(t_vec3 v, t_vec3 axis)
 {
 	return (vec_mul(axis, vec_dot(v, axis)));
 }
 
-int	solve_infinite_cylinder(t_ray *ray, t_cylinder *cy, double *t)
+int solve_infinite_cylinder(t_ray *ray, t_cylinder *cy, double *t)
 {
-	t_vec3	d_proj;
-	t_vec3	oc_proj;
-	t_vec3	d_perp;
-	t_vec3	oc_perp;
-	double	sqrt_disc;
-	double	t0;
-	double	t1;
-	t_vec3	hit;
-	double	proj;
+	t_vec3 d_proj;
+	t_vec3 oc_proj;
+	t_vec3 d_perp;
+	t_vec3 oc_perp;
+	double sqrt_disc;
+	double t0;
+	double t1;
+	t_vec3 hit;
+	double proj;
 
 	t_vec3 d, oc, ca;
 	double a, b, c, discriminant;
@@ -65,11 +65,11 @@ int	solve_infinite_cylinder(t_ray *ray, t_cylinder *cy, double *t)
 	return (1);
 }
 
-int	solve_cap(t_ray *ray, t_cylinder *cy, t_vec3 cap_center, double *t)
+int solve_cap(t_ray *ray, t_cylinder *cy, t_vec3 cap_center, double *t)
 {
-	double	denom;
-	double	t_hit;
-	t_vec3	p;
+	double denom;
+	double t_hit;
+	t_vec3 p;
 
 	denom = vec_dot(ray->direction, cy->axis);
 	if (fabs(denom) < 1e-6)
@@ -84,25 +84,25 @@ int	solve_cap(t_ray *ray, t_cylinder *cy, t_vec3 cap_center, double *t)
 	return (1);
 }
 
-int	intersect_cylinder(t_ray *ray, t_cylinder *cy, t_hit_info *hit)
+int intersect_cylinder(t_ray *ray, t_cylinder *cy, t_hit_info *hit)
 {
-	double	t_min;
+	double t_min;
 
 	double t_body, t_top, t_bot;
 	int hit_body, hit_top, hit_bot;
 	hit_body = solve_infinite_cylinder(ray, cy, &t_body);
 	hit_top = solve_cap(ray, cy, vec_add(cy->point, vec_mul(cy->axis,
-					cy->height)), &t_top);
+	                                                        cy->height)), &t_top);
 	hit_bot = solve_cap(ray, cy, cy->point, &t_bot);
 	t_min = 1e9;
 	if (hit_body && t_body < t_min)
 	{
 		t_min = t_body;
 		hit->normal = vec_normalize(vec_sub(vec_sub(vec_add(ray->origin,
-							vec_mul(ray->direction, t_body)), cy->point),
-					project_vector(vec_sub(vec_add(ray->origin,
-								vec_mul(ray->direction, t_body)), cy->point),
-						cy->axis)));
+		                                                    vec_mul(ray->direction, t_body)), cy->point),
+		                                    project_vector(vec_sub(vec_add(ray->origin,
+		                                                                   vec_mul(ray->direction, t_body)), cy->point),
+		                                                   cy->axis)));
 	}
 	if (hit_top && t_top < t_min)
 	{

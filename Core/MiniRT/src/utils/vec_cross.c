@@ -12,9 +12,9 @@
 
 #include "../../include/minirt.h"
 
-t_vec3	vec_cross(t_vec3 a, t_vec3 b)
+t_vec3 vec_cross(t_vec3 a, t_vec3 b)
 {
-	t_vec3	result;
+	t_vec3 result;
 
 	result.x = a.y * b.z - b.y * a.z;
 	result.y = b.x * a.z - a.x * b.z;

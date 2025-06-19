@@ -12,7 +12,7 @@
 
 #include "../../include/minirt.h"
 
-t_color	color_scale(t_color c, double value)
+t_color color_scale(t_color c, double value)
 {
 	c.r = c.r * value;
 	c.g = c.g * value;

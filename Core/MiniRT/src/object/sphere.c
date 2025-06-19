@@ -12,17 +12,17 @@
 
 #include "../../include/minirt.h"
 
-int	intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit)
+int intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit)
 {
-	t_vec3	oc;
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-	double	sqrt_disc;
-	double	t1;
-	double	t2;
-	double	t_hit;
+	t_vec3 oc;
+	double a;
+	double b;
+	double c;
+	double discriminant;
+	double sqrt_disc;
+	double t1;
+	double t2;
+	double t_hit;
 
 	oc = vec_sub(ray->origin, sphere->center);
 	a = vec_dot(ray->direction, ray->direction);

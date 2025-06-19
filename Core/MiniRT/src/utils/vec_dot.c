@@ -12,9 +12,9 @@
 
 #include "../../include/minirt.h"
 
-double	vec_dot(t_vec3 a, t_vec3 b)
+double vec_dot(t_vec3 a, t_vec3 b)
 {
-	double	result;
+	double result;
 
 	result = a.x * b.x + a.y * b.y + a.z * b.z;
 	return (result);

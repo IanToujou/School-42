@@ -354,6 +354,8 @@ add_executable(MiniRT
 		"Core/MiniRT/src/utils/vec_mul.c"
 		"Core/MiniRT/src/utils/vec_normalize.c"
 		"Core/MiniRT/src/utils/vec_sub.c"
+		Core/MiniRT/src/init/init_parse.c
+		Core/MiniRT/src/error/ft_error_throw.c
 )
 
 add_executable(CPP-00-EX00

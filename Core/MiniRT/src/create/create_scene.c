@@ -12,7 +12,7 @@
 
 #include "../../include/minirt.h"
 
-void	init_window(t_scene *scene, int width, int height, char *title)
+void init_window(t_scene *scene, int width, int height, char *title)
 {
 	printf("--- Initializing MiniLibX Window ---\n");
 	scene->mlx_ptr = mlx_init();
@@ -34,19 +34,19 @@ void	init_window(t_scene *scene, int width, int height, char *title)
 		exit(EXIT_FAILURE);
 	}
 	scene->image.data = mlx_get_data_addr(scene->image.img_ptr,
-			&scene->image.bpp, &scene->image.line_length, &scene->image.endian);
+	                                      &scene->image.bpp, &scene->image.line_length, &scene->image.endian);
 	printf("MiniLibX window and image successfully initialized.\n");
 	printf("Image data properties: BPP=%d, Line Length=%d, Endian=%d\n",
-		scene->image.bpp, scene->image.line_length, scene->image.endian);
+	       scene->image.bpp, scene->image.line_length, scene->image.endian);
 	printf("--- MiniLibX Initialization Complete ---\n");
 }
 
-int	add_object_to_scene(t_scene *scene, t_obj_type type, void *data)
+int add_object_to_scene(t_scene *scene, t_obj_type type, void *data)
 {
-	t_object	*new_node;
-	t_object	*current;
+	t_object *new_node;
+	t_object *current;
 
-	new_node = (t_object *)malloc(sizeof(t_object));
+	new_node = (t_object *) malloc(sizeof(t_object));
 	if (!new_node)
 	{
 		perror("Error allocating object node");
@@ -70,13 +70,13 @@ int	add_object_to_scene(t_scene *scene, t_obj_type type, void *data)
 
 // Dummy version
 // Would need to read and parse from the name of the file in the future
-int	create_scene(char *file, t_scene *scene)
+int create_scene(char *file, t_scene *scene)
 {
 	//t_sphere	*sphere;
 	//t_plane		*plane;
 	//t_cylinder	*cylinder;
 
-	(void)file;
+	(void) file;
 	init_window(scene, WIDTH, HEIGHT, "miniRT");
 	scene->camera.origin.x = 0.0;
 	scene->camera.origin.y = 0.0;
@@ -87,7 +87,7 @@ int	create_scene(char *file, t_scene *scene)
 	scene->camera.up = (t_vec3){0.0, 1.0, 0.0};
 	scene->camera.forward = vec_normalize(scene->camera.direction);
 	scene->camera.right = vec_normalize(vec_cross(scene->camera.forward,
-				scene->camera.up));
+	                                              scene->camera.up));
 	// scene->camera.up = vec_normalize(vec_cross(scene->camera.right, scene->camera.forward));
 	scene->camera.fov = 70.0;
 	/*
@@ -160,93 +160,94 @@ int	create_scene(char *file, t_scene *scene)
 		return (-1);
 		*/
 	// Create a box from 6 planes (each plane is a wall of the box)
-t_plane *planes[6];
-t_vec3 box_center = {0.0, 0.0, 10.0};
-double box_half_size = 5.0;
-t_color wall_color[6] = {
-    {255, 0, 0},    // Front plane - Red
-    {0, 255, 0},    // Back plane - Green
-    {0, 0, 255},    // Left plane - Blue
-    {255, 255, 0},  // Right plane - Yellow
-    {255, 0, 255},  // Bottom plane - Magenta
-    {0, 255, 255}   // Top plane - Cyan
-};
+	t_plane *planes[6];
+	t_vec3 box_center = {0.0, 0.0, 10.0};
+	double box_half_size = 5.0;
+	t_color wall_color[6] = {
+		{255, 0, 0}, // Front plane - Red
+		{0, 255, 0}, // Back plane - Green
+		{0, 0, 255}, // Left plane - Blue
+		{255, 255, 0}, // Right plane - Yellow
+		{255, 0, 255}, // Bottom plane - Magenta
+		{0, 255, 255} // Top plane - Cyan
+	};
 
-// Define planes for each side of the box
-// Each plane needs a point and a normal vector pointing inward
+	// Define planes for each side of the box
+	// Each plane needs a point and a normal vector pointing inward
 
-// Front plane (facing toward -Z)
-planes[0] = (t_plane *)malloc(sizeof(t_plane));
-if (!planes[0]) return error("Failed to allocate memory for front plane.");
-planes[0]->point = (t_vec3){box_center.x, box_center.y, box_center.z - box_half_size};
-planes[0]->normal = (t_vec3){0.0, 0.0, 1.0};
-planes[0]->color = wall_color[0];
+	// Front plane (facing toward -Z)
+	planes[0] = (t_plane *) malloc(sizeof(t_plane));
+	if (!planes[0]) return error("Failed to allocate memory for front plane.");
+	planes[0]->point = (t_vec3){box_center.x, box_center.y, box_center.z - box_half_size};
+	planes[0]->normal = (t_vec3){0.0, 0.0, 1.0};
+	planes[0]->color = wall_color[0];
 
-// Back plane (facing toward +Z)
-planes[1] = (t_plane *)malloc(sizeof(t_plane));
-if (!planes[1]) return error("Failed to allocate memory for back plane.");
-planes[1]->point = (t_vec3){box_center.x, box_center.y, box_center.z + box_half_size};
-planes[1]->normal = (t_vec3){0.0, 0.0, -1.0};
-planes[1]->color = wall_color[1];
+	// Back plane (facing toward +Z)
+	planes[1] = (t_plane *) malloc(sizeof(t_plane));
+	if (!planes[1]) return error("Failed to allocate memory for back plane.");
+	planes[1]->point = (t_vec3){box_center.x, box_center.y, box_center.z + box_half_size};
+	planes[1]->normal = (t_vec3){0.0, 0.0, -1.0};
+	planes[1]->color = wall_color[1];
 
-// Left plane (facing toward +X)
-planes[2] = (t_plane *)malloc(sizeof(t_plane));
-if (!planes[2]) return error("Failed to allocate memory for left plane.");
-planes[2]->point = (t_vec3){box_center.x - box_half_size, box_center.y, box_center.z};
-planes[2]->normal = (t_vec3){1.0, 0.0, 0.0};
-planes[2]->color = wall_color[2];
+	// Left plane (facing toward +X)
+	planes[2] = (t_plane *) malloc(sizeof(t_plane));
+	if (!planes[2]) return error("Failed to allocate memory for left plane.");
+	planes[2]->point = (t_vec3){box_center.x - box_half_size, box_center.y, box_center.z};
+	planes[2]->normal = (t_vec3){1.0, 0.0, 0.0};
+	planes[2]->color = wall_color[2];
 
-// Right plane (facing toward -X)
-planes[3] = (t_plane *)malloc(sizeof(t_plane));
-if (!planes[3]) return error("Failed to allocate memory for right plane.");
-planes[3]->point = (t_vec3){box_center.x + box_half_size, box_center.y, box_center.z};
-planes[3]->normal = (t_vec3){-1.0, 0.0, 0.0};
-planes[3]->color = wall_color[3];
+	// Right plane (facing toward -X)
+	planes[3] = (t_plane *) malloc(sizeof(t_plane));
+	if (!planes[3]) return error("Failed to allocate memory for right plane.");
+	planes[3]->point = (t_vec3){box_center.x + box_half_size, box_center.y, box_center.z};
+	planes[3]->normal = (t_vec3){-1.0, 0.0, 0.0};
+	planes[3]->color = wall_color[3];
 
-// Bottom plane (floor, facing up)
-planes[4] = (t_plane *)malloc(sizeof(t_plane));
-if (!planes[4]) return error("Failed to allocate memory for bottom plane.");
-planes[4]->point = (t_vec3){box_center.x, box_center.y - box_half_size, box_center.z};
-planes[4]->normal = (t_vec3){0.0, 1.0, 0.0};
-planes[4]->color = wall_color[4];
+	// Bottom plane (floor, facing up)
+	planes[4] = (t_plane *) malloc(sizeof(t_plane));
+	if (!planes[4]) return error("Failed to allocate memory for bottom plane.");
+	planes[4]->point = (t_vec3){box_center.x, box_center.y - box_half_size, box_center.z};
+	planes[4]->normal = (t_vec3){0.0, 1.0, 0.0};
+	planes[4]->color = wall_color[4];
 
-// Top plane (ceiling, facing down)
-planes[5] = (t_plane *)malloc(sizeof(t_plane));
-if (!planes[5]) return error("Failed to allocate memory for top plane.");
-planes[5]->point = (t_vec3){box_center.x, box_center.y + box_half_size, box_center.z};
-planes[5]->normal = (t_vec3){0.0, -1.0, 0.0};
-planes[5]->color = wall_color[5];
+	// Top plane (ceiling, facing down)
+	planes[5] = (t_plane *) malloc(sizeof(t_plane));
+	if (!planes[5]) return error("Failed to allocate memory for top plane.");
+	planes[5]->point = (t_vec3){box_center.x, box_center.y + box_half_size, box_center.z};
+	planes[5]->normal = (t_vec3){0.0, -1.0, 0.0};
+	planes[5]->color = wall_color[5];
 
-// Add all planes to the scene
-for (int i = 0; i < 6; i++) {
-    if (add_object_to_scene(scene, OBJ_PLANE, planes[i]) == -1)
-        return (-1);
-}
-// Sphere inside the box
-t_sphere *inner_sphere = (t_sphere *)malloc(sizeof(t_sphere));
-if (!inner_sphere) return error("Failed to allocate memory for inner sphere.");
-inner_sphere->center = (t_vec3){0.0, 0.0, 10.0};
-inner_sphere->radius = 1.5;
-inner_sphere->color = (t_color){255, 100, 100};  // Light red
-if (add_object_to_scene(scene, OBJ_SPHERE, inner_sphere) == -1)
-    return (-1);
+	// Add all planes to the scene
+	for (int i = 0; i < 6; i++)
+	{
+		if (add_object_to_scene(scene, OBJ_PLANE, planes[i]) == -1)
+			return (-1);
+	}
+	// Sphere inside the box
+	t_sphere *inner_sphere = (t_sphere *) malloc(sizeof(t_sphere));
+	if (!inner_sphere) return error("Failed to allocate memory for inner sphere.");
+	inner_sphere->center = (t_vec3){0.0, 0.0, 10.0};
+	inner_sphere->radius = 1.5;
+	inner_sphere->color = (t_color){255, 100, 100}; // Light red
+	if (add_object_to_scene(scene, OBJ_SPHERE, inner_sphere) == -1)
+		return (-1);
 
-// Cylinder inside the box
-t_cylinder *inner_cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
-if (!inner_cylinder) return error("Failed to allocate memory for inner cylinder.");
-inner_cylinder->point = (t_vec3){-2.0, -3.0, 10.0};
-inner_cylinder->axis = vec_normalize((t_vec3){0.0, 1.0, 0.0});
-inner_cylinder->radius = 0.8;
-inner_cylinder->height = 4.0;
-inner_cylinder->color = (t_color){100, 255, 100};  // Light green
-if (add_object_to_scene(scene, OBJ_CYLINDER, inner_cylinder) == -1)
-    return (-1);
-// Example light source structure, assuming you have a similar struct
-scene->light.position = (t_vec3){-4.0, 4.0, 6.0};
-scene->light.intensity = 0.7;  // You can adjust this
-scene->light.color = (t_color){255, 255, 255};  // White light
-//if (add_light_to_scene(scene, light) == -1)
-  //  return (-1);
+	// Cylinder inside the box
+	t_cylinder *inner_cylinder = (t_cylinder *) malloc(sizeof(t_cylinder));
+	if (!inner_cylinder) return error("Failed to allocate memory for inner cylinder.");
+	inner_cylinder->point = (t_vec3){-2.0, -3.0, 10.0};
+	inner_cylinder->axis = vec_normalize((t_vec3){0.0, 1.0, 0.0});
+	inner_cylinder->radius = 0.8;
+	inner_cylinder->height = 4.0;
+	inner_cylinder->color = (t_color){100, 255, 100}; // Light green
+	if (add_object_to_scene(scene, OBJ_CYLINDER, inner_cylinder) == -1)
+		return (-1);
+	// Example light source structure, assuming you have a similar struct
+	scene->light.position = (t_vec3){-4.0, 4.0, 6.0};
+	scene->light.intensity = 0.7; // You can adjust this
+	scene->light.color = (t_color){255, 255, 255}; // White light
+	//if (add_light_to_scene(scene, light) == -1)
+	//  return (-1);
 
 	return (0);
 }

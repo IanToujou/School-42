@@ -13,11 +13,11 @@
 #include "../../include/minirt.h"
 
 // Plane: point on plane + normal (normalized)
-int	intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit)
+int intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit)
 {
-	double	denom;
-	t_vec3	p;
-	double	t_hit;
+	double denom;
+	t_vec3 p;
+	double t_hit;
 
 	denom = vec_dot(plane->normal, ray->direction);
 	if (fabs(denom) < 1e-6)

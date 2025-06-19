@@ -12,13 +12,13 @@
 
 #include "../../include/minirt.h"
 
-t_color	trace_ray(t_ray *ray, t_scene *scene)
+t_color trace_ray(t_ray *ray, t_scene *scene)
 {
-	double		closest_t;
-	t_object	*obj;
-	t_hit_info	closest_hit;
-	int			hit_found;
-	t_hit_info	temp_hit;
+	double closest_t;
+	t_object *obj;
+	t_hit_info closest_hit;
+	int hit_found;
+	t_hit_info temp_hit;
 
 	closest_t = INFINITY;
 	obj = scene->objects;

@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:57:23 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 12:58:10 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
-# include "structs.h" // structs here
-# include <fcntl.h>   // open/read
+
+# include "errortype.h"
+
+# include <fcntl.h>
 # include <math.h>
-# include <stdio.h> // debugging/printf
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -36,38 +38,175 @@
 # define KEY_D 100
 # define MOVE_SPEED 0.4
 
+typedef struct s_vec3
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_vec3;
+
+// ray shot from the camera to each pixel
+typedef struct s_ray
+{
+	t_vec3			origin;
+	t_vec3			direction;
+}					t_ray;
+
+// color of a pixel
+typedef struct s_color
+{
+	int				r;
+	int				g;
+	int				b;
+}					t_color;
+
+// camera needs :
+//
+// origin point
+// a direction of view
+// what is up and down for the camera
+// how wide can the camera see
+typedef struct s_camera
+{
+	t_vec3			origin;
+	t_vec3			direction;
+	t_vec3			up;
+	t_vec3			right;
+	t_vec3			forward;
+	double			yaw;
+	double			pitch;
+	double			fov;
+}					t_camera;
+
+// Struct that defines the properties of light
+typedef struct s_light
+{
+	t_vec3			position;
+	t_color			color;
+	double			intensity;
+}					t_light;
+
+// Image for minilibx
+typedef struct s_image
+{
+	void			*img_ptr;
+	char			*data;
+	int				bpp;
+	int				line_length;
+	int				endian;
+}					t_image;
+
+typedef struct s_cylinder
+{
+	t_vec3			point;
+	t_vec3			axis;
+	double			radius;
+	double			height;
+	t_color			color;
+}					t_cylinder;
+
+typedef struct s_sphere
+{
+	t_vec3			center;
+	double			radius;
+	t_color			color;
+}					t_sphere;
+
+typedef struct s_plane
+{
+	t_vec3			point;
+	t_vec3			normal;
+	t_color			color;
+}					t_plane;
+
+// Enum for object types
+typedef enum e_obj_type
+{
+	OBJ_SPHERE,
+	OBJ_PLANE,
+	OBJ_CYLINDER,
+}					t_obj_type;
+
+// Generic object structure for the linked list
+typedef struct s_object
+{
+	t_obj_type		type;
+	void			*data;
+	struct s_object	*next;
+}					t_object;
+
+// Scene containing the camera, the objects, the light
+typedef struct s_scene
+{
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_image			image;
+	t_camera		camera;
+	t_light			light;
+	t_object		*objects;
+}					t_scene;
+
+typedef struct s_hit_info
+{
+	double			t;
+	t_vec3			point;
+	t_vec3			normal;
+	t_color			color;
+}					t_hit_info;
+
+int	init_parse(t_scene *scene, const char *file_name);
+
 // Math utilities
-t_vec3	vec3(double x, double y, double z);
-t_vec3	vec_add(t_vec3 a, t_vec3 b);
-t_vec3	vec_sub(t_vec3 a, t_vec3 b);
-t_vec3	vec_mul(t_vec3 v, double s);
-t_vec3	vec_div(t_vec3 v, double s);
-t_vec3	vec_normalize(t_vec3 v);
-double	vec_dot(t_vec3 a, t_vec3 b);
-t_vec3	vec_cross(t_vec3 a, t_vec3 b);
-t_vec3	vec_add_value(t_vec3 a, int value);
-double	vec_length(t_vec3 vec);
+t_vec3 vec3(double x, double y, double z);
+
+t_vec3 vec_add(t_vec3 a, t_vec3 b);
+
+t_vec3 vec_sub(t_vec3 a, t_vec3 b);
+
+t_vec3 vec_mul(t_vec3 v, double s);
+
+t_vec3 vec_div(t_vec3 v, double s);
+
+t_vec3 vec_normalize(t_vec3 v);
+
+double vec_dot(t_vec3 a, t_vec3 b);
+
+t_vec3 vec_cross(t_vec3 a, t_vec3 b);
+
+t_vec3 vec_add_value(t_vec3 a, int value);
+
+double vec_length(t_vec3 vec);
 
 // Scene functions
-int		create_scene(char *file, t_scene *scene);
-void	render_scene(t_scene *scene);
+int create_scene(char *file, t_scene *scene);
+
+void render_scene(t_scene *scene);
 
 // Ray & rendering
-t_ray	generate_ray(int x, int y, t_camera *cam);
-t_color	trace_ray(t_ray *ray, t_scene *scene);
-t_color	calculate_lighting(t_hit_info *hit, t_scene *scene);
-int		intersect(t_ray *ray, t_object *obj, t_hit_info *hit);
-int		intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit);
-int		intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit);
-int		intersect_cylinder(t_ray *ray, t_cylinder *cyl, t_hit_info *hit);
+t_ray generate_ray(int x, int y, t_camera *cam);
+
+t_color trace_ray(t_ray *ray, t_scene *scene);
+
+t_color calculate_lighting(t_hit_info *hit, t_scene *scene);
+
+int intersect(t_ray *ray, t_object *obj, t_hit_info *hit);
+
+int intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit);
+
+int intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit);
+
+int intersect_cylinder(t_ray *ray, t_cylinder *cyl, t_hit_info *hit);
 
 // Image
-void	put_pixel(t_image *img, int x, int y, t_color color);
+void put_pixel(t_image *img, int x, int y, t_color color);
 
 // Utils
-int		error(char *msg);
-void	free_scene(t_scene *scene);
-t_color	add_color(t_color a, t_color b);
-t_color	color_scale(t_color c, double value);
+int error(char *msg);
+
+void free_scene(t_scene *scene);
+
+t_color add_color(t_color a, t_color b);
+
+t_color color_scale(t_color c, double value);
 
 #endif

@@ -12,13 +12,13 @@
 
 #include "../../include/minirt.h"
 
-t_color	calculate_lighting(t_hit_info *hit, t_scene *scene)
+t_color calculate_lighting(t_hit_info *hit, t_scene *scene)
 {
-	double	ambient_intensity;
-	t_color	ambient;
-	t_vec3	light_dir;
-	double	diff;
-	t_color	diffuse;
+	double ambient_intensity;
+	t_color ambient;
+	t_vec3 light_dir;
+	double diff;
+	t_color diffuse;
 
 	ambient_intensity = 0.1;
 	ambient = color_scale(hit->color, ambient_intensity);

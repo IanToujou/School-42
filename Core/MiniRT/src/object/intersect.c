@@ -12,13 +12,13 @@
 
 #include "../../include/minirt.h"
 
-int	intersect(t_ray *ray, t_object *obj, t_hit_info *hit)
+int intersect(t_ray *ray, t_object *obj, t_hit_info *hit)
 {
 	if (obj->type == OBJ_SPHERE)
-		return (intersect_sphere(ray, (t_sphere *)obj->data, hit));
+		return (intersect_sphere(ray, (t_sphere *) obj->data, hit));
 	else if (obj->type == OBJ_PLANE)
-		return (intersect_plane(ray, (t_plane *)obj->data, hit));
+		return (intersect_plane(ray, (t_plane *) obj->data, hit));
 	else if (obj->type == OBJ_CYLINDER)
-		return (intersect_cylinder(ray, (t_cylinder *)obj->data, hit));
+		return (intersect_cylinder(ray, (t_cylinder *) obj->data, hit));
 	return (0);
 }

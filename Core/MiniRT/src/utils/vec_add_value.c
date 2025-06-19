@@ -12,7 +12,7 @@
 
 #include "../../include/minirt.h"
 
-t_vec3	vec_add_value(t_vec3 a, int value)
+t_vec3 vec_add_value(t_vec3 a, int value)
 {
 	a.x = a.x + value;
 	a.y = a.y + value;

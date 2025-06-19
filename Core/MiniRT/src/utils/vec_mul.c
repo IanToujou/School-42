@@ -12,9 +12,9 @@
 
 #include "../../include/minirt.h"
 
-t_vec3	vec_mul(t_vec3 v, double s)
+t_vec3 vec_mul(t_vec3 v, double s)
 {
-	t_vec3	result;
+	t_vec3 result;
 
 	result.x = v.x * s;
 	result.y = v.y * s;
