@@ -341,21 +341,23 @@ add_executable(MiniRT
 		"Core/MiniRT/src/object/intersect.c"
 		"Core/MiniRT/src/object/plane.c"
 		"Core/MiniRT/src/object/sphere.c"
-		"Core/MiniRT/src/utils/add_color.c"
-		"Core/MiniRT/src/utils/color_scale.c"
-		"Core/MiniRT/src/utils/vec.c"
-		"Core/MiniRT/src/utils/vec_add.c"
-		"Core/MiniRT/src/utils/vec_add_value.c"
-		"Core/MiniRT/src/utils/vec_cross.c"
-		"Core/MiniRT/src/utils/vec_div.c"
-		"Core/MiniRT/src/utils/vec_dot.c"
-		"Core/MiniRT/src/utils/vec_len.c"
-		"Core/MiniRT/src/utils/vec_mul.c"
-		"Core/MiniRT/src/utils/vec_normalize.c"
-		"Core/MiniRT/src/utils/vec_sub.c"
+		"Core/MiniRT/src/util/add_color.c"
+		"Core/MiniRT/src/util/color_scale.c"
+		"Core/MiniRT/src/util/vec.c"
+		"Core/MiniRT/src/util/vec_add.c"
+		"Core/MiniRT/src/util/vec_add_value.c"
+		"Core/MiniRT/src/util/vec_cross.c"
+		"Core/MiniRT/src/util/vec_div.c"
+		"Core/MiniRT/src/util/vec_dot.c"
+		"Core/MiniRT/src/util/vec_len.c"
+		"Core/MiniRT/src/util/vec_mul.c"
+		"Core/MiniRT/src/util/vec_normalize.c"
+		"Core/MiniRT/src/util/vec_sub.c"
 		Core/MiniRT/src/init/init_parse.c
 		Core/MiniRT/src/error/error_throw.c
 		Core/MiniRT/src/parse/parse_ambient.c
+		Core/MiniRT/src/util/util_num.c
+		Core/MiniRT/src/util/util_color.c
 )
 
 add_executable(CPP-00-EX00

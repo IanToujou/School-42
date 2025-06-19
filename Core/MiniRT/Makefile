@@ -21,18 +21,19 @@ SRC =	src/create/create_scene.c \
 		src/object/cylinder.c \
 		src/render/render.c \
 		src/render/trace_ray.c \
-		src/utils/vec_add.c \
-		src/utils/vec.c \
-		src/utils/vec_cross.c \
-		src/utils/vec_div.c \
-		src/utils/vec_dot.c \
-		src/utils/vec_mul.c \
-		src/utils/vec_normalize.c \
-		src/utils/vec_sub.c \
-		src/utils/vec_add_value.c \
-		src/utils/vec_len.c \
-		src/utils/add_color.c \
-		src/utils/color_scale.c
+		src/util/vec_add.c \
+		src/util/vec.c \
+		src/util/vec_cross.c \
+		src/util/vec_div.c \
+		src/util/vec_dot.c \
+		src/util/vec_mul.c \
+		src/util/vec_normalize.c \
+		src/util/vec_sub.c \
+		src/util/vec_add_value.c \
+		src/util/vec_len.c \
+		src/util/add_color.c \
+		src/util/color_scale.c \
+		src/util/util_num.c
 
 OBJ = $(SRC:.c=.o)
 

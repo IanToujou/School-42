@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 13:08:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:16:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_parse_line(t_scene *scene, const char *line)
 	array = ft_split(line, ' ');
 	if (!array)
 		error_throw(ERROR_MALLOC);
-	if (!ft_strcmp("A", array[0]) && !scene->light)
+	if (!ft_strcmp("A", array[0]) && !scene->ambient)
 		parse_ambient(scene, array);
 	else if (!ft_strcmp("C", array[0]) && !scene->camera)
 		parse_camera(scene, array);

@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 13:05:22 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:24:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,10 @@ typedef struct s_camera
 	double			fov;
 }					t_camera;
 
-typedef struct s_light
+typedef struct s_ambient
 {
-	t_vec3			position;
 	t_color			color;
-	double			intensity;
+	double			ratio;
 }					t_light;
 
 typedef struct s_image
@@ -149,7 +148,7 @@ typedef struct s_scene
 	void			*win_ptr;
 	t_image			image;
 	t_camera		camera;
-	t_light			light;
+	t_light			ambient;
 	t_object		*objects;
 }					t_scene;
 
@@ -161,9 +160,16 @@ typedef struct s_hit_info
 	t_color			color;
 }					t_hit_info;
 
+// Initialization
 int	init_parse(t_scene *scene, const char *file_name);
 
+// Parse
+void	parse_ambient(t_scene *scene, char *str);
+
 // Math utilities
+
+double	util_num_parse(char *str);
+t_color	util_color_parse(char *str);
 t_vec3 vec3(double x, double y, double z);
 
 t_vec3 vec_add(t_vec3 a, t_vec3 b);
@@ -194,7 +200,7 @@ t_ray generate_ray(int x, int y, t_camera *cam);
 
 t_color trace_ray(t_ray *ray, t_scene *scene);
 
-t_color calculate_lighting(t_hit_info *hit, t_scene *scene);
+t_color calculate_lighting(const t_hit_info *hit, t_scene *scene);
 
 int intersect(t_ray *ray, t_object *obj, t_hit_info *hit);
 

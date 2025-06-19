@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 12:32:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 14:21:31 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,17 @@
 # define ERROR_INIT_SCENE 5
 # define ERROR_INIT_SCENE_MSG "Scene initialization failed."
 
-# define ERROR_FILE_INVALID 5
+# define ERROR_FILE_INVALID 6
 # define ERROR_FILE_INVALID_MSG "File not found or invalid."
 
-# define ERROR_FILE_EMPTY 5
+# define ERROR_FILE_EMPTY 7
 # define ERROR_FILE_EMPTY_MSG "File is empty."
+
+# define ERROR_PARSE_NUM 8
+# define ERROR_PARSE_NUM_MSG "Failed to parse number."
+
+# define ERROR_PARSE_COLOR 8
+# define ERROR_PARSE_COLOR_MSG "Failed to parse color."
 
 void	error_throw(int error);
 

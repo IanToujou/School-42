@@ -243,9 +243,9 @@ int create_scene(char *file, t_scene *scene)
 	if (add_object_to_scene(scene, OBJ_CYLINDER, inner_cylinder) == -1)
 		return (-1);
 	// Example light source structure, assuming you have a similar struct
-	scene->light.position = (t_vec3){-4.0, 4.0, 6.0};
-	scene->light.intensity = 0.7; // You can adjust this
-	scene->light.color = (t_color){255, 255, 255}; // White light
+	scene->ambient.position = (t_vec3){-4.0, 4.0, 6.0};
+	scene->ambient.ratio = 0.7; // You can adjust this
+	scene->ambient.color = (t_color){255, 255, 255}; // White light
 	//if (add_light_to_scene(scene, light) == -1)
 	//  return (-1);
 
