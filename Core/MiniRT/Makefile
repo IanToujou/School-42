@@ -8,28 +8,28 @@ MAGENTA = \033[35m
 CYAN = \033[36m
 RESET = \033[0m
 
-SRC =	create/create_scene.c \
-	main.c \
-	render/calculate_lighting.c \
-	render/generate_ray.c \
-	render/intersect/intersect.c \
-	render/intersect/plane.c \
-	render/intersect/sphere.c \
-	render/intersect/cylinder.c \
-	render/render.c \
-	render/trace_ray.c \
-	utils/vec_add.c \
-	utils/vec.c \
-	utils/vec_cross.c \
-	utils/vec_div.c \
-	utils/vec_dot.c \
-	utils/vec_mul.c \
-	utils/vec_normalize.c \
-	utils/vec_sub.c \
-	utils/vec_add_value.c \
-	utils/vec_len.c \
-	utils/add_color.c \
-	utils/color_scale.c
+SRC =	src/create/create_scene.c \
+		src/main/main.c \
+		src/render/calculate_lighting.c \
+		src/render/generate_ray.c \
+		src/object/intersect.c \
+		src/object/plane.c \
+		src/object/sphere.c \
+		src/object/cylinder.c \
+		src/render/render.c \
+		src/render/trace_ray.c \
+		src/utils/vec_add.c \
+		src/utils/vec.c \
+		src/utils/vec_cross.c \
+		src/utils/vec_div.c \
+		src/utils/vec_dot.c \
+		src/utils/vec_mul.c \
+		src/utils/vec_normalize.c \
+		src/utils/vec_sub.c \
+		src/utils/vec_add_value.c \
+		src/utils/vec_len.c \
+		src/utils/add_color.c \
+		src/utils/color_scale.c
 
 OBJ = $(SRC:.c=.o)
 

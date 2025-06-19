@@ -6,14 +6,14 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/17 10:48:32 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 11:57:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "../libft/libft.h"
+# include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
 # include "structs.h" // structs here
 # include <fcntl.h>   // open/read
