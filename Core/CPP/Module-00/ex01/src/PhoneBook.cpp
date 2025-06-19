@@ -31,6 +31,7 @@ void PhoneBook::createContact() {
 				std::cout << "Aborting." << std::endl;
 				return;
 			}
+			input.clear();
 		}
 	}
 
@@ -78,15 +79,15 @@ void PhoneBook::listContacts() const
 		std::cout << "|" << std::setw(10) << i+1 << "|";
 
 		if (contacts[i].getFirstName().length() > 10) {
-			std::cout << std::setw(10) << contacts[i].getFirstName().substr(0,9) << ".|";
+			std::cout << std::setw(10) << contacts[i].getFirstName().substr(0,9).append(".|");
 		} else std::cout << std::setw(10) << contacts[i].getFirstName() << "|";
 
 		if (contacts[i].getLastName().length() > 10) {
-			std::cout << std::setw(10) << contacts[i].getLastName().substr(0,9) << ".|";
+			std::cout << std::setw(10) << contacts[i].getLastName().substr(0,9).append(".|");
 		} else std::cout << std::setw(10) << contacts[i].getLastName() << "|";
 
 		if (contacts[i].getNickname().length() > 10) {
-			std::cout << std::setw(10) << contacts[i].getNickname().substr(0,9) << ".|";
+			std::cout << std::setw(10) << contacts[i].getNickname().substr(0,9).append(".|");
 		} else std::cout << std::setw(10) << contacts[i].getNickname() << "|";
 
 		std::cout << std::endl;
@@ -94,5 +95,41 @@ void PhoneBook::listContacts() const
 	}
 
 	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "Select a contact or q to quit: ";
+
+	std::string input;
+	while (std::getline(std::cin, input)) {
+
+		if (input == "q" || input == "Q") {
+			std::cout << "Exiting..." << std::endl;
+			break;
+		}
+
+		if (input.length() != 1 || input[0] < '0' || input[0] > '9') {
+			std::cout << "Invalid input." << std::endl;
+			std::cout << "Select a contact or q to quit: ";
+			continue;
+		}
+
+		const int i = input[0] - '0' - 1;
+		if (i < 0 || i >= index) {
+			std::cout << "Invalid input." << std::endl;
+			std::cout << "Select a contact or q to quit: ";
+			continue;
+		}
+
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << "Index: " << i+1 << std::endl;
+		std::cout << "First Name: " << contacts[i].getFirstName() << std::endl;
+		std::cout << "Last Name: " << contacts[i].getLastName() << std::endl;
+		std::cout << "Nickname: " << contacts[i].getNickname() << std::endl;
+		std::cout << "Phone Number: " << contacts[i].getPhoneNumber() << std::endl;
+		std::cout << "Darkest Secret: " << contacts[i].getDarkestSecret() << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+
+		input.clear();
+		std::cout << "Select a contact or q to quit: ";
+
+	}
 
 }
