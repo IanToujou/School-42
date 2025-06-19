@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 14:56:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 17:08:45 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,10 @@ int	init_parse(t_scene *scene, const char *file_name);
 // Parse
 void	parse_ambient(t_scene *scene, char **str);
 void	parse_camera(t_scene *scene, char **str);
+void	parse_plane(t_scene *scene, char **str);
+void	parse_sphere(t_scene *scene, char **str);
+void	parse_cylinder(t_scene *scene, char **str);
+void	parse_spotlight(t_scene *scene, char **str);
 
 // Math utilities
 
@@ -226,5 +230,7 @@ void free_scene(t_scene *scene);
 t_color add_color(t_color a, t_color b);
 
 t_color color_scale(t_color c, double value);
+
+int	add_object_to_scene(t_scene *scene, t_obj_type type, void *data);
 
 #endif

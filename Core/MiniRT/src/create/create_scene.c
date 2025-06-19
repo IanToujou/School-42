@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:54:55 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 15:08:27 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 17:05:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,14 @@ void init_window(t_scene *scene, int width, int height, char *title)
 	printf("--- MiniLibX Initialization Complete ---\n");
 }
 
-int add_object_to_scene(t_scene *scene, t_obj_type type, void *data)
+int add_object_to_scene(t_scene *scene, const t_obj_type type, void *data)
 {
 	t_object *new_node;
 	t_object *current;
 
 	new_node = (t_object *) malloc(sizeof(t_object));
 	if (!new_node)
-	{
-		perror("Error allocating object node");
-		error("Failed to allocate memory for object node.");
-		return (-1);
-	}
+		error_throw(ERROR_MALLOC);
 	new_node->type = type;
 	new_node->data = data;
 	new_node->next = NULL;

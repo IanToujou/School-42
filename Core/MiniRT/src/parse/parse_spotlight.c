@@ -6,8 +6,12 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:50 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:44:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 17:09:55 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
+
+void	parse_spotlight(t_scene *scene, char **str) {
+
+}
