@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 12:59:10 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 13:08:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	init_parse_check_file(const char *file_name)
 	return (length > 3 && !ft_strcmp(file_name + length - 3, ".rt"));
 }
 
-static void	init_parse_line(t_scene *scene, char *line)
+static void	init_parse_line(t_scene *scene, const char *line)
 {
 	char **array;
 
@@ -29,18 +29,18 @@ static void	init_parse_line(t_scene *scene, char *line)
 	array = ft_split(line, ' ');
 	if (!array)
 		error_throw(ERROR_MALLOC);
-	if (!ft_strcmp("A", array[0]) && !scene->ambient)
-		parse_ambient(scene);
+	if (!ft_strcmp("A", array[0]) && !scene->light)
+		parse_ambient(scene, array);
 	else if (!ft_strcmp("C", array[0]) && !scene->camera)
-		parse_camera(scene);
+		parse_camera(scene, array);
 	else if (!ft_strcmp("L", array[0]))
-		parse_spotlights(scene);
+		parse_spotlights(scene, array);
 	else if (!ft_strcmp("sp", array[0]))
-		parse_sphere(scene);
+		parse_sphere(scene, array);
 	else if (!ft_strcmp("cy", array[0]))
-		parse_cyl(scene);
+		parse_cyl(scene, array);
 	else if (!ft_strcmp("pl", array[0]))
-		parse_plane(scene);
+		parse_plane(scene, array);
 	else
 		error_throw(ERROR_INIT_PARSE);
 	free(array);

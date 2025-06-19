@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 12:58:10 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/19 13:05:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_camera
 	double			fov;
 }					t_camera;
 
-// Struct that defines the properties of light
 typedef struct s_light
 {
 	t_vec3			position;
@@ -86,7 +85,6 @@ typedef struct s_light
 	double			intensity;
 }					t_light;
 
-// Image for minilibx
 typedef struct s_image
 {
 	void			*img_ptr;
@@ -95,6 +93,14 @@ typedef struct s_image
 	int				line_length;
 	int				endian;
 }					t_image;
+
+typedef struct s_spotlight
+{
+	t_vec3			position;
+	t_color			color;
+	double			diffuse;
+	double			specular;
+}					t_spotlight;
 
 typedef struct s_cylinder
 {
@@ -122,6 +128,7 @@ typedef struct s_plane
 // Enum for object types
 typedef enum e_obj_type
 {
+	OBJ_LIGHT,
 	OBJ_SPHERE,
 	OBJ_PLANE,
 	OBJ_CYLINDER,

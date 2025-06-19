@@ -333,7 +333,6 @@ add_executable(MiniRT
 		"Core/MiniRT/src/main/main.c"
 		"Core/MiniRT/src/create/create_scene.c"
 		"Core/MiniRT/include/minirt.h"
-		"Core/MiniRT/include/structs.h"
 		"Core/MiniRT/src/render/calculate_lighting.c"
 		"Core/MiniRT/src/render/generate_ray.c"
 		"Core/MiniRT/src/render/render.c"
@@ -355,7 +354,8 @@ add_executable(MiniRT
 		"Core/MiniRT/src/utils/vec_normalize.c"
 		"Core/MiniRT/src/utils/vec_sub.c"
 		Core/MiniRT/src/init/init_parse.c
-		Core/MiniRT/src/error/ft_error_throw.c
+		Core/MiniRT/src/error/error_throw.c
+		Core/MiniRT/src/parse/parse_ambient.c
 )
 
 add_executable(CPP-00-EX00

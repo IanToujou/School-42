@@ -9,7 +9,10 @@ CYAN = \033[36m
 RESET = \033[0m
 
 SRC =	src/create/create_scene.c \
+		src/init/init_parse.c \
+		src/parse/parse_ambient.c \
 		src/main/main.c \
+		src/error/error_throw.c \
 		src/render/calculate_lighting.c \
 		src/render/generate_ray.c \
 		src/object/intersect.c \
