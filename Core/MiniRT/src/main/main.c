@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 07:52:45 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 09:17:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(const int argc, char **argv)
 
 	if (argc != 2)
 		error_throw(ERROR_SYNTAX);
+	init_data(&scene);
 	init_parse(&scene, argv[1]);
 	init_mlx(&scene);
 	if (create_scene(argv[1], &scene))

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:44:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:19:11 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 09:05:46 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,5 @@ double	util_num_parse(char *str)
 			factor *= 0.1;
 		}
 	}
-	if (str[i] != '\0')
-		error_throw(ERROR_PARSE_NUM);
 	return ((result + decimal) * sign);
 }

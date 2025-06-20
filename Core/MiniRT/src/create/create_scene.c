@@ -6,36 +6,11 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:54:55 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/20 07:15:28 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 09:20:20 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
-
-void init_window(t_scene *scene, int width, int height, char *title)
-{
-	printf("--- Initializing MiniLibX Window ---\n");
-	scene->mlx_ptr = mlx_init();
-	if (!scene->mlx_ptr)
-	{
-		perror("Error initializing mlx");
-		exit(EXIT_FAILURE);
-	}
-	scene->win_ptr = mlx_new_window(scene->mlx_ptr, width, height, title);
-	if (!scene->win_ptr)
-	{
-		perror("Error creating window");
-		exit(EXIT_FAILURE);
-	}
-	scene->image.img_ptr = mlx_new_image(scene->mlx_ptr, width, height);
-	if (!scene->image.img_ptr)
-	{
-		perror("Error creating image");
-		exit(EXIT_FAILURE);
-	}
-	scene->image.data = mlx_get_data_addr(scene->image.img_ptr,
-	                                      &scene->image.bpp, &scene->image.line_length, &scene->image.endian);
-}
 
 int add_object_to_scene(t_scene *scene, const t_obj_type type, void *data)
 {
@@ -90,7 +65,6 @@ int create_scene(char *file, t_scene *scene)
 	scene->light.color.b = 255;
 	scene->light.intensity = 0.7;
 	*/
-	scene->objects = NULL;
 	/*
 	sphere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!sphere)

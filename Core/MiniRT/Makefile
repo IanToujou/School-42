@@ -12,7 +12,12 @@ SRC =	src/create/create_scene.c \
 		src/init/init_parse.c \
 		src/parse/parse_ambient.c \
 		src/parse/parse_camera.c \
+		src/parse/parse_sphere.c \
+		src/parse/parse_cylinder.c \
+		src/parse/parse_plane.c \
+		src/parse/parse_spotlight.c \
 		src/main/main.c \
+		src/init/init_data.c \
 		src/error/error_throw.c \
 		src/render/calculate_lighting.c \
 		src/render/generate_ray.c \

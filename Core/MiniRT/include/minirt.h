@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/20 07:39:03 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 09:17:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ void init_parse(t_scene *scene, const char *file_name);
 
 void	init_mlx(t_scene *scene);
 void	init_hook(t_scene *scene);
+void	init_data(t_scene *scene);
 
 // Exiting
 void	exit_mlx(t_scene *scene);

@@ -15,14 +15,14 @@ NAME = Account
 SRC =	src/tests.cpp \
 		src/Account.cpp
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 RM_WIN = del /S /Q
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(OBJ)

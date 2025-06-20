@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 17:35:27 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 09:13:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ void	parse_plane(t_scene *scene, char **str)
 	plane->point = util_vector_parse(str[1]);
 	plane->normal = util_vector_parse(str[2]);
 	plane->color = util_color_parse(str[3]);
+	printf("Adding plane\n");
+	printf("point: %s\n", str[1]);
+	printf("normal: %s\n", str[2]);
+	printf("color: %s\n", str[3]);
 	add_object_to_scene(scene, OBJ_PLANE, plane);
 }

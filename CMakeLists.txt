@@ -371,6 +371,7 @@ add_executable(MiniRT
 		Core/MiniRT/src/event/event_keypress.c
 		Core/MiniRT/src/util/util_camera.c
 		Core/MiniRT/src/exit/exit_data.c
+		Core/MiniRT/src/init/init_data.c
 )
 
 add_executable(CPP-00-EX00
