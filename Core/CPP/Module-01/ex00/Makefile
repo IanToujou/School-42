@@ -14,30 +14,30 @@ SRC =	src/main.cpp \
 		src/randomChump.cpp \
 		src/Zombie.cpp
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -Ofast -std=c++98
 RM = rm -rf
 RM_WIN = del /S /Q
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $^ -o $@
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
 
 clean:
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 clean-win:
-	@$(RM_WIN) "*.o"
+	$(RM_WIN) "*.o"
 
 fclean: clean
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 fclean-win:	clean-win
-	@$(RM_WIN) "$(NAME).exe"
+	$(RM_WIN) "$(NAME).exe"
 
 re: fclean all
 
