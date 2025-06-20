@@ -11,7 +11,10 @@ Contact::Contact() {
 	darkestSecret = "";
 }
 
-Contact::~Contact() = default;
+Contact::~Contact()
+{
+
+}
 
 std::string Contact::getFirstName() const
 {

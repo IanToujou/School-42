@@ -2,12 +2,13 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 PhoneBook::PhoneBook() {
 	index = 0;
 }
 
-PhoneBook::~PhoneBook() = default;
+PhoneBook::~PhoneBook() {};
 
 const std::string fields[] = {
 	"First Name",
@@ -43,6 +44,7 @@ void PhoneBook::createContact() {
 
 		if (std::cin.eof()) {
 			std::cout << "Exiting..." << std::endl;
+
 			exit(0);
 		}
 
