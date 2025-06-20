@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/20 09:17:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 12:25:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,8 @@ int		util_array_count(void **array);
 
 void	util_camera_update_vec(t_camera *cam);
 void	util_camera_update_vec_dir(t_camera *cam);
+
+t_color util_color_multiply(t_color c1, t_color c2);
 
 t_vec3 vec3(double x, double y, double z);
 
