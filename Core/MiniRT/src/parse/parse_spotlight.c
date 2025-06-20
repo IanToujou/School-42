@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:50 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:24:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:43:39 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	parse_spotlight(t_scene *scene, char **str) {
 
 	if (util_array_count((void **)str) < 4)
 		error_throw(ERROR_PARSE_SPOTLIGHT);
-	light = malloc(sizeof(t_sphere));
+	light = malloc(sizeof(t_spotlight));
 	if (!light)
 		error_throw(ERROR_MALLOC);
 	light->position = util_vector_parse(str[1]);

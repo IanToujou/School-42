@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:22 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:23:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:51:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_cylinder(t_scene *scene, char **str) {
 	if (!cylinder)
 		error_throw(ERROR_MALLOC);
 	cylinder->point = util_vector_parse(str[1]);
-	cylinder->axis = util_vector_parse(str[2]);
+	cylinder->axis = vec_normalize(util_vector_parse(str[2]));
 	cylinder->radius = util_num_parse(str[3]) / 2;
 	cylinder->height = util_num_parse(str[4]);
 	cylinder->color = util_color_parse(str[5]);

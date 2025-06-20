@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 17:00:38 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:18 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:50:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 
 int intersect(t_ray *ray, t_object *obj, t_hit_info *hit)
 {
+	if (hit)
+	{
+		hit->t = -1.0;
+		hit->point = (t_vec3){0.0, 0.0, 0.0};
+		hit->normal = (t_vec3){0.0, 0.0, 1.0};
+		hit->color = (t_color){0, 0, 0};
+	}
+	if (!ray || !obj || !obj->data || !hit)
+		return (0);
 	if (obj->type == OBJ_SPHERE)
 		return (intersect_sphere(ray, (t_sphere *) obj->data, hit));
 	else if (obj->type == OBJ_PLANE)

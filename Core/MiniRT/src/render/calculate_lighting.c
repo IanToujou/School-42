@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 17:01:49 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/20 13:37:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:44:40 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	is_shadow(t_scene *scene, t_vec3 hit_point, t_vec3 light_pos)
 
 	distance_to_light = vec_length(vec_sub(light_pos, hit_point));
 
+	ft_memset(&temp_hit, 0, sizeof(t_hit_info)); // todo maybe remove
 	obj = scene->objects;
 	while (obj)
 	{

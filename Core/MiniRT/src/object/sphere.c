@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:58:37 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:20 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:47:43 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,17 @@ int intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit)
 	sqrt_disc = sqrt(discriminant);
 	t1 = (-b - sqrt_disc) / (2 * a);
 	t2 = (-b + sqrt_disc) / (2 * a);
-	t_hit = t1;
-	if (t_hit < 0)
+
+	// Choose the closest positive intersection
+	if (t1 > 0 && t2 > 0)
+		t_hit = fmin(t1, t2);
+	else if (t1 > 0)
+		t_hit = t1;
+	else if (t2 > 0)
 		t_hit = t2;
-	if (t_hit < 0)
+	else
 		return (0);
+
 	hit->t = t_hit;
 	hit->point = vec_add(ray->origin, vec_mul(ray->direction, t_hit));
 	hit->normal = vec_normalize(vec_sub(hit->point, sphere->center));

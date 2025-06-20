@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:24:22 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:51:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	parse_plane(t_scene *scene, char **str)
 	if (!plane)
 		error_throw(ERROR_MALLOC);
 	plane->point = util_vector_parse(str[1]);
-	plane->normal = util_vector_parse(str[2]);
+	plane->normal = vec_normalize(util_vector_parse(str[2]));
 	plane->color = util_color_parse(str[3]);
 	add_object_to_scene(scene, OBJ_PLANE, plane);
 }

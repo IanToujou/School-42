@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:40:34 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:32 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:53:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,16 @@ t_color trace_ray(t_ray *ray, t_scene *scene)
 	closest_t = INFINITY;
 	obj = scene->objects;
 	hit_found = 0;
+
+	// Initialize temp_hit to avoid uninitialized values
+	ft_memset(&temp_hit, 0, sizeof(t_hit_info));
+	ft_memset(&closest_hit, 0, sizeof(t_hit_info));
+
 	while (obj)
 	{
+		// Clear temp_hit before each intersection test
+		ft_memset(&temp_hit, 0, sizeof(t_hit_info));
+
 		if (intersect(ray, obj, &temp_hit))
 		{
 			if (temp_hit.t < closest_t && temp_hit.t > 0)
