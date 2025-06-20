@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient.c                                    :+:      :+:    :+:   */
+/*   init_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 13:06:52 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 07:03:30 by ibour            ###   ########.fr       */
+/*   Created: 2025/06/20 07:22:58 by ibour             #+#    #+#             */
+/*   Updated: 2025/06/20 07:45:42 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_ambient(t_scene *scene, char **str)
+void	init_hook(t_scene *scene)
 {
-	if (util_array_count((void **)str) != 3)
-		error_throw(ERROR_PARSE_AMBIENT);
-	scene->ambient.ratio = util_num_parse(str[1]);
-	if (scene->ambient.ratio <= 0.0)
-		error_throw(ERROR_RENDER_AMBIENT_RATIO);
-	scene->ambient.color = util_color_parse(str[2]);
+	mlx_hook(scene->win_ptr, ClientMessage, LeaveWindowMask,
+		event_close, scene);
+	mlx_hook(scene->win_ptr, KeyPress, KeyPressMask,
+		event_keypress, scene);
+	if (scene->mlx_ptr)
+		mlx_loop(scene->mlx_ptr);
 }

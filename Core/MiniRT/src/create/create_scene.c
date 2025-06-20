@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:54:55 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 17:05:29 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 07:15:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ void init_window(t_scene *scene, int width, int height, char *title)
 	}
 	scene->image.data = mlx_get_data_addr(scene->image.img_ptr,
 	                                      &scene->image.bpp, &scene->image.line_length, &scene->image.endian);
-	printf("MiniLibX window and image successfully initialized.\n");
-	printf("Image data properties: BPP=%d, Line Length=%d, Endian=%d\n",
-	       scene->image.bpp, scene->image.line_length, scene->image.endian);
-	printf("--- MiniLibX Initialization Complete ---\n");
 }
 
 int add_object_to_scene(t_scene *scene, const t_obj_type type, void *data)
@@ -73,7 +69,6 @@ int create_scene(char *file, t_scene *scene)
 	//t_cylinder	*cylinder;
 
 	(void) file;
-	init_window(scene, WIDTH, HEIGHT, "miniRT");
 	//scene->camera.position.x = 0.0;
 	//scene->camera.position.y = 0.0;
 	//scene->camera.position.z = 6.0;

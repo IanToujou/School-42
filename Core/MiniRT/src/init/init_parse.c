@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:56:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 07:16:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	init_parse_line(t_scene *scene, const char *line)
 	array = NULL;
 }
 
-int	init_parse(t_scene *scene, const char *file_name)
+void init_parse(t_scene *scene, const char *file_name)
 {
 	int		fd;
 	char	*line;
@@ -66,5 +66,4 @@ int	init_parse(t_scene *scene, const char *file_name)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	return (0);
 }

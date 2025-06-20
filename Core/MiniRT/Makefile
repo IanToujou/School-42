@@ -37,7 +37,14 @@ SRC =	src/create/create_scene.c \
 		src/util/util_num.c \
 		src/util/util_color.c \
 		src/util/util_array.c \
-		src/util/util_vector.c
+		src/util/util_vector.c \
+		src/init/init_mlx.c \
+		src/init/init_hook.c \
+		src/event/event_close.c \
+		src/event/event_keypress.c \
+		src/exit/exit_mlx.c \
+		src/util/util_camera.c \
+		src/exit/exit_data.c
 
 OBJ = $(SRC:.c=.o)
 

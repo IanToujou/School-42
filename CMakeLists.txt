@@ -365,6 +365,12 @@ add_executable(MiniRT
 		Core/MiniRT/src/parse/parse_cylinder.c
 		Core/MiniRT/src/parse/parse_plane.c
 		Core/MiniRT/src/util/util_vector.c
+		Core/MiniRT/src/init/init_mlx.c
+		Core/MiniRT/src/exit/exit_mlx.c
+		Core/MiniRT/src/init/init_hook.c
+		Core/MiniRT/src/event/event_keypress.c
+		Core/MiniRT/src/util/util_camera.c
+		Core/MiniRT/src/exit/exit_data.c
 )
 
 add_executable(CPP-00-EX00

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 17:37:16 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 07:12:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,43 +32,46 @@
 # define ERROR_INIT_SCENE 5
 # define ERROR_INIT_SCENE_MSG "Scene initialization failed."
 
-# define ERROR_FILE_INVALID 6
+# define ERROR_INIT_MLX 6
+# define ERROR_INIT_MLX_MSG "MLX initialization failed."
+
+# define ERROR_FILE_INVALID 7
 # define ERROR_FILE_INVALID_MSG "File not found or invalid."
 
-# define ERROR_FILE_EMPTY 7
+# define ERROR_FILE_EMPTY 8
 # define ERROR_FILE_EMPTY_MSG "File is empty."
 
-# define ERROR_PARSE_NUM 8
+# define ERROR_PARSE_NUM 9
 # define ERROR_PARSE_NUM_MSG "Failed to parse number."
 
-# define ERROR_PARSE_COLOR 9
+# define ERROR_PARSE_COLOR 10
 # define ERROR_PARSE_COLOR_MSG "Failed to parse color."
 
-# define ERROR_PARSE_VECTOR 10
+# define ERROR_PARSE_VECTOR 11
 # define ERROR_PARSE_VECTOR_MSG "Failed to parse vector."
 
-# define ERROR_PARSE_AMBIENT 11
+# define ERROR_PARSE_AMBIENT 12
 # define ERROR_PARSE_AMBIENT_MSG "Failed to parse ambient light."
 
-# define ERROR_PARSE_CAMERA 12
+# define ERROR_PARSE_CAMERA 13
 # define ERROR_PARSE_CAMERA_MSG "Failed to parse camera."
 
-# define ERROR_PARSE_SPOTLIGHT 13
+# define ERROR_PARSE_SPOTLIGHT 14
 # define ERROR_PARSE_SPOTLIGHT_MSG "Failed to parse spotlight."
 
-# define ERROR_PARSE_PLANE 14
+# define ERROR_PARSE_PLANE 15
 # define ERROR_PARSE_PLANE_MSG "Failed to parse plane."
 
-# define ERROR_PARSE_SPHERE 15
+# define ERROR_PARSE_SPHERE 16
 # define ERROR_PARSE_SPHERE_MSG "Failed to parse sphere."
 
-# define ERROR_PARSE_CYLINDER 16
+# define ERROR_PARSE_CYLINDER 17
 # define ERROR_PARSE_CYLINDER_MSG "Failed to parse cylinder."
 
-# define ERROR_RENDER_AMBIENT_RATIO 17
+# define ERROR_RENDER_AMBIENT_RATIO 18
 # define ERROR_RENDER_AMBIENT_RATIO_MSG "Ambient ration cannot be 0."
 
-# define ERROR_RENDER_SPHERE_RADIUS 18
+# define ERROR_RENDER_SPHERE_RADIUS 19
 # define ERROR_RENDER_SPHERE_RADIUS_MSG "Sphere radius cannot be 0."
 
 void	error_throw(int error);

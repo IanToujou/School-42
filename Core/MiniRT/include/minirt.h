@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 17:08:45 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 07:39:03 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# include <X11/X.h>
 
 // Window
 # define WIDTH 800
@@ -162,7 +164,18 @@ typedef struct s_hit_info
 }					t_hit_info;
 
 // Initialization
-int	init_parse(t_scene *scene, const char *file_name);
+void init_parse(t_scene *scene, const char *file_name);
+
+void	init_mlx(t_scene *scene);
+void	init_hook(t_scene *scene);
+
+// Exiting
+void	exit_mlx(t_scene *scene);
+void	exit_data(const t_scene *scene);
+
+// Event
+int	event_close(t_scene *scene);
+int	event_keypress(const int keycode, t_scene *scene);
 
 // Parse
 void	parse_ambient(t_scene *scene, char **str);
@@ -179,6 +192,10 @@ t_vec3	util_vector_parse(char *str);
 t_color	util_color_parse(char *str);
 void	util_array_free(void **array);
 int		util_array_count(void **array);
+
+void	util_camera_update_vec(t_camera *cam);
+void	util_camera_update_vec_dir(t_camera *cam);
+
 t_vec3 vec3(double x, double y, double z);
 
 t_vec3 vec_add(t_vec3 a, t_vec3 b);
