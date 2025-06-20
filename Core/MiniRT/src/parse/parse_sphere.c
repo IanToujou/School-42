@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:15 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 17:37:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:24:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	parse_sphere(t_scene *scene, char **str) {
 	t_sphere	*sphere;
 
-	if (util_array_count((void **)str) != 4)
+	if (util_array_count((void **)str) < 4)
 		error_throw(ERROR_PARSE_SPHERE);
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)

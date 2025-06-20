@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 10:41:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:24:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	parse_plane(t_scene *scene, char **str)
 {
 	t_plane	*plane;
 
-	if (util_array_count((void **)str) != 4)
+	if (util_array_count((void **)str) < 4)
 		error_throw(ERROR_PARSE_PLANE);
 	plane = malloc(sizeof(t_plane));
 	if (!plane)

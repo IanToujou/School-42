@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 09:17:16 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:36:02 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int main(const int argc, char **argv)
 	init_data(&scene);
 	init_parse(&scene, argv[1]);
 	init_mlx(&scene);
-	if (create_scene(argv[1], &scene))
-		error_throw(ERROR_INIT_SCENE);
 	render_scene(&scene);
 	init_hook(&scene);
 	return (0);

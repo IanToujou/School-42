@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:22 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 10:43:25 by ibour            ###   ########.fr       */
+/*   Updated: 2025/06/20 13:23:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	parse_cylinder(t_scene *scene, char **str) {
 	t_cylinder	*cylinder;
 
-	if (util_array_count((void **)str) != 6)
+	if (util_array_count((void **)str) < 6)
 		error_throw(ERROR_PARSE_CYLINDER);
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
