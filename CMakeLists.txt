@@ -353,25 +353,25 @@ add_executable(MiniRT
 		"Core/MiniRT/src/util/vec_mul.c"
 		"Core/MiniRT/src/util/vec_normalize.c"
 		"Core/MiniRT/src/util/vec_sub.c"
-		Core/MiniRT/src/init/init_parse.c
-		Core/MiniRT/src/error/error_throw.c
-		Core/MiniRT/src/parse/parse_ambient.c
-		Core/MiniRT/src/util/util_num.c
-		Core/MiniRT/src/util/util_color.c
-		Core/MiniRT/src/util/util_array.c
-		Core/MiniRT/src/parse/parse_spotlight.c
-		Core/MiniRT/src/parse/parse_camera.c
-		Core/MiniRT/src/parse/parse_sphere.c
-		Core/MiniRT/src/parse/parse_cylinder.c
-		Core/MiniRT/src/parse/parse_plane.c
-		Core/MiniRT/src/util/util_vector.c
-		Core/MiniRT/src/init/init_mlx.c
-		Core/MiniRT/src/exit/exit_mlx.c
-		Core/MiniRT/src/init/init_hook.c
-		Core/MiniRT/src/event/event_keypress.c
-		Core/MiniRT/src/util/util_camera.c
-		Core/MiniRT/src/exit/exit_data.c
-		Core/MiniRT/src/init/init_data.c
+		"Core/MiniRT/src/init/init_parse.c"
+		"Core/MiniRT/src/error/error_throw.c"
+		"Core/MiniRT/src/parse/parse_ambient.c"
+		"Core/MiniRT/src/util/util_num.c"
+		"Core/MiniRT/src/util/util_color.c"
+		"Core/MiniRT/src/util/util_array.c"
+		"Core/MiniRT/src/parse/parse_spotlight.c"
+		"Core/MiniRT/src/parse/parse_camera.c"
+		"Core/MiniRT/src/parse/parse_sphere.c"
+		"Core/MiniRT/src/parse/parse_cylinder.c"
+		"Core/MiniRT/src/parse/parse_plane.c"
+		"Core/MiniRT/src/util/util_vector.c"
+		"Core/MiniRT/src/init/init_mlx.c"
+		"Core/MiniRT/src/exit/exit_mlx.c"
+		"Core/MiniRT/src/init/init_hook.c"
+		"Core/MiniRT/src/event/event_keypress.c"
+		"Core/MiniRT/src/util/util_camera.c"
+		"Core/MiniRT/src/exit/exit_data.c"
+		"Core/MiniRT/src/init/init_data.c"
 )
 
 add_executable(CPP-00-EX00
@@ -387,9 +387,19 @@ add_executable(CPP-00-EX01
 add_executable(CPP-00-EX02
 		"Core/CPP/Module-00/ex02/include/Account.hpp"
 		"Core/CPP/Module-00/ex02/src/tests.cpp"
-		Core/CPP/Module-00/ex02/src/Account.cpp
+		"Core/CPP/Module-00/ex02/src/Account.cpp"
 )
-add_executable(CPP-01-EX00 Core/CPP/Module-01/ex00/src/Zombie.cpp Core/CPP/Module-01/ex00/include/Zombie.h
-		Core/CPP/Module-01/ex00/src/newZombie.cpp
-		Core/CPP/Module-01/ex00/src/randomChump.cpp
-		Core/CPP/Module-01/ex00/src/main.cpp)
+add_executable(CPP-01-EX00
+		"Core/CPP/Module-01/ex00/src/Zombie.cpp"
+		"Core/CPP/Module-01/ex00/include/Zombie.h"
+		"Core/CPP/Module-01/ex00/src/newZombie.cpp"
+		"Core/CPP/Module-01/ex00/src/randomChump.cpp"
+		"Core/CPP/Module-01/ex00/src/main.cpp"
+)
+
+add_executable(CPP-01-EX01
+		"Core/CPP/Module-01/ex01/include/Zombie.h"
+		"Core/CPP/Module-01/ex01/src/main.cpp"
+		"Core/CPP/Module-01/ex01/src/Zombie.cpp"
+		"Core/CPP/Module-01/ex01/src/zombieHorde.cpp"
+)
