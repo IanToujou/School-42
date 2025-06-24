@@ -418,3 +418,4 @@ add_executable(CPP-01-EX03
 		Core/CPP/Module-01/ex03/src/HumanB.cpp
 		Core/CPP/Module-01/ex03/include/HumanB.h
 )
+add_executable(CPP-01-EX04 Core/CPP/Module-01/ex04/src/main.cpp)
