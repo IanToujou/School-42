@@ -56,7 +56,7 @@ int Account::checkAmount() const {
 
 void	Account::_displayTimestamp()
 {
-	const time_t t = std::time(nullptr);
+	const time_t t = std::time(NULL);
 	const tm time = *std::localtime(&t);
 
 	std::cout << "[" << time.tm_year + 1900 <<
