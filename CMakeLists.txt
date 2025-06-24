@@ -403,3 +403,7 @@ add_executable(CPP-01-EX01
 		"Core/CPP/Module-01/ex01/src/Zombie.cpp"
 		"Core/CPP/Module-01/ex01/src/zombieHorde.cpp"
 )
+
+add_executable(CPP-01-EX02
+		"Core/CPP/Module-01/ex02/src/main.cpp"
+)
