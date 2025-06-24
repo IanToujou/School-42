@@ -407,3 +407,14 @@ add_executable(CPP-01-EX01
 add_executable(CPP-01-EX02
 		"Core/CPP/Module-01/ex02/src/main.cpp"
 )
+
+add_executable(CPP-01-EX03
+		"Core/CPP/Module-01/ex03/src/main.cpp"
+		Core/CPP/Module-01/ex03/src/main.cpp
+		Core/CPP/Module-01/ex03/src/Weapon.cpp
+		Core/CPP/Module-01/ex03/include/Weapon.h
+		Core/CPP/Module-01/ex03/src/HumanA.cpp
+		Core/CPP/Module-01/ex03/include/HumanA.h
+		Core/CPP/Module-01/ex03/src/HumanB.cpp
+		Core/CPP/Module-01/ex03/include/HumanB.h
+)
