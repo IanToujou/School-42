@@ -438,3 +438,9 @@ add_executable(CPP-02-EX00
 		Core/CPP/Module-02/ex00/include/Fixed.h
 		Core/CPP/Module-02/ex00/src/main.cpp
 )
+
+add_executable(CPP-02-EX01
+		Core/CPP/Module-02/ex01/src/Fixed.cpp
+		Core/CPP/Module-02/ex01/include/Fixed.h
+		Core/CPP/Module-02/ex01/src/main.cpp
+)
