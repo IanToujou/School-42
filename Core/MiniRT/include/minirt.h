@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/20 13:20:11 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/02 09:46:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,11 +172,11 @@ void	init_data(t_scene *scene);
 
 // Exiting
 void	exit_mlx(t_scene *scene);
-void	exit_data(const t_scene *scene);
+void	exit_data(t_scene *scene);
 
 // Event
 int	event_close(t_scene *scene);
-int	event_keypress(const int keycode, t_scene *scene);
+int	event_keypress(int keycode, t_scene *scene);
 
 // Parse
 void	parse_ambient(t_scene *scene, char **str);

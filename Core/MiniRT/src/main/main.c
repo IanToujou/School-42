@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:36:02 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/02 09:46:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,18 @@
  */
 int main(const int argc, char **argv)
 {
-	t_scene scene;
+	t_scene *scene;
 
 	if (argc != 2)
 		error_throw(ERROR_SYNTAX);
-	init_data(&scene);
-	init_parse(&scene, argv[1]);
-	init_mlx(&scene);
-	render_scene(&scene);
-	init_hook(&scene);
+	scene = (t_scene *) malloc(sizeof(t_scene));
+	if (!scene)
+		error_throw(ERROR_MALLOC);
+	init_data(scene);
+	init_parse(scene, argv[1]);
+	init_mlx(scene);
+	render_scene(scene);
+	init_hook(scene);
+	exit_data(scene);
 	return (0);
 }

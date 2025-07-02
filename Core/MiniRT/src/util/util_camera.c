@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:29:54 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 07:30:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/02 09:59:34 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ void	util_camera_update_vec_dir(t_camera *cam)
 	cam->direction.z = cos(pitch_rad) * sin(yaw_rad);
 	len = sqrt(cam->direction.x * cam->direction.x + cam->direction.y
 			   * cam->direction.y + cam->direction.z * cam->direction.z);
-	cam->direction.x /= len;
-	cam->direction.y /= len;
-	cam->direction.z /= len;
+	if (len > 1e-9) // todo check div by 0
+	{
+		cam->direction.x /= len;
+		cam->direction.y /= len;
+		cam->direction.z /= len;
+	}
+	else
+		cam->direction = (t_vec3){0.0, 0.0, -1.0};
 }
