@@ -432,3 +432,9 @@ add_executable(CPP-01-EX06
 		Core/CPP/Module-01/ex06/include/Harl.h
 		Core/CPP/Module-01/ex06/src/main.cpp
 )
+
+add_executable(CPP-02-EX00
+		Core/CPP/Module-02/ex00/src/Fixed.cpp
+		Core/CPP/Module-02/ex00/include/Fixed.h
+		Core/CPP/Module-02/ex00/src/main.cpp
+)
