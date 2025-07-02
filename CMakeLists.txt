@@ -418,4 +418,17 @@ add_executable(CPP-01-EX03
 		Core/CPP/Module-01/ex03/src/HumanB.cpp
 		Core/CPP/Module-01/ex03/include/HumanB.h
 )
+
 add_executable(CPP-01-EX04 Core/CPP/Module-01/ex04/src/main.cpp)
+
+add_executable(CPP-01-EX05
+		Core/CPP/Module-01/ex05/src/Harl.cpp
+		Core/CPP/Module-01/ex05/include/Harl.h
+		Core/CPP/Module-01/ex05/src/main.cpp
+)
+
+add_executable(CPP-01-EX06
+		Core/CPP/Module-01/ex06/src/Harl.cpp
+		Core/CPP/Module-01/ex06/include/Harl.h
+		Core/CPP/Module-01/ex06/src/main.cpp
+)

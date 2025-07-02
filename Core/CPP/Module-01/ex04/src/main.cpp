@@ -30,7 +30,7 @@ int main(const int argc, char **argv) {
 	std::ifstream in;
 	std::ofstream out;
 
-	in.open(file);
+	in.open(file.c_str());
 
 	if (!in.is_open()) {
 		std::perror("Input file error.");
@@ -38,7 +38,7 @@ int main(const int argc, char **argv) {
 		return 1;
 	}
 
-	out.open(file + ".replace", std::ios::out | std::ios::trunc);
+	out.open((file + ".replace").c_str(), std::ios::out | std::ios::trunc);
 
 	if (!out.is_open()) {
 		std::perror("Outfile Error");
