@@ -1,22 +1,21 @@
 #pragma once
 
 #include <iostream>
-#include <cmath>
 
 class Fixed {
 	int fixedPointValue;
 	static const int fractionalBits;
 public:
 	Fixed();
-	Fixed(int const raw);
-	Fixed(float const raw);
+	explicit Fixed(int raw);
+	explicit Fixed(float raw);
 	Fixed(const Fixed &copy);
 	~Fixed();
 	Fixed &operator=(const Fixed &src);
 	float toFloat() const;
 	int toInt() const;
 	int getRawBits() const;
-	void setRawBits(int const raw);
+	void setRawBits(int raw);
 };
 
 std::ostream &operator<<(std::ostream &o, Fixed const &fixed);

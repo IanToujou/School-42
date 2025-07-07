@@ -1,5 +1,7 @@
 #include "../include/Fixed.h"
 
+#include <iostream>
+
 Fixed::Fixed(): fixedPointValue(0)
 {
 	std::cout << "Default Constructor called" << std::endl;

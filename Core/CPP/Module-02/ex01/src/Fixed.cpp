@@ -1,4 +1,5 @@
 #include "../include/Fixed.h"
+#include <cmath>
 
 const int Fixed::fractionalBits = 8;
 
