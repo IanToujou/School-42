@@ -459,4 +459,5 @@ add_executable(CPP-02-EX03
 		Core/CPP/Module-02/ex03/src/main.cpp
 		Core/CPP/Module-02/ex03/src/Point.cpp
 		Core/CPP/Module-02/ex03/include/Point.h
+		Core/CPP/Module-02/ex03/src/bsp.cpp
 )
