@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/02 09:46:29 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:16:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ typedef struct s_hit_info
 }					t_hit_info;
 
 // Initialization
-void init_parse(t_scene *scene, const char *file_name);
+void	init_parse(t_scene *scene, const char *file_name);
 
 void	init_mlx(t_scene *scene);
 void	init_hook(t_scene *scene);
@@ -175,8 +175,8 @@ void	exit_mlx(t_scene *scene);
 void	exit_data(t_scene *scene);
 
 // Event
-int	event_close(t_scene *scene);
-int	event_keypress(int keycode, t_scene *scene);
+int		event_close(t_scene *scene);
+int		event_keypress(int keycode, t_scene *scene);
 
 // Parse
 void	parse_ambient(t_scene *scene, char **str);
@@ -197,60 +197,67 @@ int		util_array_count(void **array);
 void	util_camera_update_vec(t_camera *cam);
 void	util_camera_update_vec_dir(t_camera *cam);
 
-t_color util_color_multiply(t_color c1, t_color c2);
+t_color	util_color_multiply(t_color c1, t_color c2);
 
-t_vec3 vec3(double x, double y, double z);
+t_vec3	vec3(double x, double y, double z);
 
-t_vec3 vec_add(t_vec3 a, t_vec3 b);
+t_vec3	vec_add(t_vec3 a, t_vec3 b);
 
-t_vec3 vec_sub(t_vec3 a, t_vec3 b);
+t_vec3	vec_sub(t_vec3 a, t_vec3 b);
 
-t_vec3 vec_mul(t_vec3 v, double s);
+t_vec3	vec_mul(t_vec3 v, double s);
 
-t_vec3 vec_div(t_vec3 v, double s);
+t_vec3	vec_div(t_vec3 v, double s);
 
-t_vec3 vec_normalize(t_vec3 v);
+t_vec3	vec_normalize(t_vec3 v);
 
-double vec_dot(t_vec3 a, t_vec3 b);
+double	vec_dot(t_vec3 a, t_vec3 b);
 
-t_vec3 vec_cross(t_vec3 a, t_vec3 b);
+t_vec3	vec_cross(t_vec3 a, t_vec3 b);
 
-t_vec3 vec_add_value(t_vec3 a, int value);
+t_vec3	vec_add_value(t_vec3 a, int value);
 
-double vec_length(t_vec3 vec);
+double	vec_length(t_vec3 vec);
 
 // Scene functions
-int create_scene(char *file, t_scene *scene);
+int		create_scene(char *file, t_scene *scene);
 
-void render_scene(t_scene *scene);
+void	render_scene(t_scene *scene);
 
 // Ray & rendering
-t_ray generate_ray(int x, int y, t_camera *cam);
+t_ray	generate_ray(int x, int y, t_camera *cam);
 
-t_color trace_ray(t_ray *ray, t_scene *scene);
+t_color	trace_ray(t_ray *ray, t_scene *scene);
 
-t_color calculate_lighting(const t_hit_info *hit, t_scene *scene);
+t_color	calculate_lighting(const t_hit_info *hit, t_scene *scene);
 
-int intersect(t_ray *ray, t_object *obj, t_hit_info *hit);
+int		intersect(t_ray *ray, t_object *obj, t_hit_info *hit);
 
-int intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit);
+int		intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit);
 
-int intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit);
+int		intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit);
 
-int intersect_cylinder(t_ray *ray, t_cylinder *cyl, t_hit_info *hit);
+int		object_cylinder_intersect(t_ray *ray, t_cylinder *cyl, t_hit_info *hit);
+void	calculate_intersections(t_ray *ray, t_cylinder *cy, double *t_vals);
+void	init_hit_info(t_hit_info *hit, t_cylinder *cy);
+t_vec3	project_vector(t_vec3 v, t_vec3 axis);
+double	get_valid_cylinder_t(double discriminant, t_vec3 *perp_vals);
+double	calc_disc(t_vec3 *perp_vals, t_cylinder *cy);
+void	calc_perp_comp(t_ray *ray, t_cylinder *cy, t_vec3 *perp_vals);
+double	project_length(t_vec3 v, t_vec3 axis);
 
 // Image
-void put_pixel(t_image *img, int x, int y, t_color color);
+void	put_pixel(t_image *img, int x, int y, t_color color);
 
 // Utils
-int error(char *msg);
+int		error(char *msg);
 
-void free_scene(t_scene *scene);
+void	free_scene(t_scene *scene);
 
-t_color add_color(t_color a, t_color b);
+t_color	add_color(t_color a, t_color b);
 
-t_color color_scale(t_color c, double value);
+t_color	color_scale(t_color c, double value);
 
-int	add_object_to_scene(t_scene *scene, t_obj_type type, void *data);
+int		add_object_to_scene(t_scene *scene, t_obj_type type, void *data);
 
 #endif

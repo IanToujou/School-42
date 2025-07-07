@@ -6,15 +6,15 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:57:28 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:57 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_vec3 vec3(double x, double y, double z)
+t_vec3	vec3(double x, double y, double z)
 {
-	t_vec3 vec;
+	t_vec3	vec;
 
 	vec.x = x;
 	vec.y = y;

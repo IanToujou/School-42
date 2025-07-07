@@ -6,18 +6,18 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:41:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:52:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:55:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void util_array_free(void **array)
+void	util_array_free(void **array)
 {
-	int i;
+	int	i;
 
 	if (!array)
-		return;
+		return ;
 	i = 0;
 	while (array[i])
 	{
@@ -37,5 +37,4 @@ int	util_array_count(void **array)
 	while (array[count])
 		count++;
 	return (count);
-
 }

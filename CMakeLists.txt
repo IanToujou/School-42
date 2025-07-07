@@ -337,7 +337,7 @@ add_executable(MiniRT
 		"Core/MiniRT/src/render/generate_ray.c"
 		"Core/MiniRT/src/render/render.c"
 		"Core/MiniRT/src/render/trace_ray.c"
-		"Core/MiniRT/src/object/cylinder.c"
+		"Core/MiniRT/src/object/object_cylinder.c"
 		"Core/MiniRT/src/object/intersect.c"
 		"Core/MiniRT/src/object/plane.c"
 		"Core/MiniRT/src/object/sphere.c"
@@ -372,6 +372,8 @@ add_executable(MiniRT
 		"Core/MiniRT/src/util/util_camera.c"
 		"Core/MiniRT/src/exit/exit_data.c"
 		"Core/MiniRT/src/init/init_data.c"
+		Core/MiniRT/src/object/object_cylinder_2.c
+		Core/MiniRT/src/object/object_cylinder_3.c
 )
 
 add_executable(CPP-00-EX00

@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:48:01 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:53:26 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:54:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_vec3 util_vector_parse(char *str)
+t_vec3	util_vector_parse(char *str)
 {
 	t_vec3	result;
 	char	**values;
@@ -28,12 +28,12 @@ t_vec3 util_vector_parse(char *str)
 		i++;
 	if (i != 3)
 	{
-		util_array_free((void**)values);
+		util_array_free((void **) values);
 		error_throw(ERROR_PARSE_VECTOR);
 	}
 	result.x = util_num_parse(values[0]);
 	result.y = util_num_parse(values[1]);
 	result.z = util_num_parse(values[2]);
-	util_array_free((void**)values);
+	util_array_free((void **) values);
 	return (result);
 }

@@ -6,15 +6,15 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:59:59 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:40 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:57:49 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_vec3 vec_sub(t_vec3 a, t_vec3 b)
+t_vec3	vec_sub(t_vec3 a, t_vec3 b)
 {
-	t_vec3 result;
+	t_vec3	result;
 
 	result.x = a.x - b.x;
 	result.y = a.y - b.y;

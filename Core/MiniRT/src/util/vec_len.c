@@ -6,13 +6,13 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 14:22:18 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:46 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-double vec_length(t_vec3 vec)
+double	vec_length(t_vec3 vec)
 {
 	return (sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z));
 }

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/02 09:42:34 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:01:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	init_parse_check_file(const char *file_name)
 
 static void	init_parse_line(t_scene *scene, const char *line)
 {
-	char **array;
+	char	**array;
 
 	if (line[0] == 0 || line[0] == '\n')
 		error_throw(ERROR_INIT_PARSE);
@@ -43,11 +43,11 @@ static void	init_parse_line(t_scene *scene, const char *line)
 		parse_cylinder(scene, array);
 	else
 		error_throw(ERROR_INIT_PARSE);
-	util_array_free((void**)array);
+	util_array_free((void **) array);
 	array = NULL;
 }
 
-void init_parse(t_scene *scene, const char *file_name)
+void	init_parse(t_scene *scene, const char *file_name)
 {
 	int		fd;
 	char	*line;

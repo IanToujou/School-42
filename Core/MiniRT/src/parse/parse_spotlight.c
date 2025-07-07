@@ -6,13 +6,14 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:50 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:43:39 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:00:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_spotlight(t_scene *scene, char **str) {
+void	parse_spotlight(t_scene *scene, char **str)
+{
 	t_spotlight	*light;
 
 	if (util_array_count((void **)str) < 4)

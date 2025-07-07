@@ -6,15 +6,15 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:03:28 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:49 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_vec3 vec_div(t_vec3 v, double s)
+t_vec3	vec_div(t_vec3 v, double s)
 {
-	t_vec3 result;
+	t_vec3	result;
 
 	if (s == 0)
 	{

@@ -6,15 +6,15 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 10:33:00 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-double vec_dot(t_vec3 a, t_vec3 b)
+double	vec_dot(t_vec3 a, t_vec3 b)
 {
-	double result;
+	double	result;
 
 	result = a.x * b.x + a.y * b.y + a.z * b.z;
 	return (result);

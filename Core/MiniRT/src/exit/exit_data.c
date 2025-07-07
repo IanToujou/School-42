@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:38:22 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/02 09:46:22 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:49:25 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,28 @@
 
 void	exit_data(t_scene *scene)
 {
-	(void)scene;
-	if (scene && scene->mlx_ptr)
+	t_object	*current;
+	t_object	*next;
+
+	if (!scene)
+		return ;
+	current = scene->objects;
+	while (current)
+	{
+		next = current->next;
+		if (current->data)
+			free(current->data);
+		free(current);
+		current = next;
+	}
+	if (scene->mlx_ptr)
+	{
+		if (scene->image.img_ptr)
+			mlx_destroy_image(scene->mlx_ptr, scene->image.img_ptr);
+		if (scene->win_ptr)
+			mlx_destroy_window(scene->mlx_ptr, scene->win_ptr);
+		mlx_destroy_display(scene->mlx_ptr);
 		free(scene->mlx_ptr);
-	if (scene)
-		free(scene);
+	}
+	free(scene);
 }

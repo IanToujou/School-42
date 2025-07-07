@@ -6,15 +6,15 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:58:48 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:55 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_vec3 vec_add(t_vec3 a, t_vec3 b)
+t_vec3	vec_add(t_vec3 a, t_vec3 b)
 {
-	t_vec3 result;
+	t_vec3	result;
 
 	result.x = a.x + b.x;
 	result.y = a.y + b.y;

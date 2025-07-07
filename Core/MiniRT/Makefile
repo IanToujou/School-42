@@ -24,7 +24,9 @@ SRC =	src/create/create_scene.c \
 		src/object/intersect.c \
 		src/object/plane.c \
 		src/object/sphere.c \
-		src/object/cylinder.c \
+		src/object/object_cylinder.c \
+		src/object/object_cylinder_2.c \
+		src/object/object_cylinder_3.c \
 		src/render/render.c \
 		src/render/trace_ray.c \
 		src/util/vec_add.c \

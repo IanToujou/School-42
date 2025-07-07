@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:51:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:00:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
  * @param scene Pointer to the scene object where the plane will be added.
  * @param str Array of strings containing the plane description.
  *
- * @throws ERROR_PARSE_CAMERA if the input array does not contain exactly four elements.
+ * @throws ERROR_PARSE_CAMERA if the input array does not contain
+ * exactly four elements.
  * @throws ERROR_MALLOC if memory allocation for the plane fails.
  */
 void	parse_plane(t_scene *scene, char **str)

@@ -6,13 +6,14 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:22 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:51:27 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:00:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_cylinder(t_scene *scene, char **str) {
+void	parse_cylinder(t_scene *scene, char **str)
+{
 	t_cylinder	*cylinder;
 
 	if (util_array_count((void **)str) < 6)

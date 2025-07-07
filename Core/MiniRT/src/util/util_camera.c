@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:29:54 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/02 09:59:34 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:54:24 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	util_camera_update_vec(t_camera *cam)
 
 void	util_camera_update_vec_dir(t_camera *cam)
 {
-	double yaw_rad;
-	double pitch_rad;
-	double len;
+	double	yaw_rad;
+	double	pitch_rad;
+	double	len;
 
 	yaw_rad = cam->yaw * M_PI / 180.0;
 	pitch_rad = cam->pitch * M_PI / 180.0;
@@ -31,8 +31,8 @@ void	util_camera_update_vec_dir(t_camera *cam)
 	cam->direction.y = sin(pitch_rad);
 	cam->direction.z = cos(pitch_rad) * sin(yaw_rad);
 	len = sqrt(cam->direction.x * cam->direction.x + cam->direction.y
-			   * cam->direction.y + cam->direction.z * cam->direction.z);
-	if (len > 1e-9) // todo check div by 0
+			* cam->direction.y + cam->direction.z * cam->direction.z);
+	if (len > 1e-9)
 	{
 		cam->direction.x /= len;
 		cam->direction.y /= len;

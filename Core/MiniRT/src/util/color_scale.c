@@ -6,17 +6,16 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:10:39 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:59 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:40 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_color color_scale(t_color c, double value)
+t_color	color_scale(t_color c, double value)
 {
 	c.r = c.r * value;
 	c.g = c.g * value;
 	c.b = c.b * value;
-
 	return (c);
 }

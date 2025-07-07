@@ -6,13 +6,14 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:15 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 13:24:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:00:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_sphere(t_scene *scene, char **str) {
+void	parse_sphere(t_scene *scene, char **str)
+{
 	t_sphere	*sphere;
 
 	if (util_array_count((void **)str) < 4)

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:09:51 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 07:52:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:49:40 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	exit_mlx(t_scene *scene)
 {
 	if (!scene || !scene->mlx_ptr)
-		return;
+		return ;
 	if (scene->image.img_ptr)
 	{
 		mlx_destroy_image(scene->mlx_ptr, scene->image.img_ptr);
@@ -32,5 +32,6 @@ void	exit_mlx(t_scene *scene)
 		scene->win_ptr = NULL;
 	}
 	mlx_destroy_display(scene->mlx_ptr);
+	free(scene->mlx_ptr);
 	scene->mlx_ptr = NULL;
 }

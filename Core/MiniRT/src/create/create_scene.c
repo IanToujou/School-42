@@ -6,16 +6,16 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:54:55 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/20 13:36:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:20:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-int add_object_to_scene(t_scene *scene, const t_obj_type type, void *data)
+int	add_object_to_scene(t_scene *scene, const t_obj_type type, void *data)
 {
-	t_object *new_node;
-	t_object *current;
+	t_object	*new_node;
+	t_object	*current;
 
 	new_node = (t_object *) malloc(sizeof(t_object));
 	if (!new_node)

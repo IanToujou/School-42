@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 10:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/02 09:46:09 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:18:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
  * @param argv The argument vector.
  * @return A status code, 0 if successful and 1 if it fails.
  */
-int main(const int argc, char **argv)
+int	main(const int argc, char **argv)
 {
-	t_scene *scene;
+	t_scene	*scene;
 
 	if (argc != 2)
 		error_throw(ERROR_SYNTAX);

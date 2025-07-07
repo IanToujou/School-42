@@ -6,13 +6,13 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:48:38 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/06/19 11:56:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 17:59:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-t_vec3 vec_add_value(t_vec3 a, int value)
+t_vec3	vec_add_value(t_vec3 a, int value)
 {
 	a.x = a.x + value;
 	a.y = a.y + value;

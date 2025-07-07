@@ -6,15 +6,14 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:05:21 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/19 14:58:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/07 18:03:25 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-static void print_error_message(const int error)
+static void	print_basic_errors(const int error)
 {
-	printf("Error\n\033[31m");
 	if (error == ERROR_UNKNOWN)
 		printf(ERROR_UNKNOWN_MSG);
 	else if (error == ERROR_SYNTAX)
@@ -31,7 +30,11 @@ static void print_error_message(const int error)
 		printf(ERROR_FILE_INVALID_MSG);
 	else if (error == ERROR_FILE_EMPTY)
 		printf(ERROR_FILE_EMPTY_MSG);
-	else if (error == ERROR_PARSE_NUM)
+}
+
+static void	print_parse_errors(const int error)
+{
+	if (error == ERROR_PARSE_NUM)
 		printf(ERROR_PARSE_NUM_MSG);
 	else if (error == ERROR_PARSE_COLOR)
 		printf(ERROR_PARSE_COLOR_MSG);
@@ -43,7 +46,11 @@ static void print_error_message(const int error)
 		printf(ERROR_PARSE_CAMERA_MSG);
 	else if (error == ERROR_PARSE_SPOTLIGHT)
 		printf(ERROR_PARSE_SPOTLIGHT_MSG);
-	else if (error == ERROR_PARSE_PLANE)
+}
+
+static void	print_object_errors(const int error)
+{
+	if (error == ERROR_PARSE_PLANE)
 		printf(ERROR_PARSE_PLANE_MSG);
 	else if (error == ERROR_PARSE_SPHERE)
 		printf(ERROR_PARSE_SPHERE_MSG);
@@ -51,8 +58,15 @@ static void print_error_message(const int error)
 		printf(ERROR_PARSE_CYLINDER_MSG);
 	else if (error == ERROR_RENDER_AMBIENT_RATIO)
 		printf(ERROR_RENDER_AMBIENT_RATIO_MSG);
-	printf("\033[0m\n");
+}
 
+static void	print_error_message(const int error)
+{
+	printf("Error\n\033[31m");
+	print_basic_errors(error);
+	print_parse_errors(error);
+	print_object_errors(error);
+	printf("\033[0m\n");
 }
 
 /**
@@ -62,7 +76,7 @@ static void print_error_message(const int error)
  * @param error The type of error that occurred.
  */
 __attribute__((noreturn))
-void error_throw(const int error)
+void	error_throw(const int error)
 {
 	print_error_message(error);
 	exit(EXIT_FAILURE);
