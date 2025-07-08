@@ -1,17 +1,14 @@
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ibour <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/05 10:29:54 by ibour             #+#    #+#              #
-#    Updated: 2024/08/05 10:29:55 by ibour            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
+
+RED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+MAGENTA = \033[35m
+CYAN = \033[36m
+RESET = \033[0m
+ERASE := \033[2K\r
+END := \033[0m
 
 SRC =		src/base/ft_atoi.c \
 			src/base/ft_bzero.c \
@@ -46,9 +43,8 @@ SRC =		src/base/ft_atoi.c \
 			src/base/ft_strtrim.c \
 			src/base/ft_substr.c \
 			src/base/ft_tolower.c \
-			src/base/ft_toupper.c
-
-BONUS =		src/bonus/ft_lstadd_back_bonus.c \
+			src/base/ft_toupper.c \
+			src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstadd_front_bonus.c \
 			src/bonus/ft_lstclear_bonus.c \
 			src/bonus/ft_lstdelone_bonus.c \
@@ -56,9 +52,8 @@ BONUS =		src/bonus/ft_lstadd_back_bonus.c \
 			src/bonus/ft_lstlast_bonus.c \
 			src/bonus/ft_lstmap_bonus.c \
 			src/bonus/ft_lstnew_bonus.c \
-			src/bonus/ft_lstsize_bonus.c
-
-CUSTOM =	src/custom/ft_ceil.c \
+			src/bonus/ft_lstsize_bonus.c \
+			src/custom/ft_ceil.c \
 			src/custom/ft_factorial.c \
 			src/custom/ft_floor.c \
 			src/custom/ft_hashclear.c \
@@ -110,20 +105,32 @@ AR = llvm-ar-12 rcs
 RANLIB = llvm-ranlib-12
 
 OBJS = $(SRC:.c=.o)
-BONUS_OBJS = $(BONUS:.c=.o)
-CUSTOM_OBJS = $(CUSTOM:.c=.o)
+TOTAL_FILES = $(words $(SRC))
+COMPILED_FILES = 0
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
 	$(RANLIB) $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
+	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@TERM_WIDTH=$$(tput cols); \
+	BAR_WIDTH=$$((TERM_WIDTH - 13)); \
+	PROGRESS=$$(($(COMPILED_FILES) * BAR_WIDTH / $(TOTAL_FILES))); \
+	PERCENTAGE=$$(echo "scale=1; $(COMPILED_FILES) * 100 / $(TOTAL_FILES)" | bc); \
+	SPINNER_FRAMES="|/-\\"; \
+	SPINNER_INDEX=$$(($(COMPILED_FILES) / 2 % 4)); \
+	SPINNER_CHAR=$$(printf "$$SPINNER_FRAMES" | cut -c$$((SPINNER_INDEX + 1))); \
+	printf "$(ERASE)$$SPINNER_CHAR ["; \
+	for i in $$(seq 1 $$PROGRESS); do printf "█"; done; \
+	for i in $$(seq $$((PROGRESS + 1)) $$BAR_WIDTH); do printf "."; done; \
+	printf "] %s%%" "$$PERCENTAGE"
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
+	$(RM) $(OBJS)
 
 clean-win:
 	$(RM_WIN) "*.o"
@@ -136,12 +143,4 @@ fclean-win:	clean-win
 
 re:	fclean all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
-	$(RANLIB) $(NAME)
-
-custom: $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
-	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS) $(CUSTOM_OBJS)
-	$(RANLIB) $(NAME)
-
-.PHONY:	all clean clean-win fclean fclean-win re bonus custom
+.PHONY:	all clean clean-win fclean fclean-win re
