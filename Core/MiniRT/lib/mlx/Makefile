@@ -1,18 +1,4 @@
 INC=/usr/include
-##
-## Makefile for MiniLibX in /home/boulon/work/c/raytraceur/minilibx
-## 
-## Made by Olivier Crouzet
-## Login   <ol@epitech.net>
-## 
-## Started on  Tue Oct  5 15:56:43 2004 Olivier Crouzet
-## Last update Tue May 15 15:41:20 2007 Olivier Crouzet
-##
-
-## Please use configure script
-
-
-
 UNAME = $(shell uname)
 
 NAME		= libmlx.a
@@ -47,13 +33,11 @@ debug: all
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR) > /dev/null 2>&1
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ > /dev/null 2>&1
-	@printf "$(ERASE)$(BLUE)> Compilation : <$(END) $<"
 
 $(NAME)	: $(OBJ)
 	@llvm-ar-12 rcs $(NAME) $(OBJ) > /dev/null 2>&1
 	@llvm-ranlib-12 $(NAME) > /dev/null 2>&1
 	@cp $(NAME) $(NAME_UNAME) > /dev/null 2>&1
-	@printf "$(ERASE)$(BLUE)> $@ made <$(END)\n"
 
 check: all
 	@./test/run_tests.sh > /dev/null 2>&1
@@ -68,7 +52,7 @@ show:
 
 clean	:
 	@for obj in $(OBJ); do \
-		rm -f $$obj && printf "$(ERASE)$(BLUE)> Removed $$obj <$(END)"; \
+		rm -f $$obj; \
 		sleep 0.01; \
 	done
 	@rm -f $(NAME) $(NAME_UNAME)

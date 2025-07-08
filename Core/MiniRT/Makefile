@@ -7,6 +7,8 @@ BLUE = \033[34m
 MAGENTA = \033[35m
 CYAN = \033[36m
 RESET = \033[0m
+ERASE := \033[2K\r
+END := \033[0m
 
 SRC =	src/create/create_scene.c \
 		src/init/init_parse.c \
@@ -54,6 +56,8 @@ SRC =	src/create/create_scene.c \
 		src/exit/exit_data.c
 
 OBJ = $(SRC:.c=.o)
+TOTAL_FILES = $(words $(SRC))
+COMPILED_FILES = 0
 
 CC = clang
 CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -I. -I/opt/X11/include
@@ -62,9 +66,18 @@ RM_WIN = del /S /Q
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $^ -o $@
+	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@TERM_WIDTH=$$(tput cols); \
+	BAR_WIDTH=$$((TERM_WIDTH - 10)); \
+	PROGRESS=$$(($(COMPILED_FILES) * BAR_WIDTH / $(TOTAL_FILES))); \
+	printf "$(ERASE)["; \
+	for i in $$(seq 1 $$PROGRESS); do printf "█"; done; \
+	for i in $$(seq $$((PROGRESS + 1)) $$BAR_WIDTH); do printf "."; done; \
+	printf "] %d/%d" $(COMPILED_FILES) $(TOTAL_FILES)
 
 all: $(OBJ) libft mlx
 	@$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm -flto
+	@echo ""
 
 libft:
 	@make -C lib/libft custom --silent
