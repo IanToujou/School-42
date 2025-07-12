@@ -1,4 +1,4 @@
-NAME = ClapTrap
+NAME = ScavTrap
 
 RED = \033[31m
 GREEN = \033[32m
@@ -11,6 +11,7 @@ ERASE := \033[2K\r
 END := \033[0m
 
 SRC =	src/ClapTrap.cpp \
+		src/ScavTrap.cpp \
 		src/main.cpp
 
 OBJ = $(SRC:.cpp=.o)

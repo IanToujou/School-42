@@ -60,7 +60,7 @@ TOTAL_FILES = $(words $(SRC))
 COMPILED_FILES = 0
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -I. -I/opt/X11/include
+CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -DGL_GLEXT_PROTOTYPES -I. -I/usr/include/GL
 RM = rm -rf
 RM_WIN = del /S /Q
 

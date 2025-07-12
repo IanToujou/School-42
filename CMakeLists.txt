@@ -464,3 +464,7 @@ add_executable(CPP-02-EX03
 add_executable(CPP-03-EX00 Core/CPP/Module-03/ex00/src/main.cpp
 		Core/CPP/Module-03/ex00/src/ClapTrap.cpp
 		Core/CPP/Module-03/ex00/include/ClapTrap.h)
+add_executable(CPP-03-EX01 Core/CPP/Module-03/ex01/src/ScavTrap.cpp Core/CPP/Module-03/ex01/include/ScavTrap.h
+		Core/CPP/Module-03/ex01/include/ClapTrap.h
+		Core/CPP/Module-03/ex01/src/ClapTrap.cpp
+		Core/CPP/Module-03/ex01/src/main.cpp)
