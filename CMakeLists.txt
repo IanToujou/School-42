@@ -484,3 +484,15 @@ add_executable(CPP-03-EX02
 		Core/CPP/Module-03/ex02/src/FragTrap.cpp
 		Core/CPP/Module-03/ex02/include/FragTrap.h
 )
+
+add_executable(CPP-03-EX03
+		"Core/CPP/Module-03/ex03/src/ScavTrap.cpp"
+		"Core/CPP/Module-03/ex03/include/ScavTrap.h"
+		"Core/CPP/Module-03/ex03/include/ClapTrap.h"
+		"Core/CPP/Module-03/ex03/src/ClapTrap.cpp"
+		"Core/CPP/Module-03/ex03/src/main.cpp"
+		Core/CPP/Module-03/ex03/src/FragTrap.cpp
+		Core/CPP/Module-03/ex03/include/FragTrap.h
+		Core/CPP/Module-03/ex03/src/DiamondTrap.cpp
+		Core/CPP/Module-03/ex03/include/DiamondTrap.h
+)
