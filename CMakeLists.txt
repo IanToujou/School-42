@@ -436,21 +436,21 @@ add_executable(CPP-01-EX06
 )
 
 add_executable(CPP-02-EX00
-		Core/CPP/Module-02/ex00/src/Fixed.cpp
-		Core/CPP/Module-02/ex00/include/Fixed.h
-		Core/CPP/Module-02/ex00/src/main.cpp
+		"Core/CPP/Module-02/ex00/src/Fixed.cpp"
+		"Core/CPP/Module-02/ex00/include/Fixed.h"
+		"Core/CPP/Module-02/ex00/src/main.cpp"
 )
 
 add_executable(CPP-02-EX01
-		Core/CPP/Module-02/ex01/src/Fixed.cpp
-		Core/CPP/Module-02/ex01/include/Fixed.h
-		Core/CPP/Module-02/ex01/src/main.cpp
+		"Core/CPP/Module-02/ex01/src/Fixed.cpp"
+		"Core/CPP/Module-02/ex01/include/Fixed.h"
+		"Core/CPP/Module-02/ex01/src/main.cpp"
 )
 
 add_executable(CPP-02-EX02
-		Core/CPP/Module-02/ex02/src/Fixed.cpp
-		Core/CPP/Module-02/ex02/include/Fixed.h
-		Core/CPP/Module-02/ex02/src/main.cpp
+		"Core/CPP/Module-02/ex02/src/Fixed.cpp"
+		"Core/CPP/Module-02/ex02/include/Fixed.h"
+		"Core/CPP/Module-02/ex02/src/main.cpp"
 )
 
 add_executable(CPP-02-EX03
@@ -481,8 +481,8 @@ add_executable(CPP-03-EX02
 		"Core/CPP/Module-03/ex02/include/ClapTrap.h"
 		"Core/CPP/Module-03/ex02/src/ClapTrap.cpp"
 		"Core/CPP/Module-03/ex02/src/main.cpp"
-		Core/CPP/Module-03/ex02/src/FragTrap.cpp
-		Core/CPP/Module-03/ex02/include/FragTrap.h
+		"Core/CPP/Module-03/ex02/src/FragTrap.cpp"
+		"Core/CPP/Module-03/ex02/include/FragTrap.h"
 )
 
 add_executable(CPP-03-EX03
@@ -491,8 +491,17 @@ add_executable(CPP-03-EX03
 		"Core/CPP/Module-03/ex03/include/ClapTrap.h"
 		"Core/CPP/Module-03/ex03/src/ClapTrap.cpp"
 		"Core/CPP/Module-03/ex03/src/main.cpp"
-		Core/CPP/Module-03/ex03/src/FragTrap.cpp
-		Core/CPP/Module-03/ex03/include/FragTrap.h
-		Core/CPP/Module-03/ex03/src/DiamondTrap.cpp
-		Core/CPP/Module-03/ex03/include/DiamondTrap.h
+		"Core/CPP/Module-03/ex03/src/FragTrap.cpp"
+		"Core/CPP/Module-03/ex03/include/FragTrap.h"
+		"Core/CPP/Module-03/ex03/src/DiamondTrap.cpp"
+		"Core/CPP/Module-03/ex03/include/DiamondTrap.h"
+)
+
+add_executable(CPP-04-EX00
+		"Core/CPP/Module-04/ex00/src/Animal.cpp"
+		"Core/CPP/Module-04/ex00/include/Animal.h"
+		Core/CPP/Module-04/ex00/src/Cat.cpp
+		Core/CPP/Module-04/ex00/include/Cat.h
+		Core/CPP/Module-04/ex00/src/Dog.cpp
+		Core/CPP/Module-04/ex00/include/Dog.h
 )
