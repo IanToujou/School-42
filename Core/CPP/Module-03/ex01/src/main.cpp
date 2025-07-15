@@ -1,8 +1,9 @@
 #include "../include/ClapTrap.h"
+#include "../include/ScavTrap.h"
 
 int main() {
 
-	ClapTrap simon = ClapTrap("Simon");
+	ScavTrap simon = ScavTrap("Simon");
 	ClapTrap axel = ClapTrap("Axel");
 
 	simon.attack("Target 1");
