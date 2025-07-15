@@ -1,0 +1,26 @@
+#include "../include/ClapTrap.h"
+#include "../include/FragTrap.h"
+#include "../include/ScavTrap.h"
+
+int main() {
+
+	ScavTrap simon = ScavTrap("Simon");
+	ClapTrap axel = ClapTrap("Axel");
+	FragTrap frag = FragTrap("Frag");
+
+	simon.attack("Target 1");
+	simon.takeDamage(10);
+	simon.attack("Target 2");
+
+	simon.beRepaired(1000);
+
+	frag.highFivesGuys();
+	frag.attack("Yo");
+
+	axel.beRepaired(10);
+	axel.takeDamage(100);
+	axel.attack("Target 3");
+	axel.beRepaired(1);
+	axel.attack("Target 4");
+
+}

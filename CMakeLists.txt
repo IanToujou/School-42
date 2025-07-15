@@ -454,17 +454,33 @@ add_executable(CPP-02-EX02
 )
 
 add_executable(CPP-02-EX03
-		Core/CPP/Module-02/ex03/src/Fixed.cpp
-		Core/CPP/Module-02/ex03/include/Fixed.h
-		Core/CPP/Module-02/ex03/src/main.cpp
-		Core/CPP/Module-02/ex03/src/Point.cpp
-		Core/CPP/Module-02/ex03/include/Point.h
-		Core/CPP/Module-02/ex03/src/bsp.cpp
+		"Core/CPP/Module-02/ex03/src/Fixed.cpp"
+		"Core/CPP/Module-02/ex03/include/Fixed.h"
+		"Core/CPP/Module-02/ex03/src/main.cpp"
+		"Core/CPP/Module-02/ex03/src/Point.cpp"
+		"Core/CPP/Module-02/ex03/include/Point.h"
+		"Core/CPP/Module-02/ex03/src/bsp.cpp"
 )
-add_executable(CPP-03-EX00 Core/CPP/Module-03/ex00/src/main.cpp
-		Core/CPP/Module-03/ex00/src/ClapTrap.cpp
-		Core/CPP/Module-03/ex00/include/ClapTrap.h)
-add_executable(CPP-03-EX01 Core/CPP/Module-03/ex01/src/ScavTrap.cpp Core/CPP/Module-03/ex01/include/ScavTrap.h
-		Core/CPP/Module-03/ex01/include/ClapTrap.h
-		Core/CPP/Module-03/ex01/src/ClapTrap.cpp
-		Core/CPP/Module-03/ex01/src/main.cpp)
+add_executable(CPP-03-EX00
+		"Core/CPP/Module-03/ex00/src/main.cpp"
+		"Core/CPP/Module-03/ex00/src/ClapTrap.cpp"
+		"Core/CPP/Module-03/ex00/include/ClapTrap.h"
+)
+
+add_executable(CPP-03-EX01
+		"Core/CPP/Module-03/ex01/src/ScavTrap.cpp"
+		"Core/CPP/Module-03/ex01/include/ScavTrap.h"
+		"Core/CPP/Module-03/ex01/include/ClapTrap.h"
+		"Core/CPP/Module-03/ex01/src/ClapTrap.cpp"
+		"Core/CPP/Module-03/ex01/src/main.cpp"
+)
+
+add_executable(CPP-03-EX02
+		"Core/CPP/Module-03/ex02/src/ScavTrap.cpp"
+		"Core/CPP/Module-03/ex02/include/ScavTrap.h"
+		"Core/CPP/Module-03/ex02/include/ClapTrap.h"
+		"Core/CPP/Module-03/ex02/src/ClapTrap.cpp"
+		"Core/CPP/Module-03/ex02/src/main.cpp"
+		Core/CPP/Module-03/ex02/src/FragTrap.cpp
+		Core/CPP/Module-03/ex02/include/FragTrap.h
+)
