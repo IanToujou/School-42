@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/15 09:52:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 10:13:25 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define KEY_S 115
 # define KEY_D 100
 # define MOVE_SPEED 5
+# define SHININESS 35
 
 typedef struct s_vec3
 {
@@ -228,6 +229,9 @@ t_vec3	vec_cross(t_vec3 a, t_vec3 b);
 t_vec3	vec_add_value(t_vec3 a, int value);
 
 double	vec_length(t_vec3 vec);
+
+t_vec3	vec_reflect(t_vec3 incident, t_vec3 normal);
+t_vec3	vec_negate(t_vec3 v);
 
 // Scene functions
 int		create_scene(char *file, t_scene *scene);

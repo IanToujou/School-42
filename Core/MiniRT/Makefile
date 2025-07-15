@@ -43,6 +43,8 @@ SRC =	src/create/create_scene.c \
 		src/util/vec_sub.c \
 		src/util/vec_add_value.c \
 		src/util/vec_len.c \
+		src/util/vec_reflect.c \
+		src/util/vec_negate.c \
 		src/util/add_color.c \
 		src/util/color_scale.c \
 		src/util/util_num.c \
