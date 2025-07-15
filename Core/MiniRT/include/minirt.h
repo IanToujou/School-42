@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/15 10:13:25 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 11:41:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,8 @@ typedef struct s_cylinder
 	t_color			color;
 }					t_cylinder;
 
-typedef struct s_cone {
+typedef struct s_cone
+{
 	t_vec3			point;
 	t_vec3			axis;
 	double			radius;
