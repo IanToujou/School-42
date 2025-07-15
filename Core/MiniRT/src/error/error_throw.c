@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 10:05:21 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 18:03:25 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 09:46:11 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	print_parse_errors(const int error)
 		printf(ERROR_PARSE_CAMERA_MSG);
 	else if (error == ERROR_PARSE_SPOTLIGHT)
 		printf(ERROR_PARSE_SPOTLIGHT_MSG);
+	else if (error == ERROR_PARSE_CONE)
+		printf(ERROR_PARSE_CONE_MSG);
 }
 
 static void	print_object_errors(const int error)

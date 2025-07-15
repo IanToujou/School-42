@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/07 18:16:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 09:52:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define MOVE_SPEED 0.4
+# define MOVE_SPEED 5
 
 typedef struct s_vec3
 {
@@ -113,6 +113,14 @@ typedef struct s_cylinder
 	t_color			color;
 }					t_cylinder;
 
+typedef struct s_cone {
+	t_vec3			point;
+	t_vec3			axis;
+	double			radius;
+	double			height;
+	t_color			color;
+}					t_cone;
+
 typedef struct s_sphere
 {
 	t_vec3			center;
@@ -134,6 +142,7 @@ typedef enum e_obj_type
 	OBJ_SPHERE,
 	OBJ_PLANE,
 	OBJ_CYLINDER,
+	OBJ_CONE,
 }					t_obj_type;
 
 // Generic object structure for the linked list
@@ -185,6 +194,7 @@ void	parse_plane(t_scene *scene, char **str);
 void	parse_sphere(t_scene *scene, char **str);
 void	parse_cylinder(t_scene *scene, char **str);
 void	parse_spotlight(t_scene *scene, char **str);
+void	parse_cone(t_scene *scene, char **str);
 
 // Math utilities
 
@@ -238,6 +248,7 @@ int		intersect_sphere(t_ray *ray, t_sphere *sphere, t_hit_info *hit);
 int		intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit);
 
 int		object_cylinder_intersect(t_ray *ray, t_cylinder *cyl, t_hit_info *hit);
+int		object_cone_intersect(t_ray *ray, t_cone *cone, t_hit_info *hit);
 void	calculate_intersections(t_ray *ray, t_cylinder *cy, double *t_vals);
 void	init_hit_info(t_hit_info *hit, t_cylinder *cy);
 t_vec3	project_vector(t_vec3 v, t_vec3 axis);

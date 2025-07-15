@@ -374,6 +374,8 @@ add_executable(MiniRT
 		"Core/MiniRT/src/init/init_data.c"
 		Core/MiniRT/src/object/object_cylinder_2.c
 		Core/MiniRT/src/object/object_cylinder_3.c
+		Core/MiniRT/src/parse/parse_cone.c
+		Core/MiniRT/src/object/object_cone.c
 )
 
 add_executable(CPP-00-EX00

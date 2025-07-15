@@ -16,6 +16,7 @@ SRC =	src/create/create_scene.c \
 		src/parse/parse_camera.c \
 		src/parse/parse_sphere.c \
 		src/parse/parse_cylinder.c \
+		src/parse/parse_cone.c \
 		src/parse/parse_plane.c \
 		src/parse/parse_spotlight.c \
 		src/main/main.c \
@@ -29,6 +30,7 @@ SRC =	src/create/create_scene.c \
 		src/object/object_cylinder.c \
 		src/object/object_cylinder_2.c \
 		src/object/object_cylinder_3.c \
+		src/object/object_cone.c \
 		src/render/render.c \
 		src/render/trace_ray.c \
 		src/util/vec_add.c \
@@ -60,7 +62,7 @@ TOTAL_FILES = $(words $(SRC))
 COMPILED_FILES = 0
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -DGL_GLEXT_PROTOTYPES -I. -I/usr/include/GL
+CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -I.
 RM = rm -rf
 RM_WIN = del /S /Q
 

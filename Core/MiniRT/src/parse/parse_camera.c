@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:59 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 18:01:15 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 10:00:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	parse_camera(t_scene *scene, char **str)
 	scene->camera.fov = util_num_parse(str[3]);
 	scene->camera.fov = fmin(fmax(scene->camera.fov, 0.0), 180.0);
 	scene->camera.pitch = asin(-scene->camera.direction.y) * 180.0 / M_PI;
-	scene->camera.yaw = atan2(scene->camera.direction.x,
-			scene->camera.direction.z) * 180.0 / M_PI;
+	scene->camera.yaw = atan2(scene->camera.direction.z,
+			scene->camera.direction.x) * 180.0 / M_PI;
 	scene->camera.up = (t_vec3){0.0, 1.0, 0.0};
 	scene->camera.forward = vec_normalize(scene->camera.direction);
 	scene->camera.right = vec_normalize(vec_cross(scene->camera.forward,

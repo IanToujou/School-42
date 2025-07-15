@@ -29,5 +29,7 @@ int	intersect(t_ray *ray, t_object *obj, t_hit_info *hit)
 		return (intersect_plane(ray, (t_plane *) obj->data, hit));
 	else if (obj->type == OBJ_CYLINDER)
 		return (object_cylinder_intersect(ray, (t_cylinder *) obj->data, hit));
+	else if (obj->type == OBJ_CONE)
+		return (object_cone_intersect(ray, (t_cone *) obj->data, hit));
 	return (0);
 }

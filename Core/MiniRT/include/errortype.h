@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 07:12:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 09:45:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@
 
 # define ERROR_RENDER_SPHERE_RADIUS 19
 # define ERROR_RENDER_SPHERE_RADIUS_MSG "Sphere radius cannot be 0."
+
+# define ERROR_PARSE_CONE 20
+# define ERROR_PARSE_CONE_MSG "Failed to parse cone."
 
 void	error_throw(int error);
 
