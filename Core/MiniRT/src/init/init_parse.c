@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/15 10:41:21 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 11:37:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ static void	init_parse_line(t_scene *scene, const char *line)
 		parse_cylinder(scene, array);
 	else if (!ft_strcmp("co", array[0]))
 		parse_cone(scene, array);
-	else
-		error_throw(ERROR_INIT_PARSE);
 	util_array_free((void **) array);
 	array = NULL;
 }
