@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/15 09:45:05 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 10:41:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,18 @@ void	init_parse(t_scene *scene, const char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0 || !init_parse_check_file(file_name))
+	{
+		free(scene);
 		error_throw(ERROR_FILE_INVALID);
+		return;
+	}
 	line = get_next_line(fd);
 	if (!line)
+	{
+		free(scene);
 		error_throw(ERROR_FILE_EMPTY);
+		return;
+	}
 	while (line != NULL)
 	{
 		if (line[0] != '\n')

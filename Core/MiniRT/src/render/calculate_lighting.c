@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 17:01:49 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/15 10:14:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/15 10:44:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_color	apply_checkerboard_pattern(t_vec3 hit_point, t_color base_color)
 {
-	double	scale = 2.0; // Size of the checkerboard squares
+	double	scale = 0.1; // Size of the checkerboard squares
 	int		x_check = (int)floor(hit_point.x * scale);
 	int		y_check = (int)floor(hit_point.y * scale);
 	int		z_check = (int)floor(hit_point.z * scale);
