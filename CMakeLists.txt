@@ -219,33 +219,8 @@ add_executable(Fractol
 )
 add_executable(FdF
 		"Core/FdF/src/main/main.c"
-		"Core/FdF/src/init/ft_init_map.c"
-		"Core/FdF/src/error/ft_throw_error.c"
-		"Core/FdF/src/init/ft_init_data.c"
-		"Core/FdF/src/graphics/ft_graphics_draw.c"
-		"Core/FdF/src/init/ft_init_camera.c"
-		"Core/FdF/src/init/ft_init_hooks.c"
-		"Core/FdF/include/color.h"
-		"Core/FdF/src/event/ft_event_key_press.c"
-		"Core/FdF/src/event/ft_event_close.c"
-		"Core/FdF/src/event/ft_event_mouse_press.c"
-		"Core/FdF/src/event/ft_event_mouse_release.c"
-		"Core/FdF/src/event/ft_event_mouse_move.c"
-		"Core/FdF/src/util/ft_util_stack_to_arrays.c"
-		"Core/FdF/src/util/ft_util_stack.c"
-		"Core/FdF/src/util/ft_util_map.c"
-		"Core/FdF/include/errortype.h"
-		"Core/FdF/include/fdf.h"
-		"Core/FdF/include/keys.h"
-		"Core/FdF/src/graphics/ft_graphics_project.c"
-		"Core/FdF/src/init/ft_init_point.c"
-		"Core/FdF/src/util/ft_util_array.c"
-		"Core/FdF/src/util/ft_util_color.c"
-		"Core/FdF/src/graphics/ft_graphics_menu.c"
-		"Core/FdF/src/util/ft_util.c"
-		"Core/FdF/src/util/ft_util_controls.c"
-		"Core/FdF/src/util/ft_util_gnl.c"
-		"Core/FdF/src/util/ft_util_split.c"
+		Core/FdF/include/fdf.h
+		Core/FdF/src/init/init_mlx.c
 )
 
 add_executable(Philosophers

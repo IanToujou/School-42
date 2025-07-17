@@ -1,78 +1,68 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ibour <marvin@42.fr>                       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/05 10:29:54 by ibour             #+#    #+#              #
-#    Updated: 2024/08/05 10:29:55 by ibour            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = fdf
 
-SRC =	src/error/ft_throw_error.c \
-		src/event/ft_event_close.c \
-		src/event/ft_event_key_press.c \
-		src/event/ft_event_mouse_move.c \
-		src/event/ft_event_mouse_press.c \
-		src/event/ft_event_mouse_release.c \
-		src/graphics/ft_graphics_draw.c \
-		src/graphics/ft_graphics_menu.c \
-		src/graphics/ft_graphics_project.c \
-		src/init/ft_init_camera.c \
-		src/init/ft_init_data.c \
-		src/init/ft_init_hooks.c \
-		src/init/ft_init_map.c \
-		src/init/ft_init_point.c \
-		src/main/main.c \
-		src/util/ft_util.c \
-		src/util/ft_util_array.c \
-		src/util/ft_util_color.c \
-		src/util/ft_util_controls.c \
-		src/util/ft_util_gnl.c \
-		src/util/ft_util_map.c \
-		src/util/ft_util_split.c \
-		src/util/ft_util_stack.c \
-		src/util/ft_util_stack_to_arrays.c
+RED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+MAGENTA = \033[35m
+CYAN = \033[36m
+RESET = \033[0m
+ERASE := \033[2K\r
+END := \033[0m
+
+SRC =	src/main/main.c
 
 OBJ = $(SRC:.c=.o)
+TOTAL_FILES = $(words $(SRC))
+COMPILED_FILES = 0
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I. -I/opt/X11/include
+CC = clang
+CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -I.
 RM = rm -rf
 RM_WIN = del /S /Q
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
+	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@TERM_WIDTH=$$(tput cols); \
+	BAR_WIDTH=$$((TERM_WIDTH - 17)); \
+	PROGRESS=$$(($(COMPILED_FILES) * BAR_WIDTH / $(TOTAL_FILES))); \
+	PERCENTAGE=$$(echo "scale=1; $(COMPILED_FILES) * 100 / $(TOTAL_FILES)" | bc); \
+	SPINNER_FRAMES="|/-\\"; \
+	SPINNER_INDEX=$$(($(COMPILED_FILES) / 2 % 4)); \
+	SPINNER_CHAR=$$(printf "$$SPINNER_FRAMES" | cut -c$$((SPINNER_INDEX + 1))); \
+	printf "$(ERASE)1/3 $$SPINNER_CHAR ["; \
+	for i in $$(seq 1 $$PROGRESS); do printf "█"; done; \
+	for i in $$(seq $$((PROGRESS + 1)) $$BAR_WIDTH); do printf "."; done; \
+	printf "] %s%%" "$$PERCENTAGE"
 
 all: $(OBJ) libft mlx
-	$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
+	@$(CC) -o $(NAME) $(OBJ) -Llib/libft -lft -Llib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm -flto
+	@echo ""
 
 libft:
-	make -C lib/libft custom
+	@make -C lib/libft --silent
 
 mlx:
-	make -C lib/mlx
+	@make -C lib/mlx --silent
 
 clean:
-	$(RM) $(OBJ)
-	make -C lib/libft clean
-	make -C lib/mlx clean
+	@$(RM) $(OBJ)
+	@make -C lib/libft clean --silent
+	@make -C lib/mlx clean --silent
 
 clean-win:
-	$(RM_WIN) "*.o"
-	make -C lib/libft clean-win
+	@$(RM_WIN) "*.o"
+	@make -C lib/libft clean-win --silent
 
 fclean: clean
-	$(RM) $(NAME)
-	make -C lib/libft fclean
-	make -C lib/mlx clean
+	@$(RM) $(NAME)
+	@make -C lib/libft fclean --silent
+	@make -C lib/mlx clean --silent
 
 fclean-win:	clean-win
-	$(RM_WIN) "$(NAME).exe"
-	make -C lib/libft fclean-win
+	@$(RM_WIN) "$(NAME).exe"
+	@make -C lib/libft fclean-win --silent
 
 re: fclean all
 

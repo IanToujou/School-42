@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:05:28 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 18:01:24 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/17 09:36:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	init_mlx_gfx(t_scene *scene)
  * to work with.
  *
  * @param scene The data of the program.
- * @return 0 if the process was successful. -1 if an error occurred.
  */
 void	init_mlx(t_scene *scene)
 {
