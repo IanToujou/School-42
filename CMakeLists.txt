@@ -221,6 +221,16 @@ add_executable(FdF
 		"Core/FdF/src/main/main.c"
 		Core/FdF/include/fdf.h
 		Core/FdF/src/init/init_mlx.c
+		Core/FdF/src/init/init_data.c
+		Core/FdF/include/errortype.h
+		Core/FdF/src/error/error_throw.c
+		Core/FdF/src/init/init_parse.c
+		Core/FdF/src/init/init_hook.c
+		Core/FdF/src/event/event_close.c
+		Core/FdF/src/event/event_keypress.c
+		Core/FdF/src/gfx/gfx_render.c
+		Core/FdF/src/exit/exit_mlx.c
+		Core/FdF/src/exit/exit_data.c
 )
 
 add_executable(Philosophers

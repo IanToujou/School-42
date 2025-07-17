@@ -10,14 +10,24 @@ RESET = \033[0m
 ERASE := \033[2K\r
 END := \033[0m
 
-SRC =	src/main/main.c
+SRC =	src/error/error_throw.c \
+		src/event/event_close.c \
+		src/event/event_keypress.c \
+		src/exit/exit_data.c \
+		src/exit/exit_mlx.c \
+		src/gfx/gfx_render.c \
+		src/init/init_data.c\
+		src/init/init_hook.c\
+		src/init/init_mlx.c\
+		src/init/init_parse.c\
+		src/main/main.c
 
 OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))
 COMPILED_FILES = 0
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -Ofast -march=native -ffast-math -flto -I.
+CFLAGS = -Ofast -march=native -ffast-math -flto -I.
 RM = rm -rf
 RM_WIN = del /S /Q
 
