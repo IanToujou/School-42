@@ -116,13 +116,13 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -c $^ -o $@
 	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
 	@TERM_WIDTH=$$(tput cols); \
-	BAR_WIDTH=$$((TERM_WIDTH - 13)); \
+	BAR_WIDTH=$$((TERM_WIDTH - 17)); \
 	PROGRESS=$$(($(COMPILED_FILES) * BAR_WIDTH / $(TOTAL_FILES))); \
 	PERCENTAGE=$$(echo "scale=1; $(COMPILED_FILES) * 100 / $(TOTAL_FILES)" | bc); \
 	SPINNER_FRAMES="|/-\\"; \
 	SPINNER_INDEX=$$(($(COMPILED_FILES) / 2 % 4)); \
 	SPINNER_CHAR=$$(printf "$$SPINNER_FRAMES" | cut -c$$((SPINNER_INDEX + 1))); \
-	printf "$(ERASE)$$SPINNER_CHAR ["; \
+	printf "$(ERASE)2/3 $$SPINNER_CHAR ["; \
 	for i in $$(seq 1 $$PROGRESS); do printf "█"; done; \
 	for i in $$(seq $$((PROGRESS + 1)) $$BAR_WIDTH); do printf "."; done; \
 	printf "] %s%%" "$$PERCENTAGE"

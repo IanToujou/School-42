@@ -21,9 +21,19 @@ OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 CFLAGS	= -O3 -flto -I$(INC) -DGL_GLEXT_PROTOTYPES -fomit-frame-pointer -funroll-loops
 DEBUG_FLAGS = -g -O0
 
-ERASE   := \033[2K\r
-BLUE    := \033[34m
-END     := \033[0m
+OBJS = $(SRC:.c=.o)
+TOTAL_FILES = $(words $(SRC))
+COMPILED_FILES = 0
+
+RED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+MAGENTA = \033[35m
+CYAN = \033[36m
+RESET = \033[0m
+ERASE := \033[2K\r
+END := \033[0m
 
 all	: $(NAME)
 
@@ -33,6 +43,18 @@ debug: all
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR) > /dev/null 2>&1
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ > /dev/null 2>&1
+	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@TERM_WIDTH=$$(tput cols); \
+	BAR_WIDTH=$$((TERM_WIDTH - 17)); \
+	PROGRESS=$$(($(COMPILED_FILES) * BAR_WIDTH / $(TOTAL_FILES))); \
+	PERCENTAGE=$$(echo "scale=1; $(COMPILED_FILES) * 100 / $(TOTAL_FILES)" | bc); \
+	SPINNER_FRAMES="|/-\\"; \
+	SPINNER_INDEX=$$(($(COMPILED_FILES) / 2 % 4)); \
+	SPINNER_CHAR=$$(printf "$$SPINNER_FRAMES" | cut -c$$((SPINNER_INDEX + 1))); \
+	printf "$(ERASE)3/3 $$SPINNER_CHAR ["; \
+	for i in $$(seq 1 $$PROGRESS); do printf "█"; done; \
+	for i in $$(seq $$((PROGRESS + 1)) $$BAR_WIDTH); do printf "."; done; \
+	printf "] %s%%" "$$PERCENTAGE"
 
 $(NAME)	: $(OBJ)
 	@llvm-ar-12 rcs $(NAME) $(OBJ) > /dev/null 2>&1
