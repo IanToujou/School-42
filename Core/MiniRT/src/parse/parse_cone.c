@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:45:17 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:35:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:50:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_cone(t_scene *scene, char **str, char *line)
+void	parse_cone(t_scene *scene, char **str)
 {
 	t_cone	*cone;
 
@@ -25,6 +25,6 @@ void	parse_cone(t_scene *scene, char **str, char *line)
 	cone->axis = vec_normalize(util_vector_parse(str[2]));
 	cone->radius = util_num_parse(str[3]) / 2;
 	cone->height = util_num_parse(str[4]);
-	cone->color = util_color_parse(scene, str, str[5], line);
+	cone->color = util_color_parse(str[5]);
 	add_object_to_scene(scene, OBJ_CONE, cone);
 }

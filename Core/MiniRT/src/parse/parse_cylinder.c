@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:22 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:35:09 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:50:16 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_cylinder(t_scene *scene, char **str, char *line)
+void	parse_cylinder(t_scene *scene, char **str)
 {
 	t_cylinder	*cylinder;
 
@@ -25,6 +25,6 @@ void	parse_cylinder(t_scene *scene, char **str, char *line)
 	cylinder->axis = vec_normalize(util_vector_parse(str[2]));
 	cylinder->radius = util_num_parse(str[3]) / 2;
 	cylinder->height = util_num_parse(str[4]);
-	cylinder->color = util_color_parse(scene, str, str[5], line);
+	cylinder->color = util_color_parse(str[5]);
 	add_object_to_scene(scene, OBJ_CYLINDER, cylinder);
 }

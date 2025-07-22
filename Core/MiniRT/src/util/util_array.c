@@ -6,11 +6,24 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:41:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 17:55:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:10:33 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
+
+void	util_array_gnl_free(const int fd)
+{
+	char *temp;
+
+	close(fd);
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		free(temp);
+		temp = get_next_line(fd);
+	}
+}
 
 void	util_array_free(void **array)
 {

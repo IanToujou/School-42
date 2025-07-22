@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:15 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:34:59 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:49:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_sphere(t_scene *scene, char **str, char *line)
+void	parse_sphere(t_scene *scene, char **str)
 {
 	t_sphere	*sphere;
 
@@ -25,6 +25,6 @@ void	parse_sphere(t_scene *scene, char **str, char *line)
 	sphere->radius = util_num_parse(str[2]) / 2;
 	if (sphere->radius <= 0)
 		error_throw(ERROR_RENDER_SPHERE_RADIUS);
-	sphere->color = util_color_parse(scene, str, str[3], line);
+	sphere->color = util_color_parse(str[3]);
 	add_object_to_scene(scene, OBJ_SPHERE, sphere);
 }

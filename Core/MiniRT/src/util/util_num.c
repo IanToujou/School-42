@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:44:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 17:58:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:46:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,12 @@ double	util_num_parse(char *str)
 	result = parse_integer_part(str, &i);
 	decimal = parse_decimal_part(str, &i);
 	return ((result + decimal) * sign);
+}
+
+int	util_num_check(char *str)
+{
+	if (!str || str[0] == 0 || (!ft_isdigit(str[0])
+			&& str[0] != '-' && str[0] != '+'))
+		return (0);
+	return (1);
 }
