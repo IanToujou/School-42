@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/15 11:41:28 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:35:42 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ typedef struct s_scene
 	t_camera		camera;
 	t_light			ambient;
 	t_object		*objects;
+	int				has_camera;
 }					t_scene;
 
 typedef struct s_hit_info
@@ -184,25 +185,27 @@ void	init_data(t_scene *scene);
 // Exiting
 void	exit_mlx(t_scene *scene);
 void	exit_data(t_scene *scene);
+void	exit_data_objects(t_scene *scene);
+void	exit_data_pre_render(t_scene *scene);
 
 // Event
 int		event_close(t_scene *scene);
 int		event_keypress(int keycode, t_scene *scene);
 
 // Parse
-void	parse_ambient(t_scene *scene, char **str);
+void	parse_ambient(t_scene *scene, char **str, char *line);
 void	parse_camera(t_scene *scene, char **str);
-void	parse_plane(t_scene *scene, char **str);
-void	parse_sphere(t_scene *scene, char **str);
-void	parse_cylinder(t_scene *scene, char **str);
-void	parse_spotlight(t_scene *scene, char **str);
-void	parse_cone(t_scene *scene, char **str);
+void	parse_plane(t_scene *scene, char **str, char *line);
+void	parse_sphere(t_scene *scene, char **str, char *line);
+void	parse_cylinder(t_scene *scene, char **str, char *line);
+void	parse_spotlight(t_scene *scene, char **str, char *line);
+void	parse_cone(t_scene *scene, char **str, char *line);
 
 // Math utilities
 
 double	util_num_parse(char *str);
 t_vec3	util_vector_parse(char *str);
-t_color	util_color_parse(char *str);
+t_color	util_color_parse(t_scene *scene, char **array, char *str, char *line);
 void	util_array_free(void **array);
 int		util_array_count(void **array);
 

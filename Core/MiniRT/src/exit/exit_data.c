@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:38:22 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/15 10:38:49 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:22:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	exit_data(t_scene *scene)
+void	exit_data_objects(t_scene *scene)
 {
 	t_object	*current;
 	t_object	*next;
@@ -28,6 +28,21 @@ void	exit_data(t_scene *scene)
 		free(current);
 		current = next;
 	}
+}
+
+void	exit_data_pre_render(t_scene *scene)
+{
+	if (!scene)
+		return ;
+	exit_data_objects(scene);
+	free(scene);
+}
+
+void	exit_data(t_scene *scene)
+{
+	if (!scene)
+		return ;
+	exit_data_objects(scene);
 	if (scene->mlx_ptr)
 	{
 		if (scene->image.img_ptr)

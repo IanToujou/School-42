@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:59 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/15 10:00:26 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:14:55 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ void	parse_camera(t_scene *scene, char **str)
 				scene->camera.up));
 	scene->camera.up = vec_normalize(vec_cross(scene->camera.right,
 				scene->camera.forward));
+	scene->has_camera = 1;
 }

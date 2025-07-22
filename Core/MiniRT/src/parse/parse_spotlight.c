@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:50 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 18:00:13 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:34:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	parse_spotlight(t_scene *scene, char **str)
+void	parse_spotlight(t_scene *scene, char **str, char *line)
 {
 	t_spotlight	*light;
 
@@ -23,6 +23,6 @@ void	parse_spotlight(t_scene *scene, char **str)
 		error_throw(ERROR_MALLOC);
 	light->position = util_vector_parse(str[1]);
 	light->diffuse = util_num_parse(str[2]);
-	light->color = util_color_parse(str[3]);
+	light->color = util_color_parse(scene, str, str[3], line);
 	add_object_to_scene(scene, OBJ_LIGHT, light);
 }

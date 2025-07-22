@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 18:00:32 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:36:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
  *
  * @param scene Pointer to the scene object where the plane will be added.
  * @param str Array of strings containing the plane description.
+ * @param line The line with parsing information.
  *
  * @throws ERROR_PARSE_CAMERA if the input array does not contain
  * exactly four elements.
  * @throws ERROR_MALLOC if memory allocation for the plane fails.
  */
-void	parse_plane(t_scene *scene, char **str)
+void	parse_plane(t_scene *scene, char **str, char *line)
 {
 	t_plane	*plane;
 
@@ -33,6 +34,6 @@ void	parse_plane(t_scene *scene, char **str)
 		error_throw(ERROR_MALLOC);
 	plane->point = util_vector_parse(str[1]);
 	plane->normal = vec_normalize(util_vector_parse(str[2]));
-	plane->color = util_color_parse(str[3]);
+	plane->color = util_color_parse(scene, str, str[3], line);
 	add_object_to_scene(scene, OBJ_PLANE, plane);
 }

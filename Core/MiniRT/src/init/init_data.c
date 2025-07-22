@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 09:16:39 by ibour             #+#    #+#             */
-/*   Updated: 2025/06/20 09:16:58 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 09:21:09 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void	init_data(t_scene *scene)
 {
 	scene->objects = NULL;
+	scene->has_camera = 0;
 }
