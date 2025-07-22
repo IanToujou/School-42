@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/17 10:39:42 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 07:57:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,21 @@ typedef struct s_data
 }	t_data;
 
 void	init_data(t_data *data);
-void	init_parse(t_data *data, char *file);
+void	init_parse(t_data *data, const char *file);
 void	init_mlx(t_data *data);
 void	init_hook(t_data *data);
 
 void	exit_data(t_data *data);
+void	exit_array_2d_int(int ***array, int length);
+void	exit_array_2d_point(t_point ***array, int length);
 void	exit_mlx(t_data *data);
 
 int		event_close(t_data *data);
 int		event_keypress(int keycode, t_data *data);
 
 void	gfx_render(t_data *data);
+
+int		util_map_parse_width(const char *filename);
+int		util_map_parse_depth(int fd);
 
 #endif

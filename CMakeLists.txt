@@ -231,6 +231,8 @@ add_executable(FdF
 		Core/FdF/src/gfx/gfx_render.c
 		Core/FdF/src/exit/exit_mlx.c
 		Core/FdF/src/exit/exit_data.c
+		Core/FdF/src/exit/exit_array.c
+		Core/FdF/src/util/util_map.c
 )
 
 add_executable(Philosophers

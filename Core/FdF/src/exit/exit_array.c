@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 09:32:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 07:22:28 by ibour            ###   ########.fr       */
+/*   Created: 2025/07/22 07:55:39 by ibour             #+#    #+#             */
+/*   Updated: 2025/07/22 07:56:21 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int main(const int argc, char **argv)
+void	exit_array_2d_int(int ***array, const int length)
 {
-	t_data	*data;
+	int	i;
 
-	if (argc != 2)
-		error_throw(ERROR_SYNTAX);
-	data = (t_data *) malloc(sizeof(t_data));
-	if (!data)
-		error_throw(ERROR_MALLOC);
-	init_data(data);
-	init_parse(data, argv[1]);
-	init_mlx(data);
-	gfx_render(data);
-	init_hook(data);
+	if (*array)
+	{
+		i = -1;
+		while (++i < length)
+		{
+			free((*array)[i]);
+			(*array)[i] = NULL;
+		}
+	}
+	free(*array);
+	*array = NULL;
+}
+
+void	exit_array_2d_point(t_point ***array, const int length)
+{
+	int	i;
+
+	if (*array)
+	{
+		i = -1;
+		while (++i < length)
+		{
+			free((*array)[i]);
+			(*array)[i] = NULL;
+		}
+	}
+	free(*array);
+	*array = NULL;
 }

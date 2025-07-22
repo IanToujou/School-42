@@ -13,14 +13,16 @@ END := \033[0m
 SRC =	src/error/error_throw.c \
 		src/event/event_close.c \
 		src/event/event_keypress.c \
+		src/exit/exit_array.c \
 		src/exit/exit_data.c \
 		src/exit/exit_mlx.c \
 		src/gfx/gfx_render.c \
-		src/init/init_data.c\
-		src/init/init_hook.c\
-		src/init/init_mlx.c\
-		src/init/init_parse.c\
-		src/main/main.c
+		src/init/init_data.c \
+		src/init/init_hook.c \
+		src/init/init_mlx.c \
+		src/init/init_parse.c \
+		src/main/main.c \
+		src/util/util_map.c
 
 OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))
