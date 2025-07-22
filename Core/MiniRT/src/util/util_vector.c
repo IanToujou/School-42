@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:48:01 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 10:31:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:48:24 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	util_vector_check(char *str)
 {
 	char	**values;
-	int	i;
+	int		i;
 
 	if (!str)
 		return (0);
@@ -30,7 +30,9 @@ int	util_vector_check(char *str)
 		util_array_free((void **) values);
 		return (0);
 	}
-	if (util_num_check(values[0]) == 0 || util_num_check(values[1]) == 0 || util_num_check(values[2]) == 0)
+	if (util_num_check(values[0]) == 0
+		|| util_num_check(values[1]) == 0
+		|| util_num_check(values[2]) == 0)
 	{
 		util_array_free((void **) values);
 		return (0);

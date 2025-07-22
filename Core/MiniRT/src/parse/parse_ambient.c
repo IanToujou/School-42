@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:06:52 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 10:39:00 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:53:01 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	parse_check(char **str)
 
 void	parse_ambient(t_scene *scene, char **str, char *line, const int fd)
 {
-	int error;
+	int	error;
 
 	error = parse_check(str);
 	if (error != 0)

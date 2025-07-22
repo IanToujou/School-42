@@ -368,6 +368,7 @@ add_executable(MiniRT
 		Core/MiniRT/src/object/object_cone.c
 		Core/MiniRT/src/util/vec_reflect.c
 		Core/MiniRT/src/util/vec_negate.c
+		Core/MiniRT/src/util/util_color_2.c
 )
 
 add_executable(CPP-00-EX00

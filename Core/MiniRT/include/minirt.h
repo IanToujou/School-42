@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/22 10:31:41 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:51:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,10 @@ t_vec3	util_vector_parse(char *str);
 int		util_vector_check(char *str);
 int		util_color_check(char *str);
 t_color	util_color_parse(char *str);
+void	util_color_free_array(char **array);
+int		util_color_count(char **values);
+void	util_color_range(t_color color, char **values);
+t_color	util_color_rgb(char **values);
 void	util_array_free(void **array);
 int		util_array_count(void **array);
 void	util_array_gnl_free(int fd);

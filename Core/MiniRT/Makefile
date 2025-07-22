@@ -49,6 +49,7 @@ SRC =	src/create/create_scene.c \
 		src/util/color_scale.c \
 		src/util/util_num.c \
 		src/util/util_color.c \
+		src/util/util_color_2.c \
 		src/util/util_array.c \
 		src/util/util_vector.c \
 		src/init/init_mlx.c \

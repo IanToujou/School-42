@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_array.c                                       :+:      :+:    :+:   */
+/*   util_color_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 14:41:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 10:48:42 by ibour            ###   ########.fr       */
+/*   Created: 2025/07/22 10:49:02 by ibour             #+#    #+#             */
+/*   Updated: 2025/07/22 10:51:37 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-void	util_array_gnl_free(const int fd)
-{
-	char	*temp;
-
-	close(fd);
-	temp = get_next_line(fd);
-	while (temp)
-	{
-		free(temp);
-		temp = get_next_line(fd);
-	}
-}
-
-void	util_array_free(void **array)
+void	util_color_free_array(char **array)
 {
 	int	i;
 
@@ -33,21 +20,27 @@ void	util_array_free(void **array)
 		return ;
 	i = 0;
 	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
+		free(array[i++]);
 	free(array);
 }
 
-int	util_array_count(void **array)
+int	util_color_count(char **values)
 {
-	int	count;
+	int	i;
 
-	count = 0;
-	if (!array)
-		return (0);
-	while (array[count])
-		count++;
-	return (count);
+	i = 0;
+	while (values[i])
+		i++;
+	return (i);
+}
+
+void	util_color_range(t_color color, char **values)
+{
+	if (color.r < 0 || color.r > 255
+		|| color.g < 0 || color.g > 255
+		|| color.b < 0 || color.b > 255)
+	{
+		util_color_free_array(values);
+		error_throw(ERROR_PARSE_COLOR);
+	}
 }

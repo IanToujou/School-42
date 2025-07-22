@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:44:59 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 10:37:21 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:52:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	parse_check(char **str)
 
 void	parse_camera(t_scene *scene, char **str, char *line, const int fd)
 {
-	int error;
+	int	error;
 
 	error = parse_check(str);
 	if (error != 0)
