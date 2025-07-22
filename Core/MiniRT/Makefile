@@ -23,6 +23,7 @@ SRC =	src/create/create_scene.c \
 		src/init/init_data.c \
 		src/error/error_throw.c \
 		src/render/calculate_lighting.c \
+		src/render/calculate_lighting_2.c \
 		src/render/generate_ray.c \
 		src/object/intersect.c \
 		src/object/plane.c \
@@ -31,6 +32,8 @@ SRC =	src/create/create_scene.c \
 		src/object/object_cylinder_2.c \
 		src/object/object_cylinder_3.c \
 		src/object/object_cone.c \
+		src/object/object_cone_2.c \
+		src/object/object_cone_3.c \
 		src/render/render.c \
 		src/render/trace_ray.c \
 		src/util/vec_add.c \

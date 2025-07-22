@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/22 10:51:23 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 11:02:15 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,9 @@ t_ray	generate_ray(int x, int y, t_camera *cam);
 t_color	trace_ray(t_ray *ray, t_scene *scene);
 
 t_color	calculate_lighting(const t_hit_info *hit, t_scene *scene);
+t_color	calculate_specular_light(const t_hit_info *hit,
+			t_spotlight *light, t_vec3 view_dir);
+t_color	apply_checkerboard_pattern(t_vec3 hit_point, t_color base_color);
 
 int		intersect(t_ray *ray, t_object *obj, t_hit_info *hit);
 
@@ -265,6 +268,14 @@ int		intersect_plane(t_ray *ray, t_plane *plane, t_hit_info *hit);
 
 int		object_cylinder_intersect(t_ray *ray, t_cylinder *cyl, t_hit_info *hit);
 int		object_cone_intersect(t_ray *ray, t_cone *cone, t_hit_info *hit);
+void	calculate_cone_quadratic(t_ray *ray, t_cone *cone, double *abc);
+int		solve_quadratic_roots(double *abc, double *roots);
+int		select_valid_root(double *roots, double *t);
+int		solve_cone_surface(t_ray *ray, t_cone *cone, double *t);
+void	calculate_cone_intersections(t_ray *ray, t_cone *cone, double *t_vals);
+int		solve_cone_cap(t_ray *ray, t_cone *cone, double *t);
+int		check_cap_bounds(t_ray *ray, t_cone *cone, double t_hit, double *t);
+int		check_cone_height_bounds(t_ray *ray, t_cone *cone, double t);
 void	calculate_intersections(t_ray *ray, t_cylinder *cy, double *t_vals);
 void	init_hit_info(t_hit_info *hit, t_cylinder *cy);
 t_vec3	project_vector(t_vec3 v, t_vec3 axis);
