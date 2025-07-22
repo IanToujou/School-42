@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 10:49:02 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 10:51:37 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 11:15:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,15 @@ void	util_color_range(t_color color, char **values)
 		util_color_free_array(values);
 		error_throw(ERROR_PARSE_COLOR);
 	}
+}
+
+int	util_color_range_check(t_color color)
+{
+	if (color.r < 0 || color.r > 255
+		|| color.g < 0 || color.g > 255
+		|| color.b < 0 || color.b > 255)
+	{
+		return (0);
+	}
+	return (1);
 }
