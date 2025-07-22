@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_parse.c                                       :+:      :+:    :+:   */
+/*   util_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 09:46:36 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 08:53:07 by ibour            ###   ########.fr       */
+/*   Created: 2025/07/22 09:06:26 by ibour             #+#    #+#             */
+/*   Updated: 2025/07/22 09:06:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-void	init_parse(t_data *data, const char *file)
+void	util_array_free(void **array)
 {
-	int	fd;
+	int	i;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		error_throw(ERROR_FILE_INVALID);
-	data->map.depth = util_map_parse_depth(fd);
-	data->map.width = util_map_parse_width(file);
-	close(fd);
-	if (data->map.depth <= 0 || data->map.width <= 0)
+	if (!array)
+		return ;
+	i = 0;
+	while (array[i])
 	{
-		exit_data(data);
-		error_throw(ERROR_FILE_INVALID);
+		free(array[i]);
+		i++;
 	}
-	init_map_array(data);
-	init_map_read(data, file);
+	free(array);
 }

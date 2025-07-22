@@ -233,6 +233,9 @@ add_executable(FdF
 		Core/FdF/src/exit/exit_data.c
 		Core/FdF/src/exit/exit_array.c
 		Core/FdF/src/util/util_map.c
+		Core/FdF/src/init/init_map.c
+		Core/FdF/src/util/util_num.c
+		Core/FdF/src/util/util_array.c
 )
 
 add_executable(Philosophers

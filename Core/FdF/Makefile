@@ -19,6 +19,7 @@ SRC =	src/error/error_throw.c \
 		src/gfx/gfx_render.c \
 		src/init/init_data.c \
 		src/init/init_hook.c \
+		src/init/init_map.c \
 		src/init/init_mlx.c \
 		src/init/init_parse.c \
 		src/main/main.c \

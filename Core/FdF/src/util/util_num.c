@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 13:44:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/07 17:58:53 by ibour            ###   ########.fr       */
+/*   Created: 2025/07/22 08:58:23 by ibour             #+#    #+#             */
+/*   Updated: 2025/07/22 08:59:03 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minirt.h"
+#include "../../include/fdf.h"
 
 static int	validate_and_get_sign(char *str, int *i)
 {
