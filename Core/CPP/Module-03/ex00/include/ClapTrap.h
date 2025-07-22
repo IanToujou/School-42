@@ -9,7 +9,9 @@ class ClapTrap {
 	unsigned int energyPoints;
 	unsigned int attackDamage;
 public:
+	ClapTrap();
 	explicit ClapTrap(const std::string &name);
+	ClapTrap(const ClapTrap &copy);
 	~ClapTrap();
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
