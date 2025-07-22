@@ -6,28 +6,39 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:45:40 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:50:12 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:26:34 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
 
-/**
- * Parses a plane description from a string array and adds it to the scene.
- *
- * @param scene Pointer to the scene object where the plane will be added.
- * @param str Array of strings containing the plane description.
- *
- * @throws ERROR_PARSE_CAMERA if the input array does not contain
- * exactly four elements.
- * @throws ERROR_MALLOC if memory allocation for the plane fails.
- */
-void	parse_plane(t_scene *scene, char **str)
+static int	parse_check(char **str)
+{
+	if (util_array_count((void **)str) < 4)
+		return (ERROR_PARSE_PLANE);
+	if (util_vector_check(str[1]))
+		return (ERROR_PARSE_VECTOR);
+	if (util_vector_check(str[2]))
+		return (ERROR_PARSE_VECTOR);
+	if (util_color_check(str[3]))
+		return (ERROR_PARSE_COLOR);
+	return (0);
+}
+
+void	parse_plane(t_scene *scene, char **str, char *line, const int fd)
 {
 	t_plane	*plane;
+	int		error;
 
-	if (util_array_count((void **)str) < 4)
-		error_throw(ERROR_PARSE_PLANE);
+	error = parse_check(str);
+	if (error != 0)
+	{
+		util_array_free((void **) str);
+		free(line);
+		util_array_gnl_free(fd);
+		exit_data_pre_render(scene);
+		error_throw(error);
+	}
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		error_throw(ERROR_MALLOC);

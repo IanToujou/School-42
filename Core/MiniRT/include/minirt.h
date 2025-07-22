@@ -6,7 +6,7 @@
 /*   By: mpoesy <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:28:30 by mpoesy            #+#    #+#             */
-/*   Updated: 2025/07/22 10:12:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:31:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,18 +194,19 @@ int		event_keypress(int keycode, t_scene *scene);
 
 // Parse
 void	parse_ambient(t_scene *scene, char **str, char *line, int fd);
-void	parse_camera(t_scene *scene, char **str);
-void	parse_plane(t_scene *scene, char **str);
-void	parse_sphere(t_scene *scene, char **str);
-void	parse_cylinder(t_scene *scene, char **str);
-void	parse_spotlight(t_scene *scene, char **str);
-void	parse_cone(t_scene *scene, char **str);
+void	parse_camera(t_scene *scene, char **str, char *line, int fd);
+void	parse_plane(t_scene *scene, char **str, char *line, int fd);
+void	parse_sphere(t_scene *scene, char **str, char *line, int fd);
+void	parse_cylinder(t_scene *scene, char **str, char *line, int fd);
+void	parse_spotlight(t_scene *scene, char **str, char *line, int fd);
+void	parse_cone(t_scene *scene, char **str, char *line, int fd);
 
 // Math utilities
 
 int		util_num_check(char *str);
 double	util_num_parse(char *str);
 t_vec3	util_vector_parse(char *str);
+int		util_vector_check(char *str);
 int		util_color_check(char *str);
 t_color	util_color_parse(char *str);
 void	util_array_free(void **array);

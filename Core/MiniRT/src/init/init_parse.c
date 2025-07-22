@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:47 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 10:12:42 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:21:10 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ static void	init_parse_line(t_scene *scene, char *line, int fd)
 	if (!ft_strcmp("A", array[0]))
 		parse_ambient(scene, array, line, fd);
 	else if (!ft_strcmp("C", array[0]))
-		parse_camera(scene, array);
+		parse_camera(scene, array, line, fd);
 	else if (!ft_strcmp("pl", array[0]))
-		parse_plane(scene, array);
+		parse_plane(scene, array, line, fd);
 	else if (!ft_strcmp("sp", array[0]))
-		parse_sphere(scene, array);
+		parse_sphere(scene, array, line, fd);
 	else if (!ft_strcmp("L", array[0]))
-		parse_spotlight(scene, array);
+		parse_spotlight(scene, array, line, fd);
 	else if (!ft_strcmp("cy", array[0]))
-		parse_cylinder(scene, array);
+		parse_cylinder(scene, array, line, fd);
 	else if (!ft_strcmp("co", array[0]))
-		parse_cone(scene, array);
+		parse_cone(scene, array, line, fd);
 	util_array_free((void **) array);
 	array = NULL;
 }

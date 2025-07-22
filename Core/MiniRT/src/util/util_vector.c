@@ -6,11 +6,38 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:48:01 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:47:14 by ibour            ###   ########.fr       */
+/*   Updated: 2025/07/22 10:31:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minirt.h"
+
+int	util_vector_check(char *str)
+{
+	char	**values;
+	int	i;
+
+	if (!str)
+		return (0);
+	values = ft_split(str, ',');
+	if (!values)
+		error_throw(ERROR_MALLOC);
+	i = 0;
+	while (values[i])
+		i++;
+	if (i != 3)
+	{
+		util_array_free((void **) values);
+		return (0);
+	}
+	if (util_num_check(values[0]) == 0 || util_num_check(values[1]) == 0 || util_num_check(values[2]) == 0)
+	{
+		util_array_free((void **) values);
+		return (0);
+	}
+	util_array_free((void **) values);
+	return (1);
+}
 
 t_vec3	util_vector_parse(char *str)
 {
