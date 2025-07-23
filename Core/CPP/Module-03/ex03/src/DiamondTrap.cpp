@@ -2,12 +2,20 @@
 
 #include <iostream>
 
+DiamondTrap::DiamondTrap() {
+	std::cout << "DiamondTrap " << name << ": Default constructor called" << std::endl;
+}
+
 DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_trap"), ScavTrap(name), FragTrap(name) {
 	this->name = name;
 	this->hitPoints = FragTrap::hitPoints;
 	this->energyPoints = ScavTrap::energyPoints;
 	this->attackDamage = FragTrap::attackDamage;
 	std::cout << "DiamondTrap " << name << ": Constructor called" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &src) {
+
 }
 
 DiamondTrap::~DiamondTrap() {
