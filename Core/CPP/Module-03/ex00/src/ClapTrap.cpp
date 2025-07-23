@@ -3,7 +3,7 @@
 #include <iostream>
 #include <ostream>
 
-ClapTrap::ClapTrap(): ClapTrap("Default") {
+ClapTrap::ClapTrap(): name("Default"), hitPoints(10), energyPoints(10), attackDamage(0) {
 	std::cout << "ClapTrap " << name << ": Default constructor called" << std::endl;
 }
 
@@ -11,13 +11,8 @@ ClapTrap::ClapTrap(const std::string &name): name(name), hitPoints(10), energyPo
 	std::cout << "ClapTrap " << name << ": Constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &copy)
-{
-	this->name = copy.name;
-	this->hitPoints = copy.hitPoints;
-	this->energyPoints = copy.energyPoints;
-	this->attackDamage = copy.attackDamage;
-	*this = copy;
+ClapTrap::ClapTrap(const ClapTrap &copy): name(copy.name), hitPoints(copy.hitPoints), energyPoints(copy.energyPoints), attackDamage(copy.attackDamage) {
+	std::cout << "ClapTrap " << name << ": Copy constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
@@ -46,10 +41,12 @@ void ClapTrap::beRepaired(const unsigned int amount) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
+	if (this == &src)
+		return *this;
 	std::cout << "ClapTrap " << src.name << ": Copy assignment operator called" << std::endl;
-	this->name = src.name;
-	this->hitPoints = src.hitPoints;
-	this->energyPoints = src.energyPoints;
-	this->attackDamage = src.attackDamage;
+	name = src.name;
+	hitPoints = src.hitPoints;
+	energyPoints = src.energyPoints;
+	attackDamage = src.attackDamage;
 	return *this;
 }

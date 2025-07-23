@@ -6,9 +6,11 @@
 class ScavTrap: public ClapTrap {
 	bool guarding;
 public:
+	ScavTrap();
+	ScavTrap(const ScavTrap &src);
 	explicit ScavTrap(const std::string &name);
-	~ScavTrap();
 	ScavTrap &operator=(const ScavTrap &src);
+	~ScavTrap();
 	void attack(const std::string &target);
 	void guardGate();
 };
