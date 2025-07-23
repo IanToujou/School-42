@@ -41,9 +41,9 @@ void ClapTrap::beRepaired(const unsigned int amount) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
+	std::cout << "ClapTrap " << src.name << ": Copy assignment operator called" << std::endl;
 	if (this == &src)
 		return *this;
-	std::cout << "ClapTrap " << src.name << ": Copy assignment operator called" << std::endl;
 	name = src.name;
 	hitPoints = src.hitPoints;
 	energyPoints = src.energyPoints;
