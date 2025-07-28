@@ -21,7 +21,7 @@ ScavTrap::ScavTrap(const ScavTrap &src): ClapTrap(src), guarding(src.guarding) {
 	std::cout << "ScavTrap " << src.name << ": Copy constructor called" << std::endl;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &src): guarding(src.guarding) {
+ScavTrap &ScavTrap::operator=(const ScavTrap &src) {
 	std::cout << "ScavTrap " << src.name << ": Copy assignment operator called" << std::endl;
 	if (this == &src)
 		return *this;
