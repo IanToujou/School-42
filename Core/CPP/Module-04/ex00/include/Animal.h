@@ -8,11 +8,11 @@ protected:
 	std::string type;
 public:
 	Animal();
-	Animal(const std::string &type);
-	Animal(const Animal &copy);
+	explicit Animal(const std::string &type);
+	Animal(const Animal &src);
 	Animal &operator=(const Animal &src);
-	~Animal();
-	void makeSound() const;
+	virtual ~Animal();
+	virtual void makeSound() const;
 	std::string getType() const;
 };
 

@@ -502,4 +502,9 @@ add_executable(CPP-04-EX00
 		Core/CPP/Module-04/ex00/include/Cat.h
 		Core/CPP/Module-04/ex00/src/Dog.cpp
 		Core/CPP/Module-04/ex00/include/Dog.h
+		Core/CPP/Module-04/ex00/src/WrongAnimal.cpp
+		Core/CPP/Module-04/ex00/include/WrongAnimal.h
+		Core/CPP/Module-04/ex00/src/WrongCat.cpp
+		Core/CPP/Module-04/ex00/include/WrongCat.h
+		Core/CPP/Module-04/ex00/src/main.cpp
 )

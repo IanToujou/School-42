@@ -2,10 +2,10 @@
 #define DOG_H
 #include "Animal.h"
 
-class Dog: public Animal {
+class Dog : public Animal {
 public:
 	Dog();
-	Dog(const Dog &copy);
+	Dog(const Dog &src);
 	Dog &operator=(const Dog &src);
 	~Dog();
 	void makeSound() const;

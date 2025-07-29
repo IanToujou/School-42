@@ -8,15 +8,15 @@ Animal::Animal(const std::string &type): type(type) {
 	std::cout << "Animal " << type << ": Constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &copy) {
+Animal::Animal(const Animal &src) {
 	std::cout << "Animal " << type << ": Copy constructor called" << std::endl;
-	this->type = copy.type;
+	this->type = src.type;
 }
 
 Animal &Animal::operator=(const Animal &src) {
+	std::cout << "Animal " << type << ": Copy assignment operator called" << std::endl;
 	if (this == &src)
 		return *this;
-	std::cout << "Animal " << type << ": Copy assignment operator called" << std::endl;
 	this->type = src.type;
 	return *this;
 }
