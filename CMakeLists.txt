@@ -517,3 +517,5 @@ add_executable(CPP-04-EX01 Core/CPP/Module-04/ex01/src/Brain.cpp Core/CPP/Module
 		Core/CPP/Module-04/ex01/include/Animal.h
 		Core/CPP/Module-04/ex01/src/main.cpp
 )
+add_executable(CPP-04-EX02 Core/CPP/Module-04/ex02/src/Animal.cpp Core/CPP/Module-04/ex02/src/Brain.cpp Core/CPP/Module-04/ex02/src/Cat.cpp Core/CPP/Module-04/ex02/src/Dog.cpp Core/CPP/Module-04/ex02/src/main.cpp Core/CPP/Module-04/ex02/include/Dog.h Core/CPP/Module-04/ex02/include/Cat.h Core/CPP/Module-04/ex02/include/Brain.h Core/CPP/Module-04/ex02/include/Animal.h)
+add_executable(CPP-00-EX03 Core/CPP/Module-04/ex03/src/main.cpp)
