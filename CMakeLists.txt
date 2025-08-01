@@ -509,14 +509,37 @@ add_executable(CPP-04-EX00
 		Core/CPP/Module-04/ex00/include/WrongCat.h
 		Core/CPP/Module-04/ex00/src/main.cpp
 )
-add_executable(CPP-04-EX01 Core/CPP/Module-04/ex01/src/Brain.cpp Core/CPP/Module-04/ex01/include/Brain.h
-		Core/CPP/Module-04/ex01/src/Animal.cpp
-		Core/CPP/Module-04/ex01/src/Cat.cpp
-		Core/CPP/Module-04/ex01/src/Dog.cpp
-		Core/CPP/Module-04/ex01/include/Dog.h
-		Core/CPP/Module-04/ex01/include/Cat.h
-		Core/CPP/Module-04/ex01/include/Animal.h
-		Core/CPP/Module-04/ex01/src/main.cpp
+add_executable(CPP-04-EX01
+		"Core/CPP/Module-04/ex01/src/Brain.cpp"
+		"Core/CPP/Module-04/ex01/include/Brain.h"
+		"Core/CPP/Module-04/ex01/src/Animal.cpp"
+		"Core/CPP/Module-04/ex01/src/Cat.cpp"
+		"Core/CPP/Module-04/ex01/src/Dog.cpp"
+		"Core/CPP/Module-04/ex01/include/Dog.h"
+		"Core/CPP/Module-04/ex01/include/Cat.h"
+		"Core/CPP/Module-04/ex01/include/Animal.h"
+		"Core/CPP/Module-04/ex01/src/main.cpp"
 )
-add_executable(CPP-04-EX02 Core/CPP/Module-04/ex02/src/Animal.cpp Core/CPP/Module-04/ex02/src/Brain.cpp Core/CPP/Module-04/ex02/src/Cat.cpp Core/CPP/Module-04/ex02/src/Dog.cpp Core/CPP/Module-04/ex02/src/main.cpp Core/CPP/Module-04/ex02/include/Dog.h Core/CPP/Module-04/ex02/include/Cat.h Core/CPP/Module-04/ex02/include/Brain.h Core/CPP/Module-04/ex02/include/Animal.h)
-add_executable(CPP-00-EX03 Core/CPP/Module-04/ex03/src/main.cpp)
+add_executable(CPP-04-EX02
+		"Core/CPP/Module-04/ex02/src/Animal.cpp"
+		"Core/CPP/Module-04/ex02/src/Brain.cpp"
+		"Core/CPP/Module-04/ex02/src/Cat.cpp"
+		"Core/CPP/Module-04/ex02/src/Dog.cpp"
+		"Core/CPP/Module-04/ex02/src/main.cpp"
+		"Core/CPP/Module-04/ex02/include/Dog.h"
+		"Core/CPP/Module-04/ex02/include/Cat.h"
+		"Core/CPP/Module-04/ex02/include/Brain.h"
+		"Core/CPP/Module-04/ex02/include/Animal.h"
+)
+
+add_executable(CPP-04-EX03
+		"Core/CPP/Module-04/ex03/src/AMateria.cpp"
+		"Core/CPP/Module-04/ex03/include/AMateria.h"
+		"Core/CPP/Module-04/ex03/src/ICharacter.cpp"
+		"Core/CPP/Module-04/ex03/src/main.cpp"
+		"Core/CPP/Module-04/ex03/include/ICharacter.h"
+		Core/CPP/Module-04/ex03/src/MateriaIce.cpp
+		Core/CPP/Module-04/ex03/include/MateriaIce.h
+		Core/CPP/Module-04/ex03/include/MateriaCure.cpp
+		Core/CPP/Module-04/ex03/include/MateriaCure.h
+)
