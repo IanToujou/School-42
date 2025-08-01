@@ -23,7 +23,10 @@ SRC =	src/error/error_throw.c \
 		src/init/init_mlx.c \
 		src/init/init_parse.c \
 		src/main/main.c \
-		src/util/util_map.c
+		src/util/util_map.c \
+		src/util/num.c \
+		src/util_num_2.c \
+		src/util_array.c
 
 OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))

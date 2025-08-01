@@ -51,10 +51,8 @@ int	util_map_parse_width(const char *filename)
 		}
 		i++;
 	}
-
 	if (in_number)
 		width++;
-
 	close(fd);
 	return (width);
 }
