@@ -11,6 +11,13 @@ ERASE := \033[2K\r
 END := \033[0m
 
 SRC =	src/main.cpp \
+		src/AMateria.cpp \
+		src/Character.cpp \
+		src/ICharacter.cpp \
+		src/MateriaCure.cpp \
+		src/MateriaIce.cpp \
+		src/MateriaSource.cpp \
+		src/IMateriaSource.cpp
 
 OBJ = $(SRC:.cpp=.o)
 TOTAL_FILES = $(words $(SRC))

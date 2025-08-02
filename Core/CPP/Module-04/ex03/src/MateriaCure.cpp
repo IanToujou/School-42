@@ -1,4 +1,4 @@
-#include "MateriaCure.h"
+#include "../include/MateriaCure.h"
 
 #include <iostream>
 

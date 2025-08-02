@@ -1,5 +1,5 @@
-#ifndef IMATERIA_H
-#define IMATERIA_H
+#ifndef AMATERIA_H
+#define AMATERIA_H
 #include <string>
 
 #include "ICharacter.h"
