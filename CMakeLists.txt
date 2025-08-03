@@ -563,3 +563,13 @@ add_executable(CPP-05-EX01
 		"Core/CPP/Module-05/ex01/src/Form.cpp"
 		"Core/CPP/Module-05/ex01/src/main.cpp"
 )
+
+add_executable(CPP-05-EX02
+		"Core/CPP/Module-05/ex02/include/Bureaucrat.h"
+		"Core/CPP/Module-05/ex02/src/Bureaucrat.cpp"
+		"Core/CPP/Module-05/ex02/include/AForm.h"
+		"Core/CPP/Module-05/ex02/src/AForm.cpp"
+		"Core/CPP/Module-05/ex02/src/main.cpp"
+		Core/CPP/Module-05/ex02/src/ShrubberyCreationForm.cpp
+		Core/CPP/Module-05/ex02/include/ShrubberyCreationForm.h
+)

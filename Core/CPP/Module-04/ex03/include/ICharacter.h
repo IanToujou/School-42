@@ -1,8 +1,7 @@
 #ifndef ICHARACTER_H
 #define ICHARACTER_H
-
-#include <string>
 #include "AMateria.h"
+#include <string>
 
 class ICharacter {
 public:
