@@ -555,3 +555,11 @@ add_executable(CPP-05-EX00
 		"Core/CPP/Module-05/ex00/src/Bureaucrat.cpp"
 		"Core/CPP/Module-05/ex00/src/main.cpp"
 )
+
+add_executable(CPP-05-EX01
+		"Core/CPP/Module-05/ex01/include/Bureaucrat.h"
+		"Core/CPP/Module-05/ex01/src/Bureaucrat.cpp"
+		"Core/CPP/Module-05/ex01/include/Form.h"
+		"Core/CPP/Module-05/ex01/src/Form.cpp"
+		"Core/CPP/Module-05/ex01/src/main.cpp"
+)
