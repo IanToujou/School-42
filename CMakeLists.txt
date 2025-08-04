@@ -538,8 +538,38 @@ add_executable(CPP-04-EX03
 		"Core/CPP/Module-04/ex03/src/ICharacter.cpp"
 		"Core/CPP/Module-04/ex03/src/main.cpp"
 		"Core/CPP/Module-04/ex03/include/ICharacter.h"
-		Core/CPP/Module-04/ex03/src/MateriaIce.cpp
-		Core/CPP/Module-04/ex03/include/MateriaIce.h
-		Core/CPP/Module-04/ex03/include/MateriaCure.cpp
-		Core/CPP/Module-04/ex03/include/MateriaCure.h
+		"Core/CPP/Module-04/ex03/src/MateriaIce.cpp"
+		"Core/CPP/Module-04/ex03/include/MateriaIce.h"
+        "Core/CPP/Module-04/ex03/src/MateriaCure.cpp"
+		"Core/CPP/Module-04/ex03/include/MateriaCure.h"
+		"Core/CPP/Module-04/ex03/src/Character.cpp"
+		"Core/CPP/Module-04/ex03/include/Character.h"
+		"Core/CPP/Module-04/ex03/src/MateriaSource.cpp"
+		"Core/CPP/Module-04/ex03/include/MateriaSource.h"
+		"Core/CPP/Module-04/ex03/src/IMateriaSource.cpp"
+		"Core/CPP/Module-04/ex03/include/IMateriaSource.h"
+)
+
+add_executable(CPP-05-EX00
+		"Core/CPP/Module-05/ex00/include/Bureaucrat.h"
+		"Core/CPP/Module-05/ex00/src/Bureaucrat.cpp"
+		"Core/CPP/Module-05/ex00/src/main.cpp"
+)
+
+add_executable(CPP-05-EX01
+		"Core/CPP/Module-05/ex01/include/Bureaucrat.h"
+		"Core/CPP/Module-05/ex01/src/Bureaucrat.cpp"
+		"Core/CPP/Module-05/ex01/include/Form.h"
+		"Core/CPP/Module-05/ex01/src/Form.cpp"
+		"Core/CPP/Module-05/ex01/src/main.cpp"
+)
+
+add_executable(CPP-05-EX02
+		"Core/CPP/Module-05/ex02/include/Bureaucrat.h"
+		"Core/CPP/Module-05/ex02/src/Bureaucrat.cpp"
+		"Core/CPP/Module-05/ex02/include/AForm.h"
+		"Core/CPP/Module-05/ex02/src/AForm.cpp"
+		"Core/CPP/Module-05/ex02/src/main.cpp"
+		Core/CPP/Module-05/ex02/src/ShrubberyCreationForm.cpp
+		Core/CPP/Module-05/ex02/include/ShrubberyCreationForm.h
 )
