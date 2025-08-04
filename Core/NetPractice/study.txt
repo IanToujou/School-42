@@ -1,0 +1,20 @@
+Level 8:
+
+/28 everywhere
+1, 14, 30, 17
+
+Level 9:
+
+2 Internet routes (42.42.42.0/24 and 142.168.31.0/24)
+Right: 42.42.42.1 and 2 mask 24
+Bottom: IP mask 18
+Middle: Leave IP and add 42 and x.x.128.0/18
+Internet: 42.42.42.1 and first ip
+Left: ips from I route
+
+Level 10:
+
+Right: Mask .128
+Left: Mask /24
+Middle: 225 mask 28
+Bottom: mask .240

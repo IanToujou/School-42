@@ -239,6 +239,7 @@ function next_eval()
     var lvl;
     do {
 	lvl = Math.round(6 + 4*Math.random());
+    if (lvl === 9) lvl = 10;
     } while (g_eval_lvls.includes(lvl))
     g_eval_lvls.push(lvl);
     localStorage.setItem("g_my_eval", JSON.stringify(g_eval_lvls));

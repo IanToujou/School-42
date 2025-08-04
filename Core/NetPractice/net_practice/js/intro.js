@@ -8,6 +8,7 @@ function save_login()
     if (login == '')
     {
 	var lvl = Math.round(6 + 4*Math.random());
+    if (lvl === 9) lvl = 10;
 	localStorage.setItem("g_my_eval", JSON.stringify([lvl]));
 	window.location = "level"+lvl+".html";
     }
