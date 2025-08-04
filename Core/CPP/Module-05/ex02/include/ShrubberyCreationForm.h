@@ -10,7 +10,7 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm &src);
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
 	~ShrubberyCreationForm();
-	void execute(const Bureaucrat &executor) const;
+	void beExecuted(const Bureaucrat &executor) const;
 	std::string getTarget() const;
 };
 

@@ -3,24 +3,20 @@
 
 #include "../include/Bureaucrat.h"
 #include "../include/Form.h"
+#include "../include/ShrubberyCreationForm.h"
 
 int main() {
 
 	const Bureaucrat *bureaucrat = new Bureaucrat("John Smith", 50);
-	const Form *validForm = new Form("Valid Form", 100, 100);
-	const Form *highForm = new Form("High Form", 5, 100);
+	const ShrubberyCreationForm *shrubbery = new ShrubberyCreationForm("Home");
 
-	std::cout << bureaucrat->getGrade() << std::endl;
 	std::cout << bureaucrat << std::endl;
+	std::cout << shrubbery << std::endl;
 
-	std::cout << validForm << std::endl;
-	std::cout << highForm << std::endl;
+	shrubbery->beSigned(bureaucrat);
+	shrubbery->beExecuted(*bureaucrat);
 
-	validForm->beSigned(bureaucrat);
-	highForm->beSigned(bureaucrat);
-
+	delete shrubbery;
 	delete bureaucrat;
-	delete validForm;
-	delete highForm;
 
 }

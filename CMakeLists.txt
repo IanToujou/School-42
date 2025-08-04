@@ -572,4 +572,8 @@ add_executable(CPP-05-EX02
 		"Core/CPP/Module-05/ex02/src/main.cpp"
 		Core/CPP/Module-05/ex02/src/ShrubberyCreationForm.cpp
 		Core/CPP/Module-05/ex02/include/ShrubberyCreationForm.h
+		Core/CPP/Module-05/ex02/src/RobotomyRequestForm.cpp
+		Core/CPP/Module-05/ex02/include/RobotomyRequestForm.h
+		Core/CPP/Module-05/ex02/src/PresidentialPardonForm.cpp
+		Core/CPP/Module-05/ex02/include/PresidentialPardonForm.h
 )
