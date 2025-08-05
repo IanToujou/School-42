@@ -593,3 +593,8 @@ add_executable(CPP-05-EX03
 		Core/CPP/Module-05/ex03/src/Intern.cpp
 		Core/CPP/Module-05/ex03/include/Intern.h
 )
+
+add_executable(CPP-06-EX00
+		"Core/CPP/Module-06/ex00/include/ScalarConverter.h"
+		"Core/CPP/Module-06/ex00/src/ScalarConverter.cpp"
+)
