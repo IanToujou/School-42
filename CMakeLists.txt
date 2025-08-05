@@ -570,10 +570,24 @@ add_executable(CPP-05-EX02
 		"Core/CPP/Module-05/ex02/include/AForm.h"
 		"Core/CPP/Module-05/ex02/src/AForm.cpp"
 		"Core/CPP/Module-05/ex02/src/main.cpp"
-		Core/CPP/Module-05/ex02/src/ShrubberyCreationForm.cpp
-		Core/CPP/Module-05/ex02/include/ShrubberyCreationForm.h
-		Core/CPP/Module-05/ex02/src/RobotomyRequestForm.cpp
-		Core/CPP/Module-05/ex02/include/RobotomyRequestForm.h
-		Core/CPP/Module-05/ex02/src/PresidentialPardonForm.cpp
-		Core/CPP/Module-05/ex02/include/PresidentialPardonForm.h
+		"Core/CPP/Module-05/ex02/src/ShrubberyCreationForm.cpp"
+		"Core/CPP/Module-05/ex02/include/ShrubberyCreationForm.h"
+		"Core/CPP/Module-05/ex02/src/RobotomyRequestForm.cpp"
+		"Core/CPP/Module-05/ex02/include/RobotomyRequestForm.h"
+		"Core/CPP/Module-05/ex02/src/PresidentialPardonForm.cpp"
+		"Core/CPP/Module-05/ex02/include/PresidentialPardonForm.h"
+)
+
+add_executable(CPP-05-EX03
+		"Core/CPP/Module-05/ex03/include/Bureaucrat.h"
+		"Core/CPP/Module-05/ex03/src/Bureaucrat.cpp"
+		"Core/CPP/Module-05/ex03/include/AForm.h"
+		"Core/CPP/Module-05/ex03/src/AForm.cpp"
+		"Core/CPP/Module-05/ex03/src/main.cpp"
+		"Core/CPP/Module-05/ex03/src/ShrubberyCreationForm.cpp"
+		"Core/CPP/Module-05/ex03/include/ShrubberyCreationForm.h"
+		"Core/CPP/Module-05/ex03/src/RobotomyRequestForm.cpp"
+		"Core/CPP/Module-05/ex03/include/RobotomyRequestForm.h"
+		"Core/CPP/Module-05/ex03/src/PresidentialPardonForm.cpp"
+		"Core/CPP/Module-05/ex03/include/PresidentialPardonForm.h"
 )
