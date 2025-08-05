@@ -590,4 +590,6 @@ add_executable(CPP-05-EX03
 		"Core/CPP/Module-05/ex03/include/RobotomyRequestForm.h"
 		"Core/CPP/Module-05/ex03/src/PresidentialPardonForm.cpp"
 		"Core/CPP/Module-05/ex03/include/PresidentialPardonForm.h"
+		Core/CPP/Module-05/ex03/src/Intern.cpp
+		Core/CPP/Module-05/ex03/include/Intern.h
 )
