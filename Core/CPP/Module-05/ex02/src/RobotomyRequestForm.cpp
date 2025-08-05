@@ -1,4 +1,6 @@
 #include "../include/RobotomyRequestForm.h"
+#include "../include/AForm.h"
+#include "cstdlib"
 
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), target("Default") {}
 
@@ -32,4 +34,9 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 
 std::string RobotomyRequestForm::getTarget() const {
 	return target;
+}
+
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm *form) {
+	os << "Name: " << form->getName() << ", MinSignGrade: " << form->getMinSignGrade() << ", MinExecuteGrade: " << form->getMinExecuteGrade() << ", IsSigned: " << form->getIsSigned() << ".";
+	return os;
 }

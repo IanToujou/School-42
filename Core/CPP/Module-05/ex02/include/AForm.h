@@ -3,6 +3,8 @@
 #include <string>
 #include "Bureaucrat.h"
 
+class Bureaucrat;
+
 class AForm {
 protected:
 	AForm();
@@ -27,6 +29,6 @@ public:
 	};
 };
 
-std::ostream &operator<<(std::ostream &os, AForm *AForm);
+std::ostream &operator<<(std::ostream &os, const AForm *form);
 
 #endif

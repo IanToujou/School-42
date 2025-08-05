@@ -1,4 +1,5 @@
 #include "../include/Form.h"
+#include "../include/Bureaucrat.h"
 
 Form::Form(): name("DefaultForm"), minSignGrade(150), minExecuteGrade(150), isSigned(false) {}
 
@@ -26,11 +27,11 @@ Form::~Form() {}
 
 void Form::beSigned(const Bureaucrat &bureaucrat) {
 	if (minSignGrade < bureaucrat.getGrade()) {
-		std::cout << bureaucrat.getName() << " couldn't sign form " << getName() << " because the grade is too low.";
+		std::cout << bureaucrat.getName() << " couldn't sign form " << getName() << " because the grade is too low." << std::endl;
 		return;
 	}
 	isSigned = true;
-	std::cout << bureaucrat.getName() << " signed form " << getName() << ".";
+	std::cout << bureaucrat.getName() << " signed form " << getName() << "." << std::endl;
 }
 
 std::string Form::getName() const {

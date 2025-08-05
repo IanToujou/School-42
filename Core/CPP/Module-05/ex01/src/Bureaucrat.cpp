@@ -1,4 +1,5 @@
 #include "../include/Bureaucrat.h"
+#include "../include/Form.h"
 
 Bureaucrat::Bureaucrat(): name("Default"), grade(150) {}
 
@@ -43,7 +44,7 @@ void Bureaucrat::setGrade(const int amount) {
 	grade = amount;
 }
 
-void Bureaucrat::signForm(const Form &form) {
+void Bureaucrat::signForm(Form &form) const {
 	form.beSigned(*this);
 }
 

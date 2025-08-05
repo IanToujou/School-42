@@ -4,6 +4,8 @@
 
 #include "Bureaucrat.h"
 
+class Bureaucrat;
+
 class Form {
 	const std::string name;
 	const int minSignGrade;
@@ -22,6 +24,6 @@ public:
 	bool getIsSigned() const;
 };
 
-std::ostream &operator<<(std::ostream &os, Form *form);
+std::ostream &operator<<(std::ostream &os, const Form *form);
 
 #endif

@@ -49,7 +49,7 @@ bool AForm::getIsSigned() const {
 	return isSigned;
 }
 
-std::ostream &operator<<(std::ostream &os, const AForm *AForm) {
-	os << "Name: " << AForm->getName() << ", MinSignGrade: " << AForm->getMinSignGrade() << ", MinExecuteGrade: " << AForm->getMinExecuteGrade() << ", IsSigned: " << AForm->getIsSigned() << ".";
+std::ostream &operator<<(std::ostream &os, const AForm *form) {
+	os << "Name: " << form->getName() << ", MinSignGrade: " << form->getMinSignGrade() << ", MinExecuteGrade: " << form->getMinExecuteGrade() << ", IsSigned: " << form->getIsSigned() << ".";
 	return os;
 }

@@ -5,6 +5,8 @@
 
 #include "Form.h"
 
+class Form;
+
 class Bureaucrat {
 	const std::string name;
 	int grade;
@@ -20,7 +22,7 @@ public:
 	std::string getName() const;
 	int getGrade() const;
 	void setGrade(int amount);
-	void signForm(const Form &form);
+	void signForm(Form &form) const;
 	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char *what() const throw();

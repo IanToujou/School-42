@@ -11,7 +11,10 @@ ERASE := \033[2K\r
 END := \033[0m
 
 SRC =	src/Bureaucrat.cpp \
-		src/Form.cpp \
+		src/AForm.cpp \
+		src/PresidentialPardonForm.cpp \
+		src/RobotomyRequestForm.cpp \
+		src/ShrubberyCreationForm.cpp \
 		src/main.cpp
 
 OBJ = $(SRC:.cpp=.o)

@@ -2,6 +2,9 @@
 #define SHRUBBERYCREATIONFORM_H
 #include "AForm.h"
 
+class AForm;
+class Bureaucrat;
+
 class ShrubberyCreationForm : public AForm {
 	ShrubberyCreationForm();
 	const std::string target;

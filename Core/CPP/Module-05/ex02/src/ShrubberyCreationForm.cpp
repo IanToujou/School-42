@@ -1,4 +1,5 @@
 #include "../include/ShrubberyCreationForm.h"
+#include "../include/AForm.h"
 
 #include <fstream>
 
@@ -15,7 +16,8 @@ void ShrubberyCreationForm::beExecuted(const Bureaucrat &executor) const {
 		throw Bureaucrat::GradeTooLowException();
 	if (!isSigned)
 		throw FormNotSignedException();
-	std::ofstream file(target + "_shrubbery");
+	const std::string name = target + "_shrubbery";
+	std::ofstream file(name.c_str());
 	file << "       _-_\n";
 	file << "    /~~   ~~\\\n";
 	file << " /~~         ~~\\\n";
@@ -37,4 +39,9 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 std::string ShrubberyCreationForm::getTarget() const {
 	return target;
+}
+
+std::ostream &operator<<(std::ostream &os, const ShrubberyCreationForm *form) {
+	os << "Name: " << form->getName() << ", MinSignGrade: " << form->getMinSignGrade() << ", MinExecuteGrade: " << form->getMinExecuteGrade() << ", IsSigned: " << form->getIsSigned() << ".";
+	return os;
 }

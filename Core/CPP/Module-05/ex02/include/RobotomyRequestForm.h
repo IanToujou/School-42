@@ -2,6 +2,9 @@
 #define ROBOTOMYREQUESTFORM_H
 #include "AForm.h"
 
+class AForm;
+class Bureaucrat;
+
 class RobotomyRequestForm : public AForm {
 	RobotomyRequestForm();
 	const std::string target;
@@ -13,5 +16,7 @@ public:
 	void beExecuted(const Bureaucrat &executor) const;
 	std::string getTarget() const;
 };
+
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm *form);
 
 #endif

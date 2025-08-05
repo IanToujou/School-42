@@ -4,7 +4,8 @@
 #include <iostream>
 
 #include "AForm.h"
-#include "AForm.h"
+
+class AForm;
 
 class Bureaucrat {
 	const std::string name;
@@ -21,8 +22,8 @@ public:
 	std::string getName() const;
 	int getGrade() const;
 	void setGrade(int amount);
-	void signForm(const AForm &form);
-	void executeForm(const AForm &form);
+	void signForm(AForm &form) const;
+	void executeForm(AForm &form) const;
 	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char *what() const throw();

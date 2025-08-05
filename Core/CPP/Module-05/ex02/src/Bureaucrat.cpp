@@ -43,12 +43,12 @@ void Bureaucrat::setGrade(const int amount) {
 	grade = amount;
 }
 
-void Bureaucrat::signForm(const AForm &form) {
+void Bureaucrat::signForm(AForm &form) const {
 	form.beSigned(*this);
 }
 
-void Bureaucrat::executeForm(const AForm &form) {
-	form.beExecuted(*this);
+void Bureaucrat::executeForm(AForm &form) const {
+	form.beSigned(*this);
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
