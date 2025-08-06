@@ -3,7 +3,7 @@
 
 Form::Form(): name("DefaultForm"), minSignGrade(150), minExecuteGrade(150), isSigned(false) {}
 
-Form::Form(const std::string &name, const int minSignGrade, const int minExecuteGrade): name(name), minSignGrade(150), minExecuteGrade(150), isSigned(false) {
+Form::Form(const std::string &name, const int minSignGrade, const int minExecuteGrade): name(name), minSignGrade(minSignGrade), minExecuteGrade(minExecuteGrade), isSigned(false) {
 	if (minSignGrade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (minExecuteGrade < 1)

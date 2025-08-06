@@ -1,5 +1,6 @@
 #include "../include/ScalarConverter.h"
 
+#include <cmath>
 #include <iostream>
 #include <ostream>
 
@@ -67,7 +68,7 @@ void printInteger(const std::string &str, const size_t &length) {
 	const long num = std::atol(str.c_str());
 
 	std::cout << "char: ";
-	if (length < 0 || length > 127) {
+	if (length > 127) {
 		std::cout << "Impossible" << std::endl;
 	} else if (!isprint(num)) {
 		std::cout << "Non displayable" << std::endl;
@@ -84,15 +85,13 @@ void printInteger(const std::string &str, const size_t &length) {
 
 void printCharacter(const std::string &str, const size_t &length) {
 
-	char c = str[0];
-	if (length != 1) c = str[1];
+	const char c = str[0];
 
 	std::cout << "char: ";
 	if (!isprint(c)) {
 		std::cout << "Non displayable" << std::endl;
-	} else std::cout << c << std::endl;
+	} else std::cout << "'" << c << "'" << std::endl;
 
-	std::cout << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
@@ -101,9 +100,51 @@ void printCharacter(const std::string &str, const size_t &length) {
 
 void printFloat(const std::string &str, const size_t &length) {
 
+	const float num = std::atof(str.c_str());
+	const bool tolerance = std::fabs(num - static_cast<int>(num)) < 0.0000000000001;
+
+	std::cout << "char: ";
+	if (length > 127) {
+		std::cout << "Impossible" << std::endl;
+	} else if (!isprint(static_cast<int>(num))) {
+		std::cout << "Non displayable" << std::endl;
+	} else std::cout << "'" << static_cast<char>(num) << "'" << std::endl;
+
+	std::cout << "int: ";
+	if (static_cast<int>(num) < INT_MIN || static_cast<int>(num) > INT_MAX) std::cout << "Impossible" << std::endl;
+	else std::cout << static_cast<int>(num) << std::endl;
+
+	std::cout << "float: ";
+	if (num < MIN_FLOAT || num > MAX_FLOAT) std::cout << "Impossible" << std::endl;
+	else std::cout << num << (tolerance ? ".0f" : "f") << std::endl;
+
+	std::cout << "double: " << static_cast<double>(num) << (tolerance ? ".0" : "") << std::endl;
+
 }
 
 void printDouble(const std::string &str, const size_t &length) {
+
+	const double num = std::atof(str.c_str());
+	const bool tolerance = std::fabs(num - static_cast<int>(num)) < 0.0000000000001;
+
+	std::cout << "char: ";
+	if (length > 127) {
+		std::cout << "Impossible" << std::endl;
+	} else if (!isprint(static_cast<int>(num))) {
+		std::cout << "Non displayable" << std::endl;
+	} else std::cout << "'" << static_cast<char>(num) << "'" << std::endl;
+
+	std::cout << "int: ";
+	if (static_cast<long>(num) < INT_MIN || static_cast<long>(num) > INT_MAX) std::cout << "Impossible" << std::endl;
+	else std::cout << static_cast<int>(num) << std::endl;
+
+	std::cout << "float: ";
+	if (num < MIN_FLOAT || num > MAX_FLOAT) std::cout << "Impossible" << std::endl;
+	else std::cout << num << (tolerance ? ".0f" : "f") << std::endl;
+
+	std::cout << "double: ";
+	if (num < MIN_DOUBLE || num > MAX_DOUBLE) std::cout << "Impossible" << std::endl;
+	else std::cout << num << std::endl;
 
 }
 
