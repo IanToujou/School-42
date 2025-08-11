@@ -597,4 +597,12 @@ add_executable(CPP-05-EX03
 add_executable(CPP-06-EX00
 		"Core/CPP/Module-06/ex00/include/ScalarConverter.h"
 		"Core/CPP/Module-06/ex00/src/ScalarConverter.cpp"
+		"Core/CPP/Module-06/ex00/src/main.cpp"
+)
+
+add_executable(CPP-06-EX01
+		"Core/CPP/Module-06/ex01/include/Serializer.h"
+		"Core/CPP/Module-06/ex01/src/Serializer.cpp"
+		"Core/CPP/Module-06/ex01/src/main.cpp"
+		Core/CPP/Module-06/ex01/include/Data.h
 )

@@ -59,6 +59,49 @@ type getType(const std::string &str, const size_t &length) {
 
 }
 
+bool isCharacter(const std::string &str, const size_t &length) {
+	if (length == 1 && !isdigit(str[0]))
+		return true;
+	if (length == 3 && str[0] == '\'' && str[2] == '\'')
+		return true;
+	return false;
+}
+
+bool isInteger(const std::string &str, const size_t &length) {
+	if (length == 0 || length > 11) return false;
+	size_t i = 0;
+	if (str[0] == '+' || str[0] == '-') {
+		i++;
+		if (length == 1) return false;
+	} else if (length > 10) return false;
+	for (; i < length; i++) {
+		if (!std::isdigit(str[i])) return false;
+	}
+	return true;
+}
+
+bool isFloat(const std::string &str, const size_t &length, const size_t &dot) {
+	if (dot == 0 || dot >= length - 1) return false;
+	for (size_t j = 0; j < dot; j++) {
+		if (j == 0) {
+			if (!std::isdigit(str[j]) && str[j] != '+' && str[j] != '-') return false;
+			if ((str[j] == '+' || str[j] == '-') && dot == 1) return false;
+		} else if (!std::isdigit(str[j])) return false;
+	}
+	bool hasF = false;
+	for (size_t i = dot + 1; i < length; i++) {
+		if (str[i] == 'f') {
+			if (i != length - 1) return false;
+			hasF = true;
+		} else if (!std::isdigit(str[i])) {
+			return false;
+		}
+	}
+	const size_t digitsAfterDot = hasF ? length - dot - 2 : length - dot - 1;
+	if (digitsAfterDot == 0) return false;
+	return true;
+}
+
 bool isOther(const std::string &str) {
 	return (str == "nan" || str == "nanf" || str == "+inf" || str == "+inff" || str == "-inf" || str == "-inff");
 }
