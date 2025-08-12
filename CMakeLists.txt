@@ -604,5 +604,14 @@ add_executable(CPP-06-EX01
 		"Core/CPP/Module-06/ex01/include/Serializer.h"
 		"Core/CPP/Module-06/ex01/src/Serializer.cpp"
 		"Core/CPP/Module-06/ex01/src/main.cpp"
-		Core/CPP/Module-06/ex01/include/Data.h
+		"Core/CPP/Module-06/ex01/include/Data.h"
+)
+
+add_executable(CPP-06-EX02
+		"Core/CPP/Module-06/ex02/include/Base.h"
+		"Core/CPP/Module-06/ex02/src/Base.cpp"
+		"Core/CPP/Module-06/ex02/include/A.h"
+		"Core/CPP/Module-06/ex02/include/B.h"
+		"Core/CPP/Module-06/ex02/include/C.h"
+		"Core/CPP/Module-06/ex02/src/main.cpp"
 )
