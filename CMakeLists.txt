@@ -4,6 +4,13 @@ set(CMAKE_CXX_STANDARD 14)            # Enable c++14 standard
 
 # Add executable target with source files listed in SOURCE_FILES variable
 
+add_library(GGCollect
+		"Custom/GGCollect/include/gg_collect.h"
+		"Custom/GGCollect/src/gg_init.c"
+		"Custom/GGCollect/src/gg_malloc.c"
+		"Custom/GGCollect/src/gg_free.c"
+)
+
 add_library(LibFT
 		"Core/LibFT/src/base/ft_atoi.c"
 		"Core/LibFT/src/base/ft_bzero.c"
