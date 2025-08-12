@@ -615,3 +615,17 @@ add_executable(CPP-06-EX02
 		"Core/CPP/Module-06/ex02/include/C.h"
 		"Core/CPP/Module-06/ex02/src/main.cpp"
 )
+
+add_executable(CPP-07-EX00
+		"Core/CPP/Module-07/ex00/src/main.cpp"
+		"Core/CPP/Module-07/ex00/include/whatever.h"
+)
+
+add_executable(CPP-07-EX01
+		"Core/CPP/Module-07/ex01/src/main.cpp"
+		Core/CPP/Module-07/ex01/include/iter.h
+)
+
+add_executable(CPP-07-EX02
+		"Core/CPP/Module-07/ex02/src/main.cpp"
+)
