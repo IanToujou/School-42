@@ -95,12 +95,6 @@ add_library(LibFT
 		Core/LibFT/src/custom/ft_atol.c
 )
 
-add_library(GGCollect
-		"Custom/GGCollect/include/ggcollect.h"
-		"Custom/GGCollect/src/ggcollect.c"
-		Custom/GGCollect/src/main.c
-)
-
 add_library(PrintF
 		"Core/PrintF/src/ft_printf.c"
 		"Core/PrintF/src/ft_print_char.c"
