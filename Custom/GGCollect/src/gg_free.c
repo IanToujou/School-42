@@ -6,20 +6,22 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 11:27:12 by ibour             #+#    #+#             */
-/*   Updated: 2025/08/12 11:38:45 by ibour            ###   ########.fr       */
+/*   Updated: 2025/08/12 12:21:03 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/gg_collect.h"
 
-void gg_free_all(t_gg_data *data) {
+void	gg_free_all(t_gg_data *data)
+{
 	t_gg_node	*current;
 	t_gg_node	*next;
 
 	if (!data)
-		return;
+		return ;
 	current = data->head;
-	while (current) {
+	while (current)
+	{
 		next = current->next;
 		free(current->ptr);
 		free(current);
@@ -30,7 +32,8 @@ void gg_free_all(t_gg_data *data) {
 	data->size = 0;
 }
 
-void	gg_free(t_gg_data *data, void *ptr) {
+void	gg_free(t_gg_data *data, void *ptr)
+{
 	t_gg_node	*current;
 	t_gg_node	*prev;
 
@@ -38,7 +41,8 @@ void	gg_free(t_gg_data *data, void *ptr) {
 		return ;
 	current = data->head;
 	prev = NULL;
-	while (current && current->ptr != ptr) {
+	while (current && current->ptr != ptr)
+	{
 		prev = current;
 		current = current->next;
 	}

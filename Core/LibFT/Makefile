@@ -116,7 +116,6 @@ CUSTOM_OBJS = $(CUSTOM:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^
-	@curl -H 'Content-Type: application/json' -d '{"username": "'$(whoami)'"}' -X POST https://api.toujoustudios.net/api/v1/makefile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
