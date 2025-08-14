@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 11:26:28 by ibour             #+#    #+#             */
-/*   Updated: 2025/08/12 12:18:44 by ibour            ###   ########.fr       */
+/*   Updated: 2025/08/14 23:21:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*gg_calloc(t_gg_data *data, const size_t count, const size_t size)
 	return (ptr);
 }
 
-void	*gc_realloc(t_gg_data *data, void *ptr, const size_t new_size)
+void	*gg_realloc(t_gg_data *data, void *ptr, const size_t new_size)
 {
 	void		*new_ptr;
 	t_gg_node	*current;
@@ -74,7 +74,7 @@ void	*gc_realloc(t_gg_data *data, void *ptr, const size_t new_size)
 	while (current && current->ptr != ptr)
 		current = current->next;
 	if (!current)
-		return (realloc(ptr, new_size));
+		return (NULL);
 	new_ptr = realloc(ptr, new_size);
 	if (!new_ptr)
 		return (NULL);

@@ -9,6 +9,7 @@ add_library(GGCollect
 		"Custom/GGCollect/src/gg_init.c"
 		"Custom/GGCollect/src/gg_malloc.c"
 		"Custom/GGCollect/src/gg_free.c"
+		Custom/GGCollect/src/gg_debug.c
 )
 
 add_library(LibFT

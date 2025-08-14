@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 11:08:46 by ibour             #+#    #+#             */
-/*   Updated: 2025/08/12 12:21:32 by ibour            ###   ########.fr       */
+/*   Updated: 2025/08/14 23:20:17 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_gg_data
 void	gg_init(t_gg_data *data);
 void	*gg_malloc(t_gg_data *data, size_t size);
 void	*gg_calloc(t_gg_data *data, size_t count, size_t size);
-void	*gc_realloc(t_gg_data *data, void *ptr, size_t new_size);
+void	*gg_realloc(t_gg_data *data, void *ptr, size_t new_size);
 void	gg_free(t_gg_data *data, void *ptr);
 void	gg_free_all(t_gg_data *data);
 
