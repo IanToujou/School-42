@@ -9,7 +9,6 @@ add_library(GGCollect
 		"Custom/GGCollect/src/gg_init.c"
 		"Custom/GGCollect/src/gg_malloc.c"
 		"Custom/GGCollect/src/gg_free.c"
-		Custom/GGCollect/src/gg_debug.c
 )
 
 add_library(LibFT
@@ -625,9 +624,10 @@ add_executable(CPP-07-EX00
 
 add_executable(CPP-07-EX01
 		"Core/CPP/Module-07/ex01/src/main.cpp"
-		Core/CPP/Module-07/ex01/include/iter.h
+		"Core/CPP/Module-07/ex01/include/iter.h"
 )
 
 add_executable(CPP-07-EX02
 		"Core/CPP/Module-07/ex02/src/main.cpp"
+		"Core/CPP/Module-07/ex02/include/Array.h"
 )
