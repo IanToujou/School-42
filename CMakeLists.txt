@@ -624,7 +624,7 @@ add_executable(CPP-07-EX00
 
 add_executable(CPP-07-EX01
 		"Core/CPP/Module-07/ex01/src/main.cpp"
-		"Core/CPP/Module-07/ex01/include/iter.h"
+		"Core/CPP/Module-07/ex01/include/Iter.h"
 )
 
 add_executable(CPP-07-EX02
