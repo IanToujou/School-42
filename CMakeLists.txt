@@ -631,3 +631,7 @@ add_executable(CPP-07-EX02
 		"Core/CPP/Module-07/ex02/src/main.cpp"
 		"Core/CPP/Module-07/ex02/include/Array.h"
 )
+
+add_executable(Exam-04
+		"Exam/Exam-04/picoshell/picoshell.c"
+)
