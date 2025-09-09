@@ -1,4 +1,4 @@
-NAME = miniRT
+NAME = Test
 
 RED = \033[31m
 GREEN = \033[32m
@@ -37,7 +37,7 @@ RM_WIN = del /S /Q
 	printf "] %s%%" "$$PERCENTAGE"
 
 all: $(OBJ) ggcollect
-	@$(CC) -o $(NAME) $(OBJ) -Llib/ggcollect -lggcollect
+	@$(CC) -o $(NAME) $(OBJ) lib/ggcollect/gg_collect.a
 	@echo ""
 
 ggcollect:

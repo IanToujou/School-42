@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 12:41:43 by ibour             #+#    #+#             */
-/*   Updated: 2025/08/12 12:44:44 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/09 14:58:35 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 #include "../lib/ggcollect/include/gg_collect.h"
 
+typedef struct s_test {
+	char *value;
+	void *ptr;
+} t_test;
+
 int main()
 {
-	t_gg_data	*data = NULL;
-	char		*str;
+	t_gg_data	*data = gg_init();
+	t_test *test = gg_malloc(data, sizeof(t_test));
 
-	gg_init(data);
-	str = gg_malloc(data, 3);
-	str[0] = 'A';
-	str[1] = 'B';
-	str[2] = 'C';
-
-	printf("%c\n", str[0]);
-	printf("%c\n", str[1]);
-	printf("%c\n", str[2]);
+	test->value = gg_malloc(data, 1000);
+	test->ptr = gg_malloc(data, 1000);
 
 	gg_free_all(data);
 }
