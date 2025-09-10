@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:59:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/09 13:45:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/09 17:33:32 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ int	ft_popen(const char *file, char *const argv[], char type) {
 
 	pid_t pid = fork();
 
-	if (pid < 0) {
-		close_fd(&fd[0], &fd[1]);
+	if (pid < 0)
 		return -1;
-	}
 
 	if (type == 'r') {
 
