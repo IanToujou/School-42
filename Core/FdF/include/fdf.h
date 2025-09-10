@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 17:27:57 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 17:46:46 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "../lib/ggcollect/include/gg_collect.h"
 # include <X11/X.h>
 # include <fcntl.h>
 # include "errortype.h"
@@ -82,11 +83,12 @@ typedef struct s_image
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	t_map	map;
-	t_image	image;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	t_map		map;
+	t_image		image;
+	t_gg_data	*gg_data;
 }	t_data;
 
 void	init_data(t_data *data);
