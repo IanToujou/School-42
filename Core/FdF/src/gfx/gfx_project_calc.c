@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:54:31 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 17:34:49 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 18:06:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-void	gfx_project_calc_parallel(t_data *data, int i, int j)
+void	gfx_project_calc_parallel(t_data *data, const int i, const int j)
 {
 	double	x;
 	double	y;

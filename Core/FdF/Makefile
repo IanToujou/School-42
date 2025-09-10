@@ -29,7 +29,9 @@ SRC =	src/error/error_throw.c \
 		src/util/util_num.c \
 		src/util/util_num_2.c \
 		src/util/util_array.c \
-		src/util/util_rotation.c
+		src/util/util_rotation.c \
+		src/util/util_place.c \
+		src/util/util_image.c
 
 OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))

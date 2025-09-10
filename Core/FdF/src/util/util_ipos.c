@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_close.c                                      :+:      :+:    :+:   */
+/*   util_ipos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 07:27:03 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 18:12:28 by ibour            ###   ########.fr       */
+/*   Created: 2025/09/10 18:25:14 by ibour             #+#    #+#             */
+/*   Updated: 2025/09/10 18:25:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int	event_close(t_data *data)
+t_ipos	util_ipos_new(const int i, const int j)
 {
-	exit_mlx(data);
-	exit_data(data);
-	exit(0);
+	t_ipos	res;
+
+	res.i = i;
+	res.j = j;
+	return (res);
 }

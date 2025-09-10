@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 17:46:46 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 18:25:47 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define FDF_H
 # define WIDTH 1280
 # define HEIGHT 720
+# define MARGIN 200
 # define ESC_KEY 65307
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
@@ -70,6 +71,9 @@ typedef struct s_map
 	double			alpha;
 	double			beta;
 	double			gamma;
+	double			scale;
+	int				x_offset;
+	int				y_offset;
 	t_projection	projection;
 	t_color			color;
 }	t_map;
@@ -83,13 +87,20 @@ typedef struct s_image
 
 typedef struct s_data
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	void		*img_ptr;
-	t_map		map;
-	t_image		image;
-	t_gg_data	*gg_data;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	void			*img_ptr;
+	t_map			map;
+	unsigned int	*addr;
+	t_image			image;
+	t_gg_data		*gg_data;
 }	t_data;
+
+typedef struct	s_ipos
+{
+	int		i;
+	int		j;
+}				t_ipos;
 
 void	init_data(t_data *data);
 void	init_parse(t_data *data, const char *file);
@@ -123,5 +134,8 @@ void	util_rotation_z(double *x, double *y, double gamma);
 
 void	util_color_free_array(char **array);
 int		util_color_count(char **values);
+void	util_place(t_data *data);
+int		util_image(t_data *data);
+t_ipos	util_ipos_new(int i, int j);
 
 #endif

@@ -6,13 +6,14 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:44:20 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 17:36:01 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 18:03:46 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-static void gfx_project_init(t_data *data) {
+static void gfx_project_init(t_data *data)
+{
 	if (data->map.projection == TOP)
 	{
 		data->map.x_max = data->map.width - 1;

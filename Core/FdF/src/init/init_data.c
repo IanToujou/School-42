@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:40:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/17 10:28:46 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 18:03:29 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,7 @@ void	init_data(t_data *data)
 	data->win_ptr = NULL;
 	data->img_ptr = NULL;
 	data->map.points = NULL;
+	data->map.alpha = 0;
+	data->map.beta = 0;
+	data->map.gamma = 0;
 }

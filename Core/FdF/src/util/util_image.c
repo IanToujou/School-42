@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_close.c                                      :+:      :+:    :+:   */
+/*   util_image.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 07:27:03 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 18:12:28 by ibour            ###   ########.fr       */
+/*   Created: 2025/09/10 18:13:27 by ibour             #+#    #+#             */
+/*   Updated: 2025/09/10 18:17:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int	event_close(t_data *data)
-{
-	exit_mlx(data);
-	exit_data(data);
-	exit(0);
+int	util_image(t_data *data) {
+	data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	if (!data->img_ptr)
+		return (0);
+	data->addr = (unsigned int *)mlx_get_data_addr(data->img_ptr,
+			&(data->image.bpp), &(data->image.size_line), &(data->image.endian));
+	if (!data->addr)
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 17:37:18 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 18:18:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 
 # define ERROR_RENDER_PROJECTION 9
 # define ERROR_RENDER_PROJECTION_MSG "Failed to render projection."
+
+# define ERROR_RENDER_IMAGE 10
+# define ERROR_RENDER_IMAGE_MSG "Failed to render image."
 
 void	error_throw(int error);
 
