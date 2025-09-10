@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:46:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/09 13:53:00 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 16:04:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int ft_popen(const char *file, char *const argv[], char type) {
 		return -1;
 
 	int fd[2] = {-1, -1};
-	if (pipe(fd) < 0)
+	if (pipe(fd) < 0) {
+		close_fd(&fd[0], &fd[1]);
 		return -1;
+	}
 
 	if (type == 'r') {
 
@@ -40,7 +42,7 @@ int ft_popen(const char *file, char *const argv[], char type) {
 		}
 
 		if (pid == 0) {
-			if (dup2(fd[1], 1) < 0) {
+			if (dup2(fd[0], 0) < 0) {
 				close_fd(&fd[0], &fd[1]);
 				exit(-1);
 			}
@@ -53,6 +55,7 @@ int ft_popen(const char *file, char *const argv[], char type) {
 		return fd[0];
 
 	} else {
+
 		const pid_t pid = fork();
 		if (pid < 0) {
 			close_fd(&fd[0], &fd[1]);
@@ -60,7 +63,7 @@ int ft_popen(const char *file, char *const argv[], char type) {
 		}
 
 		if (pid == 0) {
-			if (dup2(fd[0], 0) < 0) {
+			if (dup2(fd[1], 1) < 0) {
 				close_fd(&fd[0], &fd[1]);
 				exit(-1);
 			}

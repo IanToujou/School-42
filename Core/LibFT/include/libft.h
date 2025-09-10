@@ -189,6 +189,6 @@ void				ft_print_num_unsigned(unsigned int num, int *i);
 void				ft_print_hex(unsigned int num, int *i, char *base);
 void				ft_print_num_base(unsigned long int p, char *base, int *i);
 
-int					ft_atoi_base(const char *str, const char *base);
+int					util_atoi_base(const char *str, const char *base);
 
 #endif

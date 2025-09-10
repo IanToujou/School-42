@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:12:16 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/17 09:43:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 17:37:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 
 # define ERROR_PARSE_NUM 8
 # define ERROR_PARSE_NUM_MSG "Failed to parse number."
+
+# define ERROR_RENDER_PROJECTION 9
+# define ERROR_RENDER_PROJECTION_MSG "Failed to render projection."
 
 void	error_throw(int error);
 

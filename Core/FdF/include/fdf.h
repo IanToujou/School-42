@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:06:36 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 17:27:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include "errortype.h"
+# include <math.h>
 
 typedef enum e_projection
 {
@@ -46,10 +47,10 @@ typedef enum e_color {
 }	t_color;
 
 typedef struct s_point {
-	int		x;
-	int		y;
-	int		z;
-	int		color;
+	double		x;
+	double		y;
+	double		z;
+	int			color;
 }	t_point;
 
 typedef struct s_map
@@ -59,12 +60,12 @@ typedef struct s_map
 	double			altitude_ratio;
 	int				depth;
 	int				width;
-	int				x_max;
-	int				x_min;
-	int				y_max;
-	int				y_min;
-	int				z_max;
-	int				z_min;
+	double			x_max;
+	double			x_min;
+	double			y_max;
+	double			y_min;
+	double			z_max;
+	double			z_min;
 	double			alpha;
 	double			beta;
 	double			gamma;
@@ -104,10 +105,21 @@ int		event_close(t_data *data);
 int		event_keypress(int keycode, t_data *data);
 
 void	gfx_render(t_data *data);
+int		gfx_project(t_data *data);
+void	gfx_project_calc_top(const t_data *data, int i, int j);
+void	gfx_project_calc_parallel(t_data *data, int i, int j);
+void	gfx_project_calc_isometric(t_data *data, int i, int j);
 
 int		util_map_parse_width(const char *filename);
 int		util_map_parse_depth(int fd);
 double	util_num_parse(char *str);
+int		util_atoi_base(const char *str, const char *base);
 void	util_array_free(void **array);
+void	util_rotation_x(double *y, double *z, double alpha);
+void	util_rotation_y(double *x, double *z, double beta);
+void	util_rotation_z(double *x, double *y, double gamma);
+
+void	util_color_free_array(char **array);
+int		util_color_count(char **values);
 
 #endif

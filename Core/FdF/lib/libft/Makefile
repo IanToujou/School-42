@@ -122,7 +122,7 @@ $(NAME): $(OBJS)
 	SPINNER_FRAMES="|/-\\"; \
 	SPINNER_INDEX=$$(($(COMPILED_FILES) / 2 % 4)); \
 	SPINNER_CHAR=$$(printf "$$SPINNER_FRAMES" | cut -c$$((SPINNER_INDEX + 1))); \
-	printf "$(ERASE)2/3 $$SPINNER_CHAR ["; \
+	printf "$(ERASE)2/4 $$SPINNER_CHAR ["; \
 	for i in $$(seq 1 $$PROGRESS); do printf "█"; done; \
 	for i in $$(seq $$((PROGRESS + 1)) $$BAR_WIDTH); do printf "."; done; \
 	printf "] %s%%" "$$PERCENTAGE"

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 08:52:24 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 09:07:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 16:34:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	init_map_read_line(t_data *data, const char *line)
 			data->map.array[current_row][i] = (int)util_num_parse(color_split[0]);
 			if (ft_strncmp(color_split[1], "0x", 2) == 0 ||
 				ft_strncmp(color_split[1], "0X", 2) == 0)
-				data->map.points[current_row][i].color = ft_atoi_base(color_split[1] + 2, "0123456789ABCDEF");
+				data->map.points[current_row][i].color = util_atoi_base(color_split[1] + 2, "0123456789ABCDEF");
 			else
-				data->map.points[current_row][i].color = ft_atoi_base(color_split[1], "0123456789ABCDEF");
+				data->map.points[current_row][i].color = util_atoi_base(color_split[1], "0123456789ABCDEF");
 			util_array_free((void **) color_split);
 		}
 		else

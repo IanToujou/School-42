@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   gg_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 09:32:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 17:38:37 by ibour            ###   ########.fr       */
+/*   Created: 2025/08/12 11:26:19 by ibour             #+#    #+#             */
+/*   Updated: 2025/09/09 14:52:54 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../include/gg_collect.h"
 
-int main(const int argc, char **argv)
+/**
+ * Creates and initializes the main data struct for garbage collection.
+ * This function MUST be called before using any features of
+ * the garbage collector.
+ *
+ * @return The new main data struct.
+ */
+t_gg_data	*gg_init(void)
 {
-	t_data	*data;
+	t_gg_data	*data;
 
-	if (argc != 2)
-		error_throw(ERROR_SYNTAX);
-	data = (t_data *) malloc(sizeof(t_data));
-	if (!data)
-		error_throw(ERROR_MALLOC);
-	init_data(data);
-	init_parse(data, argv[1]);
-	init_mlx(data);
-	// projection
-	// placement info
-	gfx_render(data);
-	init_hook(data);
+	data = (t_gg_data *) malloc(sizeof(t_gg_data));
+	data->size = 0;
+	data->alloc_count = 0;
+	data->head = NULL;
+	return (data);
 }

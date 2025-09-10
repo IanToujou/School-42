@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 09:40:19 by ibour             #+#    #+#             */
-/*   Updated: 2024/12/17 09:44:44 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/10 16:34:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_for_chars(const char c, const int signs)
 	return (0);
 }
 
-static int	ft_atoi_base_error(const char *base)
+static int	util_atoi_base_error(const char *base)
 {
 	int	i;
 	int	j;
@@ -45,7 +45,7 @@ static int	ft_atoi_base_error(const char *base)
 	return (i);
 }
 
-static int	ft_atoi_base_test(const char str, const char *base)
+static int	util_atoi_base_test(const char str, const char *base)
 {
 	int	i;
 
@@ -59,7 +59,7 @@ static int	ft_atoi_base_test(const char str, const char *base)
 	return (-1);
 }
 
-static int	ft_atoi_base_search(const char *str, int *i)
+static int	util_atoi_base_search(const char *str, int *i)
 {
 	int	mult;
 
@@ -75,7 +75,7 @@ static int	ft_atoi_base_search(const char *str, int *i)
 	return (mult);
 }
 
-int	ft_atoi_base(const char *str, const char *base)
+int	util_atoi_base(const char *str, const char *base)
 {
 	int		i;
 	int		mult;
@@ -85,16 +85,16 @@ int	ft_atoi_base(const char *str, const char *base)
 
 	nb = 0;
 	i = 0;
-	len = ft_atoi_base_error(base);
+	len = util_atoi_base_error(base);
 	if (len >= 2)
 	{
-		mult = ft_atoi_base_search(str, &i);
-		temp = ft_atoi_base_test(str[i], base);
+		mult = util_atoi_base_search(str, &i);
+		temp = util_atoi_base_test(str[i], base);
 		while (temp != -1)
 		{
 			nb = (nb * len) + temp;
 			i++;
-			temp = ft_atoi_base_test(str[i], base);
+			temp = util_atoi_base_test(str[i], base);
 		}
 		return (nb * mult);
 	}

@@ -238,6 +238,9 @@ add_executable(FdF
 		Core/FdF/src/util/util_num.c
 		Core/FdF/src/util/util_array.c
 		Core/FdF/src/util/util_num_2.c
+		Core/FdF/src/gfx/gfx_project.c
+		Core/FdF/src/gfx/gfx_project_calc.c
+		Core/FdF/src/util/util_rotation.c
 )
 
 add_executable(Philosophers
