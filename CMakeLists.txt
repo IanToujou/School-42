@@ -244,6 +244,9 @@ add_executable(FdF
 		Core/FdF/src/util/util_place.c
 		Core/FdF/src/util/util_image.c
 		Core/FdF/src/util/util_ipos.c
+		Core/FdF/src/gfx/gfx_render_point.c
+		Core/FdF/src/gfx/gfx_render_color.c
+		Core/FdF/src/gfx/gfx_render_gradient.c
 )
 
 add_executable(Philosophers

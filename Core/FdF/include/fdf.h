@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 18:25:47 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/11 11:41:42 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # define KEY_S 115
 # define KEY_D 100
 
+# define COLOR_HIGH 0x453100
+# define COLOR_MEDIUM 0xf6f172
+# define COLOR_LOW 0x005e02
+# define COLOR_SHORE 0x64aee5
+# define COLOR_SEA 0x2437c3
+
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
 # include "../lib/ggcollect/include/gg_collect.h"
@@ -42,7 +48,7 @@ typedef enum e_projection
 }	t_projection;
 
 typedef enum e_color {
-	DEFAULT,
+	ALTITUDE,
 	MAP,
 	RAINBOW,
 	MONOCHROME,
@@ -118,6 +124,13 @@ int		event_close(t_data *data);
 int		event_keypress(int keycode, t_data *data);
 
 void	gfx_render(t_data *data);
+void	gfx_render_point(t_data *data);
+void	gfx_render_pixel(const t_data *data, t_point p);
+int		gfx_render_color(t_data *data, t_ipos a, t_ipos b, t_point p);
+double	gfx_render_gradient_percent(double current, double start, double end);
+int		gfx_render_gradient_level(int start, int end, double ratio);
+int		gfx_render_gradient(t_data *data, t_point p, t_point a, t_point b);
+
 int		gfx_project(t_data *data);
 void	gfx_project_calc_top(const t_data *data, int i, int j);
 void	gfx_project_calc_parallel(t_data *data, int i, int j);

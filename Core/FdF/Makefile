@@ -17,6 +17,9 @@ SRC =	src/error/error_throw.c \
 		src/exit/exit_data.c \
 		src/exit/exit_mlx.c \
 		src/gfx/gfx_render.c \
+		src/gfx/gfx_render_point.c \
+		src/gfx/gfx_render_color.c \
+		src/gfx/gfx_render_gradient.c \
 		src/gfx/gfx_project.c \
 		src/gfx/gfx_project_calc.c \
 		src/init/init_data.c \
@@ -31,7 +34,8 @@ SRC =	src/error/error_throw.c \
 		src/util/util_array.c \
 		src/util/util_rotation.c \
 		src/util/util_place.c \
-		src/util/util_image.c
+		src/util/util_image.c \
+		src/util/util_ipos.c
 
 OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))
