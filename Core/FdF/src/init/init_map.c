@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 08:52:24 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 16:34:18 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:20:19 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	init_map_array(t_data *data)
 	i = -1;
 	while (++i < data->map.depth)
 	{
-		data->map.array[i] = (int *) malloc(sizeof(int) * data->map.width);
+		data->map.array[i] = (int *) calloc(data->map.width, sizeof(int));
 		if (!data->map.array[i])
 		{
 			exit_array_2d_int(&data->map.array, i);
@@ -83,7 +83,7 @@ void	init_map_array(t_data *data)
 	i = -1;
 	while (++i < data->map.depth)
 	{
-		data->map.points[i] = (t_point *) malloc(sizeof(t_point) * data->map.width);
+		data->map.points[i] = (t_point *) calloc(data->map.width, sizeof(t_point));
 		if (!data->map.points[i])
 		{
 			exit_array_2d_point(&data->map.points, i);
