@@ -13,6 +13,7 @@ END := \033[0m
 SRC =	src/error/error_throw.c \
 		src/event/event_close.c \
 		src/event/event_keypress.c \
+		src/event/event_keyrelease.c \
 		src/exit/exit_array.c \
 		src/exit/exit_data.c \
 		src/exit/exit_mlx.c \

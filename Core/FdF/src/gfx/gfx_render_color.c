@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:30:02 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/11 11:50:24 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/15 14:16:47 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,23 @@ int			gfx_render_color_alt(t_data *data, double z)
 
 int			gfx_render_color_rainbow(const t_data *data, const t_point p)
 {
-	t_point	p_max;
-	t_point p_min;
-	t_point p_moy;
+	t_point	max;
+	t_point min;
+	t_point avg;
 
-	p_max.y = data->map.y_max * data->map.scale + data->map.y_offset;
-	p_max.x = 0;
-	p_max.color = 0xFF0000;
-	p_min.y = data->map.y_min * data->map.scale + data->map.y_offset;
-	p_min.x = 0;
-	p_min.color = 0x0000FF;
-	p_moy.y = (p_max.y + p_min.y) / 2;
-	p_moy.x = 0;
-	p_moy.color = 0x00FF00;
-	if (p.y >= p_moy.y)
-		return (gfx_render_color_y(p, p_moy, p_max));
+	max.y = data->map.y_max * data->map.scale + data->map.y_offset;
+	max.x = 0;
+	max.color = 0xFF0000;
+	min.y = data->map.y_min * data->map.scale + data->map.y_offset;
+	min.x = 0;
+	min.color = 0x0000FF;
+	avg.y = (max.y + min.y) / 2;
+	avg.x = 0;
+	avg.color = 0x00FF00;
+	if (p.y >= avg.y)
+		return (gfx_render_color_y(p, avg, max));
 	else
-		return (gfx_render_color_y(p, p_min, p_moy));
+		return (gfx_render_color_y(p, min, avg));
 }
 
 int	gfx_render_color(t_data *data, t_ipos a, t_ipos b, t_point p)

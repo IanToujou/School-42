@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:32:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/10 18:18:17 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/15 17:05:31 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(const int argc, char **argv)
 
 	if (argc != 2)
 		error_throw(ERROR_SYNTAX);
-	data = (t_data *) malloc(sizeof(t_data));
+	data = (t_data *) calloc(1, sizeof(t_data));
 	if (!data)
 		error_throw(ERROR_MALLOC);
 	init_data(data);

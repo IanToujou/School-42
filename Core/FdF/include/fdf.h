@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/11 11:41:42 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/15 14:21:26 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	exit_mlx(t_data *data);
 
 int		event_close(t_data *data);
 int		event_keypress(int keycode, t_data *data);
+int		event_keyrelease(int keycode, t_data *data);
 
 void	gfx_render(t_data *data);
 void	gfx_render_point(t_data *data);

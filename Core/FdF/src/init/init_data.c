@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:40:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/11 11:50:58 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/15 17:08:18 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_data(t_data *data)
 {
+	data->map = (t_map){0};
 	data->map.altitude_ratio = 1;
 	data->map.projection = PARALLEL;
 	data->map.color = RAINBOW;
@@ -24,4 +25,6 @@ void	init_data(t_data *data)
 	data->map.alpha = 0;
 	data->map.beta = 0;
 	data->map.gamma = 0;
+	data->map.scale = 0;
+	data->map.x_offset = 0;
 }
