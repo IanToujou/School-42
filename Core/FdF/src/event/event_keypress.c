@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:26:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 00:54:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 00:56:41 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 int	event_keypress(const int k, t_data *data)
 {
 	ft_bzero(data->addr, WIDTH * HEIGHT * 4);
-	if (k == KEY_W || k == KEY_A || k == KEY_S || k == KEY_D
-		|| k == KEY_NUMPAD_1 || k == KEY_NUMPAD_2 || k == KEY_NUMPAD_3
+	if (k == KEY_W || k == KEY_A || k == KEY_S || k == KEY_D)
+		event_action_move(k, data);
+	else if (k == KEY_NUMPAD_1 || k == KEY_NUMPAD_2 || k == KEY_NUMPAD_3
 		|| k == KEY_NUMPAD_4 || k == KEY_NUMPAD_6 || k == KEY_NUMPAD_7
 		|| k == KEY_NUMPAD_8 || k == KEY_NUMPAD_9)
-		event_action_move(k, data);
+		event_action_rotate(k, data);
 	else if (k == KEY_SPACE)
 		event_action_reset(data);
 	else if (k == KEY_NUMPAD_PLUS || k == KEY_NUMPAD_MINUS)

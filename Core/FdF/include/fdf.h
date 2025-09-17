@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 00:40:04 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 00:56:52 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ int		event_keypress(int k, t_data *data);
 int		event_keyrelease(int keycode, t_data *data);
 
 void	event_action_move(int k, t_data *data);
+void	event_action_rotate(int k, t_data *data);
 void	event_action_reset(t_data *data);
 void	event_action_zoom(int key, double *scale);
 void	event_action_altitude(int key, double *alt_ratio);

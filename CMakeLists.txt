@@ -252,6 +252,7 @@ add_executable(FdF
 		"Core/FdF/src/event/event_action_reset.c"
 		"Core/FdF/src/event/event_action_zoom.c"
 		"Core/FdF/src/event/event_action_altitude.c"
+		Core/FdF/src/event/event_action_rotate.c
 )
 
 add_executable(Philosophers
