@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/17 19:56:48 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 00:40:04 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@
 # include <fcntl.h>
 # include "errortype.h"
 # include <math.h>
+# include <stdio.h>
 
 typedef enum e_projection
 {

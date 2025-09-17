@@ -14,8 +14,11 @@
 
 void	event_action_move(const int k, t_data *data)
 {
-	if (k == KEY_NUMPAD_4)
+	if (k == KEY_NUMPAD_4) {
+		printf("numpad 4");
 		data->map.beta -= ANGLE_INCR;
+	}
+
 	if (k == KEY_NUMPAD_8)
 		data->map.alpha += ANGLE_INCR;
 	if (k == KEY_NUMPAD_6)
