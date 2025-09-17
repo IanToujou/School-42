@@ -97,12 +97,12 @@ SRC =		src/base/ft_atoi.c \
 			src/other/printf/ft_printf.c \
 			src/other/getnextline/get_next_line.c
 
-CC = clang
-CFLAGS = -Wall -Werror -Wextra -I. -Ofast -march=native -ffast-math -flto
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -I. -march=native -ffast-math -flto
 RM = rm -rf
 RM_WIN = del /S /Q
-AR = llvm-ar-12 rcs
-RANLIB = llvm-ranlib-12
+AR = ar rcs
+RANLIB = ranlib
 
 OBJS = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))

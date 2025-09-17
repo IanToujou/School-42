@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))
 COMPILED_FILES = 0
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra -Ofast -I.
 RM = rm -rf
 RM_WIN = del /S /Q

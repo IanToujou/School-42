@@ -42,7 +42,7 @@ debug: all
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR) > /dev/null 2>&1
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ > /dev/null 2>&1
+	@gcc $(CFLAGS) $(IFLAGS) -c $< -o $@ > /dev/null 2>&1
 	@$(eval COMPILED_FILES := $(shell echo $$(($(COMPILED_FILES) + 1))))
 	@TERM_WIDTH=$$(tput cols); \
 	BAR_WIDTH=$$((TERM_WIDTH - 17)); \
@@ -57,8 +57,8 @@ $(OBJ_DIR)/%.o: %.c
 	printf "] %s%%" "$$PERCENTAGE"
 
 $(NAME)	: $(OBJ)
-	@llvm-ar-12 rcs $(NAME) $(OBJ) > /dev/null 2>&1
-	@llvm-ranlib-12 $(NAME) > /dev/null 2>&1
+	@ar rcs $(NAME) $(OBJ) > /dev/null 2>&1
+	@ranlib $(NAME) > /dev/null 2>&1
 	@cp $(NAME) $(NAME_UNAME) > /dev/null 2>&1
 
 check: all

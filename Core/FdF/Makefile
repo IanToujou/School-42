@@ -46,7 +46,7 @@ OBJ = $(SRC:.c=.o)
 TOTAL_FILES = $(words $(SRC))
 COMPILED_FILES = 0
 
-CC = clang
+CC = gcc
 CFLAGS = -Ofast -march=native -ffast-math -flto -I.
 RM = rm -rf
 RM_WIN = del /S /Q
