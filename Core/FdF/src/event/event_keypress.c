@@ -6,27 +6,21 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:26:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/17 20:07:36 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 00:36:57 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 #include "../../include/fdf.h"
 
-static int	valid_key(const int k)
-{
-	if (k == KEY_NUMPAD_1 || k == KEY_NUMPAD_2 || k == KEY_NUMPAD_3 || k == KEY_NUMPAD_4
-			|| k == KEY_NUMPAD_6 || k == KEY_NUMPAD_7 || k == KEY_NUMPAD_8 || k == KEY_NUMPAD_9
-			|| k == KEY_A || k == KEY_W || k == KEY_S || k == KEY_D || k == KEY_SPACE
-			|| k == KEY_NUMPAD_PLUS || k == KEY_NUMPAD_MINUS || k == KEY_UP || k == KEY_DOWN
-			|| k == KEY_ESC || k == KEY_R)
-		return (1);
-	return (0);
+void debug_keycode(int keycode) {
+	printf("Key pressed: %d\n", keycode);
 }
 
 int	event_keypress(const int k, t_data *data)
 {
-	/*if (!valid_key(k))
-		return (0);*/
+	debug_keycode(k);
 	ft_bzero(data->addr, WIDTH * HEIGHT * 4);
 	event_action_move(k, data);
 	if (k == KEY_SPACE)

@@ -220,39 +220,38 @@ add_executable(Fractol
 )
 add_executable(FdF
 		"Core/FdF/src/main/main.c"
-		Core/FdF/include/fdf.h
-		Core/FdF/src/init/init_mlx.c
-		Core/FdF/src/init/init_data.c
-		Core/FdF/include/errortype.h
-		Core/FdF/src/error/error_throw.c
-		Core/FdF/src/init/init_parse.c
-		Core/FdF/src/init/init_hook.c
-		Core/FdF/src/event/event_close.c
-		Core/FdF/src/event/event_keypress.c
-		Core/FdF/src/gfx/gfx_render.c
-		Core/FdF/src/exit/exit_mlx.c
-		Core/FdF/src/exit/exit_data.c
-		Core/FdF/src/exit/exit_array.c
-		Core/FdF/src/util/util_map.c
-		Core/FdF/src/init/init_map.c
-		Core/FdF/src/util/util_num.c
-		Core/FdF/src/util/util_array.c
-		Core/FdF/src/util/util_num_2.c
-		Core/FdF/src/gfx/gfx_project.c
-		Core/FdF/src/gfx/gfx_project_calc.c
-		Core/FdF/src/util/util_rotation.c
-		Core/FdF/src/util/util_place.c
-		Core/FdF/src/util/util_image.c
-		Core/FdF/src/util/util_ipos.c
-		Core/FdF/src/gfx/gfx_render_point.c
-		Core/FdF/src/gfx/gfx_render_color.c
-		Core/FdF/src/gfx/gfx_render_gradient.c
-		Core/FdF/src/event/event_keyrelease.c
-		Core/FdF/include/keys.h
-		Core/FdF/src/event/event_action_move.c
-		Core/FdF/src/event/event_action_reset.c
-		Core/FdF/src/event/event_action_zoom.c
-		Core/FdF/src/event/event_action_altitude.c
+		"Core/FdF/include/fdf.h"
+		"Core/FdF/src/init/init_mlx.c"
+		"Core/FdF/src/init/init_data.c"
+		"Core/FdF/include/errortype.h"
+		"Core/FdF/src/error/error_throw.c"
+		"Core/FdF/src/init/init_parse.c"
+		"Core/FdF/src/init/init_hook.c"
+		"Core/FdF/src/event/event_close.c"
+		"Core/FdF/src/event/event_keypress.c"
+		"Core/FdF/src/gfx/gfx_render.c"
+		"Core/FdF/src/exit/exit_mlx.c"
+		"Core/FdF/src/exit/exit_data.c"
+		"Core/FdF/src/exit/exit_array.c"
+		"Core/FdF/src/util/util_map.c"
+		"Core/FdF/src/init/init_map.c"
+		"Core/FdF/src/util/util_num.c"
+		"Core/FdF/src/util/util_array.c"
+		"Core/FdF/src/util/util_num_2.c"
+		"Core/FdF/src/gfx/gfx_project.c"
+		"Core/FdF/src/gfx/gfx_project_calc.c"
+		"Core/FdF/src/util/util_rotation.c"
+		"Core/FdF/src/util/util_place.c"
+		"Core/FdF/src/util/util_image.c"
+		"Core/FdF/src/util/util_ipos.c"
+		"Core/FdF/src/gfx/gfx_render_point.c"
+		"Core/FdF/src/gfx/gfx_render_color.c"
+		"Core/FdF/src/gfx/gfx_render_gradient.c"
+		"Core/FdF/src/event/event_keyrelease.c"
+		"Core/FdF/src/event/event_action_move.c"
+		"Core/FdF/src/event/event_action_reset.c"
+		"Core/FdF/src/event/event_action_zoom.c"
+		"Core/FdF/src/event/event_action_altitude.c"
 )
 
 add_executable(Philosophers

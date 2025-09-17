@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 19:28:57 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/17 19:57:49 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 00:22:00 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,3 @@ void	event_action_altitude(const int key, double *alt_ratio)
 	else if (key == KEY_DOWN)
 		*alt_ratio *= 1 - ALT_INCR;
 }
-
