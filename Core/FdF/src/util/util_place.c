@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 18:05:32 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/15 18:22:34 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 01:04:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	util_place(t_data *data)
 	}
 	else
 	{
+		printf("scale is: %f\n", data->map.scale); fflush(stdout);
 		data->map.scale = (WIDTH - 2 * MARGIN)
 			/ (data->map.x_max - data->map.x_min);
 		temp = (HEIGHT - 2 * MARGIN) / (data->map.y_max
