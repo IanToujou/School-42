@@ -14,6 +14,10 @@ SRC =	src/error/error_throw.c \
 		src/event/event_close.c \
 		src/event/event_keypress.c \
 		src/event/event_keyrelease.c \
+		src/event/event_action_move.c \
+		src/event/event_action_altitude.c \
+		src/event/event_action_reset.c \
+		src/event/event_action_zoom.c \
 		src/exit/exit_array.c \
 		src/exit/exit_data.c \
 		src/exit/exit_mlx.c \

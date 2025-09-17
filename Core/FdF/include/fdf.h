@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/15 14:21:26 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/17 19:56:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # define WIDTH 1280
 # define HEIGHT 720
 # define MARGIN 200
-# define ESC_KEY 65307
+
+# define KEY_SPACE 32
+# define KEY_ESC 65307
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_DOWN 65364
@@ -25,12 +27,38 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_R 114
+# define KEY_NUMPAD_PLUS 65451
+# define KEY_NUMPAD_MINUS 65453
+# define KEY_NUMPAD_0 65438
+# define KEY_NUMPAD_1 65436
+# define KEY_NUMPAD_2 65433
+# define KEY_NUMPAD_3 65435
+# define KEY_NUMPAD_4 65430
+# define KEY_NUMPAD_5 65437
+# define KEY_NUMPAD_6 65432
+# define KEY_NUMPAD_7 65429
+# define KEY_NUMPAD_8 65431
+# define KEY_NUMPAD_9 65434
+
+# define MOUSE_LEFT 1
+# define MOUSE_MIDDLE 2
+# define MOUSE_RIGHT 3
+# define MOUSE_SCROLL_UP 4
+# define MOUSE_SCROLL_DOWN 5
 
 # define COLOR_HIGH 0x453100
 # define COLOR_MEDIUM 0xf6f172
 # define COLOR_LOW 0x005e02
 # define COLOR_SHORE 0x64aee5
 # define COLOR_SEA 0x2437c3
+
+# define MENU_COLOR 0xDDDDDD
+# define MOUSE_ROTATION_COEF 0.005
+# define ANGLE_INCR 0.02
+# define OFFSET_INCR 10
+# define ZOOM_INCR 0.2
+# define ALT_INCR 0.1
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -121,8 +149,13 @@ void	exit_array_2d_point(t_point ***array, int length);
 void	exit_mlx(t_data *data);
 
 int		event_close(t_data *data);
-int		event_keypress(int keycode, t_data *data);
+int		event_keypress(int k, t_data *data);
 int		event_keyrelease(int keycode, t_data *data);
+
+void	event_action_move(int k, t_data *data);
+void	event_action_reset(t_data *data);
+void	event_action_zoom(int key, double *scale);
+void	event_action_altitude(int key, double *alt_ratio);
 
 void	gfx_render(t_data *data);
 void	gfx_render_point(t_data *data);
