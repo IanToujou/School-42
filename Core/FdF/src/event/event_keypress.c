@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:26:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 00:36:57 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 00:46:58 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	event_keypress(const int k, t_data *data)
 			|| k == PAD_2 || k == PAD_3 || k == PAD_4 || k == PAD_6
 			|| k == PAD_7 || k == PAD_8 || k == PAD_9)
 		event_action_altitude_move(k, data);*/
+	if (!gfx_project(data))
+		error_throw(ERROR_RENDER_PROJECTION);
+	util_place(data);
 	gfx_render(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	if (k == KEY_ESC)
