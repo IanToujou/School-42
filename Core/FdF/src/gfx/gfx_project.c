@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:44:20 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/15 18:21:56 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 04:40:33 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-static void gfx_project_init(t_data *data)
+static void	gfx_project_init(t_data *data)
 {
 	if (data->map.projection == TOP)
 	{
@@ -25,7 +25,8 @@ static void gfx_project_init(t_data *data)
 	{
 		data->map.x_max = cos(M_PI / 4) * data->map.depth;
 		data->map.x_min = data->map.x_max;
-		data->map.y_max = -(data->map.array[0][0] + sin(M_PI / 4) * data->map.depth);
+		data->map.y_max = -(data->map.array[0][0]
+				+ sin(M_PI / 4) * data->map.depth);
 		data->map.y_min = data->map.y_max;
 	}
 	if (data->map.projection == ISOMETRIC)

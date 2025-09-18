@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 00:56:52 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/18 04:35:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,16 @@ typedef enum e_projection
 	TOP
 }	t_projection;
 
-typedef enum e_color {
+typedef enum e_color
+{
 	ALTITUDE,
 	MAP,
 	RAINBOW,
 	MONOCHROME,
 }	t_color;
 
-typedef struct s_point {
+typedef struct s_point
+{
 	double		x;
 	double		y;
 	double		z;
@@ -131,7 +133,7 @@ typedef struct s_data
 	t_gg_data		*gg_data;
 }	t_data;
 
-typedef struct	s_ipos
+typedef struct s_ipos
 {
 	int		i;
 	int		j;
