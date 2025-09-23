@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:32:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 09:49:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:10:53 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int main(const int argc, char **argv)
+int	main(const int argc, char **argv)
 {
 	t_data		*data;
 

@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:50:54 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 09:49:11 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:15:51 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 static void	gfx_render_line_low(t_data *data, t_ipos a, t_ipos b)
 {
-	t_point p;
+	t_point	p;
 	int		dx;
 	int		dy;
 	int		yi;
 	int		delta;
 
-	dx = (data->map.points[b.i][b.j].x - data->map.points[a.i][a.j].x) * data->map.scale;
-	dy = (data->map.points[b.i][b.j].y - data->map.points[a.i][a.j].y) * data->map.scale;
+	dx = (data->map.points[b.i][b.j].x - data->map.points[a.i][a.j].x)
+		* data->map.scale;
+	dy = (data->map.points[b.i][b.j].y - data->map.points[a.i][a.j].y)
+		* data->map.scale;
 	yi = (dy < 0) ? -1 : 1;
 	dy = (dy < 0) ? -dy : dy;
 	delta = 2 * dy - dx;

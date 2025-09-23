@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 07:56:00 by ibour             #+#    #+#             */
-/*   Updated: 2025/07/22 07:56:53 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:11:06 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	util_map_parse_width(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (0);
-
 	if ((j = read(fd, buffer, 4096)) <= 0)
 	{
 		close(fd);
