@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 04:35:59 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 09:43:38 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	event_action_move(int k, t_data *data);
 void	event_action_rotate(int k, t_data *data);
 void	event_action_reset(t_data *data);
 void	event_action_zoom(int key, double *scale);
-void	event_action_altitude(int key, double *alt_ratio);
+void	event_action_altitude(int key, t_data *data);
 
 void	gfx_render(t_data *data);
 void	gfx_render_point(t_data *data);
