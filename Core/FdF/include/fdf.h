@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:29:47 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:41:36 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@
 # define KEY_NUM_1 49
 # define KEY_NUM_2 50
 # define KEY_NUM_3 51
-# define KEY_NUM_4 52
 
 # define MOUSE_LEFT 1
 # define MOUSE_MIDDLE 2
@@ -85,7 +84,6 @@ typedef enum e_projection
 typedef enum e_color
 {
 	ALTITUDE,
-	MAP,
 	RAINBOW,
 	MONOCHROME,
 }	t_color;

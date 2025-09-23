@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:30:02 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/15 14:16:47 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:40:33 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ int	gfx_render_color(t_data *data, t_ipos a, t_ipos b, t_point p)
 {
 	int	color;
 
-	if (data->map.color == MAP)
-		color = gfx_render_gradient(data, p, data->map.points[a.i][a.j],
-				data->map.points[b.i][b.j]);
-	else if (data->map.color == ALTITUDE)
+	if (data->map.color == ALTITUDE)
 		color = gfx_render_color_alt(data, data->map.array[a.i][a.j]
 				+ gfx_render_gradient_percent(p.y, data->map.points[a.i][a.j].y * data->map.scale
 				+ data->map.y_offset, data->map.points[b.i][b.j].y

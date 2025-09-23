@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:26:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:22:56 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:41:22 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	event_keypress(const int k, t_data *data)
 		event_close(data);
 	else if (k == KEY_UP || k == KEY_DOWN)
 		event_action_altitude(k, data);
-	else if (k == KEY_NUM_1 || k == KEY_NUM_2 || k == KEY_NUM_3 || k == KEY_NUM_4)
+	else if (k == KEY_NUM_1 || k == KEY_NUM_2 || k == KEY_NUM_3)
 		event_action_color(k, data);
 	else if (k == KEY_I || k == KEY_P || k == KEY_T)
 		event_action_projection(k, data);

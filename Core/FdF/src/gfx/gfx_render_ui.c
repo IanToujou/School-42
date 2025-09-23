@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:45:36 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:31:45 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:42:14 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	gfx_render_ui_menu(const t_data *data, int *y)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, *y += 15, MENU_COLOR,
 		"[+/-] Zoom");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, *y += 30, MENU_COLOR,
-		"[1/2/3/4] Color");
+		"[1/2/3] Color");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, *y += 15, MENU_COLOR,
 		"[I/P] Projection");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, *y += 30, MENU_COLOR,

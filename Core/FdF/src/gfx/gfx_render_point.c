@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:23:46 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/11 11:33:57 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:41:05 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	gfx_render_point(t_data *data)
 		p.color = 0xFFFFFF;
 	else if (data->map.color == ALTITUDE)
 		p.color = (data->map.array[0][0] < 0) ? COLOR_SEA : COLOR_LOW;
-	else if (data->map.color == MAP)
-		p.color = data->map.points[0][0].color;
 	else if (data->map.color == RAINBOW)
 		p.color = 0xFF0000;
 	gfx_render_pixel(data, p);
