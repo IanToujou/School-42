@@ -28,6 +28,7 @@ SRC =	src/error/error_throw.c \
 		src/gfx/gfx_render_gradient.c \
 		src/gfx/gfx_project.c \
 		src/gfx/gfx_project_calc.c \
+		src/gfx/gfx_render_ui.c \
 		src/init/init_data.c \
 		src/init/init_hook.c \
 		src/init/init_map.c \

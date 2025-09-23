@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:32:10 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 00:11:20 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 09:49:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int main(const int argc, char **argv)
 	if (!util_image(data))
 		error_throw(ERROR_RENDER_IMAGE);
 	gfx_render(data);
+	gfx_render_ui(data);
 	init_hook(data);
 }

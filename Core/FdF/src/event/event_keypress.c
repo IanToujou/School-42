@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 07:26:56 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 09:44:10 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 09:49:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	event_keypress(const int k, t_data *data)
 		event_action_altitude(k, data);
 	gfx_render(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
+	gfx_render_ui(data);
 	return (0);
 }

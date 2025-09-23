@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 09:43:38 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 09:47:08 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ int		gfx_render_color(t_data *data, t_ipos a, t_ipos b, t_point p);
 double	gfx_render_gradient_percent(double current, double start, double end);
 int		gfx_render_gradient_level(int start, int end, double ratio);
 int		gfx_render_gradient(t_data *data, t_point p, t_point a, t_point b);
+void	gfx_render_ui(const t_data *data);
 
 int		gfx_project(t_data *data);
 void	gfx_project_calc_top(const t_data *data, int i, int j);
