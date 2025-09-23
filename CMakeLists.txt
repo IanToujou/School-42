@@ -257,6 +257,9 @@ add_executable(FdF
 		Core/FdF/src/event/event_action_projection.c
 		Core/FdF/src/init/init_map_2.c
 		Core/FdF/src/init/init_map_2.c
+		Core/FdF/src/gfx/gfx_render_2.c
+		Core/FdF/src/gfx/gfx_render_3.c
+		Core/FdF/src/gfx/gfx_render_4.c
 )
 
 add_executable(Philosophers

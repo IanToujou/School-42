@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 12:45:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 13:04:12 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,17 @@ void	event_action_color(int key, t_data *data);
 void	event_action_projection(int key, t_data *data);
 
 void	gfx_render(t_data *data);
+int		calc_dx(t_data *data, t_ipos a, t_ipos b);
+int		calc_dy(t_data *data, t_ipos a, t_ipos b);
+void	gfx_render_line_high(t_data *data, t_ipos p1, t_ipos p2);
+int		should_use_low_line(t_data *data, t_ipos a, t_ipos b);
+void	render_low_line_direction(t_data *data, t_ipos a, t_ipos b);
+void	render_high_line_direction(t_data *data, t_ipos a, t_ipos b);
+void	init_line_high_point(t_data *data, t_ipos p1, t_point *p);
+int		get_xi_and_adjust_dx(int *dx);
+void	gfx_render_line_low(t_data *data, t_ipos a, t_ipos b);
+void	init_line_low_point(t_data *data, t_ipos a, t_point *p);
+
 void	gfx_render_point(t_data *data);
 void	gfx_render_pixel(const t_data *data, t_point p);
 int		gfx_render_color(t_data *data, t_ipos a, t_ipos b, t_point p);

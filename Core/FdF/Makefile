@@ -24,6 +24,9 @@ SRC =	src/error/error_throw.c \
 		src/exit/exit_data.c \
 		src/exit/exit_mlx.c \
 		src/gfx/gfx_render.c \
+		src/gfx/gfx_render_2.c \
+		src/gfx/gfx_render_3.c \
+		src/gfx/gfx_render_4.c \
 		src/gfx/gfx_render_point.c \
 		src/gfx/gfx_render_color.c \
 		src/gfx/gfx_render_gradient.c \
