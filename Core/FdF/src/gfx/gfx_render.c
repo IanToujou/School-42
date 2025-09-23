@@ -6,11 +6,43 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:50:54 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:15:51 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 13:00:07 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
+
+static int	calc_dx(t_data *data, t_ipos a, t_ipos b)
+{
+	return ((data->map.points[b.i][b.j].x - data->map.points[a.i][a.j].x)
+		* data->map.scale);
+}
+
+static int	calc_dy(t_data *data, t_ipos a, t_ipos b)
+{
+	return ((data->map.points[b.i][b.j].y - data->map.points[a.i][a.j].y)
+		* data->map.scale);
+}
+
+static int	get_yi_and_adjust_dy(int *dy)
+{
+	int	yi;
+
+	if (*dy < 0)
+	{
+		yi = -1;
+		*dy = -*dy;
+	}
+	else
+		yi = 1;
+	return (yi);
+}
+
+static void	init_line_low_point(t_data *data, t_ipos a, t_point *p)
+{
+	p->y = data->map.points[a.i][a.j].y * data->map.scale + data->map.y_offset;
+	p->x = data->map.points[a.i][a.j].x * data->map.scale + data->map.x_offset;
+}
 
 static void	gfx_render_line_low(t_data *data, t_ipos a, t_ipos b)
 {
@@ -20,16 +52,13 @@ static void	gfx_render_line_low(t_data *data, t_ipos a, t_ipos b)
 	int		yi;
 	int		delta;
 
-	dx = (data->map.points[b.i][b.j].x - data->map.points[a.i][a.j].x)
-		* data->map.scale;
-	dy = (data->map.points[b.i][b.j].y - data->map.points[a.i][a.j].y)
-		* data->map.scale;
-	yi = (dy < 0) ? -1 : 1;
-	dy = (dy < 0) ? -dy : dy;
+	dx = calc_dx(data, a, b);
+	dy = calc_dy(data, a, b);
+	yi = get_yi_and_adjust_dy(&dy);
 	delta = 2 * dy - dx;
-	p.y = data->map.points[a.i][a.j].y * data->map.scale + data->map.y_offset;
-	p.x = data->map.points[a.i][a.j].x * data->map.scale + data->map.x_offset;
-	while (p.x <= data->map.points[b.i][b.j].x * data->map.scale + data->map.x_offset)
+	init_line_low_point(data, a, &p);
+	while (p.x <= data->map.points[b.i][b.j].x
+		* data->map.scale + data->map.x_offset)
 	{
 		p.color = gfx_render_color(data, a, b, p);
 		gfx_render_pixel(data, p);
@@ -43,22 +72,45 @@ static void	gfx_render_line_low(t_data *data, t_ipos a, t_ipos b)
 	}
 }
 
+static int	get_xi_and_adjust_dx(int *dx)
+{
+	int	xi;
+
+	if (*dx < 0)
+	{
+		xi = -1;
+		*dx = -*dx;
+	}
+	else
+	{
+		xi = 1;
+	}
+	return (xi);
+}
+
+static void	init_line_high_point(t_data *data, t_ipos p1, t_point *p)
+{
+	p->y = data->map.points[p1.i][p1.j].y
+		* data->map.scale + data->map.y_offset;
+	p->x = data->map.points[p1.i][p1.j].x
+		* data->map.scale + data->map.x_offset;
+}
+
 static void	gfx_render_line_high(t_data *data, t_ipos p1, t_ipos p2)
 {
-	t_point p;
+	t_point	p;
 	int		dx;
 	int		dy;
 	int		xi;
 	int		delta;
 
-	dx = (data->map.points[p2.i][p2.j].x - data->map.points[p1.i][p1.j].x) * data->map.scale;
-	dy = (data->map.points[p2.i][p2.j].y - data->map.points[p1.i][p1.j].y) * data->map.scale;
-	xi = (dx < 0) ? -1 : 1;
-	dx = (dx < 0) ? -dx : dx;
+	dx = calc_dx(data, p1, p2);
+	dy = calc_dy(data, p1, p2);
+	xi = get_xi_and_adjust_dx(&dx);
 	delta = 2 * dx - dy;
-	p.y = data->map.points[p1.i][p1.j].y * data->map.scale + data->map.y_offset;
-	p.x = data->map.points[p1.i][p1.j].x * data->map.scale + data->map.x_offset;
-	while (p.y <= data->map.points[p2.i][p2.j].y * data->map.scale + data->map.y_offset)
+	init_line_high_point(data, p1, &p);
+	while (p.y <= data->map.points[p2.i][p2.j].y
+			* data->map.scale + data->map.y_offset)
 	{
 		p.color = gfx_render_color(data, p1, p2, p);
 		gfx_render_pixel(data, p);
@@ -72,49 +124,86 @@ static void	gfx_render_line_high(t_data *data, t_ipos p1, t_ipos p2)
 	}
 }
 
+static int	should_use_low_line(t_data *data, t_ipos a, t_ipos b)
+{
+	double	y_diff;
+	double	x_diff;
+
+	y_diff = fabs(data->map.points[b.i][b.j].y - data->map.points[a.i][a.j].y);
+	x_diff = fabs(data->map.points[b.i][b.j].x - data->map.points[a.i][a.j].x);
+	return (y_diff < x_diff);
+}
+
+static void	render_low_line_direction(t_data *data, t_ipos a, t_ipos b)
+{
+	if (data->map.points[a.i][a.j].x > data->map.points[b.i][b.j].x)
+		gfx_render_line_low(data, b, a);
+	else
+		gfx_render_line_low(data, a, b);
+}
+
+static void	render_high_line_direction(t_data *data, t_ipos a, t_ipos b)
+{
+	if (data->map.points[a.i][a.j].y > data->map.points[b.i][b.j].y)
+		gfx_render_line_high(data, b, a);
+	else
+		gfx_render_line_high(data, a, b);
+}
+
 static void	gfx_render_line(t_data *data, t_ipos a, t_ipos b)
 {
-	if (fabs(data->map.points[b.i][b.j].y - data->map.points[a.i][a.j].y)
-			< fabs(data->map.points[b.i][b.j].x - data->map.points[a.i][a.j].x))
-	{
-		if (data->map.points[a.i][a.j].x > data->map.points[b.i][b.j].x)
-			gfx_render_line_low(data, b, a);
-		else
-			gfx_render_line_low(data, a, b);
-	}
+	if (should_use_low_line(data, a, b))
+		render_low_line_direction(data, a, b);
 	else
+		render_high_line_direction(data, a, b);
+}
+
+static void	render_vertical_line(t_data *data, int i, int j)
+{
+	t_ipos	p_beg;
+	t_ipos	p_end;
+
+	p_beg = util_ipos_new(i, j);
+	p_end = util_ipos_new(i + 1, j);
+	gfx_render_line(data, p_beg, p_end);
+}
+
+static void	render_horizontal_line(t_data *data, int i, int j)
+{
+	t_ipos	p_beg;
+	t_ipos	p_end;
+
+	p_beg = util_ipos_new(i, j);
+	p_end = util_ipos_new(i, j + 1);
+	gfx_render_line(data, p_beg, p_end);
+}
+
+static void	render_grid_lines(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->map.depth)
 	{
-		if (data->map.points[a.i][a.j].y > data->map.points[b.i][b.j].y)
-			gfx_render_line_high(data, b, a);
-		else
-			gfx_render_line_high(data, a, b);
+		j = 0;
+		while (j < data->map.width)
+		{
+			if (i != data->map.depth - 1)
+				render_vertical_line(data, i, j);
+			if (j != data->map.width - 1)
+				render_horizontal_line(data, i, j);
+			j++;
+		}
+		i++;
 	}
 }
 
 void	gfx_render(t_data *data)
 {
-	t_ipos	p_beg;
-	t_ipos	p_end;
-	int		i;
-	int		j;
-
-	if ((i = -1) && data->map.depth == 1 && data->map.width == 1)
+	if (data->map.depth == 1 && data->map.width == 1)
 		gfx_render_point(data);
-	while (++i < data->map.depth && (j = -1))
-		while (++j < data->map.width)
-		{
-			if (i != data->map.depth - 1)
-			{
-				p_beg = util_ipos_new(i, j);
-				p_end = util_ipos_new(i + 1, j);
-				gfx_render_line(data, p_beg, p_end);
-			}
-			if (j != data->map.width - 1)
-			{
-				p_beg = util_ipos_new(i, j);
-				p_end = util_ipos_new(i, j + 1);
-				gfx_render_line(data, p_beg, p_end);
-			}
-		}
+	else
+		render_grid_lines(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 }

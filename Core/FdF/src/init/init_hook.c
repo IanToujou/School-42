@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:48:05 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/15 16:57:58 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 12:34:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	init_hook(t_data *data)
 		event_close, data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask,
 		event_keypress, data);
-	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask,
-		event_keyrelease, data);
 	if (data->mlx_ptr)
 		mlx_loop(data->mlx_ptr);
 }

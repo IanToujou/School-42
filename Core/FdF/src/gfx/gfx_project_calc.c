@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:54:31 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 11:31:24 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 12:43:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	gfx_project_calc_isometric(t_data *data, const int i, const int j)
 	util_rotation_x(&y, &z, data->map.alpha);
 	util_rotation_y(&x, &z, data->map.beta);
 	util_rotation_z(&x, &y, data->map.gamma);
-	data->map.points[i][j].x = (x + y) * cos(M_PI / 6) * data->map.depth / 2);
+	data->map.points[i][j].x = (x + y) * cos(M_PI / 6) * data->map.depth / 2;
 	if (data->map.points[i][j].x > data->map.x_max)
 		data->map.x_max = data->map.points[i][j].x;
 	if (data->map.points[i][j].x < data->map.x_min)

@@ -247,7 +247,6 @@ add_executable(FdF
 		"Core/FdF/src/gfx/gfx_render_point.c"
 		"Core/FdF/src/gfx/gfx_render_color.c"
 		"Core/FdF/src/gfx/gfx_render_gradient.c"
-		"Core/FdF/src/event/event_keyrelease.c"
 		"Core/FdF/src/event/event_action_move.c"
 		"Core/FdF/src/event/event_action_reset.c"
 		"Core/FdF/src/event/event_action_zoom.c"
@@ -256,6 +255,8 @@ add_executable(FdF
 		Core/FdF/src/gfx/gfx_render_ui.c
 		Core/FdF/src/event/event_action_color.c
 		Core/FdF/src/event/event_action_projection.c
+		Core/FdF/src/init/init_map_2.c
+		Core/FdF/src/init/init_map_2.c
 )
 
 add_executable(Philosophers

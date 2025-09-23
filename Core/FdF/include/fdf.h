@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:41:36 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 12:45:51 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ void	init_map_read(t_data *data, const char *file);
 void	init_mlx(t_data *data);
 void	init_hook(t_data *data);
 
+void	process_line_elements(t_data *data, char **array, int row);
+
 void	exit_data(t_data *data);
 void	exit_array_2d_int(int ***array, int length);
 void	exit_array_2d_point(t_point ***array, int length);
@@ -157,7 +159,6 @@ void	exit_mlx(t_data *data);
 
 int		event_close(t_data *data);
 int		event_keypress(int k, t_data *data);
-int		event_keyrelease(int keycode, t_data *data);
 
 void	event_action_move(int k, t_data *data);
 void	event_action_rotate(int k, t_data *data);

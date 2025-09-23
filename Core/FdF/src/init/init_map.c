@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 08:52:24 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/15 18:20:19 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 12:42:59 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 static void	init_map_read_line(t_data *data, const char *line)
 {
-	char	**array;
-	char	**color_split;
-	int		i;
+	char		**array;
 	static int	current_row = 0;
 
 	if (line[0] == 0 || line[0] == '\n')
@@ -24,43 +22,12 @@ static void	init_map_read_line(t_data *data, const char *line)
 	array = ft_split(line, ' ');
 	if (!array)
 		error_throw(ERROR_MALLOC);
-	i = 0;
-	while (array[i] && i < data->map.width)
-	{
-		if (ft_strchr(array[i], ','))
-		{
-			color_split = ft_split(array[i], ',');
-			if (!color_split || !color_split[0] || !color_split[1])
-			{
-				util_array_free((void **) array);
-				if (color_split)
-					util_array_free((void **) color_split);
-				error_throw(ERROR_INIT_PARSE);
-			}
-			data->map.array[current_row][i] = (int)util_num_parse(color_split[0]);
-			if (ft_strncmp(color_split[1], "0x", 2) == 0 ||
-				ft_strncmp(color_split[1], "0X", 2) == 0)
-				data->map.points[current_row][i].color = util_atoi_base(color_split[1] + 2, "0123456789ABCDEF");
-			else
-				data->map.points[current_row][i].color = util_atoi_base(color_split[1], "0123456789ABCDEF");
-			util_array_free((void **) color_split);
-		}
-		else
-		{
-			data->map.array[current_row][i] = (int)util_num_parse(array[i]);
-			data->map.points[current_row][i].color = 0xFFFFFF;
-		}
-		data->map.points[current_row][i].x = i;
-		data->map.points[current_row][i].y = current_row;
-		data->map.points[current_row][i].z = data->map.array[current_row][i];
-		i++;
-	}
-
+	process_line_elements(data, array, current_row);
 	current_row++;
 	util_array_free((void **) array);
 }
 
-void	init_map_array(t_data *data)
+void	init_map_array_rows(t_data *data)
 {
 	int	i;
 
@@ -77,19 +44,32 @@ void	init_map_array(t_data *data)
 			error_throw(ERROR_MALLOC);
 		}
 	}
+}
+
+void	init_map_points_rows(t_data *data)
+{
+	int	i;
+
 	data->map.points = (t_point **) malloc(sizeof(t_point *) * data->map.depth);
 	if (!data->map.points)
 		error_throw(ERROR_MALLOC);
 	i = -1;
 	while (++i < data->map.depth)
 	{
-		data->map.points[i] = (t_point *) calloc(data->map.width, sizeof(t_point));
+		data->map.points[i] = (t_point *) calloc(data->map.width,
+				sizeof(t_point));
 		if (!data->map.points[i])
 		{
 			exit_array_2d_point(&data->map.points, i);
 			error_throw(ERROR_MALLOC);
 		}
 	}
+}
+
+void	init_map_array(t_data *data)
+{
+	init_map_array_rows(data);
+	init_map_points_rows(data);
 }
 
 void	init_map_read(t_data *data, const char *file)

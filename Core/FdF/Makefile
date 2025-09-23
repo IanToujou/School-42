@@ -13,7 +13,6 @@ END := \033[0m
 SRC =	src/error/error_throw.c \
 		src/event/event_close.c \
 		src/event/event_keypress.c \
-		src/event/event_keyrelease.c \
 		src/event/event_action_move.c \
 		src/event/event_action_rotate.c \
 		src/event/event_action_altitude.c \
@@ -34,6 +33,7 @@ SRC =	src/error/error_throw.c \
 		src/init/init_data.c \
 		src/init/init_hook.c \
 		src/init/init_map.c \
+		src/init/init_map_2.c \
 		src/init/init_mlx.c \
 		src/init/init_parse.c \
 		src/main/main.c \
