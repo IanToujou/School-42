@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 09:33:19 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 09:47:08 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:29:47 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_R 114
+# define KEY_I 105
+# define KEY_T 116
+# define KEY_P 112
 # define KEY_NUMPAD_PLUS 65451
 # define KEY_NUMPAD_MINUS 65453
 # define KEY_NUMPAD_0 65438
@@ -40,6 +43,10 @@
 # define KEY_NUMPAD_7 65429
 # define KEY_NUMPAD_8 65431
 # define KEY_NUMPAD_9 65434
+# define KEY_NUM_1 49
+# define KEY_NUM_2 50
+# define KEY_NUM_3 51
+# define KEY_NUM_4 52
 
 # define MOUSE_LEFT 1
 # define MOUSE_MIDDLE 2
@@ -72,8 +79,7 @@
 typedef enum e_projection
 {
 	ISOMETRIC,
-	PARALLEL,
-	TOP
+	PARALLEL
 }	t_projection;
 
 typedef enum e_color
@@ -160,6 +166,8 @@ void	event_action_rotate(int k, t_data *data);
 void	event_action_reset(t_data *data);
 void	event_action_zoom(int key, double *scale);
 void	event_action_altitude(int key, t_data *data);
+void	event_action_color(int key, t_data *data);
+void	event_action_projection(int key, t_data *data);
 
 void	gfx_render(t_data *data);
 void	gfx_render_point(t_data *data);

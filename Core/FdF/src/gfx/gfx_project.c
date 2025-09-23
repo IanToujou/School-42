@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 16:44:20 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/18 04:40:33 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:30:13 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 static void	gfx_project_init(t_data *data)
 {
-	if (data->map.projection == TOP)
-	{
-		data->map.x_max = data->map.width - 1;
-		data->map.x_min = 0;
-		data->map.y_max = data->map.depth - 1;
-		data->map.y_min = 0;
-	}
 	if (data->map.projection == PARALLEL)
 	{
 		data->map.x_max = cos(M_PI / 4) * data->map.depth;
@@ -35,20 +28,6 @@ static void	gfx_project_init(t_data *data)
 		data->map.x_min = 0;
 		data->map.y_max = -data->map.array[0][0] * data->map.width / 2;
 		data->map.y_min = data->map.y_max;
-	}
-}
-
-static void	gfx_project_top(const t_data *data)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while (++i < data->map.depth)
-	{
-		j = -1;
-		while (++j < data->map.depth)
-			gfx_project_calc_top(data, i, j);
 	}
 }
 
@@ -83,9 +62,7 @@ static void	gfx_project_isometric(t_data *data)
 int	gfx_project(t_data *data)
 {
 	gfx_project_init(data);
-	if (data->map.projection == TOP)
-		gfx_project_top(data);
-	else if (data->map.projection == ISOMETRIC)
+	if (data->map.projection == ISOMETRIC)
 		gfx_project_isometric(data);
 	else if (data->map.projection == PARALLEL)
 		gfx_project_parallel(data);

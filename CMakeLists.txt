@@ -254,6 +254,8 @@ add_executable(FdF
 		"Core/FdF/src/event/event_action_altitude.c"
 		Core/FdF/src/event/event_action_rotate.c
 		Core/FdF/src/gfx/gfx_render_ui.c
+		Core/FdF/src/event/event_action_color.c
+		Core/FdF/src/event/event_action_projection.c
 )
 
 add_executable(Philosophers

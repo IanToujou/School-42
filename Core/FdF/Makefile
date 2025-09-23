@@ -19,6 +19,8 @@ SRC =	src/error/error_throw.c \
 		src/event/event_action_altitude.c \
 		src/event/event_action_reset.c \
 		src/event/event_action_zoom.c \
+		src/event/event_action_color.c \
+		src/event/event_action_projection.c \
 		src/exit/exit_array.c \
 		src/exit/exit_data.c \
 		src/exit/exit_mlx.c \
