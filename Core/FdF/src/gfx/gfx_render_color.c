@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:30:02 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:40:33 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 11:26:23 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	gfx_render_color_z(const double ratio, const int a, const int b)
 	return ((red << 16) | (green << 8) | blue);
 }
 
-static int	gfx_render_color_y(const t_point p, const t_point a, const t_point b)
+static int	gfx_render_color_y(const t_point p,
+	const t_point a, const t_point b)
 {
 	double	ratio;
 	int		red;
@@ -32,30 +33,40 @@ static int	gfx_render_color_y(const t_point p, const t_point a, const t_point b)
 	int		blue;
 
 	ratio = gfx_render_gradient_percent(p.y, a.y, b.y);
-	red = gfx_render_gradient_level((a.color >> 16) & 0xFF, (b.color >> 16) & 0xFF, ratio);
-	green = gfx_render_gradient_level((a.color >> 8) & 0xFF, (b.color >> 8) & 0xFF, ratio);
+	red = gfx_render_gradient_level((a.color >> 16) & 0xFF,
+			(b.color >> 16) & 0xFF, ratio);
+	green = gfx_render_gradient_level((a.color >> 8) & 0xFF,
+			(b.color >> 8) & 0xFF, ratio);
 	blue = gfx_render_gradient_level(a.color & 0xFF, b.color & 0xFF, ratio);
 	return ((red << 16) | (green << 8) | blue);
 }
 
-int			gfx_render_color_alt(t_data *data, double z)
+int	gfx_render_color_alt(t_data *data, double z)
 {
 	if (data->map.z_max == data->map.z_min)
-		return ((z >= 0) ? COLOR_LOW : COLOR_SEA);
+	{
+		if (z >= 0)
+			return (COLOR_LOW);
+		return (COLOR_SEA);
+	}
 	if (z > data->map.z_max / 2)
-		return (gfx_render_color_z(gfx_render_gradient_percent(z, data->map.z_max / 2,
-		                                                       data->map.z_max), COLOR_MEDIUM, COLOR_HIGH));
+		return (gfx_render_color_z(
+				gfx_render_gradient_percent(z, data->map.z_max / 2,
+					data->map.z_max), COLOR_MEDIUM, COLOR_HIGH));
 	if (z >= 0)
-		return (gfx_render_color_z(gfx_render_gradient_percent(z, 0, data->map.z_max / 2),
-		                           COLOR_LOW, COLOR_MEDIUM));
-	return (gfx_render_color_z(gfx_render_gradient_percent(z, data->map.z_min, 0), COLOR_SEA, COLOR_SHORE));
+		return (gfx_render_color_z(
+				gfx_render_gradient_percent(z, 0, data->map.z_max / 2),
+				COLOR_LOW, COLOR_MEDIUM));
+	return (gfx_render_color_z(
+			gfx_render_gradient_percent(z, data->map.z_min, 0),
+			COLOR_SEA, COLOR_SHORE));
 }
 
-int			gfx_render_color_rainbow(const t_data *data, const t_point p)
+int	gfx_render_color_rainbow(const t_data *data, const t_point p)
 {
 	t_point	max;
-	t_point min;
-	t_point avg;
+	t_point	min;
+	t_point	avg;
 
 	max.y = data->map.y_max * data->map.scale + data->map.y_offset;
 	max.x = 0;
@@ -78,9 +89,10 @@ int	gfx_render_color(t_data *data, t_ipos a, t_ipos b, t_point p)
 
 	if (data->map.color == ALTITUDE)
 		color = gfx_render_color_alt(data, data->map.array[a.i][a.j]
-				+ gfx_render_gradient_percent(p.y, data->map.points[a.i][a.j].y * data->map.scale
-				+ data->map.y_offset, data->map.points[b.i][b.j].y
-				* data->map.scale + data->map.y_offset)
+				+ gfx_render_gradient_percent(p.y,
+					data->map.points[a.i][a.j].y * data->map.scale
+					+ data->map.y_offset, data->map.points[b.i][b.j].y
+					* data->map.scale + data->map.y_offset)
 				* (data->map.array[b.i][b.j] - data->map.array[a.i][a.j]));
 	else if (data->map.color == RAINBOW)
 		color = gfx_render_color_rainbow(data, p);

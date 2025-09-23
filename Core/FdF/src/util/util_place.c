@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 18:05:32 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:16:47 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:43:27 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	util_place_offset(t_data *data)
 {
 	data->map.x_offset = nearbyint((WIDTH - ((data->map.x_max
-								- data->map.x_min) * data->map.scale)) / 2
-					- data->map.x_min * data->map.scale);
+						- data->map.x_min) * data->map.scale)) / 2
+			- data->map.x_min * data->map.scale);
 	data->map.y_offset = nearbyint((HEIGHT - ((data->map.y_max
 						- data->map.y_min) * data->map.scale)) / 2
 			- data->map.y_min * data->map.scale);

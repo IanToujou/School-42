@@ -6,13 +6,13 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:23:46 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:41:05 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 11:27:11 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-void		gfx_render_pixel(const t_data *data, const t_point p)
+void	gfx_render_pixel(const t_data *data, const t_point p)
 {
 	int		x;
 	int		y;
@@ -32,7 +32,12 @@ void	gfx_render_point(t_data *data)
 	if (data->map.color == MONOCHROME)
 		p.color = 0xFFFFFF;
 	else if (data->map.color == ALTITUDE)
-		p.color = (data->map.array[0][0] < 0) ? COLOR_SEA : COLOR_LOW;
+	{
+		if (data->map.array[0][0] < 0)
+			p.color = COLOR_SEA;
+		else
+			p.color = COLOR_LOW;
+	}
 	else if (data->map.color == RAINBOW)
 		p.color = 0xFF0000;
 	gfx_render_pixel(data, p);

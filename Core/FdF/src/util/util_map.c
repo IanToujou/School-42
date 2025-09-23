@@ -6,37 +6,24 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 07:56:00 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/23 10:11:06 by ibour            ###   ########.fr       */
+/*   Updated: 2025/09/23 10:47:39 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fdf.h"
 
-int	util_map_parse_width(const char *filename)
+static int	count_width_line(const char *line)
 {
-	int			fd;
-	char		buffer[4097];
-	int			width;
-	int			i;
-	ssize_t		j;
-	int			in_number;
+	int	i;
+	int	width;
+	int	in_number;
 
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	if ((j = read(fd, buffer, 4096)) <= 0)
-	{
-		close(fd);
-		return (0);
-	}
-	buffer[j] = '\0';
-	width = 0;
 	i = 0;
+	width = 0;
 	in_number = 0;
-
-	while (buffer[i] && buffer[i] != '\n')
+	while (line[i] && line[i] != '\n')
 	{
-		if (buffer[i] == ' ' || buffer[i] == '\t')
+		if (line[i] == ' ' || line[i] == '\t')
 		{
 			if (in_number)
 			{
@@ -45,15 +32,38 @@ int	util_map_parse_width(const char *filename)
 			}
 		}
 		else
-		{
 			in_number = 1;
-		}
 		i++;
 	}
 	if (in_number)
 		width++;
-	close(fd);
 	return (width);
+}
+
+static ssize_t	read_first_line(const char *filename, char *buffer, size_t size)
+{
+	int		fd;
+	ssize_t	bytes;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (-1);
+	bytes = read(fd, buffer, size - 1);
+	close(fd);
+	if (bytes > 0)
+		buffer[bytes] = '\0';
+	return (bytes);
+}
+
+int	util_map_parse_width(const char *filename)
+{
+	char	buffer[4097];
+	ssize_t	len;
+
+	len = read_first_line(filename, buffer, sizeof(buffer));
+	if (len <= 0)
+		return (0);
+	return (count_width_line(buffer));
 }
 
 int	util_map_parse_depth(const int fd)
@@ -63,7 +73,8 @@ int	util_map_parse_depth(const int fd)
 	int			i;
 	ssize_t		j;
 
-	if ((j = read(fd, buffer, 4096)) <= 0)
+	j = read(fd, buffer, 4096);
+	if (j <= 0)
 		return (0);
 	buffer[j] = 0;
 	lines = 1;
