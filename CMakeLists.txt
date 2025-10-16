@@ -655,5 +655,5 @@ add_executable(CPP-07-EX02
 )
 
 add_executable(Exam-04
-		Exam/Exam-04/ft_popen/ft_popen_test.c
+		"Exam/Exam-04/ft_popen/test.c"
 )

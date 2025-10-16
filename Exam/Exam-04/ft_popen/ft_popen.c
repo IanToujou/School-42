@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:59:58 by ibour             #+#    #+#             */
-/*   Updated: 2025/09/09 17:33:32 by ibour            ###   ########.fr       */
+/*   Updated: 2025/10/16 11:55:48 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int	ft_popen(const char *file, char *const argv[], char type) {
 	if (type == 'r') {
 
 		if (pid == 0) {
-			if (dup2(fd[1], 1) < 0) {
+			if (dup2(fd[1], 1) != -1) { // important
 				close_fd(&fd[0], &fd[1]);
 				exit(-1);
 			}
-			close_fd(&fd[0], &fd[1]);
 			execvp(file, argv);
+			close_fd(&fd[0], &fd[1]);
 			exit(-1);
 		}
 		close(fd[1]);
@@ -58,12 +58,12 @@ int	ft_popen(const char *file, char *const argv[], char type) {
 	} else {
 
 		if (pid == 0) {
-			if (dup2(fd[0], 0) < 0) {
+			if (dup2(fd[0], 0) != 0) { // same
 				close_fd(&fd[0], &fd[1]);
 				exit(-1);
 			}
-			close_fd(&fd[0], &fd[1]);
 			execvp(file, argv);
+			close_fd(&fd[0], &fd[1]);
 			exit(-1);
 		}
 		close(fd[0]);
