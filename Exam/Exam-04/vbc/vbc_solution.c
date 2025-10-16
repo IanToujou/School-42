@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:01:53 by ibour             #+#    #+#             */
-/*   Updated: 2025/10/16 12:22:25 by ibour            ###   ########.fr       */
+/*   Updated: 2025/10/16 12:05:28 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,14 @@ void    destroy_tree(node *n)
 	free(n);
 }
 
-void    unexpected(char c)
-{
-	if (c)
-		printf("Unexpected token '%c'\n", c);
-	else
-		printf("Unexpected end of input\n");
+void unexpected(char c) {
+	if (c) printf("Unexpected token '%c'\n", c);
+	else printf("Unexpected end of input\n");
 }
 
 int accept(char **s, char c)
 {
-	if (**s == c)
-	{
+	if (**s == c) { // Add c
 		(*s)++;
 		return (1);
 	}
@@ -74,57 +70,55 @@ int expect(char **s, char c)
 
 node	*parse_addition(char **s);
 
-node	*parse_para(char **s) {
+node	*parse_par(char **s) {
 
-	const int val = **s - '0';
+	const int value = **s - '0';
 
 	if (isdigit(**s)) {
-		(**s)++; // important
-		const node n = {VAL, val, NULL, NULL};
-		node *ret = new_node(n);
-		if (!ret)
-			return NULL;
-		return ret;
+		(*s)++;
+		const node n = {VAL, value, NULL, NULL};
+		node *res = new_node(n);
+		if (!res)
+			return (NULL);
+		return res;
 	}
 
 	if (accept(s, '(')) {
 		node *ret = parse_addition(s);
 		if (!ret)
-			return NULL;
+			return (NULL);
 		if (!expect(s, ')')) {
 			destroy_tree(ret);
-			return NULL;
+			return (NULL);
 		}
-		return ret;
+		return (ret);
 	}
 
 	unexpected(**s ? **s : 0);
-	return NULL;
+	return (NULL);
 
 }
 
 node	*parse_multiplication(char **s) {
 
-	node *left = parse_para(s);
+	node *left = parse_par(s);
 	if (!left)
-		return NULL;
+		return (NULL);
 
 	while (accept(s, '*')) {
 
-		node *right = parse_para(s);
+		node *right = parse_par(s);
 		if (!right) {
 			destroy_tree(left);
-			return NULL;
+			return (NULL);
 		}
-
 		const node n = {MULTI, 0, left, right};
 		node *temp = new_node(n);
 		if (!temp) {
 			destroy_tree(left);
 			destroy_tree(right);
-			return NULL;
+			return (NULL);
 		}
-
 		left = temp;
 
 	}
@@ -137,24 +131,22 @@ node	*parse_addition(char **s) {
 
 	node *left = parse_multiplication(s);
 	if (!left)
-		return NULL;
+		return (NULL);
 
 	while (accept(s, '+')) {
 
 		node *right = parse_multiplication(s);
 		if (!right) {
 			destroy_tree(left);
-			return NULL;
+			return (NULL);
 		}
-
 		const node n = {ADD, 0, left, right};
 		node *temp = new_node(n);
 		if (!temp) {
 			destroy_tree(left);
 			destroy_tree(right);
-			return NULL;
+			return (NULL);
 		}
-
 		left = temp;
 
 	}
@@ -165,13 +157,13 @@ node	*parse_addition(char **s) {
 
 node    *parse_expr(char *s)
 {
-	node *ret = parse_addition(&s);
-	if (!ret)
-		return NULL;
+	node *ret = parse_addition(&s); // Create new node
+	if (!ret) // Error handling is important here
+		return (NULL);
 	if (*s)
 	{
 		destroy_tree(ret);
-		unexpected(*s);
+		unexpected(*s); // Add this
 		return (NULL);
 	}
 	return (ret);
@@ -179,7 +171,7 @@ node    *parse_expr(char *s)
 
 int eval_tree(node *tree)
 {
-	if (!tree)
+	if (!tree) // Add this check
 		return 0;
 	switch (tree->type)
 	{
@@ -190,10 +182,10 @@ int eval_tree(node *tree)
 		case VAL:
 			return (tree->val);
 	}
-	return 0;
+	return 0; // Add this
 }
 
-int main(int argc, char **argv)
+int main(const int argc, char **argv)
 {
 	if (argc != 2)
 		return (1);
