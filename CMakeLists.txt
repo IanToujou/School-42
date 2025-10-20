@@ -654,6 +654,10 @@ add_executable(CPP-07-EX02
 		"Core/CPP/Module-07/ex02/include/Array.h"
 )
 
-add_executable(Exam-04
+add_executable(Exam-04-VBC
 		"Exam/Exam-04/vbc/vbc.c"
+)
+
+add_executable(Exam-04-POPEN
+		"Exam/Exam-04/ft_popen/ft_popen.c"
 )
