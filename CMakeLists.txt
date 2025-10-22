@@ -655,9 +655,14 @@ add_executable(CPP-07-EX02
 )
 
 add_executable(Exam-04-VBC
-		"Exam/Exam-04/vbc/vbc.c"
+		"Exam/Exam-04/vbc/vbc_solution.c"
 )
 
 add_executable(Exam-04-POPEN
 		"Exam/Exam-04/ft_popen/ft_popen.c"
+)
+
+add_executable(CPP-08-EX00
+		Core/CPP/Module-08/ex00/src/main.cpp
+		Core/CPP/Module-08/ex00/include/easyfind.h
 )
