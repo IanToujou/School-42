@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:01:53 by ibour             #+#    #+#             */
-/*   Updated: 2025/10/16 12:05:28 by ibour            ###   ########.fr       */
+/*   Updated: 2025/10/22 07:30:30 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ node	*parse_addition(char **s);
 
 node	*parse_par(char **s) {
 
-	const int value = **s - '0';
+	const int value = **s - '0'; // Set value
 
-	if (isdigit(**s)) {
+	if (isdigit(**s)) { // if is digit
 		(*s)++;
-		const node n = {VAL, value, NULL, NULL};
+		const node n = {VAL, value, NULL, NULL}; // Create val node with value and NULL
 		node *res = new_node(n);
 		if (!res)
 			return (NULL);
 		return res;
 	}
 
-	if (accept(s, '(')) {
+	if (accept(s, '(')) { // accept para
 		node *ret = parse_addition(s);
 		if (!ret)
 			return (NULL);
