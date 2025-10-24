@@ -6,7 +6,7 @@
 /*   By: ibour <support@toujoustudios.net>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:01:53 by ibour             #+#    #+#             */
-/*   Updated: 2025/10/22 07:30:30 by ibour            ###   ########.fr       */
+/*   Updated: 2025/10/23 22:13:50 by ibour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ node	*parse_par(char **s) {
 	const int value = **s - '0'; // Set value
 
 	if (isdigit(**s)) { // if is digit
-		(*s)++;
+		(*s)++; // ONLY one star
 		const node n = {VAL, value, NULL, NULL}; // Create val node with value and NULL
 		node *res = new_node(n);
 		if (!res)

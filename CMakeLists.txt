@@ -655,7 +655,7 @@ add_executable(CPP-07-EX02
 )
 
 add_executable(Exam-04-VBC
-		"Exam/Exam-04/vbc/vbc_solution.c"
+		"Exam/Exam-04/vbc/vbc.c"
 )
 
 add_executable(Exam-04-POPEN
