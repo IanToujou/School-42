@@ -655,11 +655,15 @@ add_executable(CPP-07-EX02
 )
 
 add_executable(Exam-04-VBC
-		"Exam/Exam-04/vbc/vbc.c"
+		"Exam/Exam-04/vbc/vbc_solution.c"
 )
 
-add_executable(Exam-04-POPEN
-		"Exam/Exam-04/ft_popen/ft_popen.c"
+add_executable(Exam-04-PicoShell
+		"Exam/Exam-04/picoshell/picoshell_solution.c"
+)
+
+add_executable(Exam-04-POpen
+		"Exam/Exam-04/ft_popen/ft_popen_solution.c"
 )
 
 add_executable(CPP-08-EX00
